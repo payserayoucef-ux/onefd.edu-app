@@ -17,8 +17,8 @@
             margin: 0;
             padding: 0;
             direction: rtl; /* ضمان توجيه كامل لليمين */
-            text-align: right; 
-            overflow-x: hidden; 
+            text-align: right;
+            overflow-x: hidden;
         }
 
         /* الرأس والقائمة الجانبية */
@@ -36,7 +36,7 @@
         }
 
         .header-title {
-            margin: 0 auto; 
+            margin: 0 auto;
             font-size: 1.2rem;
         }
 
@@ -56,7 +56,7 @@
             position: fixed;
             z-index: 150;
             top: 0;
-            right: -250px; 
+            right: -250px;
             background-color: #111;
             overflow-x: hidden;
             transition: 0.5s;
@@ -124,7 +124,7 @@
         /* أزرار القائمة الرئيسية */
         .main-buttons-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
@@ -153,6 +153,17 @@
             background-color: #007bff;
             color: white;
             transform: translateY(-3px);
+        }
+
+        /* تنسيق زر محاكي الفرض الإلكتروني الجديد */
+        .quiz-simulator-btn { 
+            background-color: #ff9800; /* لون برتقالي مختلف */
+            border-color: #e68a00;
+            color: white;
+        }
+        .quiz-simulator-btn:hover { 
+            background-color: #e68a00;
+            color: white;
         }
 
         /* أزرار التواصل الاجتماعي */
@@ -203,7 +214,7 @@
             height: 100%;
             background-color: #f4f7f6;
             z-index: 200;
-            display: none; 
+            display: none;
             overflow-y: auto;
         }
 
@@ -224,7 +235,7 @@
         }
 
         .back-btn {
-            background-color: #dc3545; 
+            background-color: #dc3545;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -235,7 +246,7 @@
             display: flex;
             align-items: center;
             /* توجيه الأيقونة للجهة الصحيحة */
-            flex-direction: row-reverse; 
+            flex-direction: row-reverse;
             justify-content: space-between;
         }
         
@@ -255,7 +266,7 @@
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.3s;
-            text-decoration: none; 
+            text-decoration: none;
             color: #333;
             font-weight: bold;
         }
@@ -276,7 +287,7 @@
         }
 
         #check-level-page .check-btn {
-            background-color: #28a745; 
+            background-color: #28a745;
             color: white;
             border: none;
             padding: 12px 20px;
@@ -341,12 +352,15 @@
         </div>
         
         <a href="#" onclick="showPage('about-page'); return false;"><i class="fas fa-lightbulb"></i> ما هي الدراسة بالمراسلة؟</a>
+        <a href="#" onclick="showPage('quiz-simulator-page'); return false;" style="background-color: #ff9800; color: white;">
+            <i class="fas fa-gamepad"></i> محاكي الفرض الإلكتروني
+        </a>
         <a href="#" onclick="showPage('check-level-page'); return false;"><i class="fas fa-check-circle"></i> التحقق من قبولك في المستوى الأعلى</a>
         <a href="#" onclick="showPage('centers-page'); return false;"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
         <a href="#" onclick="showPage('donation-page'); return false;"><i class="fas fa-heart"></i> التبرع لدعم الموقع</a>
         <a href="#" onclick="showPage('about-app-page'); return false;"><i class="fas fa-info-circle"></i> حول الكوقع</a>
         <a href="#" onclick="shareApp()"><i class="fas fa-share-alt"></i> مشاركة الموقع</a>
-                <a href="mailto:paserayoucef@gmail.com?subject=إبلاغ عن مشكلة في نظام الأسئلة" role="button" style="padding: 10px 20px; text-decoration: none; background-color: #dc3545; color: white; border-radius: 5px; font-weight: bold; display: inline-block; margin: 10px;">
+        <a href="mailto:paserayoucef@gmail.com?subject=إبلاغ عن مشكلة في نظام الأسئلة" role="button" style="padding: 10px 20px; text-decoration: none; background-color: #dc3545; color: white; border-radius: 5px; font-weight: bold; display: inline-block; margin: 10px;">
     الإبلاغ عن مشكلة
 </a>
     </div>
@@ -379,7 +393,11 @@
             <button class="main-btn" onclick="showPage('e-homework-page')">
                 <i class="fas fa-laptop-code"></i> الفرض الإلكتروني
             </button>
-        </div>
+            
+            <button class="main-btn quiz-simulator-btn" onclick="showPage('quiz-simulator-page')">
+                <i class="fas fa-gamepad"></i> محاكي الفرض الإلكتروني
+            </button>
+            </div>
 
         <hr>
 
@@ -440,8 +458,12 @@
                 buildDonationPage();
             } else if (pageId === 'about-app-page') {
                 buildAboutAppPage();
+            } 
+            // ✅ إضافة شرط الزر الجديد هنا ✅
+            else if (pageId === 'quiz-simulator-page') {
+                buildQuizSimulatorPage();
             }
-        }
+            }
 
         function goBack() {
             pagesContainer.style.display = 'none';
@@ -464,7 +486,7 @@
                 navigator.share({
                     title: 'موقع الدراسة بالمراسلة - يوسف',
                     text: 'أفضل تطبيق لخدمات الديوان الوطني للتعليم والتكوين عن بعد!',
-                    url: window.location.href 
+                    url: window.location.href
                 })
                 .then(() => console.log('تمت المشاركة بنجاح'))
                 .catch((error) => alert('فشل المشاركة: ' + error.message));
@@ -488,7 +510,7 @@
             </button>`;
         }
         
-        // --- دوال بناء الصفحات الفرعية ---
+        // --- دوال بناء الصفحات الفرعية (بما في ذلك الدالة الجديدة) ---
 
         function buildRegistrationPage() {
             const html = `
@@ -578,6 +600,38 @@
                 ${buttonsHtml}
             `;
         }
+        
+        // --- دالة الصفحة الجديدة (محاكي الفرض الإلكتروني) ---
+        function buildQuizSimulatorPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2>محاكي الفرض الإلكتروني 🕹️</h2>
+                    <p style="font-size: 1.1rem; color: #555;">اختر المستوى الدراسي الذي تريد بدء المحاكاة فيه:</p>
+                    
+                    <button class="sub-page-btn" onclick="buildQuizLevelSelection('moyen')">
+                        <i class="fas fa-book"></i> المستوى المتوسط
+                    </button>
+                    <button class="sub-page-btn" onclick="buildQuizLevelSelection('secondary')">
+                        <i class="fas fa-book"></i> المستوى الثانوي
+                    </button>
+                    
+                    <p style="margin-top: 20px; font-size: 0.9rem; color: #dc3545;">
+                        <i class="fas fa-exclamation-triangle"></i> ملاحظة: هذه ميزة جديدة قيد التطوير.
+                    </p>
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
+
+        // دالة تحديد مستوى المحاكي (ستحتاج لتحديد صفحة quiz-level-selection.html فيما بعد)
+        function buildQuizLevelSelection(levelType) {
+            alert('سيتم بناء صفحة اختيار مستويات ' + (levelType === 'moyen' ? 'المتوسط' : 'الثانوي') + ' هنا!');
+            // هنا يمكنك إعادة توجيه المستخدم لصفحة خارجية quiz-level-selection.html
+            // أو بناء المحتوى بشكل ديناميكي داخل التطبيق.
+            // مثال: openExternalLink('quiz-level-selection.html?level=' + levelType, 'اختيار مستوى المحاكي');
+        }
+        // ----------------------------------------------------
 
         function buildAboutPage() {
             const html = `
@@ -784,7 +838,7 @@
 
                     <div class="donation-box">
                         <h3><i class="fas fa-mobile-alt"></i> التبرع عن طريق بريدي موب</h3>
-                        <p>الرقم: 
+                        <p>الرقم:
                             <span id="baridi-number" style="font-weight: bold; color: #007bff; direction: ltr; display: inline-block;">00799999001644493295</span>
                             <button class="copy-btn" onclick="copyToClipboard('baridi-number')"><i class="fas fa-copy"></i> نسخ</button>
                         </p>
@@ -792,7 +846,7 @@
 
                     <div class="donation-box">
                         <h3><i class="fas fa-bitcoin"></i> التبرع عن طريق تطبيق بينانس</h3>
-                        <p>Binance ID: 
+                        <p>Binance ID:
                             <span id="binance-id" style="font-weight: bold; color: #f0b90b; direction: ltr; display: inline-block;">761600642</span>
                             <button class="copy-btn" onclick="copyToClipboard('binance-id')"><i class="fas fa-copy"></i> نسخ</button>
                         </p>
@@ -855,7 +909,4 @@
     </script>
 </body>
 </html>
-
-
-
 
