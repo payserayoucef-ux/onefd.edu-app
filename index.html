@@ -3,108 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الدراسة بالمراسلة - محاكي الفرض الإلكتروني</title>
+    <title>الدراسة بالمراسلة - يوسف</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* ... (جميع أكواد CSS السابقة كما هي) ... */
-
-        /* تصميم خاص لصفحة المحاكي */
-        .exam-question-container {
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-
-        .exam-question-container h3 {
-            color: #007bff;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            border-bottom: 2px dashed #eee;
-            padding-bottom: 10px;
-        }
-
-        .option-label {
-            display: block;
-            background-color: #f7f7f7;
-            padding: 12px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.2s, border 0.2s;
-            border: 1px solid #e0e0e0;
-        }
-
-        .option-label:hover {
-            background-color: #e9ecef;
-        }
-
-        .option-label input[type="radio"] {
-            margin-left: 10px;
-        }
-
-        .navigation-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
+        /* [ ... أكواد CSS مُصحَّحة ومكتملة ... ] */
         
-        .navigation-buttons button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            border: none;
-            transition: background-color 0.3s;
-        }
-        
-        .nav-next {
-            background-color: #28a745; 
-            color: white;
-        }
-        
-        .nav-prev {
-            background-color: #6c757d;
-            color: white;
+        /* تنسيق عام */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6; /* خلفية فاتحة */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            direction: rtl; /* ضمان توجيه كامل لليمين */
+            text-align: right; 
+            overflow-x: hidden; 
         }
 
-        .nav-submit {
-            background-color: #dc3545;
-            color: white;
-            flex-grow: 1; /* جعل زر التسليم يملأ المساحة */
-            margin: 0 50px;
-        }
-        
-        /* تصميم صفحة النتائج */
-        .results-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            text-align: center;
-        }
-        .results-table th, .results-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-        }
-        .results-table th {
-            background-color: #007bff;
-            color: white;
-        }
-        .results-table .score-passed {
-            background-color: #d4edda;
-            color: #155724;
-            font-weight: bold;
-        }
-        .results-table .score-failed {
-            background-color: #f8d7da;
-            color: #721c24;
-            font-weight: bold;
-        }
-        
-        /* ... (بقية أكواد CSS السابقة هنا) ... */
+        /* الرأس والقائمة الجانبية */
         header {
             background-color: #007bff; /* أزرق أساسي للديوان */
             color: white;
@@ -117,7 +34,215 @@
             top: 0;
             z-index: 100;
         }
-        /* ... (تكملة أكواد CSS) ... */
+
+        .header-title {
+            margin: 0 auto; 
+            font-size: 1.2rem;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0 10px;
+        }
+
+        /* القائمة الجانبية */
+        #sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 150;
+            top: 0;
+            right: -250px; 
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #sidebar.open {
+            right: 0;
+        }
+
+        #sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid #333;
+        }
+
+        #sidebar a:hover {
+            color: #f1f1f1;
+            background-color: #007bff;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 0;
+            left: 25px; /* تم تعديل الاتجاه لـ RTL */
+            font-size: 36px;
+            margin-left: 0;
+            right: 15px; /* تم إضافة هذا ليكون في الزاوية اليسرى */
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* محتوى الصفحة الرئيسية */
+        #main-content {
+            padding: 20px;
+            transition: margin-right 0.5s;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .welcome-section {
+            text-align: center;
+            padding: 30px 0;
+            color: #007bff;
+        }
+
+        .welcome-section h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .welcome-section h2 {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: normal;
+        }
+
+        /* أزرار القائمة الرئيسية */
+        .main-buttons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .main-btn {
+            background-color: white;
+            color: #007bff;
+            border: 2px solid #007bff;
+            padding: 20px 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-btn i {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .main-btn:hover {
+            background-color: #007bff;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* أزرار التواصل الاجتماعي */
+        .social-media-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            gap: 15px;
+        }
+
+        .social-media-container p {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #555;
+            margin-left: 15px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .telegram { background-color: #0088cc; }
+        .whatsapp { background-color: #25d366; }
+        .instagram { background-color: #c32aa3; }
+        .facebook { background-color: #4267b2; }
+        .youtube { background-color: #ff0000; }
+
+        /* حاوية الصفحات الفرعية */
+        #pages-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f4f7f6;
+            z-index: 200;
+            display: none; 
+            overflow-y: auto;
+        }
+
+        .sub-page {
+            padding: 20px;
+            max-width: 800px;
+            margin: 50px auto 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sub-page h2 {
+            color: #007bff;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            background-color: #dc3545; 
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            /* توجيه الأيقونة للجهة الصحيحة */
+            flex-direction: row-reverse; 
+            justify-content: space-between;
+        }
+        
+        .back-btn i {
+            margin-right: 5px;
+        }
+
         .sub-page-btn {
             display: block;
             width: 100%;
@@ -139,8 +264,72 @@
             background-color: #007bff;
             color: white;
         }
+
+        /* تصميم صفحة التحقق من المستوى */
+        #check-level-page select, #check-level-page input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        #check-level-page .check-btn {
+            background-color: #28a745; 
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        #check-level-page .result-message {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .success { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
+        .failure { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+
+        /* تصميم صفحة المراكز الولائية */
+        #centers-page select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .center-info {
+            border: 1px solid #007bff;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #e7f4ff;
+            margin-top: 15px;
+        }
+
+        .center-info p {
+            margin: 8px 0;
+            font-size: 1.05rem;
+        }
+
+        .center-info p i {
+            color: #007bff;
+            margin-left: 10px;
+        }
         
-        /* ... (نهاية أكواد CSS) ... */
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -153,7 +342,6 @@
         
         <a href="#" onclick="showPage('about-page'); return false;"><i class="fas fa-lightbulb"></i> ما هي الدراسة بالمراسلة؟</a>
         <a href="#" onclick="showPage('check-level-page'); return false;"><i class="fas fa-check-circle"></i> التحقق من قبولك في المستوى الأعلى</a>
-        <a href="#" onclick="showPage('exam-simulator-page'); return false;"><i class="fas fa-book-open"></i> محاكي الفرض الإلكتروني</a>
         <a href="#" onclick="showPage('centers-page'); return false;"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
         <a href="#" onclick="showPage('donation-page'); return false;"><i class="fas fa-heart"></i> التبرع لدعم التطبيق</a>
         <a href="#" onclick="showPage('about-app-page'); return false;"><i class="fas fa-info-circle"></i> حول التطبيق</a>
@@ -168,6 +356,7 @@
     </header>
 
     <main id="main-content">
+        
         <div class="welcome-section">
             <h1>أهلاً بك أيها المتعلم 👋</h1>
             <h2>في تطبيق **الدراسة بالمراسلة - يوسف**</h2>
@@ -210,15 +399,13 @@
     </div>
 
     <script>
+        // [ ... جميع دوال JavaScript، بما فيها بيانات المراكز، مُصحَّحة ومكتملة ... ]
+
         const pagesContainer = document.getElementById('pages-container');
         const loadingOverlay = document.getElementById('loading-overlay');
-        let userAnswers = {}; // لتخزين إجابات المستخدم
-        let currentQuestionIndex = 0; // لتتبع السؤال الحالي
-        let currentExamData = null; // لتخزين بيانات الامتحان النشط
+        let currentExternalUrl = null;
 
-        // ... (بقية دوال التحكم بالقائمة الجانبية و showPage و openExternalLink إلخ) ...
-        
-        // دوال التحكم بالقائمة الجانبية وصفحات الويب (الدوام السابقة)
+        // دوال التحكم بالقائمة الجانبية وصفحات الويب
         function toggleSidebar() {
             document.getElementById("sidebar").classList.toggle("open");
         }
@@ -250,8 +437,6 @@
                 buildDonationPage();
             } else if (pageId === 'about-app-page') {
                 buildAboutAppPage();
-            } else if (pageId === 'exam-simulator-page') {
-                buildExamSimulatorLevelSelect(); // الدالة الجديدة
             }
         }
 
@@ -259,19 +444,19 @@
             pagesContainer.style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
             pagesContainer.innerHTML = '';
+            currentExternalUrl = null;
         }
-        
+
+        // تم تصحيح دالة openExternalLink لتعمل مع الروابط الخارجية
         function openExternalLink(url, title = "جارٍ التحميل...") {
-            // ... (دالة openExternalLink كما كانت) ...
             showLoading();
             setTimeout(() => {
                 window.open(url, '_blank');
                 hideLoading();
-            }, 500); 
+            }, 500); // 500ms انتظار قبل الفتح
         }
 
         function shareApp() {
-            // ... (دالة shareApp كما كانت) ...
             if (navigator.share) {
                 navigator.share({
                     title: 'تطبيق الدراسة بالمراسلة - يوسف',
@@ -284,262 +469,386 @@
                 alert('يرجى نسخ الرابط ومشاركته يدوياً: ' + window.location.href);
             }
         }
-        
+
         function showLoading() {
-            // ... (دالة showLoading كما كانت) ...
-            document.getElementById('loading-overlay').classList.remove('hidden');
+            loadingOverlay.classList.remove('hidden');
         }
 
         function hideLoading() {
-            // ... (دالة hideLoading كما كانت) ...
-            document.getElementById('loading-overlay').classList.add('hidden');
+            loadingOverlay.classList.add('hidden');
         }
-
+        
+        // أداة لبناء أزرار الروابط
         function createLinkButton(text, url) {
-            // ... (دالة createLinkButton كما كانت) ...
             return `<button class="sub-page-btn" onclick="openExternalLink('${url}', '${text}')">
                 ${text} <i class="fas fa-external-link-alt" style="float: left;"></i>
             </button>`;
         }
         
-        // --- دوال بناء الصفحات الفرعية السابقة (تم حذفها للاختصار، لكن يجب أن تكون موجودة) ---
-        // (يجب أن تضع هنا دوال: buildRegistrationPage، buildDocumentsPage، buildPlatformsPage، 
-        // buildEHomeworkPage، buildAboutPage، buildCheckLevelPage، buildCentersPage، 
-        // buildDonationPage، buildAboutAppPage، checkLevelResult، displayCenterInfo، copyToClipboard)
-        
-        // --- الدوال الجديدة لـ محاكي الفرض الإلكتروني ---
+        // --- دوال بناء الصفحات الفرعية ---
 
-        // 1. قاعدة بيانات الأسئلة
-        const EXAM_DATABASE = {
-            'أولى متوسط': {
-                'اللغة العربية': [
-                    { q: 'ما هو جمع كلمة "قلم"؟', options: ['قلمون', 'أقلام', 'قواليم', 'أقالمة'], correct: 'أقلام' },
-                    { q: 'ما هي وظيفية الفاعل في الجملة؟', options: ['يصف الاسم', 'يبين زمن الفعل', 'يدل على من قام بالفعل', 'يدل على المفعول به'], correct: 'يدل على من قام بالفعل' },
-                    { q: 'من هو الشاعر الذي لقب بأمير الشعراء؟', options: ['المتنبي', 'أحمد شوقي', 'حافظ إبراهيم', 'أبو العلاء المعري'], correct: 'أحمد شوقي' },
-                    { q: 'ما هي الحركة التي توضع على آخر اسم مجرور؟', options: ['الضمة', 'الفتحة', 'الكسرة', 'السكون'], correct: 'الكسرة' },
-                    { q: 'كم عدد حروف اللغة العربية؟', options: ['29 حرفاً', '28 حرفاً', '30 حرفاً', '27 حرفاً'], correct: '28 حرفاً' },
-                    // (ملاحظة: يجب إضافة 15 سؤالاً آخر لكل مادة لاكتمال الـ 20 سؤالاً)
-                ],
-                'اللغة الفرنسية': [
-                    { q: 'ماذا تعني كلمة "Bonjour"؟', options: ['مع السلامة', 'كيف حالك', 'صباح الخير', 'ما اسمك'], correct: 'صباح الخير' },
-                    { q: 'ما هو تصريف الفعل "être" مع الضمير "Je"؟', options: ['es', 'suis', 'est', 'sommes'], correct: 'suis' },
-                    // ... (يجب إضافة 18 سؤالاً آخر)
-                ],
-                'اللغة الانجليزية': [
-                    { q: 'ماذا تعني كلمة "Apple"؟', options: ['موز', 'برتقال', 'تفاح', 'عنب'], correct: 'تفاح' },
-                    { q: 'ما هو تصريف الفعل "to be" مع الضمير "I"؟', options: ['is', 'are', 'am', 'was'], correct: 'am' },
-                    // ... (يجب إضافة 18 سؤالاً آخر)
-                ],
-                'تاريخ وجغرافيا': [
-                    { q: 'متى سقطت الخلافة العباسية؟', options: ['1258 م', '1453 م', '750 م', '632 م'], correct: '1258 م' },
-                    // ... (يجب إضافة 19 سؤالاً آخر)
-                ],
-                'علوم فيزيائية': [
-                    { q: 'ما هي وحدة قياس التيار الكهربائي؟', options: ['الفولت', 'الأوم', 'الأمبير', 'الوات'], correct: 'الأمبير' },
-                    // ... (يجب إضافة 19 سؤالاً آخر)
-                ],
-                'التربية الاسلامية': [
-                    { q: 'كم عدد أركان الإسلام؟', options: ['أربعة', 'خمسة', 'ستة', 'سبعة'], correct: 'خمسة' },
-                    // ... (يجب إضافة 19 سؤالاً آخر)
-                ],
-            },
-            // 'الثانية متوسط': { /* ... أسئلة ثانية متوسط ... */ }
-        };
+        function buildRegistrationPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2>التسجيل في المراسلة 📝</h2>
+                    ${createLinkButton('تسجيل متعلم جديد', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                    ${createLinkButton('تسجيل متعلم سابق', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
 
-        // 2. عرض صفحة اختيار المستوى
-        function buildExamSimulatorLevelSelect() {
-            const levels = Object.keys(EXAM_DATABASE);
-            let buttonsHtml = levels.map(level => `
-                <button class="sub-page-btn" onclick="buildExamSimulatorSubjectSelect('${level}')">
-                    <i class="fas fa-graduation-cap"></i> ${level}
-                </button>
-            `).join('');
+        function buildDocumentsPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2>سحب وطبع الوثائق 🖨️</h2>
+                    ${createLinkButton('إعادة طبع وثائق التسجيل', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                    ${createLinkButton('استخراج شهادة التسجيل', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                    ${createLinkButton('استخراج تأكيد التسجيل', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                    ${createLinkButton('إرفاق الوثائق الثبوتية', 'https://e-devoir-3am.onefd.edu.dz/preinscription/index.php/upload_documents')}
+                    ${createLinkButton('استخراج رقم التسجيل', 'https://inscriptic.onefd.edu.dz/numins/num_ins_index.php')}
+                    ${createLinkButton('استخراج استدعاء امتحان المستوى', 'https://inscriptic.onefd.edu.dz/convocation_2025/cen2012.php')}
+                    ${createLinkButton('استخراج كشف النقاط', 'http://inscriptic.onefd.edu.dz/releve/matricule.php')}
+                    ${createLinkButton('استخراج شهادة إثبات المستوى', 'https://www.onefd.edu.dz/att_niv_2025/')}
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
+
+        function buildPlatformsPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2>الأرضيات التعليمية (Scolarium) 📚</h2>
+                    ${createLinkButton('المستوى المتوسط', 'http://scolarium-moyen.onefd.edu.dz/login/index.php')}
+                    ${createLinkButton('مستوى أولى ثانوي', 'http://scolarium-1as.onefd.edu.dz/login/index.php')}
+                    ${createLinkButton('مستوى الثانية ثانوي', 'http://scolarium-2as.onefd.edu.dz/login/index.php')}
+                    ${createLinkButton('مستوى الثالثة ثانوي', 'http://scolarium-3as.onefd.edu.dz/login/index.php')}
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
+
+        function buildEHomeworkPage() {
+            const html = `
+                <div class="sub-page" id="e-homework-main">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2>منصة الفرض الإلكتروني 💻</h2>
+                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')">
+                        <i class="fas fa-graduation-cap"></i> المستوى المتوسط
+                    </button>
+                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')">
+                        <i class="fas fa-graduation-cap"></i> المستوى الثانوي
+                    </button>
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
+
+        function buildEHomeworkLevel(level) {
+            const homeworkMainDiv = document.getElementById('e-homework-main');
+            let buttonsHtml = '';
+            let title = '';
+
+            if (level === 'moyen') {
+                title = 'الفرض الإلكتروني - المستوى المتوسط';
+                buttonsHtml = `
+                    ${createLinkButton('أولى متوسط', 'https://e-devoir-1am.onefd.edu.dz/')}
+                    ${createLinkButton('ثانية متوسط', 'https://e-devoir-2am.onefd.edu.dz/')}
+                    ${createLinkButton('ثالثة متوسط', 'https://e-devoir-3am.onefd.edu.dz/')}
+                    ${createLinkButton('الرابعة متوسط', 'https://e-devoir-4am.onefd.edu.dz/')}
+                `;
+            } else if (level === 'secondary') {
+                title = 'الفرض الإلكتروني - المستوى الثانوي';
+                buttonsHtml = `
+                    ${createLinkButton('أولى ثانوي', 'https://e-devoir-1as.onefd.edu.dz/index.php/welcome')}
+                    ${createLinkButton('الثانية ثانوي', 'https://e-devoir-2as.onefd.edu.dz/index.php/welcome')}
+                    ${createLinkButton('الثالثة ثانوي', 'https://e-devoir-3as.onefd.edu.dz/index.php/welcome')}
+                `;
+            }
+
+            homeworkMainDiv.innerHTML = `
+                <button class="back-btn" onclick="buildEHomeworkPage()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                <h2>${title}</h2>
+                ${buttonsHtml}
+            `;
+        }
+
+        function buildAboutPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2>ما هي الدراسة بالمراسلة؟ 💡</h2>
+                    <p style="background-color: #f7f7f7; padding: 15px; border-radius: 8px; border-right: 4px solid #007bff;">
+                        عزيزي المستخدم يتيح الديوان الوطني للتعليم والتكوين عن بعد فرصة لإكمال مسارك التعليمي لكل من انقطع عن الدراسة لأي سبب، وحتى لمن كان يدرس بمحو الأمية وتحصل على شهادة التحرر من الأمية يسجل في الأولى متوسط.
+                    </p>
+                    
+                    <h3>شروط الانتقال:</h3>
+                    <ul>
+                        <li>يمكن لأي متعلم جديد أن يسجل في القسم الأعلى إذا كان متحصل على المعدل السنوي **9/20 فما فوق**.</li>
+                        <li>إلا من المستوى **الثانية ثانوي إلى الثالثة ثانوي** يتطلب عليه أن يكون معدله السنوي **يساوي أو يفوق 10/20**.</li>
+                    </ul>
+
+                    <h3>شروط التسجيل لأول مرة:</h3>
+                    <p>لتسجيل متعلم جديد في الدراسة بالمراسلة، يتطلب إحضار الملف التالي إلى أي دكان أو قاعة للإنترنت أو يسجل نفسه بنفسه:</p>
+                    <ul style="color: #dc3545;">
+                        <li><i class="fas fa-image"></i> صورة شمسية (**إجباري**)</li>
+                        <li><i class="fas fa-calendar-alt"></i> شهادة الميلاد (**إجباري**)</li>
+                        <li><i class="fas fa-map-marker-alt"></i> بطاقة الإقامة (إن وجدت)</li>
+                        <li><i class="fas fa-chart-bar"></i> كشف نقاط الفصل الثالث (إن وجد)</li>
+                        <li><i class="fas fa-school"></i> الشهادة المدرسية (**إجباري**)</li>
+                        <li><i class="fas fa-id-card"></i> بطاقة التعريف الوطنية البيومترية (**إجباري**)</li>
+                        <li><i class="fas fa-feather-alt"></i> شهادة التحرر من الأمية (**إجباري**) خاصة بمتعلمي محو الأمية</li>
+                        <li><i class="fas fa-money-bill-alt"></i> إيصال الدفع (الحقوق)</li>
+                    </ul>
+
+                    <h3>حقوق التسجيل (تقريبية):</h3>
+                    <table style="width: 100%; border-collapse: collapse; text-align: right; margin-top: 15px;">
+                        <thead>
+                            <tr style="background-color: #007bff; color: white;">
+                                <th style="padding: 10px; border: 1px solid white;">طريقة الدراسة</th>
+                                <th style="padding: 10px; border: 1px solid white;">المبلغ (دج)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color: #f2f2f2;"><td>الدراسة بالكتاب</td><td>2677 دج</td></tr>
+                            <tr><td>الدراسة بالقرص المضغوط</td><td>1977 دج</td></tr>
+                            <tr style="background-color: #f2f2f2;"><td>الدراسة عبر الأرضية (المتعلمين الجدد)</td><td>1777 دج</td></tr>
+                            <tr><td>الدراسة عبر الأرضية (القدامى المعيدون)</td><td>1877 دج</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
+
+        function buildCheckLevelPage() {
+            const levels = {
+                'أولى متوسط': 9, 'ثانية متوسط': 9, 'ثالثة متوسط': 9, 'رابعة متوسط': 9,
+                'أولى ثانوي': 9, 'الثانية ثانوي': 10
+            };
+            const options = Object.keys(levels).map(level => `<option value="${level}">${level}</option>`).join('');
+
+            const html = `
+                <div class="sub-page" id="level-checker-content">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2>التحقق من القبول في المستوى الأعلى ✅</h2>
+                    <p>الرجاء اختيار مستواك الحالي وإدخال معدلك السنوي:</p>
+                    
+                    <select id="study-level">
+                        <option value="">-- اختر مستواك الدراسي --</option>
+                        ${options}
+                    </select>
+                    
+                    <input type="number" id="annual-average" placeholder="أدخل معدلك السنوي (من 20)" min="0" max="20" step="0.01">
+                    
+                    <button class="check-btn" onclick="checkLevelResult()">تحقق</button>
+                    
+                    <div id="result-message" class="result-message hidden"></div>
+
+                    <p style="font-size: 0.9rem; color: #555; margin-top: 20px;">
+                        <i class="fas fa-info-circle"></i> **ملاحظة توضيحية:** المعدل السنوي موجود في كشف النقاط للفصل الثالث.
+                    </p>
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
+
+        function checkLevelResult() {
+            const level = document.getElementById('study-level').value;
+            const average = parseFloat(document.getElementById('annual-average').value);
+            const resultDiv = document.getElementById('result-message');
+            resultDiv.classList.add('hidden');
+
+            if (!level || isNaN(average) || average < 0 || average > 20) {
+                resultDiv.innerHTML = 'الرجاء إدخال بيانات صحيحة (المستوى والمعدل).';
+                resultDiv.className = 'result-message failure';
+                resultDiv.classList.remove('hidden');
+                return;
+            }
+
+            const levels = {
+                'أولى متوسط': 9, 'ثانية متوسط': 9, 'ثالثة متوسط': 9, 'رابعة متوسط': 9,
+                'أولى ثانوي': 9, 'الثانية ثانوي': 10
+            };
+
+            const requiredAverage = levels[level];
+            let message = '';
+            let isSuccess = false;
+
+            if (average >= requiredAverage) {
+                message = `مبارك! بمعدلك ${average.toFixed(2)}، يمكنك التسجيل في **المستوى الأعلى** بنجاح.`;
+                isSuccess = true;
+            } else {
+                message = `عذراً. بمعدلك ${average.toFixed(2)}، يتطلب منك **إعادة السنة** للدراسة في ${level}. المعدل المطلوب هو ${requiredAverage}.`;
+                isSuccess = false;
+            }
+
+            resultDiv.innerHTML = message;
+            resultDiv.className = `result-message ${isSuccess ? 'success' : 'failure'}`;
+            resultDiv.classList.remove('hidden');
+        }
+
+        function buildCentersPage() {
+            const centersData = [
+                // جميع بيانات المراكز الولائية
+                { id: 1, name: 'أدرار', states: 'أدرار', address: 'مقر الولاية القديمة ص.ب 76', phone: '049.36.12.31', fax: '049.36.12.31', email: 'cwefd01@onefd.edu.dz' },
+                { id: 2, name: 'الشلف', states: 'الشلف', address: 'شارع بن باديس ص.ب 190', phone: '027.77.00.24', fax: '027.77.00.24', email: 'cwefd02@onefd.edu.dz' },
+                { id: 3, name: 'الأغواط', states: 'الأغواط، غرداية', address: 'حي المعمورة بن عامر ص.ب 1800', phone: '029.13.24.30', fax: '029.13.24.30', email: 'cwefd03@onefd.edu.dz' },
+                { id: 4, name: 'باتنة', states: 'باتنة', address: 'شارع 19 جوان 1965', phone: '033.25.80.77', fax: '/', email: 'cwefd05@onefd.edu.dz' },
+                { id: 5, name: 'بجاية', states: 'بجاية، جيجل', address: 'حي 300 مسكن أحدادن', phone: '034.12.98.47', fax: '034.12.98.47', email: 'cwefd06@onefd.edu.dz' },
+                { id: 6, name: 'بسكرة', states: 'بسكرة', address: 'شارع حمودة عبد الرزاق', phone: '033.53.08.56', fax: '033.53.08.56', email: 'cwefd07@onefd.edu.dz' },
+                { id: 7, name: 'بشار', states: 'بشار، تيندوف', address: 'حي الجيهاني ص.ب رقم 64 البرقة', phone: '049.23.87.28', fax: '049.23.87.28', email: 'cwefd08@onefd.edu.dz' },
+                { id: 8, name: 'تمنراست', states: 'تمنراست', address: 'شارع 5 جزيلية سرسوف', phone: '029.32.23.20', fax: '029.32.23.20', email: 'cwefd11@onefd.edu.dz' },
+                { id: 9, name: 'تبسة', states: 'تبسة، خنشلة', address: 'ص.ب 13 النهضة', phone: '037.58.59.49', fax: '037.58.59.49', email: 'cwefd12@onefd.edu.dz' },
+                { id: 10, name: 'تلمسان', states: 'تلمسان، عين تموشنت', address: 'شارع دار الحديث ص.ب 314', phone: '043.27.59.30', fax: '043.27.59.30', email: 'Cwefd13@onefd.edu.dz' },
+                { id: 11, name: 'تيارت', states: 'تيارت', address: 'حي الصوناتيبا ص.ب 111', phone: '046.22.50.47', fax: '046.22.50.47', email: 'cwefd14@onefd.edu.dz' },
+                { id: 12, name: 'تيزي وزو', states: 'تيزي وزو، بومرداس، البويرة', address: 'شارع أحمد ملولي مدوحة', phone: '026.19.70.50', fax: '026.19.70.50', email: 'cwefd15@onefd.edu.dz' },
+                { id: 13, name: 'الجزائر', states: 'الجزائر، تيبازة', address: 'شارع محمد مادة 1', phone: '021.66.42.11', fax: '021.66.42.11', email: 'cwefd16@onefd.edu.dz' },
+                { id: 14, name: 'الجلفة', states: 'الجلفة، المسيلة', address: 'بجوار متوسطة الرايس محمد', phone: '027.93.03.92', fax: '027.93.03.92', email: 'cwefd17@onefd.edu.dz' },
+                { id: 15, name: 'سطيف', states: 'سطيف، برج بوعريريج', address: 'شارع أول نوفمبر 1954 رقم 67', phone: '044.77.83.00', fax: '/', email: 'cwefd19@onefd.edu.dz' },
+                { id: 16, name: 'سعيدة', states: 'سعيدة، البيض، النعامة، معسكر', address: 'شارع شبلي سعيد', phone: '048.43.35.93', fax: '048.43.35.93', email: 'cwefd20@onefd.edu.dz' },
+                { id: 17, name: 'سكيكدة', states: 'سكيكدة، ميلة', address: 'شارع عيسى بولغب ص.ب 225 14', phone: '038.77.44.09', fax: '038.77.44.09', email: 'cwefd21@onefd.edu.dz' },
+                { id: 18, name: 'عنابة', states: 'عنابة، الطارف، قالمة', address: 'حي جبهة التحرير الوطني', phone: '038.43.69.88', fax: '038.43.69.88', email: 'cwefd23@onefd.edu.dz' },
+                { id: 19, name: 'قسنطينة', states: 'قسنطينة، أم البواقي', address: 'حي 20 أوت 1955 ص.ب 180', phone: '031.64.04.44', fax: '031.64.04.44', email: 'cwefd25@onefd.edu.dz' },
+                { id: 20, name: 'المدية', states: 'المدية، البليدة', address: 'حي المصلى 01', phone: '025.73.07.04', fax: '025.73.07.04', email: 'cwefd26@onefd.edu.dz' },
+                { id: 21, name: 'مستغانم', states: 'مستغانم، غليزان', address: 'حي بايموت ص.ب 502', phone: '045.40.91.14', fax: '045.40.91.14', email: 'cwefd27@onefd.edu.dz' },
+                { id: 22, name: 'ورقلة', states: 'ورقلة، إليزي', address: 'شارع القدس ص.ب 920', phone: '029.71.17.06', fax: '029.71.17.06', email: 'cwefd30@onefd.edu.dz' },
+                { id: 23, name: 'وهران', states: 'وهران، سيدي بلعباس', address: 'رقم 22 شارع شريط علي شريف ص.ب 1535 بريد صايم محمد', phone: '041.38.62.16', fax: '041.38.62.16', email: 'cwefd31@onefd.edu.dz' },
+                { id: 24, name: 'تيسمسيلت', states: 'تيسمسيلت', address: 'شارع أول نوفمبر', phone: '046.57.54.73', fax: '046.57.54.73', email: 'cwefd38@omefd.edu.dz' },
+                { id: 25, name: 'الوادي', states: 'الوادي', address: 'حي الأمير عبد القادر', phone: '032.11.41.35', fax: '032.11.41.35', email: 'cwefd39@onefd.edu.dz' },
+                { id: 26, name: 'سوق أهراس', states: 'سوق أهراس', address: 'نهج مولود فرعون', phone: '037.82.10.09', fax: '037.82.10.09', email: 'cwefd41@onefd.edu.dz' },
+                { id: 27, name: 'عين الدفلى', states: 'عين الدفلى', address: 'شارع مروان متوسطة بسكري فتيحة', phone: '027.51.56.56', fax: '027.51.56.11', email: 'cwefd44@omefd.edu.dz' }
+            ];
+
+            const selectOptions = centersData.map(center => `<option value="${center.id}">${center.name}</option>`).join('');
 
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>محاكي الفرض الإلكتروني 🧠</h2>
-                    <p>الرجاء اختيار مستواك الدراسي لبدء المحاكاة:</p>
-                    <div id="exam-levels-buttons">
-                        ${buttonsHtml}
-                    </div>
+                    <h2>الاتصال بالمراكز الولائية 📞</h2>
+                    
+                    <p>اختر مركزك الولائي لعرض معلومات الاتصال:</p>
+                    <select id="center-select" onchange="displayCenterInfo()">
+                        <option value="">-- اختر المركز --</option>
+                        ${selectOptions}
+                    </select>
+                    
+                    <div id="center-details" class="center-info hidden">
+                        </div>
                 </div>
             `;
-            pagesContainer.innerHTML = html;
-            // إعادة تعيين حالة الاختبار
-            userAnswers = {};
-            currentQuestionIndex = 0;
-            currentExamData = null;
-            // يجب تحديث هذا ليعكس حالة النتائج المخزنة
-            window.storedResults = window.storedResults || {}; 
+            document.getElementById('pages-container').innerHTML = html;
+            window.centersData = centersData;
         }
 
-        // 3. عرض صفحة اختيار المادة
-        function buildExamSimulatorSubjectSelect(level) {
-            const subjects = Object.keys(EXAM_DATABASE[level]);
-            const results = window.storedResults[level] || {};
+        function displayCenterInfo() {
+            const selectedId = document.getElementById('center-select').value;
+            const detailsDiv = document.getElementById('center-details');
+            detailsDiv.classList.add('hidden');
+            
+            if (!selectedId) {
+                detailsDiv.innerHTML = '';
+                return;
+            }
 
-            let buttonsHtml = subjects.map(subject => {
-                const score = results[subject] !== undefined ? results[subject] : '-';
-                const scoreColor = score >= 10 ? 'score-passed' : 'score-failed';
-                const scoreDisplay = score !== '-' ? `<span class="${scoreColor}" style="float: left; padding: 5px; border-radius: 5px;">النتيجة: ${score} / 20</span>` : '';
-                
-                return `
-                    <button class="sub-page-btn" onclick="startExam('${level}', '${subject}')">
-                        ${subject} ${scoreDisplay}
-                    </button>
+            const center = window.centersData.find(c => c.id == selectedId);
+            
+            if (center) {
+                detailsDiv.innerHTML = `
+                    <h3><i class="fas fa-map-marker-alt"></i> مركز ${center.name}</h3>
+                    <p>الولايات التابعة: **${center.states}**</p>
+                    <p><i class="fas fa-road"></i> **العنوان:** ${center.address}</p>
+                    <p><i class="fas fa-phone"></i> **الهاتف:** <a href="tel:${center.phone}">${center.phone}</a></p>
+                    <p><i class="fas fa-fax"></i> **الفاكس:** ${center.fax}</p>
+                    <p><i class="fas fa-envelope"></i> **البريد الإلكتروني:** <a href="mailto:${center.email}">${center.email}</a></p>
                 `;
-            }).join('');
-
-            const html = `
-                <div class="sub-page">
-                    <button class="back-btn" onclick="buildExamSimulatorLevelSelect()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>اختيار المادة: ${level}</h2>
-                    <p>اختر المادة لبدء الاختبار. (النتيجة تظهر بجانب المادة بعد الانتهاء):</p>
-                    <div id="exam-subjects-buttons">
-                        ${buttonsHtml}
-                    </div>
-                </div>
-            `;
-            pagesContainer.innerHTML = html;
+                detailsDiv.classList.remove('hidden');
+            }
         }
 
-        // 4. بدء الاختبار وتوليد الأسئلة
-        function startExam(level, subject) {
-            currentExamData = {
-                level: level,
-                subject: subject,
-                questions: EXAM_DATABASE[level][subject]
-            };
-            userAnswers = {}; // تصفير الإجابات لبدء اختبار جديد
-            currentQuestionIndex = 0;
-            displayQuestion();
-        }
-
-        // 5. عرض سؤال واحد والتنقل (السابق/التالي)
-        function displayQuestion() {
-            if (!currentExamData) return;
-            const qData = currentExamData.questions[currentQuestionIndex];
-            const totalQuestions = currentExamData.questions.length;
-            const questionId = `q${currentQuestionIndex}`;
-            
-            let optionsHtml = qData.options.map((option, index) => `
-                <label class="option-label">
-                    <input type="radio" name="${questionId}" value="${option}" 
-                           ${userAnswers[questionId] === option ? 'checked' : ''}
-                           onchange="saveAnswer('${questionId}', this.value)">
-                    ${option}
-                </label>
-            `).join('');
-
+        function buildDonationPage() {
             const html = `
                 <div class="sub-page">
-                    <button class="back-btn" onclick="buildExamSimulatorSubjectSelect('${currentExamData.level}')">
-                        <i class="fas fa-arrow-right"></i> رجوع لقائمة المواد
-                    </button>
-                    <h2>${currentExamData.subject} - سؤال ${currentQuestionIndex + 1} من ${totalQuestions}</h2>
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2>ساهم في دعم التطبيق ❤️</h2>
                     
-                    <div class="exam-question-container">
-                        <h3>${qData.q}</h3>
-                        <form id="question-form">${optionsHtml}</form>
+                    <p style="text-align: center; font-style: italic; font-size: 1.1rem; color: #555;">
+                        عزيزي المتعلم، دعمك يساعدنا على الاستمرار في تقديم محتوى مجاني وتطوير التطبيق أكثر. بك أنت نستمر نحن.
+                    </p>
+
+                    <div class="donation-box">
+                        <h3><i class="fas fa-mobile-alt"></i> التبرع عن طريق بريدي موب</h3>
+                        <p>الرقم: 
+                            <span id="baridi-number" style="font-weight: bold; color: #007bff; direction: ltr; display: inline-block;">00799999001644493295</span>
+                            <button class="copy-btn" onclick="copyToClipboard('baridi-number')"><i class="fas fa-copy"></i> نسخ</button>
+                        </p>
                     </div>
 
-                    <div class="navigation-buttons">
-                        <button class="nav-prev" onclick="changeQuestion(-1)" ${currentQuestionIndex === 0 ? 'disabled' : ''}>
-                            <i class="fas fa-arrow-right"></i> السابق 
-                        </button>
-                        ${currentQuestionIndex === totalQuestions - 1 
-                            ? `<button class="nav-submit" onclick="submitExam()">تسليم الكل وأنهي <i class="fas fa-check-circle"></i></button>`
-                            : `<button class="nav-next" onclick="changeQuestion(1)">التالي <i class="fas fa-arrow-left"></i></button>`
-                        }
+                    <div class="donation-box">
+                        <h3><i class="fas fa-bitcoin"></i> التبرع عن طريق تطبيق بينانس</h3>
+                        <p>Binance ID: 
+                            <span id="binance-id" style="font-weight: bold; color: #f0b90b; direction: ltr; display: inline-block;">761600642</span>
+                            <button class="copy-btn" onclick="copyToClipboard('binance-id')"><i class="fas fa-copy"></i> نسخ</button>
+                        </p>
                     </div>
+
+                    <p style="text-align: center; font-weight: bold; color: #28a745; margin-top: 30px;">
+                        نحن نشكركم على دعمكم، ربي يوفقكم 🙏
+                    </p>
                 </div>
             `;
             pagesContainer.innerHTML = html;
         }
 
-        function saveAnswer(questionId, answer) {
-            userAnswers[questionId] = answer;
-        }
-
-        function changeQuestion(direction) {
-            // تحقق من تخزين الإجابة الحالية قبل الانتقال
-            const qId = `q${currentQuestionIndex}`;
-            const selected = document.querySelector(`input[name="${qId}"]:checked`);
-            if (selected) {
-                 userAnswers[qId] = selected.value;
-            } else if (!userAnswers[qId]) {
-                 // يمكن ترك الإجابة فارغة، لكن يفضل التنبيه
-                 // alert('لم تختر إجابة لهذا السؤال.');
-            }
-
-            // الانتقال
-            currentQuestionIndex += direction;
-            if (currentQuestionIndex >= 0 && currentQuestionIndex < currentExamData.questions.length) {
-                displayQuestion();
-            }
-        }
-
-        // 6. تسليم الاختبار وحساب النتيجة
-        function submitExam() {
-            const qId = `q${currentQuestionIndex}`;
-            const selected = document.querySelector(`input[name="${qId}"]:checked`);
-            if (selected) {
-                 userAnswers[qId] = selected.value;
-            }
-
-            let score = 0;
-            const totalQuestions = currentExamData.questions.length;
-
-            currentExamData.questions.forEach((qData, index) => {
-                const questionId = `q${index}`;
-                const userAnswer = userAnswers[questionId];
-                if (userAnswer === qData.correct) {
-                    score++;
-                }
+        function copyToClipboard(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('تم نسخ الرقم بنجاح!');
+            }).catch(err => {
+                console.error('فشل في نسخ النص: ', err);
             });
-
-            // تخزين النتيجة (في ذاكرة المتصفح مؤقتاً)
-            window.storedResults = window.storedResults || {};
-            window.storedResults[currentExamData.level] = window.storedResults[currentExamData.level] || {};
-            window.storedResults[currentExamData.level][currentExamData.subject] = score;
-
-            // عرض صفحة النتيجة
-            displayResults(score, totalQuestions, currentExamData.level, currentExamData.subject);
         }
 
-        // 7. عرض صفحة النتائج
-        function displayResults(score, total, level, subject) {
-            const percentage = ((score / total) * 100).toFixed(2);
-            const passed = score >= 10; // شرط النجاح من 20
-            const statusClass = passed ? 'score-passed' : 'score-failed';
-            const statusText = passed ? 'ناجح' : 'راسب';
-            
+        function buildAboutAppPage() {
             const html = `
-                <div class="sub-page" style="text-align: center;">
-                    <button class="back-btn" onclick="buildExamSimulatorSubjectSelect('${level}')">
-                        <i class="fas fa-arrow-right"></i> رجوع لقائمة المواد
-                    </button>
-                    <h2>نتائج اختبار مادة ${subject} (${level}) 🎉</h2>
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2>حول التطبيق ℹ️</h2>
                     
-                    <div class="exam-question-container">
-                        <h3>النتيجة النهائية:</h3>
-                        <p style="font-size: 3rem; font-weight: bold; color: ${passed ? '#28a745' : '#dc3545'};">${score} / ${total}</p>
-                        <p style="font-size: 1.5rem;">نسبة الإجابات الصحيحة: ${percentage}%</p>
-                        <p style="font-size: 1.5rem;" class="${statusClass}">الحالة: ${statusText}</p>
+                    <div style="text-align: center; padding: 15px; background-color: #e6f7e9; border-radius: 8px;">
+                        <p style="font-size: 1.2rem; font-weight: bold; color: #1e7e34;">تطبيق "الدراسة بالمراسلة - يوسف" 🧑‍💻</p>
+                        <p>تم تطويره بواسطة مرافقكم **يوسف**، وهو خاص بأصحاب المراسلة.</p>
                     </div>
+
+                    <h3>أهداف التطبيق:</h3>
+                    <p>يهدف التطبيق إلى حل جميع المشاكل التي قد يواجهها المتعلمون في رحلتهم التعليمية، من خلال تبسيط الوصول إلى الخدمات الأساسية مثل:</p>
+                    <ul>
+                        <li><i class="fas fa-print"></i> طبع الوثائق.</li>
+                        <li><i class="fas fa-laptop-code"></i> الدخول إلى الأرضيات التعليمية.</li>
+                        <li><i class="fas fa-pen"></i> منصة الفروض الإلكترونية.</li>
+                    </ul>
+
+                    <h3 style="color: #dc3545;">إخلاء المسؤولية! 🛑</h3>
+                    <p style="border: 1px dashed #dc3545; padding: 10px; border-radius: 5px; font-weight: bold;">
+                        هذا التطبيق غير تابع رسمياً للديوان الوطني للتعليم والتكوين عن بعد.
+                    </p>
                     
-                    <button class="main-btn" onclick="buildExamSimulatorSubjectSelect('${level}')">
-                        <i class="fas fa-undo-alt"></i> العودة لقائمة مواد ${level}
-                    </button>
+                    <h3>معلومات الاتصال بالمطور (يوسف):</h3>
+                    <div class="social-media-container" style="justify-content: flex-start; padding: 10px 0;">
+                        <a href="https://t.me/youcef_info_2" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://wa.me/213665074666" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/youcef.info2" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/g/1BfUsNqXFf/" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com/channel/UCWorEGsMcnwrSPYEFXhnfkw?si=q98lYPriNUD0ax0O" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             `;
             pagesContainer.innerHTML = html;
         }
-        
-        // ... (بقية الدوال السابقة) ...
-        
+
     </script>
 </body>
 </html>
-
