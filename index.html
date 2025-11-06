@@ -9,17 +9,48 @@
     <style>
         /* [ ... أكواد CSS مُصحَّحة ومكتملة ... ] */
        
-        /* تنسيق عام */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7f6; /* خلفية فاتحة */
-            color: #333;
-            margin: 0;
-            padding: 0;
-            direction: rtl; /* ضمان توجيه كامل لليمين */
-            text-align: right;
-            overflow-x: hidden;
-        }
+       
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6; 
+    color: #333;
+    margin: 0;
+    padding: 0;
+    direction: rtl; 
+    text-align: right;
+    overflow-x: hidden;
+    
+    /* الخصائص الجديدة للخلفية */
+    background-image: linear-gradient(to bottom right, #e0f2f7, #c1e7f0); 
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(0, 123, 255, 0.1) 0%, rgba(0, 123, 255, 0) 70%),
+        radial-gradient(circle at 90% 80%, rgba(0, 123, 255, 0.1) 0%, rgba(0, 123, 255, 0) 70%),
+        radial-gradient(circle at 30% 60%, rgba(0, 123, 255, 0.08) 0%, rgba(0, 123, 255, 0) 70%),
+        radial-gradient(circle at 70% 30%, rgba(0, 123, 255, 0.12) 0%, rgba(0, 123, 255, 0) 70%);
+    background-size: 800px 800px, 700px 700px, 600px 600px, 900px 900px; 
+    animation: moveBackground 30s infinite alternate linear;
+    z-index: -1; 
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    }
+}
 
         /* الرأس والقائمة الجانبية */
         header {
@@ -361,7 +392,7 @@
     <main id="main-content">
        
         <div class="welcome-section">
-            <h1>أهلاً بك أيها المتعلم 👋</h1>
+            <h1>أهلاً بك أيها المتعلم  </h1>
             <h2>في موقع **الدراسة بالمراسلة - يوسف**</h2>
             <p>بوابتك السريعة لجميع خدمات الديوان الوطني للتعليم والتكوين عن بعد</p>
         </div>
@@ -494,7 +525,7 @@
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>التسجيل في المراسلة 📝</h2>
+                    <h2>التسجيل في المراسلة  </h2>
                     ${createLinkButton('تسجيل متعلم جديد', 'https://inscriptic.onefd.edu.dz/preinscription/')}
                     ${createLinkButton('تسجيل متعلم سابق', 'https://inscriptic.onefd.edu.dz/preinscription/')}
                 </div>
@@ -506,7 +537,7 @@
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>سحب وطبع الوثائق 🖨️</h2>
+                    <h2>سحب وطبع الوثائق  </h2>
                     ${createLinkButton('إعادة طبع وثائق التسجيل', 'https://inscriptic.onefd.edu.dz/preinscription/')}
                     ${createLinkButton('استخراج شهادة التسجيل', 'https://inscriptic.onefd.edu.dz/preinscription/')}
                     ${createLinkButton('استخراج تأكيد التسجيل', 'https://inscriptic.onefd.edu.dz/preinscription/')}
@@ -524,7 +555,7 @@
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>الأرضيات التعليمية (Scolarium) 📚</h2>
+                    <h2>الأرضيات التعليمية (Scolarium)  </h2>
                     ${createLinkButton('المستوى المتوسط', 'http://scolarium-moyen.onefd.edu.dz/login/index.php')}
                     ${createLinkButton('مستوى أولى ثانوي', 'http://scolarium-1as.onefd.edu.dz/login/index.php')}
                     ${createLinkButton('مستوى الثانية ثانوي', 'http://scolarium-2as.onefd.edu.dz/login/index.php')}
@@ -538,7 +569,7 @@
             const html = `
                 <div class="sub-page" id="e-homework-main">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>منصة الفرض الإلكتروني 💻</h2>
+                    <h2>منصة الفرض الإلكتروني  </h2>
                     <button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')">
                         <i class="fas fa-graduation-cap"></i> المستوى المتوسط
                     </button>
@@ -583,7 +614,7 @@
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>ما هي الدراسة بالمراسلة؟ 💡</h2>
+                    <h2>ما هي الدراسة بالمراسلة؟  </h2>
                     <p style="background-color: #f7f7f7; padding: 15px; border-radius: 8px; border-right: 4px solid #007bff;">
                         عزيزي المستخدم يتيح الديوان الوطني للتعليم والتكوين عن بعد فرصة لإكمال مسارك التعليمي لكل من انقطع عن الدراسة لأي سبب، وحتى لمن كان يدرس بمحو الأمية وتحصل على شهادة التحرر من الأمية يسجل في الأولى متوسط.
                     </p>
@@ -637,7 +668,7 @@
             const html = `
                 <div class="sub-page" id="level-checker-content">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>التحقق من القبول في المستوى الأعلى ✅</h2>
+                    <h2>التحقق من القبول في المستوى الأعلى  </h2>
                     <p>الرجاء اختيار مستواك الحالي وإدخال معدلك السنوي:</p>
                    
                     <select id="study-level">
@@ -731,7 +762,7 @@
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>الاتصال بالمراكز الولائية 📞</h2>
+                    <h2>الاتصال بالمراكز الولائية  </h2>
                    
                     <p>اختر مركزك الولائي لعرض معلومات الاتصال:</p>
                     <select id="center-select" onchange="displayCenterInfo()">
@@ -776,7 +807,7 @@
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>ساهم في دعم الموقع ❤️</h2>
+                    <h2>ساهم في دعم الموقع  </h2>
                    
                     <p style="text-align: center; font-style: italic; font-size: 1.1rem; color: #555;">
                         عزيزي المتعلم، دعمك يساعدنا على الاستمرار في تقديم محتوى مجاني وتطوير الموقع أكثر. بك أنت نستمر نحن.
@@ -799,7 +830,7 @@
                     </div>
 
                     <p style="text-align: center; font-weight: bold; color: #28a745; margin-top: 30px;">
-                        نحن نشكركم على دعمكم، ربي يوفقكم 🙏
+                        نحن نشكركم على دعمكم، ربي يوفقكم  
                     </p>
                 </div>
             `;
@@ -819,10 +850,10 @@
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>حول التطبيق ℹ️</h2>
+                    <h2>حول التطبيق  </h2>
                    
                     <div style="text-align: center; padding: 15px; background-color: #e6f7e9; border-radius: 8px;">
-                        <p style="font-size: 1.2rem; font-weight: bold; color: #1e7e34;">موقع "الدراسة بالمراسلة - يوسف" 🧑‍💻</p>
+                        <p style="font-size: 1.2rem; font-weight: bold; color: #1e7e34;">موقع "الدراسة بالمراسلة - يوسف"  </p>
                         <p>تم تطويره بواسطة مرافقكم **يوسف**، وهو خاص بأصحاب المراسلة.</p>
                     </div>
 
@@ -834,7 +865,7 @@
                         <li><i class="fas fa-pen"></i> منصة الفروض الإلكترونية.</li>
                     </ul>
 
-                    <h3 style="color: #dc3545;">إخلاء المسؤولية! 🛑</h3>
+                    <h3 style="color: #dc3545;">إخلاء المسؤولية!  </h3>
                     <p style="border: 1px dashed #dc3545; padding: 10px; border-radius: 5px; font-weight: bold;">
                         هذا التطبيق غير تابع رسمياً للديوان الوطني للتعليم والتكوين عن بعد.
                     </p>
@@ -855,8 +886,6 @@
     </script>
 </body>
 </html>
-
-
 
 
 
