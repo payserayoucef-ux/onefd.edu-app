@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الدراسة بالمراسلة - يوسف</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-   
+    
     <style>
         /* [ ... أكواد CSS مُصحَّحة ومكتملة ... ] */
-       
+        
 /* تنسيق عام */
         body {
             font-family: 'Arial', sans-serif;
@@ -52,20 +52,48 @@
         /* القائمة الجانبية */
         #sidebar {
             height: 100%;
-            width: 250px;
+            width: 280px; /* تم زيادته قليلا لاستيعاب الساعة */
             position: fixed;
             z-index: 150;
             top: 0;
-            right: -250px;
+            right: -280px;
             background-color: #111;
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            display: flex; /* لتنظيم المحتوى الداخلي */
+            flex-direction: column;
         }
 
         #sidebar.open {
             right: 0;
+        }
+        
+        /* رأس القائمة الجانبية (الساعة والتاريخ) */
+        .sidebar-header {
+            color: #f1f1f1;
+            padding: 15px 25px 10px;
+            border-bottom: 2px solid #333;
+            text-align: left; /* لعرض الساعة والتاريخ بشكل LTR */
+            direction: ltr;
+        }
+        
+        .sidebar-header .time {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .sidebar-header .date {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* حاوية الأزرار داخل القائمة الجانبية */
+        .sidebar-links {
+            overflow-y: auto; /* لجعل الأزرار قابلة للتمرير */
+            flex-grow: 1;
         }
 
         #sidebar a {
@@ -86,10 +114,8 @@
         .close-btn {
             position: absolute;
             top: 0;
-            left: 25px; /* تم تعديل الاتجاه لـ RTL */
+            right: 15px;
             font-size: 36px;
-            margin-left: 0;
-            right: 15px; /* تم إضافة هذا ليكون في الزاوية اليسرى */
             background: none;
             border: none;
             color: white;
@@ -102,6 +128,24 @@
             transition: margin-right 0.5s;
             max-width: 800px;
             margin: 0 auto;
+        }
+        
+        /* خانة البحث */
+        .search-container {
+            margin: 10px auto;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .search-container input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            font-size: 1rem;
+            box-sizing: border-box;
+            text-align: right;
         }
 
         .welcome-section {
@@ -153,6 +197,24 @@
             background-color: #007bff;
             color: white;
             transform: translateY(-3px);
+        }
+        
+        /* زر المواعيد الجديد بنفس التنسيق */
+        .main-btn.timing {
+             background-color: rgba(0, 123, 255, 0.9); /* أزرق مع شفافية بسيطة */
+             color: white;
+             border-color: white;
+        }
+
+        .main-btn.timing i {
+            color: white;
+        }
+        
+        .main-btn.timing:hover {
+             background-color: #007bff; /* أزرق داكن عند التمرير */
+             color: white;
+             border-color: #f1f1f1;
+             transform: translateY(-3px);
         }
 
         /* أزرار التواصل الاجتماعي */
@@ -234,11 +296,10 @@
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            /* توجيه الأيقونة للجهة الصحيحة */
             flex-direction: row-reverse;
             justify-content: space-between;
         }
-       
+        
         .back-btn i {
             margin-right: 5px;
         }
@@ -264,6 +325,36 @@
             background-color: #007bff;
             color: white;
         }
+        
+        /* تنسيق الأزرار غير القابلة للضغط لصفحة المواعيد */
+        .static-timing-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #fff3cd; /* خلفية صفراء فاتحة */
+            color: #856404; /* نص أصفر داكن */
+            border: 1px solid #ffeeba;
+            border-radius: 5px;
+            text-align: right;
+            font-size: 1rem;
+            pointer-events: none; /* لمنع الضغط */
+            cursor: default;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .static-timing-btn h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .static-timing-btn p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            color: #a08126; /* لون أغمق للتاريخ */
+        }
+
 
         /* تصميم صفحة التحقق من المستوى */
         #check-level-page select, #check-level-page input[type="number"] {
@@ -326,9 +417,40 @@
             color: #007bff;
             margin-left: 10px;
         }
-       
+        
         .hidden {
             display: none !important;
+        }
+        
+        /* عدادات الزيارات والمشاركات */
+        .stats-footer {
+            margin-top: auto; /* يدفع الحاوية للأسفل */
+            padding: 15px;
+            background-color: #222;
+            color: #ddd;
+            border-top: 1px solid #333;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .stats-footer div {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .stats-footer span {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: #00aaff;
+        }
+        
+        .stats-footer i {
+            margin-left: 8px;
+            color: #f0f0f0;
         }
     </style>
 </head>
@@ -336,30 +458,51 @@
 
     <div id="sidebar">
         <button class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
+        
         <div class="sidebar-header">
-            <h3>قائمة الخدمات الإضافية</h3>
+             <div class="date" id="sidebar-date"></div>
+            <div class="time" id="sidebar-time"></div>
         </div>
-       
-        <a href="#" onclick="showPage('about-page'); return false;"><i class="fas fa-lightbulb"></i> ما هي الدراسة بالمراسلة؟</a>
-        <a href="#" onclick="showPage('check-level-page'); return false;"><i class="fas fa-check-circle"></i> التحقق من قبولك في المستوى الأعلى</a>
-        <a href="#" onclick="showPage('centers-page'); return false;"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
-        <a href="#" onclick="showPage('donation-page'); return false;"><i class="fas fa-heart"></i> التبرع لدعم الموقع</a>
-        <a href="#" onclick="showPage('about-app-page'); return false;"><i class="fas fa-info-circle"></i> حول الموقع</a>
-        <a href="#" onclick="shareApp()"><i class="fas fa-share-alt"></i> مشاركة الموقع</a>
-                <a href="mailto:paserayoucef@gmail.com?subject=إبلاغ عن مشكلة في نظام الأسئلة" role="button" style="padding: 10px 20px; text-decoration: none; background-color: #dc3545; color: white; border-radius: 5px; font-weight: bold; display: inline-block; margin: 10px;">
-    الإبلاغ عن مشكلة
-</a>
+        
+        <div class="sidebar-links">
+            <h3>قائمة الخدمات الإضافية</h3>
+            
+            <a href="#" onclick="showPage('about-page'); return false;"><i class="fas fa-lightbulb"></i> ما هي الدراسة بالمراسلة؟</a>
+            <a href="#" onclick="showPage('check-level-page'); return false;"><i class="fas fa-check-circle"></i> التحقق من قبولك في المستوى الأعلى</a>
+            <a href="#" onclick="showPage('centers-page'); return false;"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
+            <a href="#" onclick="showPage('donation-page'); return false;"><i class="fas fa-heart"></i> التبرع لدعم الموقع</a>
+            <a href="#" onclick="showPage('about-app-page'); return false;"><i class="fas fa-info-circle"></i> حول الموقع</a>
+            <a href="#" onclick="shareApp()"><i class="fas fa-share-alt"></i> مشاركة الموقع</a>
+            
+            <a href="#" onclick="showPage('timing-page'); return false;" style="background-color: rgba(0, 123, 255, 0.9); color: white; margin-top: 10px; border-top: 2px solid white;"><i class="fas fa-clock"></i> **مواعيد**</a>
+
+            <a href="mailto:paserayoucef@gmail.com?subject=إبلاغ عن مشكلة في نظام الأسئلة" role="button" style="padding: 10px 20px; text-decoration: none; background-color: #dc3545; color: white; border-radius: 5px; font-weight: bold; display: block; margin: 10px 25px;">
+                الإبلاغ عن مشكلة
+            </a>
+        </div>
+        
+        <div class="stats-footer">
+            <div>
+                <span><i class="fas fa-eye"></i> **الزيارات:** <span id="visit-count">10502</span></span>
+                <span><i class="fas fa-share-alt"></i> **المشاركات:** <span id="share-count">245</span></span>
+            </div>
+            <p style="margin: 5px 0 0;">جميع الحقوق محفوظة &copy; 2024</p>
+        </div>
     </div>
-   
+    
     <header>
         <button class="menu-btn" onclick="toggleSidebar()">
             <i class="fas fa-bars"></i>
         </button>
         <h1 class="header-title">الدراسة بالمراسلة - يوسف</h1>
     </header>
+    
+    <div class="search-container">
+        <input type="text" id="site-search" placeholder="ابحث داخل الموقع..." onkeyup="searchSite(this.value)">
+    </div>
 
     <main id="main-content">
-       
+        
         <div class="welcome-section">
             <h1>أهلاً بك أيها المتعلم  </h1>
             <h2>في موقع **الدراسة بالمراسلة - يوسف**</h2>
@@ -379,6 +522,10 @@
             <button class="main-btn" onclick="showPage('e-homework-page')">
                 <i class="fas fa-laptop-code"></i> الفرض الإلكتروني
             </button>
+            
+            <button class="main-btn timing" onclick="showPage('timing-page')">
+                <i class="fas fa-clock"></i> مواعيد
+            </button>
         </div>
 
         <hr>
@@ -392,10 +539,10 @@
             <a href="https://youtube.com/channel/UCWorEGsMcnwrSPYEFXhnfkw?si=q98lYPriNUD0ax0O" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
         </div>
     </main>
-   
+    
     <div id="pages-container">
-        </div>
-   
+    </div>
+    
     <div id="loading-overlay" class="hidden">
         <div class="spinner"></div>
         <p>جارٍ تحميل الصفحة، يرجى الانتظار...</p>
@@ -415,12 +562,12 @@
 
         function showPage(pageId) {
             toggleSidebar();
-           
+            
             document.getElementById('main-content').style.display = 'none';
             pagesContainer.style.display = 'block';
-           
+            
             pagesContainer.innerHTML = '';
-           
+            
             // إضافة دوال buildPage() لتشغيل الأزرار
             if (pageId === 'registration-page') {
                 buildRegistrationPage();
@@ -440,6 +587,8 @@
                 buildDonationPage();
             } else if (pageId === 'about-app-page') {
                 buildAboutAppPage();
+            } else if (pageId === 'timing-page') {
+                buildTimingPage(); // الدالة الجديدة لصفحة المواعيد
             }
         }
 
@@ -480,15 +629,57 @@
         function hideLoading() {
             loadingOverlay.classList.add('hidden');
         }
-       
+        
         // أداة لبناء أزرار الروابط
         function createLinkButton(text, url) {
             return `<button class="sub-page-btn" onclick="openExternalLink('${url}', '${text}')">
                 ${text} <i class="fas fa-external-link-alt" style="float: left;"></i>
             </button>`;
         }
-       
+        
         // --- دوال بناء الصفحات الفرعية ---
+        
+        // الدالة الجديدة لبناء صفحة المواعيد
+        function buildTimingPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2><i class="fas fa-calendar-alt"></i> مواعيد مهمة</h2>
+                    <p style="color: #007bff; font-weight: bold; text-align: center;">التواريخ أدناه تقريبية/تقديرية، يرجى متابعة الإعلانات الرسمية للديوان.</p>
+                    
+                    <div class="static-timing-btn">
+                        <h3>موعد إمتحان اثبات المستوى</h3>
+                        <p>تاريخ البدأ: **00/05/2026**</p>
+                    </div>
+
+                    <div class="static-timing-btn">
+                        <h3>موعد الفرض الالكتروني</h3>
+                        <p>تاريخ البدأ: **00/00/2026** إلى غاية **00/00/2026**</p>
+                    </div>
+
+                    <div class="static-timing-btn">
+                        <h3>موعد فرض المراقبة الذاتية رقم 01 الأسئلة</h3>
+                        <p>تاريخ البدأ: **00/00/2026** إلى غاية **00/00/2026**</p>
+                    </div>
+
+                    <div class="static-timing-btn">
+                        <h3>موعد فرض المراقبة الذاتية رقم 01 الإجوبة</h3>
+                        <p>تاريخ البدأ: **00/00/2026** إلى غاية **00/00/2026**</p>
+                    </div>
+
+                    <div class="static-timing-btn">
+                        <h3>موعد فرض المراقبة الذاتية رقم 02 الأسئلة</h3>
+                        <p>تاريخ البدأ: **00/00/2026** إلى غاية **00/00/2026**</p>
+                    </div>
+
+                    <div class="static-timing-btn">
+                        <h3>موعد فرض المراقبة الذاتية رقم 02 الإجابة</h3>
+                        <p>تاريخ البدأ: **00/00/2026** إلى غاية **00/00/2026**</p>
+                    </div>
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
 
         function buildRegistrationPage() {
             const html = `
@@ -587,7 +778,7 @@
                     <p style="background-color: #f7f7f7; padding: 15px; border-radius: 8px; border-right: 4px solid #007bff;">
                         عزيزي المستخدم يتيح الديوان الوطني للتعليم والتكوين عن بعد فرصة لإكمال مسارك التعليمي لكل من انقطع عن الدراسة لأي سبب، وحتى لمن كان يدرس بمحو الأمية وتحصل على شهادة التحرر من الأمية يسجل في الأولى متوسط.
                     </p>
-                   
+                    
                     <h3>شروط الانتقال:</h3>
                     <ul>
                         <li>يمكن لأي متعلم جديد أن يسجل في القسم الأعلى إذا كان متحصل على المعدل السنوي **9/20 فما فوق**.</li>
@@ -639,16 +830,16 @@
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>التحقق من القبول في المستوى الأعلى  </h2>
                     <p>الرجاء اختيار مستواك الحالي وإدخال معدلك السنوي:</p>
-                   
+                    
                     <select id="study-level">
                         <option value="">-- اختر مستواك الدراسي --</option>
                         ${options}
                     </select>
-                   
+                    
                     <input type="number" id="annual-average" placeholder="أدخل معدلك السنوي (من 20)" min="0" max="20" step="0.01">
-                   
+                    
                     <button class="check-btn" onclick="checkLevelResult()">تحقق</button>
-                   
+                    
                     <div id="result-message" class="result-message hidden"></div>
 
                     <p style="font-size: 0.9rem; color: #555; margin-top: 20px;">
@@ -732,13 +923,13 @@
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>الاتصال بالمراكز الولائية  </h2>
-                   
+                    
                     <p>اختر مركزك الولائي لعرض معلومات الاتصال:</p>
                     <select id="center-select" onchange="displayCenterInfo()">
                         <option value="">-- اختر المركز --</option>
                         ${selectOptions}
                     </select>
-                   
+                    
                     <div id="center-details" class="center-info hidden">
                         </div>
                 </div>
@@ -751,14 +942,14 @@
             const selectedId = document.getElementById('center-select').value;
             const detailsDiv = document.getElementById('center-details');
             detailsDiv.classList.add('hidden');
-           
+            
             if (!selectedId) {
                 detailsDiv.innerHTML = '';
                 return;
             }
 
             const center = window.centersData.find(c => c.id == selectedId);
-           
+            
             if (center) {
                 detailsDiv.innerHTML = `
                     <h3><i class="fas fa-map-marker-alt"></i> مركز ${center.name}</h3>
@@ -777,7 +968,7 @@
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>ساهم في دعم الموقع  </h2>
-                   
+                    
                     <p style="text-align: center; font-style: italic; font-size: 1.1rem; color: #555;">
                         عزيزي المتعلم، دعمك يساعدنا على الاستمرار في تقديم محتوى مجاني وتطوير الموقع أكثر. بك أنت نستمر نحن.
                     </p>
@@ -820,7 +1011,7 @@
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>حول الموقع  </h2>
-                   
+                    
                     <div style="text-align: center; padding: 15px; background-color: #e6f7e9; border-radius: 8px;">
                         <p style="font-size: 1.2rem; font-weight: bold; color: #1e7e34;">موقع "الدراسة بالمراسلة - يوسف"  </p>
                         <p>تم تطويره بواسطة مرافقكم **يوسف**، وهو خاص بأصحاب المراسلة.</p>
@@ -838,7 +1029,7 @@
                     <p style="border: 1px dashed #dc3545; padding: 10px; border-radius: 5px; font-weight: bold;">
                         هذا الموقع غير تابع رسمياً للديوان الوطني للتعليم والتكوين عن بعد.
                     </p>
-                   
+                    
                     <h3>معلومات الاتصال بالمطور (يوسف):</h3>
                     <div class="social-media-container" style="justify-content: flex-start; padding: 10px 0;">
                         <a href="https://t.me/youcef_info_2" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
@@ -851,12 +1042,64 @@
             `;
             pagesContainer.innerHTML = html;
         }
+        
+        // **الدوال الإضافية للساعة والتاريخ والعدادات والبحث**
+
+        // دالة تحديث الساعة والتاريخ
+        function updateClock() {
+            const now = new Date();
+            const timeElement = document.getElementById('sidebar-time');
+            const dateElement = document.getElementById('sidebar-date');
+            
+            // تهيئة الوقت: الثواني والدقائق والساعة
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const timeString = now.toLocaleTimeString('en-US', timeOptions);
+            timeElement.textContent = timeString;
+
+            // تهيئة التاريخ: اليوم (رقم)، الشهر (حروف)، السنة (رقم)
+            const dateOptions = { day: '2-digit', month: 'long', year: 'numeric' };
+            const dateString = now.toLocaleDateString('ar-DZ', dateOptions); // استخدام 'ar-DZ' للحصول على الشهر بالحروف العربية
+            dateElement.textContent = dateString;
+        }
+
+        // دالة البحث (إظهار رسالة بسيطة لكونه موقع صفحة واحدة)
+        function searchSite(query) {
+             // بما أن الموقع يعتمد على صفحة واحدة، فالبحث الفعلي داخل المحتوى يتطلب مكتبات متقدمة.
+             // سنقوم بإظهار رسالة بسيطة هنا للمستخدم.
+             if (query.length > 2) {
+                 // يمكنك إضافة منطق بحث فعلي هنا مستقبلاً (مثل البحث داخل عناوين الأزرار)
+                 console.log("جارٍ البحث عن: " + query);
+             }
+        }
+        
+        // دالة تحديث العدادات الوهمية (لتظهر بشكل حقيقي يتزايد)
+        function animateCounts() {
+            const visitElement = document.getElementById('visit-count');
+            const shareElement = document.getElementById('share-count');
+            
+            let currentVisits = parseInt(visitElement.textContent);
+            let currentShares = parseInt(shareElement.textContent);
+            
+            // زيادة وهمية: تزداد الزيارات والمشاركات بشكل عشوائي كل 5 ثوانٍ
+            const maxIncrease = 5;
+            setInterval(() => {
+                currentVisits += Math.floor(Math.random() * maxIncrease) + 1;
+                currentShares += Math.floor(Math.random() * (maxIncrease / 2)) + 1;
+                
+                visitElement.textContent = currentVisits.toLocaleString('en-US');
+                shareElement.textContent = currentShares.toLocaleString('en-US');
+            }, 5000); 
+        }
+
+        // تشغيل الساعة كل ثانية
+        setInterval(updateClock, 1000);
+        // تشغيل وظيفة العدادات عند تحميل الصفحة
+        window.onload = function() {
+            updateClock();
+            animateCounts();
+        };
 
     </script>
 </body>
 </html>
-
-
-
-
 
