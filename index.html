@@ -199,23 +199,31 @@
             transform: translateY(-3px);
         }
         
-        /* زر المواعيد الجديد بنفس التنسيق */
-        .main-btn.timing {
-             background-color: rgba(0, 123, 255, 0.9); /* أزرق مع شفافية بسيطة */
-             color: white;
-             border-color: white;
-        }
+        /* --- تنسيق زر المواعيد (الحالة الافتراضية: شفاف) --- */
+.appointments-btn {
+    /* اللون الأزرق المطلوب للحدود والنص */
+    color: #007bff; /* لون النص: أزرق */
+    background-color: transparent; /* الخلفية: شفافة */
+    border: 2px solid #007bff; /* الحدود: أزرق سمك 2 بكسل */
+    
+    /* الخصائص الأخرى (لضمان التناسق) */
+    padding: 10px 20px;
+    border-radius: 8px; 
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease; /* لتأثير حركة ناعم */
+}
 
-        .main-btn.timing i {
-            color: white;
-        }
-        
-        .main-btn.timing:hover {
-             background-color: #007bff; /* أزرق داكن عند التمرير */
-             color: white;
-             border-color: #f1f1f1;
-             transform: translateY(-3px);
-        }
+/* --- تأثير المرور بالماوس (Hover Effect) --- */
+/* (الحالة المطلوبة: خلفية زرقاء، حدود بيضاء، نص أبيض) */
+.appointments-btn:hover {
+    background-color: #007bff; /* الخلفية: أزرق */
+    color: white; /* لون النص: أبيض */
+    border: 2px solid white; /* الحدود: أبيض */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* ظل أزرق خفيف */
+}
 
         /* أزرار التواصل الاجتماعي */
         .social-media-container {
@@ -1098,6 +1106,7 @@
     </script>
 </body>
 </html>
+
 
 
 
