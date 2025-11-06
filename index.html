@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الدراسة بالمراسلة - يوسف</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+   
     <style>
         /* [ ... أكواد CSS مُصحَّحة ومكتملة ... ] */
-        
+       
         /* تنسيق عام */
         body {
             font-family: 'Arial', sans-serif;
@@ -155,17 +155,6 @@
             transform: translateY(-3px);
         }
 
-        /* تنسيق زر محاكي الفرض الإلكتروني الجديد */
-        .quiz-simulator-btn { 
-            background-color: #ff9800; /* لون برتقالي مختلف */
-            border-color: #e68a00;
-            color: white;
-        }
-        .quiz-simulator-btn:hover { 
-            background-color: #e68a00;
-            color: white;
-        }
-
         /* أزرار التواصل الاجتماعي */
         .social-media-container {
             display: flex;
@@ -249,7 +238,7 @@
             flex-direction: row-reverse;
             justify-content: space-between;
         }
-        
+       
         .back-btn i {
             margin-right: 5px;
         }
@@ -337,7 +326,7 @@
             color: #007bff;
             margin-left: 10px;
         }
-        
+       
         .hidden {
             display: none !important;
         }
@@ -350,21 +339,18 @@
         <div class="sidebar-header">
             <h3>قائمة الخدمات الإضافية</h3>
         </div>
-        
+       
         <a href="#" onclick="showPage('about-page'); return false;"><i class="fas fa-lightbulb"></i> ما هي الدراسة بالمراسلة؟</a>
-        <a href="#" onclick="showPage('quiz-simulator-page'); return false;" style="background-color: #ff9800; color: white;">
-            <i class="fas fa-gamepad"></i> محاكي الفرض الإلكتروني
-        </a>
         <a href="#" onclick="showPage('check-level-page'); return false;"><i class="fas fa-check-circle"></i> التحقق من قبولك في المستوى الأعلى</a>
         <a href="#" onclick="showPage('centers-page'); return false;"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
         <a href="#" onclick="showPage('donation-page'); return false;"><i class="fas fa-heart"></i> التبرع لدعم الموقع</a>
         <a href="#" onclick="showPage('about-app-page'); return false;"><i class="fas fa-info-circle"></i> حول الكوقع</a>
         <a href="#" onclick="shareApp()"><i class="fas fa-share-alt"></i> مشاركة الموقع</a>
-        <a href="mailto:paserayoucef@gmail.com?subject=إبلاغ عن مشكلة في نظام الأسئلة" role="button" style="padding: 10px 20px; text-decoration: none; background-color: #dc3545; color: white; border-radius: 5px; font-weight: bold; display: inline-block; margin: 10px;">
+                <a href="mailto:paserayoucef@gmail.com?subject=إبلاغ عن مشكلة في نظام الأسئلة" role="button" style="padding: 10px 20px; text-decoration: none; background-color: #dc3545; color: white; border-radius: 5px; font-weight: bold; display: inline-block; margin: 10px;">
     الإبلاغ عن مشكلة
 </a>
     </div>
-    
+   
     <header>
         <button class="menu-btn" onclick="toggleSidebar()">
             <i class="fas fa-bars"></i>
@@ -373,7 +359,7 @@
     </header>
 
     <main id="main-content">
-        
+       
         <div class="welcome-section">
             <h1>أهلاً بك أيها المتعلم 👋</h1>
             <h2>في موقع **الدراسة بالمراسلة - يوسف**</h2>
@@ -393,11 +379,7 @@
             <button class="main-btn" onclick="showPage('e-homework-page')">
                 <i class="fas fa-laptop-code"></i> الفرض الإلكتروني
             </button>
-            
-            <button class="main-btn quiz-simulator-btn" onclick="showPage('quiz-simulator-page')">
-                <i class="fas fa-gamepad"></i> محاكي الفرض الإلكتروني
-            </button>
-            </div>
+        </div>
 
         <hr>
 
@@ -410,10 +392,10 @@
             <a href="https://youtube.com/channel/UCWorEGsMcnwrSPYEFXhnfkw?si=q98lYPriNUD0ax0O" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
         </div>
     </main>
-    
+   
     <div id="pages-container">
         </div>
-    
+   
     <div id="loading-overlay" class="hidden">
         <div class="spinner"></div>
         <p>جارٍ تحميل الصفحة، يرجى الانتظار...</p>
@@ -433,12 +415,12 @@
 
         function showPage(pageId) {
             toggleSidebar();
-            
+           
             document.getElementById('main-content').style.display = 'none';
             pagesContainer.style.display = 'block';
-            
+           
             pagesContainer.innerHTML = '';
-            
+           
             // إضافة دوال buildPage() لتشغيل الأزرار
             if (pageId === 'registration-page') {
                 buildRegistrationPage();
@@ -458,12 +440,8 @@
                 buildDonationPage();
             } else if (pageId === 'about-app-page') {
                 buildAboutAppPage();
-            } 
-            // ✅ إضافة شرط الزر الجديد هنا ✅
-            else if (pageId === 'quiz-simulator-page') {
-                buildQuizSimulatorPage();
             }
-            }
+        }
 
         function goBack() {
             pagesContainer.style.display = 'none';
@@ -502,15 +480,15 @@
         function hideLoading() {
             loadingOverlay.classList.add('hidden');
         }
-        
+       
         // أداة لبناء أزرار الروابط
         function createLinkButton(text, url) {
             return `<button class="sub-page-btn" onclick="openExternalLink('${url}', '${text}')">
                 ${text} <i class="fas fa-external-link-alt" style="float: left;"></i>
             </button>`;
         }
-        
-        // --- دوال بناء الصفحات الفرعية (بما في ذلك الدالة الجديدة) ---
+       
+        // --- دوال بناء الصفحات الفرعية ---
 
         function buildRegistrationPage() {
             const html = `
@@ -600,38 +578,6 @@
                 ${buttonsHtml}
             `;
         }
-        
-        // --- دالة الصفحة الجديدة (محاكي الفرض الإلكتروني) ---
-        function buildQuizSimulatorPage() {
-            const html = `
-                <div class="sub-page">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>محاكي الفرض الإلكتروني 🕹️</h2>
-                    <p style="font-size: 1.1rem; color: #555;">اختر المستوى الدراسي الذي تريد بدء المحاكاة فيه:</p>
-                    
-                    <button class="sub-page-btn" onclick="buildQuizLevelSelection('moyen')">
-                        <i class="fas fa-book"></i> المستوى المتوسط
-                    </button>
-                    <button class="sub-page-btn" onclick="buildQuizLevelSelection('secondary')">
-                        <i class="fas fa-book"></i> المستوى الثانوي
-                    </button>
-                    
-                    <p style="margin-top: 20px; font-size: 0.9rem; color: #dc3545;">
-                        <i class="fas fa-exclamation-triangle"></i> ملاحظة: هذه ميزة جديدة قيد التطوير.
-                    </p>
-                </div>
-            `;
-            pagesContainer.innerHTML = html;
-        }
-
-        // دالة تحديد مستوى المحاكي (ستحتاج لتحديد صفحة quiz-level-selection.html فيما بعد)
-        function buildQuizLevelSelection(levelType) {
-            alert('سيتم بناء صفحة اختيار مستويات ' + (levelType === 'moyen' ? 'المتوسط' : 'الثانوي') + ' هنا!');
-            // هنا يمكنك إعادة توجيه المستخدم لصفحة خارجية quiz-level-selection.html
-            // أو بناء المحتوى بشكل ديناميكي داخل التطبيق.
-            // مثال: openExternalLink('quiz-level-selection.html?level=' + levelType, 'اختيار مستوى المحاكي');
-        }
-        // ----------------------------------------------------
 
         function buildAboutPage() {
             const html = `
@@ -641,7 +587,7 @@
                     <p style="background-color: #f7f7f7; padding: 15px; border-radius: 8px; border-right: 4px solid #007bff;">
                         عزيزي المستخدم يتيح الديوان الوطني للتعليم والتكوين عن بعد فرصة لإكمال مسارك التعليمي لكل من انقطع عن الدراسة لأي سبب، وحتى لمن كان يدرس بمحو الأمية وتحصل على شهادة التحرر من الأمية يسجل في الأولى متوسط.
                     </p>
-                    
+                   
                     <h3>شروط الانتقال:</h3>
                     <ul>
                         <li>يمكن لأي متعلم جديد أن يسجل في القسم الأعلى إذا كان متحصل على المعدل السنوي **9/20 فما فوق**.</li>
@@ -693,16 +639,16 @@
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>التحقق من القبول في المستوى الأعلى ✅</h2>
                     <p>الرجاء اختيار مستواك الحالي وإدخال معدلك السنوي:</p>
-                    
+                   
                     <select id="study-level">
                         <option value="">-- اختر مستواك الدراسي --</option>
                         ${options}
                     </select>
-                    
+                   
                     <input type="number" id="annual-average" placeholder="أدخل معدلك السنوي (من 20)" min="0" max="20" step="0.01">
-                    
+                   
                     <button class="check-btn" onclick="checkLevelResult()">تحقق</button>
-                    
+                   
                     <div id="result-message" class="result-message hidden"></div>
 
                     <p style="font-size: 0.9rem; color: #555; margin-top: 20px;">
@@ -786,13 +732,13 @@
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>الاتصال بالمراكز الولائية 📞</h2>
-                    
+                   
                     <p>اختر مركزك الولائي لعرض معلومات الاتصال:</p>
                     <select id="center-select" onchange="displayCenterInfo()">
                         <option value="">-- اختر المركز --</option>
                         ${selectOptions}
                     </select>
-                    
+                   
                     <div id="center-details" class="center-info hidden">
                         </div>
                 </div>
@@ -805,14 +751,14 @@
             const selectedId = document.getElementById('center-select').value;
             const detailsDiv = document.getElementById('center-details');
             detailsDiv.classList.add('hidden');
-            
+           
             if (!selectedId) {
                 detailsDiv.innerHTML = '';
                 return;
             }
 
             const center = window.centersData.find(c => c.id == selectedId);
-            
+           
             if (center) {
                 detailsDiv.innerHTML = `
                     <h3><i class="fas fa-map-marker-alt"></i> مركز ${center.name}</h3>
@@ -831,7 +777,7 @@
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>ساهم في دعم الموقع ❤️</h2>
-                    
+                   
                     <p style="text-align: center; font-style: italic; font-size: 1.1rem; color: #555;">
                         عزيزي المتعلم، دعمك يساعدنا على الاستمرار في تقديم محتوى مجاني وتطوير الموقع أكثر. بك أنت نستمر نحن.
                     </p>
@@ -874,7 +820,7 @@
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>حول التطبيق ℹ️</h2>
-                    
+                   
                     <div style="text-align: center; padding: 15px; background-color: #e6f7e9; border-radius: 8px;">
                         <p style="font-size: 1.2rem; font-weight: bold; color: #1e7e34;">موقع "الدراسة بالمراسلة - يوسف" 🧑‍💻</p>
                         <p>تم تطويره بواسطة مرافقكم **يوسف**، وهو خاص بأصحاب المراسلة.</p>
@@ -892,7 +838,7 @@
                     <p style="border: 1px dashed #dc3545; padding: 10px; border-radius: 5px; font-weight: bold;">
                         هذا التطبيق غير تابع رسمياً للديوان الوطني للتعليم والتكوين عن بعد.
                     </p>
-                    
+                   
                     <h3>معلومات الاتصال بالمطور (يوسف):</h3>
                     <div class="social-media-container" style="justify-content: flex-start; padding: 10px 0;">
                         <a href="https://t.me/youcef_info_2" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
@@ -909,4 +855,9 @@
     </script>
 </body>
 </html>
+
+
+
+
+
 
