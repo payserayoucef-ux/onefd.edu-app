@@ -7,19 +7,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
    
     <style>
-        /* [ ... أكواد CSS مُصحَّحة ومكتملة ... ] */
-       
         /* تنسيق عام */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f7f6; 
+            background-color: #f4f7f6; /* لون خلفية احتياطي */
             color: #333;
             margin: 0;
             padding: 0;
             direction: rtl; 
             text-align: right;
             overflow-x: hidden;
+            
+            /* -- بداية إضافة الخلفية المتحركة (مربعات زرقاء باهتة) -- */
+            background-image: linear-gradient(to bottom right, #e0f2f7, #c1e7f0); /* تدرج أزرق باهت كقاعدة */
+            position: relative; /* للسماح بوضع المربعات المطلقة */
+            overflow: hidden; /* لمنع ظهور أجزاء المربعات خارج الشاشة */
         }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* استخدام تدرجات دائرية لإنشاء "مربعات" شبه شفافة متناثرة */
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 123, 255, 0.1) 0%, rgba(0, 123, 255, 0) 70%),
+                radial-gradient(circle at 90% 80%, rgba(0, 123, 255, 0.1) 0%, rgba(0, 123, 255, 0) 70%),
+                radial-gradient(circle at 30% 60%, rgba(0, 123, 255, 0.08) 0%, rgba(0, 123, 255, 0) 70%),
+                radial-gradient(circle at 70% 30%, rgba(0, 123, 255, 0.12) 0%, rgba(0, 123, 255, 0) 70%);
+            background-size: 800px 800px, 700px 700px, 600px 600px, 900px 900px; /* أحجام المربعات الدائرية */
+            animation: moveBackground 30s infinite alternate linear; /* حركة بطيئة ودائمة */
+            z-index: -1; /* لتكون خلف كل المحتوى */
+        }
+
+        @keyframes moveBackground {
+            0% {
+                background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+            }
+        }
+        /* -- نهاية إضافة الخلفية المتحركة -- */
 
         /* الرأس والقائمة الجانبية */
         header {
@@ -142,14 +173,14 @@
             font-weight: normal;
         }
 
-        /* تنسيق الصورة المتحركة (GIF) */
-        .welcome-section img {
+        /* تم إزالة تنسيق الصورة المتحركة القديمة */
+        /* .welcome-section img {
             max-width: 100%; 
             height: auto;    
             margin-top: 20px; 
             border-radius: 10px; 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-        }
+        } */
 
         /* أزرار القائمة الرئيسية */
         .main-buttons-container {
@@ -398,8 +429,7 @@
             <h2>في موقع **الدراسة بالمراسلة - يوسف**</h2>
             <p>بوابتك السريعة لجميع خدمات الديوان الوطني للتعليم والتكوين عن بعد</p>
             
-            <img src="uploaded:image.png-5c327440-799e-4e1b-955d-adc91001fe1c" alt="خلفية متحركة ترحيبية" />
-        </div>
+            </div>
 
         <div class="main-buttons-container">
             <button class="main-btn" onclick="showPage('registration-page')">
@@ -708,7 +738,7 @@
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>التبرع لدعم الموقع ❤️</h2>
                     <p style="text-align: center;">دعمكم يساعدنا على استمرار تقديم الخدمات المجانية وتطوير هذا الموقع لخدمة المتعلمين عن بعد.</p>
-                    <div style="text-align: center; margin-top: 30px;">
+                    <div style="text-text-align: center; margin-top: 30px;">
                         <button class="sub-page-btn" style="width: 70%; background-color: #ffc107; color: #333; border-color: #ffc107;" onclick="alert('سيتم توجيهك إلى صفحة التبرع عبر CCP')">
                             <i class="fas fa-money-check-alt"></i> التبرع عبر CCP
                         </button>
