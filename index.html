@@ -4,16 +4,16 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4719018034232696"
      crossorigin="anonymous"></script>
     <meta name="keywords" content="الفروض الالكترونية المراسلة 2025, الفرض الالكتروني للمراسلة 2025, كيفية اجراء الفرض الالكتروني للمراسلة 2025, الفرض الالكتروني المراسلة, الفروض الالكترونية المراسلة 2025, الفرض الالكتروني الاستدراكي للمراسلة 2025, الفرض الالكتروني للمراسلة 2025, الفرض الالكتروني للمراسلة 2025, الفرض الالكتروني للمراسلة 2025, حل الفرض الالكتروني للمراسلة 2025, اجراء الفرض الالكتروني للمراسلة 2025, الفرض الالكتروني للمراسلة 2025 الطور المتوسط, موعد الفرض الالكتروني للمراسلة 2025, موعد الفرض الالكتروني للمراسلة 2025">
-    
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الدراسة بالمراسلة - يوسف</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4719018034232696" crossorigin="anonymous"></script>‏
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+   
     <style>
         /* [ ... أكواد CSS مُصحَّحة ومكتملة ... ] */
-        
+       
 /* تنسيق عام */
 
         body {
@@ -154,7 +154,7 @@
         .main-btn.timing i {
             color: white;
         }
-        
+       
         .main-btn.timing:hover {
              background-color: #007bff; /* أزرق داكن عند التمرير */
              color: white;
@@ -175,6 +175,21 @@
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+       
+        /* تنسيق الزر الجديد المطلوب - زر معلومات التسجيل */
+        .main-btn.exam-info-btn {
+            background-color: transparent; /* خلفية شفافة */
+            color: #007bff; /* نص أزرق */
+            border-color: #007bff; /* إطار أزرق */
+        }
+       
+        .main-btn.exam-info-btn:hover {
+            background-color: #007bff; /* خلفية أزرق عند التمرير */
+            color: white; /* نص أبيض عند التمرير */
+            border-color: white; /* إطار أبيض عند التمرير */
+            transform: translateY(-3px);
+        }
+
 
         .main-btn i {
             display: block;
@@ -186,6 +201,34 @@
             background-color: #007bff;
             color: white;
             transform: translateY(-3px);
+        }
+        
+        /* تنسيق خاص لصفحة معلومات الامتحان الجديدة */
+        .info-section {
+            background-color: #e7f4ff; /* خلفية فاتحة للمعلومات */
+            border: 1px solid #007bff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .info-section ul {
+            list-style: none;
+            padding-right: 0;
+        }
+
+        .info-section li {
+            margin-bottom: 10px;
+            border-right: 3px solid #007bff;
+            padding-right: 10px;
+        }
+       
+        .info-section p.important-note {
+            color: #dc3545;
+            font-weight: bold;
+            border: 1px dashed #dc3545;
+            padding: 10px;
+            border-radius: 5px;
         }
 
         /* أزرار التواصل الاجتماعي */
@@ -271,7 +314,7 @@
             flex-direction: row-reverse;
             justify-content: space-between;
         }
-        
+       
         .back-btn i {
             margin-right: 5px;
         }
@@ -359,7 +402,7 @@
             color: #007bff;
             margin-left: 10px;
         }
-        
+       
         .hidden {
             display: none !important;
         }
@@ -372,7 +415,7 @@
         <div class="sidebar-header">
             <h3>قائمة الخدمات الإضافية</h3>
         </div>
-        
+       
         <a href="#" onclick="showPage('about-page'); return false;"><i class="fas fa-lightbulb"></i> ما هي الدراسة بالمراسلة؟</a>
         <a href="#" onclick="showPage('check-level-page'); return false;"><i class="fas fa-check-circle"></i> التحقق من قبولك في المستوى الأعلى</a>
         <a href="#" onclick="showPage('exam-registration-page'); return false;"><i class="fas fa-certificate"></i> التسجيل في الشهادة</a> <a href="#" onclick="showPage('centers-page'); return false;"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
@@ -383,7 +426,7 @@
         الإبلاغ عن مشكلة
 </a>
     </div>
-    
+   
     <header>
         <button class="menu-btn" onclick="toggleSidebar()">
             <i class="fas fa-bars"></i>
@@ -392,7 +435,7 @@
     </header>
 
     <main id="main-content">
-        
+       
         <div class="welcome-section">
             <h1>أهلاً بك أيها المتعلم 🌻</h1>
             <h2>في موقع **الدراسة بالمراسلة - يوسف**</h2>
@@ -415,6 +458,9 @@
             <button class="main-btn" onclick="showPage('exam-registration-page')">
                 <i class="fas fa-certificate"></i> التسجيل في الشهادة
             </button>
+            <button class="main-btn exam-info-btn" onclick="showPage('exam-info-page')">
+                <i class="fas fa-bullhorn"></i> معلومات التسجيل في الامتحان
+            </button>
         </div>
 
         <hr>
@@ -428,10 +474,10 @@
             <a href="https://youtube.com/channel/UCWorEGsMcnwrSPYEFXhnfkw?si=q98lYPriNUD0ax0O" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
         </div>
     </main>
-    
+   
     <div id="pages-container">
         </div>
-    
+   
     <div id="loading-overlay" class="hidden">
         <div class="spinner"></div>
         <p>جارٍ تحميل الصفحة، يرجى الانتظار...</p>
@@ -449,12 +495,12 @@
 
         function showPage(pageId) {
             toggleSidebar();
-            
+           
             document.getElementById('main-content').style.display = 'none';
             pagesContainer.style.display = 'block';
-            
+           
             pagesContainer.innerHTML = '';
-            
+           
             // إضافة دوال buildPage() لتشغيل الأزرار
             if (pageId === 'registration-page') {
                 buildRegistrationPage();
@@ -466,6 +512,8 @@
                 buildEHomeworkPage();
             } else if (pageId === 'exam-registration-page') { // ******* الدالة المضافة *******
                 buildExamRegistrationPage();
+            } else if (pageId === 'exam-info-page') { // ******* الدالة الجديدة *******
+                buildExamInfoPage();
             } else if (pageId === 'about-page') {
                 buildAboutPage();
             } else if (pageId === 'check-level-page') {
@@ -516,14 +564,14 @@
         function hideLoading() {
             loadingOverlay.classList.add('hidden');
         }
-        
+       
         // أداة لبناء أزرار الروابط
         function createLinkButton(text, url) {
             return `<button class="sub-page-btn" onclick="openExternalLink('${url}', '${text}')">
                 ${text} <i class="fas fa-external-link-alt" style="float: left;"></i>
             </button>`;
         }
-        
+       
         // --- دوال بناء الصفحات الفرعية ---
 
         function buildRegistrationPage() {
@@ -615,7 +663,54 @@
             `;
         }
 
-        // ******* الدالة الجديدة للصفحة الفرعية للتسجيل في الشهادات *******
+        // ******* الدالة الجديدة لصفحة معلومات التسجيل في الامتحان *******
+        function buildExamInfoPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2><i class="fas fa-bullhorn"></i> معلومات هامة للتسجيل في الامتحان</h2>
+
+                    <div class="info-section">
+                        <p style="font-weight: bold; color: #007bff;">
+                            بعد التسجيل الإلكتروني ودفع المستحقات باستعمال البطاقة النقدية "الذهبية" لبريد الجزائر، عليك الحرص على:
+                        </p>
+                        <ul>
+                            <li>الاحتفاظ **بحسابك الإلكتروني** في مكان آمن بعيداً عن متناول طرف ثالث.</li>
+                        </ul>
+                        <p style="font-weight: bold;">يُستعمل الحساب الإلكتروني في المراحل اللاحقة وهي:</p>
+                        <ul>
+                            <li>دفع حقوق التسجيل.</li>
+                            <li>مراجعة بياناتك والتأكد من التسجيل.</li>
+                            <li>استخراج استدعاء اختبار مادة التربية البدنية والرياضية للمعنيين بها.</li>
+                            <li>استخراج استدعاء الاختبارات الكتابية.</li>
+                            <li>الاطلاع على النتائج وسحب كشوف النقاط.</li>
+                        </ul>
+                        
+                        <p>
+                            **وصل إلكتروني لدفع حقوق التسجيل**، مستخرج من الموقع **epay.education.dz**، عليك التأكد من صحة المعلومات المدونة عليه والاحتفاظ به كإثبات لعملية تسديد حقوق التسجيل.
+                        </p>
+                    </div>
+
+                    <h3><i class="fas fa-wheelchair"></i> ملاحظة خاصة بالإعاقة</h3>
+                    <p class="important-note">
+                        في حالة **إعاقة بصرية** أو **عدم القدرة على الكتابة في الامتحان بكلتا اليدين بسبب إعاقة حركية**، عليك تقديم ملف طبي إلى مصالح مديرية التربية أو المراكز التابعة للديوان الوطني للتعليم والتكوين عن بعد يثبت الحالة.
+                    </p>
+                    <p style="font-weight: bold;">يتكون الملف من:</p>
+                    <ul>
+                        <li>استمارة طلب رخصة نتيجة إعاقة حسب النموذج المستخرج من الموقع، مصادق عليها من طرف طبيب مختص.</li>
+                        <li>شهادة طبية صادرة عن طبيب مختص.</li>
+                        <li>نسخة من بطاقة الإعاقة.</li>
+                    </ul>
+                    
+                    <h3>اختر نوع الامتحان (دفع الرسوم إلكترونياً)</h3>
+                    ${createLinkButton('التعليم المتوسط (BEM)', 'https://epay.education.dz/auth')}
+                    ${createLinkButton('الثالثة ثانوي (BAC)', 'https://epay.education.dz/auth')}
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
+        // *************************************************************
+
         function buildExamRegistrationPage() {
             const html = `
                 <div class="sub-page">
@@ -639,7 +734,7 @@
                     <p style="background-color: #f7f7f7; padding: 15px; border-radius: 8px; border-right: 4px solid #007bff;">
                         عزيزي المستخدم يتيح الديوان الوطني للتعليم والتكوين عن بعد فرصة لإكمال مسارك التعليمي لكل من انقطع عن الدراسة لأي سبب، وحتى لمن كان يدرس بمحو الأمية وتحصل على شهادة التحرر من الأمية يسجل في الأولى متوسط.
                     </p>
-                    
+                   
                     <h3>شروط الانتقال:</h3>
                     <ul>
                         <li>يمكن لأي متعلم جديد أن يسجل في القسم الأعلى إذا كان متحصل على المعدل السنوي **9/20 فما فوق**.</li>
@@ -691,16 +786,16 @@
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>التحقق من القبول في المستوى الأعلى 🌻</h2>
                     <p>الرجاء اختيار مستواك الحالي وإدخال معدلك السنوي:</p>
-                    
+                   
                     <select id="study-level">
                         <option value="">-- اختر مستواك الدراسي --</option>
                         ${options}
                     </select>
-                    
+                   
                     <input type="number" id="annual-average" placeholder="أدخل معدلك السنوي (من 20)" min="0" max="20" step="0.01">
-                    
+                   
                     <button class="check-btn" onclick="checkLevelResult()">تحقق</button>
-                    
+                   
                     <div id="result-message" class="result-message hidden"></div>
 
                     <p style="font-size: 0.9rem; color: #555; margin-top: 20px;">
@@ -784,13 +879,13 @@
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>الاتصال بالمراكز الولائية 🌻</h2>
-                    
+                   
                     <p>اختر مركزك الولائي لعرض معلومات الاتصال:</p>
                     <select id="center-select" onchange="displayCenterInfo()">
                         <option value="">-- اختر المركز --</option>
                         ${selectOptions}
                     </select>
-                    
+                   
                     <div id="center-details" class="center-info hidden">
                         </div>
                 </div>
@@ -803,14 +898,14 @@
             const selectedId = document.getElementById('center-select').value;
             const detailsDiv = document.getElementById('center-details');
             detailsDiv.classList.add('hidden');
-            
+           
             if (!selectedId) {
                 detailsDiv.innerHTML = '';
                 return;
             }
 
             const center = window.centersData.find(c => c.id == selectedId);
-            
+           
             if (center) {
                 detailsDiv.innerHTML = `
                     <h3><i class="fas fa-map-marker-alt"></i> مركز ${center.name}</h3>
@@ -829,7 +924,7 @@
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>ساهم في دعم الموقع 🌻</h2>
-                    
+                   
                     <p style="text-align: center; font-style: italic; font-size: 1.1rem; color: #555;">
                         عزيزي المتعلم، دعمك يساعدنا على الاستمرار في تقديم محتوى مجاني وتطوير الموقع أكثر. بك أنت نستمر نحن.
                     </p>
@@ -872,7 +967,7 @@
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2>حول الموقع 🌻</h2>
-                    
+                   
                     <div style="text-align: center; padding: 15px; background-color: #e6f7e9; border-radius: 8px;">
                         <p style="font-size: 1.2rem; font-weight: bold; color: #1e7e34;">موقع "الدراسة بالمراسلة - يوسف" 🌻</p>
                         <p>تم تطويره بواسطة مرافقكم **يوسف**، وهو خاص بأصحاب المراسلة.</p>
@@ -890,7 +985,7 @@
                     <p style="border: 1px dashed #dc3545; padding: 10px; border-radius: 5px; font-weight: bold;">
                         هذا الموقع غير تابع رسمياً للديوان الوطني للتعليم والتكوين عن بعد.
                     </p>
-                    
+                   
                     <h3>معلومات الاتصال بالمطور (يوسف):</h3>
                     <div class="social-media-container" style="justify-content: flex-start; padding: 10px 0;">
                         <a href="https://t.me/youcef_info_2" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
@@ -907,9 +1002,4 @@
     </script>
 </body>
 </html>
-
-
-
-
-
 
