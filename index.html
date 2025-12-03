@@ -202,7 +202,7 @@
             color: white;
             transform: translateY(-3px);
         }
-        
+       
         /* تنسيق خاص لصفحة معلومات الامتحان الجديدة */
         .info-section {
             background-color: #e7f4ff; /* خلفية فاتحة للمعلومات */
@@ -418,7 +418,13 @@
        
         <a href="#" onclick="showPage('about-page'); return false;"><i class="fas fa-lightbulb"></i> ما هي الدراسة بالمراسلة؟</a>
         <a href="#" onclick="showPage('check-level-page'); return false;"><i class="fas fa-check-circle"></i> التحقق من قبولك في المستوى الأعلى</a>
-        <a href="#" onclick="showPage('exam-registration-page'); return false;"><i class="fas fa-certificate"></i> التسجيل في الشهادة</a> <a href="#" onclick="showPage('centers-page'); return false;"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
+        <a href="#" onclick="showPage('exam-registration-page'); return false;"><i class="fas fa-certificate"></i> التسجيل في الشهادة</a>
+        <a href="#" onclick="showPage('centers-page'); return false;"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
+        
+                <a href="#" onclick="showPage('privacy-policy-page'); return false;"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a>
+        
+                <a href="#" onclick="showPage('who-we-are-page'); return false;"><i class="fas fa-users"></i> من نحن</a>
+        
         <a href="#" onclick="showPage('donation-page'); return false;"><i class="fas fa-heart"></i> التبرع لدعم الموقع</a>
         <a href="#" onclick="showPage('about-app-page'); return false;"><i class="fas fa-info-circle"></i> حول الموقع</a>
         <a href="#" onclick="shareApp()"><i class="fas fa-share-alt"></i> مشاركة الموقع</a>
@@ -510,9 +516,9 @@
                 buildPlatformsPage();
             } else if (pageId === 'e-homework-page') {
                 buildEHomeworkPage();
-            } else if (pageId === 'exam-registration-page') { // ******* الدالة المضافة *******
+            } else if (pageId === 'exam-registration-page') {
                 buildExamRegistrationPage();
-            } else if (pageId === 'exam-info-page') { // ******* الدالة الجديدة *******
+            } else if (pageId === 'exam-info-page') {
                 buildExamInfoPage();
             } else if (pageId === 'about-page') {
                 buildAboutPage();
@@ -524,6 +530,12 @@
                 buildDonationPage();
             } else if (pageId === 'about-app-page') {
                 buildAboutAppPage();
+            } else if (pageId === 'privacy-policy-page') {
+                // 🌟 إضافة الدالة الجديدة
+                buildPrivacyPolicyPage(); 
+            } else if (pageId === 'who-we-are-page') {
+                // 🌟 إضافة الدالة الجديدة
+                buildWhoWeArePage(); 
             }
         }
 
@@ -572,7 +584,7 @@
             </button>`;
         }
        
-        // --- دوال بناء الصفحات الفرعية ---
+        // --- دوال بناء الصفحات الفرعية (تم الحفاظ على الدوال الأصلية) ---
 
         function buildRegistrationPage() {
             const html = `
@@ -663,7 +675,6 @@
             `;
         }
 
-        // ******* الدالة الجديدة لصفحة معلومات التسجيل في الامتحان *******
         function buildExamInfoPage() {
             const html = `
                 <div class="sub-page">
@@ -685,7 +696,7 @@
                             <li>استخراج استدعاء الاختبارات الكتابية.</li>
                             <li>الاطلاع على النتائج وسحب كشوف النقاط.</li>
                         </ul>
-                        
+                       
                         <p>
                             **وصل إلكتروني لدفع حقوق التسجيل**، مستخرج من الموقع **epay.education.dz**، عليك التأكد من صحة المعلومات المدونة عليه والاحتفاظ به كإثبات لعملية تسديد حقوق التسجيل.
                         </p>
@@ -701,7 +712,7 @@
                         <li>شهادة طبية صادرة عن طبيب مختص.</li>
                         <li>نسخة من بطاقة الإعاقة.</li>
                     </ul>
-                    
+                   
                     <h3>اختر نوع الامتحان (دفع الرسوم إلكترونياً)</h3>
                     ${createLinkButton('التعليم المتوسط (BEM)', 'https://epay.education.dz/auth')}
                     ${createLinkButton('الثالثة ثانوي (BAC)', 'https://epay.education.dz/auth')}
@@ -709,7 +720,6 @@
             `;
             pagesContainer.innerHTML = html;
         }
-        // *************************************************************
 
         function buildExamRegistrationPage() {
             const html = `
@@ -723,8 +733,6 @@
             `;
             pagesContainer.innerHTML = html;
         }
-        // *************************************************************
-
 
         function buildAboutPage() {
             const html = `
@@ -999,8 +1007,87 @@
             pagesContainer.innerHTML = html;
         }
 
+        // 🌟 الدالة الجديدة: سياسة الخصوصية
+        function buildPrivacyPolicyPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2><i class="fas fa-shield-alt"></i> سياسة الخصوصية</h2>
+
+                    <p style="font-style: italic; color: #555;">
+                        في موقع "الدراسة بالمراسلة - يوسف"، خصوصيتك هي أولويتنا القصوى. توضح هذه السياسة كيفية تعاملنا مع المعلومات.
+                    </p>
+
+                    <h3>1. جمع البيانات</h3>
+                    <p>
+                        **لا نقوم بجمع أو تخزين أي معلومات شخصية** للمستخدمين مثل الاسم، رقم الهاتف، أو كلمة المرور، عند استخدام الخدمات المتاحة داخل الموقع.
+                    </p>
+
+                    <h3>2. الروابط الخارجية</h3>
+                    <ul>
+                        <li>يحتوي الموقع على روابط خارجية لمواقع تابعة للديوان الوطني للتعليم والتكوين عن بعد (**ONEFD**) وهي المواقع الرسمية للخدمات (التسجيل، الفروض، إلخ).</li>
+                        <li>الموقع **غير مسؤول** عن ممارسات الخصوصية أو محتوى هذه المواقع الخارجية.</li>
+                        <li>ننصح بمراجعة سياسات الخصوصية الخاصة بالمواقع التي تزورها عبر الروابط المتاحة.</li>
+                    </ul>
+
+                    <h3>3. الإعلانات (Google AdSense)</h3>
+                    <p>
+                        يستخدم هذا الموقع إعلانات Google AdSense، والتي قد تستخدم ملفات تعريف الارتباط (**Cookies**) لعرض إعلانات تستهدف اهتماماتك بناءً على زياراتك لهذا الموقع والمواقع الأخرى.
+                    </p>
+
+                    <h3>4. إخلاء المسؤولية</h3>
+                    <p style="border: 1px dashed #dc3545; padding: 10px; border-radius: 5px; font-weight: bold;">
+                        هذا الموقع تم تطويره كمبادرة شخصية من طرف **يوسف**، و**ليس منصة رسمية** تابعة للديوان الوطني للتعليم والتكوين عن بعد. يتم توجيه المستخدمين إلى المواقع الرسمية لإجراء جميع المعاملات الحساسة.
+                    </p>
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
+
+        // 🌟 الدالة الجديدة: من نحن
+        function buildWhoWeArePage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2><i class="fas fa-users"></i> من نحن (رسالة المطور)</h2>
+                    
+                    <div style="text-align: center; padding: 15px; background-color: #f0f8ff; border-radius: 8px;">
+                        <h3 style="color: #007bff;">👋 مرحباً بك أيها المتعلم!</h3>
+                        <p style="font-size: 1.1rem; font-weight: bold;">
+                            أنا **يوسف**، مطور هذا الموقع ومرافقك في رحلة الدراسة عن بعد.
+                        </p>
+                    </div>
+
+                    <h3>لماذا أنشأت هذا الموقع؟</h3>
+                    <p>
+                        لاحظت أن الوصول إلى الخدمات الأساسية للديوان الوطني للتعليم والتكوين عن بعد (ONEFD) قد يكون مشتتاً ويصعب على المتعلمين الجدد أو القدامى العثور عليه بسرعة. هذا الموقع هو بمثابة **بوابة موحدة وسريعة** تجمع كل الروابط والخدمات في مكان واحد لتوفير وقتك وجهدك.
+                    </p>
+                    
+                    <h3>مهمتنا</h3>
+                    <ul>
+                        <li>**التبسيط:** جعل الوصول إلى الخدمات الرسمية للتعليم بالمراسلة سهلاً وسلساً.</li>
+                        <li>**التوجيه:** تقديم معلومات واضحة حول شروط التسجيل والانتقال.</li>
+                        <li>**الدعم:** مساعدة المتعلمين من خلال تقديم روابط مباشرة وأدوات بسيطة مثل حاسبة المستوى.</li>
+                    </ul>
+
+                    <h3 style="color: #28a745;">💡 ملاحظة هامة:</h3>
+                    <p style="border: 1px solid #28a745; padding: 10px; border-radius: 5px; background-color: #e6ffe6;">
+                        **هذا الموقع ليس موقعاً رسمياً للـ ONEFD.** نحن مجرد مبادرة شبابية داعمة للمتعلمين، ونعتمد على التوجيه إلى المواقع الرسمية الموثوقة.
+                    </p>
+
+                    <h3>للتواصل مع المطور (يوسف):</h3>
+                    <p>إذا كان لديك أي اقتراح أو واجهتك مشكلة، يمكنك التواصل معي مباشرة عبر:</p>
+                    <div class="social-media-container" style="justify-content: flex-start; padding: 10px 0;">
+                        <a href="https://t.me/youcef_info_2" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://wa.me/213665074666" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/youcef.info2" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/g/1BfUsNqXFf/" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
+
     </script>
 </body>
 </html>
-
-
