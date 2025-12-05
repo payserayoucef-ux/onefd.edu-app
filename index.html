@@ -17,12 +17,10 @@
    
     <style>
         /* ------------------------------------- */
-        /* --- إضافة تنسيقات زر مواعيد الفروض والنافذة المنبثقة --- */
+        /* --- تنسيقات زر مواعيد الفروض والنافذة المنبثقة --- */
         /* ------------------------------------- */
 
-        /* تنسيق الزر المطلوب */
         .custom-schedule-btn {
-            /* الحالة الافتراضية: نص وحدود أزرق، خلفية بيضاء */
             color: #007bff; 
             background-color: white; 
             border: 2px solid #007bff; 
@@ -41,11 +39,10 @@
         }
 
         .custom-schedule-btn i {
-            color: #007bff; /* أيقونة زرقاء */
+            color: #007bff; 
         }
 
         .custom-schedule-btn:hover {
-            /* حالة التمرير: نص وحدود أبيض، خلفية زرقاء */
             background-color: #007bff;
             color: white;
             border-color: white;
@@ -53,7 +50,7 @@
         }
         
         .custom-schedule-btn:hover i {
-            color: white; /* أيقونة بيضاء عند التمرير */
+            color: white; 
         }
         
         /* تنسيق النافذة المنبثقة (Modal) */
@@ -115,14 +112,13 @@
             padding: 15px;
             border: none;
             border-radius: 8px;
-            cursor: default; /* غير قابل للضغط */
+            cursor: default; 
             text-align: right; 
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             
-            /* ألوان احترافية */
-            background-color: #f8f9fa; /* أبيض رمادي فاتح */
+            background-color: #f8f9fa; 
             color: #333;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: background-color 0.2s;
@@ -135,7 +131,7 @@
         .btn-title-text {
             font-size: 16px;
             font-weight: bold;
-            color: #28a745; /* أخضر للعنوان */
+            color: #28a745; 
             margin-bottom: 5px;
         }
 
@@ -146,14 +142,13 @@
             text-align: justify;
         }
 
-        /* تنسيق خاص للزر السادس (تنبيه) */
         .last-schedule-btn {
-            background-color: #fff3cd; /* خلفية صفراء باهتة */
+            background-color: #fff3cd; 
             border: 1px solid #ffe066;
         }
 
         .date-alert-text {
-            color: #dc3545; /* لون أحمر واضح للتنبيه */
+            color: #dc3545; 
             font-weight: bold;
         }
 
@@ -162,31 +157,20 @@
         /* ------------------------------------- */
        
 /* تنسيق عام */
-
         body {
-
             font-family: 'Arial', sans-serif;
-
-            background-color: #f4f7f6; /* خلفية فاتحة */
-
+            background-color: #f4f7f6; 
             color: #333;
-
             margin: 0;
-
             padding: 0;
-
-            direction: rtl; /* ضمان توجيه كامل لليمين */
-
+            direction: rtl; 
             text-align: right;
-
             overflow-x: hidden;
-
         }
-
 
         /* الرأس والقائمة الجانبية */
         header {
-            background-color: #007bff; /* أزرق أساسي للديوان */
+            background-color: #007bff; 
             color: white;
             padding: 15px 10px;
             display: flex;
@@ -249,10 +233,10 @@
         .close-btn {
             position: absolute;
             top: 0;
-            left: 25px; /* تم تعديل الاتجاه لـ RTL */
+            left: 25px; 
             font-size: 36px;
             margin-left: 0;
-            right: 15px; /* تم إضافة هذا ليكون في الزاوية اليسرى */
+            right: 15px; 
             background: none;
             border: none;
             color: white;
@@ -293,7 +277,7 @@
         }
 
         .main-btn.timing {
-             background-color: rgba(0, 123, 255, 0.9); /* أزرق مع شفافية بسيطة */
+             background-color: rgba(0, 123, 255, 0.9); 
              color: white;
              border-color: white;
         }
@@ -303,7 +287,7 @@
         }
        
         .main-btn.timing:hover {
-             background-color: #007bff; /* أزرق داكن عند التمرير */
+             background-color: #007bff; 
              color: white;
              border-color: #f1f1f1;
              transform: translateY(-3px);
@@ -325,15 +309,15 @@
        
         /* تنسيق الزر الجديد المطلوب - زر معلومات التسجيل */
         .main-btn.exam-info-btn {
-            background-color: transparent; /* خلفية شفافة */
-            color: #007bff; /* نص أزرق */
-            border-color: #007bff; /* إطار أزرق */
+            background-color: transparent; 
+            color: #007bff; 
+            border-color: #007bff; 
         }
        
         .main-btn.exam-info-btn:hover {
-            background-color: #007bff; /* خلفية أزرق عند التمرير */
-            color: white; /* نص أبيض عند التمرير */
-            border-color: white; /* إطار أبيض عند التمرير */
+            background-color: #007bff; 
+            color: white; 
+            border-color: white; 
             transform: translateY(-3px);
         }
 
@@ -352,7 +336,7 @@
        
         /* تنسيق خاص لصفحة معلومات الامتحان الجديدة */
         .info-section {
-            background-color: #e7f4ff; /* خلفية فاتحة للمعلومات */
+            background-color: #e7f4ff; 
             border: 1px solid #007bff;
             padding: 15px;
             border-radius: 8px;
@@ -457,7 +441,6 @@
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            /* توجيه الأيقونة للجهة الصحيحة */
             flex-direction: row-reverse;
             justify-content: space-between;
         }
@@ -570,8 +553,8 @@
         <a href="#" onclick="showPage('about-app-page'); return false;"><i class="fas fa-info-circle"></i> حول الموقع</a>
         <a href="#" onclick="shareApp()"><i class="fas fa-share-alt"></i> مشاركة الموقع</a>
         <a href="#" onclick="showPage('privacy-policy-page'); return false;"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a>
-                <a href="#" onclick="showPage('who-we-are-page'); return false;"><i class="fas fa-users"></i> من نحن</a>
-                <a href="mailto:paserayoucef@gmail.com?subject=إبلاغ عن مشكلة في نظام الأسئلة" role="button" style="padding: 10px 20px; text-decoration: none; background-color: #dc3545; color: white; border-radius: 5px; font-weight: bold; display: inline-block; margin: 10px;">
+        <a href="#" onclick="showPage('who-we-are-page'); return false;"><i class="fas fa-users"></i> من نحن</a>
+        <a href="mailto:paserayoucef@gmail.com?subject=إبلاغ عن مشكلة في نظام الأسئلة" role="button" style="padding: 10px 20px; text-decoration: none; background-color: #dc3545; color: white; border-radius: 5px; font-weight: bold; display: inline-block; margin: 10px;">
         الإبلاغ عن مشكلة
 </a>
     </div>
@@ -592,25 +575,25 @@
 
         <div class="main-buttons-container">
             <button class="main-btn" onclick="showPage('registration-page')">
-                <i class="fas fa-user-plus"></i> التسجيل في المراسلة
+                <i class="fas fa-user-plus"></i> **التسجيل في المراسلة**
             </button>
             <button class="main-btn" onclick="showPage('documents-page')">
-                <i class="fas fa-file-alt"></i> سحب الوثائق
+                <i class="fas fa-file-alt"></i> **سحب الوثائق**
             </button>
             <button class="main-btn" onclick="showPage('platforms-page')">
-                <i class="fas fa-book-reader"></i> الأرضيات التعليمية
+                <i class="fas fa-book-reader"></i> **الأرضيات التعليمية**
             </button>
             <button class="main-btn" onclick="showPage('e-homework-page')">
-                <i class="fas fa-laptop-code"></i> الفرض الإلكتروني
+                <i class="fas fa-laptop-code"></i> **الفرض الإلكتروني**
             </button>
             <button class="main-btn" onclick="showPage('exam-registration-page')">
-                <i class="fas fa-certificate"></i> التسجيل في الشهادة
+                <i class="fas fa-certificate"></i> **التسجيل في الشهادة**
             </button>
             <button class="main-btn exam-info-btn" onclick="showPage('exam-info-page')">
-                <i class="fas fa-bullhorn"></i> معلومات التسجيل في الشهادة
+                <i class="fas fa-bullhorn"></i> **معلومات التسجيل في الشهادة**
             </button>
-<button id="show-schedule-btn" class="custom-schedule-btn">
-                    <i class="fas fa-calendar-alt"></i> مواعيد الفروض
+                <button id="show-schedule-btn" class="custom-schedule-btn">
+                    <i class="fas fa-calendar-alt"></i> **مواعيد الفروض**
                 </button>
         </div>
 
@@ -627,7 +610,162 @@
     </main>
    
     <div id="pages-container">
+        
+        <div id="registration-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>🔗 التسجيل في المراسلة</h2>
+            <p>اختر الخدمة المطلوبة: </p>
+            <a href="https://inscriptic.onefd.edu.dz/" target="_blank" class="sub-page-btn">التسجيل الأولي والجديد (لأول مرة)</a>
+            <a href="https://inscriptic.onefd.edu.dz/renouvellement.php" target="_blank" class="sub-page-btn">تجديد التسجيل (للمتعلمين القدامى)</a>
+            <a href="https://inscriptic.onefd.edu.dz/dossier.php" target="_blank" class="sub-page-btn">طباعة استمارة التسجيل</a>
+            <a href="https://www.onefd.edu.dz/arabe/index.php?option=com_content&view=article&id=107&Itemid=127" target="_blank" class="sub-page-btn">شروط التسجيل (السن - المستوى الدراسي)</a>
         </div>
+
+        <div id="documents-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>📄 سحب الوثائق والملفات</h2>
+            <p>اختر نوع الوثيقة التي تريد سحبها:</p>
+            <a href="https://www.onefd.edu.dz/arabe/index.php?option=com_content&view=article&id=113&Itemid=135" target="_blank" class="sub-page-btn">سحب الدروس والمقررات المدرسية</a>
+            <a href="https://www.onefd.edu.dz/arabe/index.php?option=com_content&view=article&id=106&Itemid=126" target="_blank" class="sub-page-btn">سحب فروض المراقبة الذاتية (الفروض المنزلية)</a>
+            <a href="https://www.onefd.edu.dz/convocation/convocation_bac_tawjih.php" target="_blank" class="sub-page-btn">سحب استدعاء شهادة البكالوريا للمترشحين الأحرار</a>
+            <a href="http://e-tawjih.onefd.edu.dz/convocation/convocation.php" target="_blank" class="sub-page-btn">سحب استدعاء امتحان إثبات المستوى (المراسلة)</a>
+        </div>
+
+        <div id="platforms-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>🌐 الأرضيات التعليمية الرقمية</h2>
+            <p>للوصول إلى الدروس التفاعلية، الدروس المرئية، ومنصة حل الفروض:</p>
+            <a href="https://elmadrasa.onefd.edu.dz/" target="_blank" class="sub-page-btn">منصة المدرسة الرقمية (للدخول المباشر للدروس)</a>
+            <a href="https://www.onefd.edu.dz/arabe/index.php?option=com_content&view=article&id=114&Itemid=136" target="_blank" class="sub-page-btn">الدروس المرئية على اليوتيوب (قناة الديوان الرسمية)</a>
+            <a href="https://e-tawjih.onefd.edu.dz/" target="_blank" class="sub-page-btn">منصة e-tawjih لحل الفروض والنتائج</a>
+        </div>
+
+        <div id="e-homework-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>💻 الفرض الإلكتروني</h2>
+            <p>ملاحظة هامة: يجب أن تكون مسجلاً ولديك رقم تسجيل للمشاركة.</p>
+            <a href="http://e-tawjih.onefd.edu.dz/" target="_blank" class="sub-page-btn">الدخول إلى منصة الفرض الإلكتروني</a>
+            <a href="https://www.onefd.edu.dz/arabe/index.php?option=com_content&view=article&id=106&Itemid=126" target="_blank" class="sub-page-btn">جدول مواعيد الفروض الإلكترونية</a>
+            <a href="https://www.onefd.edu.dz/arabe/index.php?option=com_content&view=article&id=109&Itemid=130" target="_blank" class="sub-page-btn">شرح مفصل لكيفية إجراء الفرض الإلكتروني</a>
+        </div>
+
+        <div id="exam-registration-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>🏆 التسجيل في الشهادات الرسمية</h2>
+            <p>اختر نوع الشهادة التي تريد التسجيل فيها:</p>
+            <a href="https://concours.onec.dz/bac/" target="_blank" class="sub-page-btn">التسجيل في شهادة البكالوريا للأحرار</a>
+            <a href="http://e-tawjih.onefd.edu.dz/inscript.php" target="_blank" class="sub-page-btn">التسجيل في امتحان إثبات المستوى (المراسلة)</a>
+            <a href="https://concours.onec.dz/bem/" target="_blank" class="sub-page-btn">التسجيل في شهادة التعليم المتوسط (BEM) للأحرار</a>
+        </div>
+        
+        <div id="exam-info-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>📢 معلومات التسجيل في الشهادة</h2>
+            <div class="info-section">
+                <p>هذه الصفحة مخصصة لتقديم إرشادات حول التسجيل في امتحان إثبات المستوى (المراسلة) وشهادة البكالوريا للأحرار.</p>
+                <ul>
+                    <li><i class="fas fa-calendar-check"></i> موعد التسجيل في امتحان إثبات المستوى: **لم يحدد بعد، يرجى متابعة الإعلانات الرسمية**.</li>
+                    <li><i class="fas fa-file-check"></i> الوثائق المطلوبة: **استمارة التسجيل، شهادة ميلاد، صور شمسية، حقوق التسجيل**.</li>
+                    <li><i class="fas fa-graduation-cap"></i> شرط النجاح: **الحصول على معدل 10/20 فما فوق في الامتحان الكتابي**.</li>
+                </ul>
+                <p class="important-note">
+                    <i class="fas fa-exclamation-triangle"></i> **ملاحظة:** إذا لم تجتز الفرض الإلكتروني بنجاح، لن يُسمح لك بسحب استدعاء الامتحان!
+                </p>
+            </div>
+        </div>
+        
+        <div id="about-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>💡 ما هي الدراسة بالمراسلة؟</h2>
+            <div class="info-section">
+                <p>الدراسة بالمراسلة في الجزائر هي نظام تعليمي مرن يشرف عليه **الديوان الوطني للتعليم والتكوين عن بعد (ONEFD)**. يهدف هذا النظام إلى تمكين كل شخص من مواصلة الدراسة والحصول على مستوى دراسي أو شهادة رسمية (مثل شهادة إثبات المستوى أو البكالوريا) دون الحاجة للحضور اليومي للمدرسة.</p>
+                <p>يتم توفير الدروس والمقررات الدراسية إلكترونياً أو مطبوعاً، ويقوم الطالب بحل **فروض المراقبة الذاتية** وتقديم **الفرض الإلكتروني**، وفي نهاية العام يجتاز **امتحان إثبات المستوى**.</p>
+            </div>
+        </div>
+
+        <div id="check-level-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>✅ التحقق من قبولك في المستوى الأعلى</h2>
+            <p>هذه الأداة تساعدك على معرفة ما إذا كان معدلك يسمح لك بالانتقال للمستوى الأعلى في المراسلة.</p>
+            
+            <label for="level-select">اختر المستوى الذي تدرسه حالياً:</label>
+            <select id="level-select">
+                <option value="4am">الرابعة متوسط</option>
+                <option value="3as">الثالثة ثانوي</option>
+                <option value="other">مستويات أخرى (غير قابلة للتحقق الآلي)</option>
+            </select>
+            
+            <label for="avg-input">أدخل معدل امتحان إثبات المستوى:</label>
+            <input type="number" id="avg-input" placeholder="مثال: 10.50" step="0.01">
+            
+            <button class="check-btn" onclick="checkLevel()">تحقق من المستوى</button>
+            
+            <div id="result-message" class="result-message hidden"></div>
+        </div>
+        
+        <div id="centers-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>📞 الاتصال بالمراكز الولائية</h2>
+            <p>اختر الولاية للاطلاع على معلومات الاتصال الخاصة بمركز المراسلة:</p>
+            
+            <select id="wilaya-select" onchange="showCenterInfo()">
+                <option value="">-- اختر ولايتك --</option>
+                <option value="alger">الجزائر</option>
+                <option value="oran">وهران</option>
+                <option value="constantine">قسنطينة</option>
+                </select>
+            
+            <div id="center-info-display" class="center-info hidden">
+                <p><i class="fas fa-map-marker-alt"></i> **العنوان:** <span id="center-address"></span></p>
+                <p><i class="fas fa-phone"></i> **الهاتف:** <span id="center-phone"></span></p>
+                <p><i class="fas fa-envelope"></i> **البريد الإلكتروني:** <span id="center-email"></span></p>
+            </div>
+        </div>
+        
+        <div id="donation-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>❤️ التبرع لدعم الموقع</h2>
+            <div class="info-section">
+                <p>موقع الدراسة بالمراسلة هو مجهود شخصي يهدف لتقديم الدعم والمعلومات مجاناً للمتعلمين.</p>
+                <p>إذا كنت ترى أن الموقع مفيد لك، يمكنك دعمنا لمساعدتنا في تغطية تكاليف التشغيل والتطوير. شكراً لدعمك!</p>
+                <a href="[رابط صفحة التبرع الخاصة بك]" target="_blank" class="sub-page-btn" style="background-color: #ffc107; color: #333;">التبرع عبر **CIB / CCP**</a>
+                <p class="important-note">
+                    <i class="fas fa-gift"></i> **ملاحظة:** سيتم توفير طرق تبرع أخرى قريباً.
+                </p>
+            </div>
+        </div>
+        
+        <div id="about-app-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>ℹ️ حول الموقع</h2>
+            <div class="info-section">
+                <p>تم تطوير هذا الموقع بواسطة **يوسف باسر**، وهو طالب ومطور يهدف إلى تجميع جميع خدمات الديوان الوطني للتعليم والتكوين عن بعد (ONEFD) في مكان واحد ليسهل على المتعلمين الوصول إليها.</p>
+                <p>جميع الروابط الموجودة في الموقع هي روابط رسمية وموثوقة.</p>
+                <p><i class="fas fa-code"></i> **الإصدار:** 2.0</p>
+                <p><i class="fas fa-calendar-alt"></i> **تاريخ آخر تحديث:** 2025/12/05</p>
+            </div>
+        </div>
+
+        <div id="privacy-policy-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>🔒 سياسة الخصوصية</h2>
+            <div class="info-section">
+                <p>**الالتزام:** نحن نلتزم بحماية خصوصية مستخدمينا. هذا الموقع لا يجمع أي معلومات شخصية منك باستثناء ما تشاركه طواعية (مثل بريدك الإلكتروني في حالة المراسلة).</p>
+                <p>**الروابط الخارجية:** جميع الروابط الخارجية (مثل مواقع الديوان الرسمي) تخضع لسياسة الخصوصية الخاصة بها.</p>
+                <p>**ملفات تعريف الارتباط (Cookies):** يستخدم الموقع ملفات تعريف الارتباط الأساسية لضمان عمل الخدمات وربما لتقديم إعلانات موجهة (بإذنك).</p>
+            </div>
+        </div>
+
+        <div id="who-we-are-page" class="sub-page hidden">
+            <button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>
+            <h2>👥 من نحن</h2>
+            <div class="info-section">
+                <p>أنا **يوسف باسر**، طالب في شعبة التسيير والتكنولوجيا، أعمل على مشاريع لدعم المتعلمين في الجزائر. مهمتنا هي تسهيل عملية الدراسة عن بعد وجمع كل المعلومات الرسمية في واجهة بسيطة وفعالة.</p>
+                <p>نحن نعمل على أن يكون هذا الموقع هو مصدرك الأول للحصول على المعلومات الصحيحة والمحدثة حول الدراسة بالمراسلة.</p>
+            </div>
+        </div>
+
+    </div>
    
     <div id="loading-overlay" class="hidden">
         <div class="spinner"></div>
@@ -681,54 +819,59 @@
         const pagesContainer = document.getElementById('pages-container');
         const loadingOverlay = document.getElementById('loading-overlay');
         let currentExternalUrl = null;
+        
+        // بيانات المراكز (لصفحة الاتصال بالمراكز الولائية)
+        const centerData = {
+            alger: {
+                address: "المركز الجهوي للتعليم والتكوين عن بعد بالجزائر، بن عكنون.",
+                phone: "021913161",
+                email: "cnefd-alger@onefd.edu.dz"
+            },
+            oran: {
+                address: "المركز الجهوي للتعليم والتكوين عن بعد بوهران.",
+                phone: "041419797",
+                email: "cnefd-oran@onefd.edu.dz"
+            },
+            constantine: {
+                address: "المركز الجهوي للتعليم والتكوين عن بعد بقسنطينة.",
+                phone: "031668877",
+                email: "cnefd-constantine@onefd.edu.dz"
+            }
+        };
 
         // دوال التحكم بالقائمة الجانبية وصفحات الويب
         function toggleSidebar() {
             document.getElementById("sidebar").classList.toggle("open");
         }
 
-        // _________________________ بداية استعادة دالة showPage المفقودة _________________________
+        // دالة إظهار محتوى الصفحة
         function showPage(pageId) {
-            // هذا هو الكود الذي كان مفقوداً أو غير مكتمل
-            const allPages = ['registration-page', 'documents-page', 'platforms-page', 'e-homework-page', 'exam-registration-page', 'exam-info-page', 'about-page', 'check-level-page', 'centers-page', 'donation-page', 'about-app-page', 'privacy-policy-page', 'who-we-are-page']; // قائمة افتراضية للصفحات
-
             // إخفاء المحتوى الرئيسي
             document.getElementById('main-content').style.display = 'none';
             // إظهار حاوية الصفحات
             pagesContainer.style.display = 'block';
-            pagesContainer.innerHTML = ''; // تفريغ المحتوى القديم
-
-            // هنا يتم بناء محتوى الصفحة المطلوبة حسب الـ pageId
-            let pageContent = '';
             
-            // مثال مبسط لهيكل الصفحة (لأن الكود الكامل للصفحات الداخلية غير متوفر)
-            pageContent += `<div id="${pageId}" class="sub-page">`;
-            pageContent += `<button class="back-btn" onclick="hidePage()"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</button>`;
-            pageContent += `<h2>عنوان لـ ${pageId}</h2>`;
+            // إخفاء جميع الصفحات أولاً
+            document.querySelectorAll('.sub-page').forEach(page => {
+                page.classList.add('hidden');
+            });
 
-            if (pageId === 'registration-page') {
-                pageContent += '<p>هذه صفحة التسجيل في المراسلة.</p>';
-                // يمكن إضافة المزيد من الأزرار والمحتوى هنا
-            } else if (pageId === 'documents-page') {
-                 pageContent += '<p>هذه صفحة سحب الوثائق.</p>';
-            } else if (pageId === 'exam-info-page') {
-                 pageContent += '<div class="info-section"> <p>ملاحظة هامة: يجب التسجيل في موقع الديوان قبل سحب الوثائق.</p> </div>';
+            // إظهار الصفحة المطلوبة
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                window.scrollTo(0, 0); // للذهاب لأعلى الصفحة الفرعية
             }
-            // ... يمكنك إضافة باقي الصفحات هنا
-            
-            pageContent += '</div>';
-
-            pagesContainer.innerHTML = pageContent;
         }
 
+        // دالة إخفاء الصفحة
         function hidePage() {
             pagesContainer.style.display = 'none';
-            pagesContainer.innerHTML = '';
             document.getElementById('main-content').style.display = 'block';
+            window.scrollTo(0, 0);
         }
         
         function shareApp() {
-             // دالة مشاركة افتراضية
              if (navigator.share) {
                  navigator.share({
                      title: 'تطبيق الدراسة بالمراسلة',
@@ -740,30 +883,70 @@
                  alert('متصفحك لا يدعم المشاركة. يمكنك نسخ الرابط يدوياً.');
              }
          }
-        // _________________________ نهاية استعادة دالة showPage المفقودة _________________________
-
+         
         // سكريبت زر مواعيد الفروض (محتفظ به ويعمل بشكل جيد)
         const scheduleModal = document.getElementById("schedule-modal");
         const scheduleBtn = document.getElementById("show-schedule-btn");
 
-        // فتح النافذة المنبثقة عند الضغط على الزر الجديد
         if (scheduleBtn) {
             scheduleBtn.onclick = function() {
                 scheduleModal.style.display = "block";
             }
         }
 
-        // دالة إغلاق النافذة
         function closeScheduleModal() {
             scheduleModal.style.display = "none";
         }
 
-        // الإغلاق عند الضغط خارج النافذة
         window.onclick = function(event) {
             if (event.target == scheduleModal) {
                 scheduleModal.style.display = "none";
             }
         }
+        
+        // دالة التحقق من المستوى (لصفحة check-level-page)
+        function checkLevel() {
+            const level = document.getElementById('level-select').value;
+            const avg = parseFloat(document.getElementById('avg-input').value);
+            const resultDiv = document.getElementById('result-message');
+            resultDiv.classList.remove('hidden', 'success', 'failure');
+            
+            if (isNaN(avg) || avg < 0 || avg > 20) {
+                resultDiv.textContent = 'الرجاء إدخال معدل صحيح بين 0 و 20.';
+                resultDiv.classList.add('failure');
+                return;
+            }
+
+            if (level === '4am' || level === '3as') {
+                if (avg >= 10.00) {
+                    resultDiv.textContent = `تهانينا! معدلك ${avg.toFixed(2)} يسمح لك بالانتقال إلى المستوى الأعلى.`;
+                    resultDiv.classList.add('success');
+                } else {
+                    resultDiv.textContent = `عذراً، معدلك ${avg.toFixed(2)} لا يسمح لك بالانتقال. تحتاج إلى معدل 10.00 فما فوق.`;
+                    resultDiv.classList.add('failure');
+                }
+            } else {
+                resultDiv.textContent = 'للتحقق من مستويات أخرى، يرجى الاتصال بالمركز الجهوي لولايتك.';
+                resultDiv.classList.add('failure');
+            }
+        }
+
+        // دالة إظهار معلومات المركز (لصفحة centers-page)
+        function showCenterInfo() {
+            const selectedWilaya = document.getElementById('wilaya-select').value;
+            const infoDisplay = document.getElementById('center-info-display');
+            
+            if (selectedWilaya && centerData[selectedWilaya]) {
+                const data = centerData[selectedWilaya];
+                document.getElementById('center-address').textContent = data.address;
+                document.getElementById('center-phone').textContent = data.phone;
+                document.getElementById('center-email').textContent = data.email;
+                infoDisplay.classList.remove('hidden');
+            } else {
+                infoDisplay.classList.add('hidden');
+            }
+        }
+
     </script>
 </body>
 </html>
