@@ -2,8 +2,10 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>ProExchanger | واجهة احترافية واضحة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProExchanger | بوابة الوساطة الرقمية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root { 
             --trust-blue: #0f172a;
@@ -17,43 +19,73 @@
             font-family: 'Segoe UI', Tahoma, sans-serif; 
             background: var(--soft-gray); 
             margin: 0; 
-            /* تكبير الخط الأساسي للموقع */
             font-size: 18px; 
             color: #334155;
         }
-        
+
+        /* رأس الصفحة المعدل */
         header { 
             background: linear-gradient(135deg, var(--trust-blue) 0%, #1e293b 100%); 
             color: white; 
-            padding: 50px 20px; 
+            padding: 80px 20px 60px; 
             text-align: center; 
             border-bottom: 5px solid var(--safe-blue);
+            position: relative;
         }
 
-        header h1 {
-            font-size: 42px; /* تكبير اسم الموقع */
-            margin: 0;
+        header h1 { font-size: 48px; margin: 0; letter-spacing: 2px; }
+
+        /* منطقة أزرار الدخول والتسجيل */
+        .auth-bar {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            display: flex;
+            gap: 12px;
+            z-index: 100;
         }
 
+        .btn-auth {
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-signup {
+            background-color: var(--safe-blue);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-login {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-auth:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        /* بطاقة الرصيد */
         .balance-card { 
             background: var(--white); 
-            margin: -30px auto 30px; 
-            padding: 35px; /* زيادة التباعد الداخلي */
+            margin: -40px auto 30px; 
+            padding: 35px; 
             width: 90%;
             max-width: 600px;
-            border-radius: 20px; 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
+            border-radius: 25px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
             display: flex; 
             justify-content: space-between; 
             align-items: center;
         }
 
-        .balance-amount {
-            font-size: 40px; /* تكبير رصيد الحساب */
-            font-weight: 900;
-            color: var(--trust-blue);
-        }
+        .balance-amount { font-size: 45px; font-weight: 900; color: var(--trust-blue); }
 
+        /* القائمة الرئيسية */
         .main-menu { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
@@ -66,10 +98,10 @@
         .menu-btn { 
             background: var(--white); 
             border: 2px solid #e2e8f0; 
-            padding: 45px 20px; /* زيادة حجم الأزرار */
-            border-radius: 25px; 
+            padding: 50px 20px; 
+            border-radius: 30px; 
             font-weight: 700; 
-            font-size: 22px; /* تكبير كتابة الأزرار */
+            font-size: 24px; 
             cursor: pointer; 
             display: flex; 
             flex-direction: column; 
@@ -78,77 +110,101 @@
             transition: 0.3s ease;
         }
 
-        .menu-btn i { 
-            font-size: 48px; /* تكبير الأيقونات بشكل كبير */
-            color: var(--safe-blue); 
-            background: #eff6ff;
-            padding: 25px;
-            border-radius: 50%;
-        }
+        .menu-btn i { font-size: 55px; color: var(--safe-blue); background: #eff6ff; padding: 30px; border-radius: 50%; }
 
-        /* تحسين الوضوح في الحقول */
-        .form-group h3 {
-            font-size: 26px;
-            margin-bottom: 20px;
-        }
+        /* النماذج */
+        .section-view { display: none; padding: 40px 20px; max-width: 700px; margin: auto; }
+        .form-group { background: white; padding: 40px; border-radius: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        input { width: 100%; padding: 20px; margin: 15px 0; font-size: 20px; border: 2px solid #f1f5f9; border-radius: 15px; box-sizing: border-box; }
+        .btn-action { width: 100%; padding: 20px; font-size: 24px; font-weight: bold; border: none; border-radius: 15px; cursor: pointer; background: var(--safe-blue); color: white; }
 
-        input, textarea, select { 
-            font-size: 20px; /* تكبير الكتابة داخل الخانات */
-            padding: 18px;
-            border-radius: 15px;
-        }
-
-        .btn-action { 
-            padding: 20px;
-            font-size: 22px; /* تكبير أزرار التنفيذ */
-            border-radius: 15px;
+        @media (max-width: 768px) {
+            .auth-bar { position: static; justify-content: center; margin-bottom: 25px; }
+            header { padding: 40px 10px; }
+            .main-menu { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>PRO EXCHANGER</h1>
-    <p style="font-size: 20px; opacity: 0.9;">بوابة الوساطة الرقمية الأكثر أماناً في الجزائر</p>
-</header>
+    <header>
+        <div class="auth-bar">
+            <button class="btn-auth btn-login" onclick="showSection('loginForm')">تسجيل الدخول</button>
+            <button class="btn-auth btn-signup" onclick="showSection('signupForm')">إنشاء حساب</button>
+        </div>
 
-<div class="balance-card">
-    <div>
-        <small style="color: #64748b; font-size: 18px; font-weight: 600;">رصيدك المتاح</small>
-        <div class="balance-amount" id="displayBalance">0.00 د.ج</div>
+        <h1>PRO EXCHANGER</h1>
+        <p style="font-size: 22px; opacity: 0.9; margin-top: 15px;">بوابة الوساطة الرقمية الأكثر أماناً في الجزائر</p>
+    </header>
+
+    <div class="balance-card">
+        <div>
+            <small style="color: #64748b; font-size: 20px; font-weight: 600;">رصيدك الحالي</small>
+            <div class="balance-amount" id="displayBalance">0.00 د.ج</div>
+        </div>
+        <div style="background: #ecfdf5; padding: 25px; border-radius: 50%;">
+            <i class="fas fa-shield-alt" style="color: var(--success-green); font-size: 45px;"></i>
+        </div>
     </div>
-    <div style="background: #ecfdf5; padding: 20px; border-radius: 50%;">
-        <i class="fas fa-shield-alt" style="color: var(--success-green); font-size: 40px;"></i>
+
+    <div class="main-menu" id="mainMenu">
+        <button class="menu-btn" onclick="alert('واجهة البيع قيد التطوير')">
+            <i class="fas fa-hand-holding-usd"></i>
+            <span>بيع حساب</span>
+        </button>
+        <button class="menu-btn" onclick="alert('سوق العروض قيد التطوير')">
+            <i class="fas fa-search-dollar"></i>
+            <span>تصفح السوق</span>
+        </button>
+        <button class="menu-btn" onclick="alert('واجهة السحب قيد التطوير')">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span>سحب الأرباح</span>
+        </button>
+        <button class="menu-btn" onclick="alert('واجهة الإيداع قيد التطوير')">
+            <i class="fas fa-plus-circle"></i>
+            <span>شحن الرصيد</span>
+        </button>
     </div>
-</div>
 
-<div class="main-menu" id="mainMenu">
-    <button class="menu-btn" onclick="showSection('sellTypeSection')">
-        <i class="fas fa-hand-holding-usd"></i>
-        <span>بيع حساب</span>
-    </button>
-    <button class="menu-btn" onclick="showSection('marketSection')">
-        <i class="fas fa-search-dollar"></i>
-        <span>تصفح السوق</span>
-    </button>
-    <button class="menu-btn" onclick="showSection('withdrawSection')">
-        <i class="fas fa-file-invoice-dollar"></i>
-        <span>سحب الرصيد</span>
-    </button>
-    <button class="menu-btn" onclick="showSection('depositSection')">
-        <i class="fas fa-plus-circle"></i>
-        <span>شحن الرصيد</span>
-    </button>
-</div>
+    <div id="signupForm" class="section-view">
+        <div class="form-group">
+            <button onclick="showSection('mainMenu')" style="background:none; border:none; color:var(--safe-blue); cursor:pointer; font-size:20px; margin-bottom:20px;">← العودة</button>
+            <h3 style="font-size: 32px; text-align: center; margin-bottom: 30px;">إنشاء حساب جديد</h3>
+            <input type="text" placeholder="الاسم الكامل">
+            <input type="email" placeholder="البريد الإلكتروني">
+            <input type="password" placeholder="كلمة المرور">
+            <button class="btn-action">تأكيد وانضمام</button>
+        </div>
+    </div>
 
-<script>
-    function showSection(id) {
-        document.querySelectorAll('.section-view, #mainMenu').forEach(el => el.style.display = 'none');
-        const target = document.getElementById(id);
-        if(id === 'mainMenu') target.style.display = 'grid';
-        else target.style.display = 'block';
-    }
-</script>
+    <div id="loginForm" class="section-view">
+        <div class="form-group">
+            <button onclick="showSection('mainMenu')" style="background:none; border:none; color:var(--safe-blue); cursor:pointer; font-size:20px; margin-bottom:20px;">← العودة</button>
+            <h3 style="font-size: 32px; text-align: center; margin-bottom: 30px;">مرحباً بعودتك</h3>
+            <input type="email" placeholder="البريد الإلكتروني">
+            <input type="password" placeholder="كلمة المرور">
+            <button class="btn-action" style="background: var(--trust-blue);">دخول</button>
+            <p style="text-align: center; margin-top: 20px;">نسيت كلمة المرور؟</p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(id) {
+            // إخفاء جميع الواجهات
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'none';
+            
+            // إظهار الواجهة المطلوبة
+            const target = document.getElementById(id);
+            if(id === 'mainMenu') {
+                target.style.display = 'grid';
+            } else {
+                target.style.display = 'block';
+            }
+        }
+    </script>
 
 </body>
 </html>
+
