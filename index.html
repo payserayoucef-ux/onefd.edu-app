@@ -2,169 +2,138 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>ProExchanger | بوابة الوساطة الرقمية الآمنة</title>
+    <title>ProExchanger | واجهة احترافية واضحة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* نظام الألوان الجديد لتعزيز الثقة */
         :root { 
-            --trust-blue: #0f172a; /* أزرق داكن جداً للخلفيات الرسمية */
-            --safe-blue: #2563eb;  /* أزرق الأمان للأزرار */
-            --soft-gray: #f8fafc;  /* خلفية الموقع العامة */
+            --trust-blue: #0f172a;
+            --safe-blue: #2563eb; 
+            --soft-gray: #f8fafc;
             --white: #ffffff;
             --success-green: #059669; 
-            --warning-gold: #d97706;
         }
 
         body { 
             font-family: 'Segoe UI', Tahoma, sans-serif; 
             background: var(--soft-gray); 
             margin: 0; 
+            /* تكبير الخط الأساسي للموقع */
+            font-size: 18px; 
             color: #334155;
-            line-height: 1.6;
         }
         
-        /* رأس الصفحة بتصميم احترافي */
         header { 
             background: linear-gradient(135deg, var(--trust-blue) 0%, #1e293b 100%); 
             color: white; 
-            padding: 40px 20px; 
+            padding: 50px 20px; 
             text-align: center; 
-            border-bottom: 4px solid var(--safe-blue);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 5px solid var(--safe-blue);
         }
 
-        /* بطاقة الرصيد بشكل عصري */
+        header h1 {
+            font-size: 42px; /* تكبير اسم الموقع */
+            margin: 0;
+        }
+
         .balance-card { 
             background: var(--white); 
-            margin: -25px auto 25px; 
-            padding: 25px; 
-            width: 85%;
-            max-width: 500px;
-            border-radius: 16px; 
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); 
+            margin: -30px auto 30px; 
+            padding: 35px; /* زيادة التباعد الداخلي */
+            width: 90%;
+            max-width: 600px;
+            border-radius: 20px; 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
             display: flex; 
             justify-content: space-between; 
             align-items: center;
-            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* أزرار القائمة الرئيسية */
+        .balance-amount {
+            font-size: 40px; /* تكبير رصيد الحساب */
+            font-weight: 900;
+            color: var(--trust-blue);
+        }
+
         .main-menu { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
-            gap: 20px; 
-            padding: 20px; 
-            max-width: 900px;
+            gap: 25px; 
+            padding: 25px; 
+            max-width: 1000px;
             margin: auto;
         }
 
         .menu-btn { 
             background: var(--white); 
-            border: none; 
-            padding: 30px 15px; 
-            border-radius: 20px; 
-            font-weight: 600; 
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); 
+            border: 2px solid #e2e8f0; 
+            padding: 45px 20px; /* زيادة حجم الأزرار */
+            border-radius: 25px; 
+            font-weight: 700; 
+            font-size: 22px; /* تكبير كتابة الأزرار */
             cursor: pointer; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            gap: 15px; 
-            transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
-        }
-
-        .menu-btn:hover { 
-            background: #f1f5f9;
-            border-color: var(--safe-blue);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px -5px rgba(37, 99, 235, 0.2);
+            gap: 20px; 
+            transition: 0.3s ease;
         }
 
         .menu-btn i { 
-            font-size: 32px; 
+            font-size: 48px; /* تكبير الأيقونات بشكل كبير */
             color: var(--safe-blue); 
             background: #eff6ff;
-            padding: 15px;
+            padding: 25px;
             border-radius: 50%;
         }
 
-        /* تحسينات الحقول (Forms) */
-        .section-view { 
-            display: none; 
-            padding: 30px 20px; 
-            max-width: 700px; 
-            margin: auto; 
-        }
-
-        .form-group { 
-            background: var(--white); 
-            padding: 30px; 
-            border-radius: 24px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        /* تحسين الوضوح في الحقول */
+        .form-group h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
         }
 
         input, textarea, select { 
-            width: 100%; 
-            padding: 14px; 
-            margin: 12px 0; 
-            border: 2px solid #f1f5f9; 
-            border-radius: 12px; 
-            background: #f8fafc;
-            transition: 0.3s;
-        }
-
-        input:focus { 
-            border-color: var(--safe-blue); 
-            outline: none; 
-            background: var(--white);
+            font-size: 20px; /* تكبير الكتابة داخل الخانات */
+            padding: 18px;
+            border-radius: 15px;
         }
 
         .btn-action { 
-            width: 100%; 
-            padding: 16px; 
-            border: none; 
-            border-radius: 12px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            font-size: 17px; 
-            transition: 0.3s;
+            padding: 20px;
+            font-size: 22px; /* تكبير أزرار التنفيذ */
+            border-radius: 15px;
         }
-
-        .btn-safe { background: var(--safe-blue); color: white; }
-        .btn-safe:hover { background: #1d4ed8; }
-
     </style>
 </head>
 <body>
 
 <header>
-    <div style="font-size: 32px; font-weight: 800; letter-spacing: 1px;">PRO EXCHANGER</div>
-    <p style="opacity: 0.8; margin-top: 10px;">نظام وساطة رقمي محمي بالكامل</p>
+    <h1>PRO EXCHANGER</h1>
+    <p style="font-size: 20px; opacity: 0.9;">بوابة الوساطة الرقمية الأكثر أماناً في الجزائر</p>
 </header>
 
 <div class="balance-card">
     <div>
-        <small style="color: #64748b; font-weight: 600;">رصيد الحساب</small>
-        <div style="font-size: 32px; font-weight: 900; color: var(--trust-blue);" id="displayBalance">0.00 د.ج</div>
+        <small style="color: #64748b; font-size: 18px; font-weight: 600;">رصيدك المتاح</small>
+        <div class="balance-amount" id="displayBalance">0.00 د.ج</div>
     </div>
-    <div style="background: #ecfdf5; padding: 10px; border-radius: 12px;">
-        <i class="fas fa-shield-alt" style="color: var(--success-green); font-size: 24px;"></i>
+    <div style="background: #ecfdf5; padding: 20px; border-radius: 50%;">
+        <i class="fas fa-shield-alt" style="color: var(--success-green); font-size: 40px;"></i>
     </div>
 </div>
 
 <div class="main-menu" id="mainMenu">
     <button class="menu-btn" onclick="showSection('sellTypeSection')">
         <i class="fas fa-hand-holding-usd"></i>
-        <span>بدء عملية بيع</span>
+        <span>بيع حساب</span>
     </button>
     <button class="menu-btn" onclick="showSection('marketSection')">
         <i class="fas fa-search-dollar"></i>
-        <span>تصفح العروض</span>
+        <span>تصفح السوق</span>
     </button>
     <button class="menu-btn" onclick="showSection('withdrawSection')">
         <i class="fas fa-file-invoice-dollar"></i>
-        <span>سحب الأرباح</span>
+        <span>سحب الرصيد</span>
     </button>
     <button class="menu-btn" onclick="showSection('depositSection')">
         <i class="fas fa-plus-circle"></i>
