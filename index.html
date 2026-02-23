@@ -964,40 +964,4 @@
   
 
     <di
-    <script>
-        // هذا هو الكود الذي سيفعل الأزرار
-        function showPage(pageId) {
-            // 1. إخفاء الواجهة الرئيسية (main-content)
-            const main = document.getElementById('main-content');
-            if(main) main.style.display = 'none';
-
-            // 2. إظهار حاوية الصفحات (pages-container)
-            const container = document.getElementById('pages-container');
-            if(container) container.style.display = 'block';
-
-            // 3. إخفاء كل الصفحات الفرعية داخل الحاوية أولاً
-            const allPages = document.querySelectorAll('#pages-container > div');
-            allPages.forEach(p => p.style.display = 'none');
-
-            // 4. إظهار الصفحة التي طلبتها فقط بناءً على الـ ID
-            const target = document.getElementById(pageId);
-            if(target) target.style.display = 'block';
-
-            window.scrollTo(0, 0); // رفع الصفحة للأعلى
-        }
-
-        // وظيفة زر العودة للرئيسية
-        function goBack() {
-            document.getElementById('pages-container').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-        }
-
-        // وظيفة فتح القائمة الجانبية
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('open');
-        }
-    </script>
-
-</body> </html>
-
 
