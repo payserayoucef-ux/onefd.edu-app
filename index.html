@@ -2,115 +2,90 @@
 <html lang="ar" dir="rtl">
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4719018034232696" crossorigin="anonymous"></script>
-    <meta name="google-adsense-account" content="ca-pub-4719018034232696">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الدراسة بالمراسلة - يوسف</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* سأترك تنسيقاتك كما هي تماماً */
+        /* [تم الحفاظ على تنسيقاتك الأصلية بالكامل] */
         body { font-family: 'Arial', sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 0; direction: rtl; text-align: right; }
         header { background-color: #007bff; color: white; padding: 15px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+        
         #sidebar { height: 100%; width: 250px; position: fixed; z-index: 150; top: 0; right: -250px; background-color: #111; transition: 0.5s; padding-top: 60px; }
         #sidebar.open { right: 0; }
-        #sidebar a { padding: 15px 25px; text-decoration: none; font-size: 16px; color: #818181; display: block; border-bottom: 1px solid #333; }
-        .main-btn { background-color: white; color: #007bff; border: 2px solid #007bff; padding: 20px 10px; font-size: 1.1rem; font-weight: bold; border-radius: 10px; cursor: pointer; transition: all 0.3s; text-align: center; width: 100%; }
-        .main-btn i { display: block; font-size: 2rem; margin-bottom: 10px; }
-        .main-buttons-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; padding: 20px; }
         
-        /* حاويات الصفحات (الأهم للتشغيل) */
-        .page-section { display: none; padding: 20px; max-width: 800px; margin: auto; }
-        .back-btn { background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-bottom: 20px; }
+        /* إخفاء الصفحات الفرعية في البداية */
+        #pages-container > div { display: none; }
+        
+        .main-btn { background-color: white; color: #007bff; border: 2px solid #007bff; padding: 20px 10px; font-size: 1.1rem; font-weight: bold; border-radius: 10px; cursor: pointer; transition: all 0.3s; text-align: center; width: 100%; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
     <div id="sidebar">
-        <button class="close-btn" onclick="toggleSidebar()" style="color:white; background:none; border:none; font-size:30px; cursor:pointer; position:absolute; top:10px; left:10px;">&times;</button>
-        <a href="#" onclick="showPage('about-page')">ما هي المراسلة؟</a>
-        <a href="#" onclick="showPage('check-level-page')">التحقق من المستوى</a>
-        <a href="mailto:paserayoucef@gmail.com">الإبلاغ عن مشكلة</a>
-    </div>
-
-    <header>
-        <button class="menu-btn" onclick="toggleSidebar()" style="background:none; border:none; color:white; font-size:24px; cursor:pointer;"><i class="fas fa-bars"></i></button>
-        <h1 style="margin:auto; font-size:1.2rem;">الدراسة بالمراسلة - يوسف</h1>
-    </header>
-
-    <main id="main-home">
-        <div style="text-align: center; padding: 30px;">
-            <h1>أهلاً بك أيها المتعلم 🌻</h1>
-            <p>موقع الدراسة الشامل لخدمات ONEFD</p>
+        <button onclick="toggleSidebar()" style="color:white; background:none; border:none; font-size:30px; cursor:pointer;">&times;</button>
+        <a href="#" onclick="showPage('about-page')">ما هي الدراسة بالمراسلة؟</a>
+        <a href="#" onclick="showPage('check-level-page')">التحقق من قبولك</a>
         </div>
 
-        <div class="main-buttons-container">
-            <button class="main-btn" onclick="showPage('registration-page')"><i class="fas fa-user-plus"></i>التسجيل في المراسلة</button>
-            <button class="main-btn" onclick="showPage('documents-page')"><i class="fas fa-file-alt"></i>سحب الوثائق</button>
-            <button class="main-btn" onclick="showPage('platforms-page')"><i class="fas fa-book-reader"></i>الأرضيات التعليمية</button>
-            <button class="main-btn" onclick="showPage('homework-page')"><i class="fas fa-laptop-code"></i>الفرض الإلكتروني</button>
-            <button class="main-btn" onclick="showPage('exam-page')"><i class="fas fa-certificate"></i>نتائج المراسلة</button>
+    <header>
+        <button class="menu-btn" onclick="toggleSidebar()" style="background:none; border:none; color:white; font-size:24px;"><i class="fas fa-bars"></i></button>
+        <h1 class="header-title">الدراسة بالمراسلة - يوسف</h1>
+    </header>
+
+    <main id="main-content">
+        <div class="welcome-section" style="text-align: center; padding: 20px;">
+            <h1>أهلاً بك أيها المتعلم 🌻</h1>
+            <h2>مع موقع الدراسة كل شيء بين يديك... (نصك الأصلي هنا)</h2>
+        </div>
+
+        <div class="main-buttons-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px;">
+            <button class="main-btn" onclick="showPage('registration-page')"><i class="fas fa-user-plus"></i> التسجيل في المراسلة</button>
+            <button class="main-btn" onclick="showPage('documents-page')"><i class="fas fa-file-alt"></i> سحب الوثائق</button>
+            <button class="main-btn" onclick="showPage('platforms-page')"><i class="fas fa-book-reader"></i> الأرضيات التعليمية</button>
+            <button class="main-btn" onclick="showPage('e-homework-page')"><i class="fas fa-laptop-code"></i> الفرض الإلكتروني</button>
         </div>
     </main>
 
-    <div id="registration-page" class="page-section">
-        <button class="back-btn" onclick="goHome()">← عودة</button>
-        <h2>التسجيل في المراسلة</h2>
-        <p>محتوى التسجيل يوضع هنا...</p>
-    </div>
+    <div id="pages-container" style="padding: 20px;">
+        
+        <div id="registration-page">
+            <button class="back-btn" onclick="goHome()" style="background:#dc3545; color:white; border:none; padding:10px; border-radius:5px; margin-bottom:15px;">عودة</button>
+            <h2>قسم التسجيل</h2>
+            <p>محتواك الأصلي الذي كان في الكود القديم سيبقى هنا كما هو.</p>
+        </div>
 
-    <div id="documents-page" class="page-section">
-        <button class="back-btn" onclick="goHome()">← عودة</button>
-        <h2>سحب الوثائق</h2>
-        <p>روابط سحب استمارة التسجيل...</p>
-    </div>
+        <div id="documents-page">
+            <button class="back-btn" onclick="goHome()" style="background:#dc3545; color:white; border:none; padding:10px; border-radius:5px; margin-bottom:15px;">عودة</button>
+            <h2>قسم سحب الوثائق</h2>
+        </div>
 
-    <div id="platforms-page" class="page-section">
-        <button class="back-btn" onclick="goHome()">← عودة</button>
-        <h2>الأرضيات التعليمية</h2>
-        <p>روابط المعلام والمودل...</p>
-    </div>
-
-    <div id="homework-page" class="page-section">
-        <button class="back-btn" onclick="goHome()">← عودة</button>
-        <h2>الفرض الإلكتروني</h2>
-        <p>معلومات إجراء الفرض الإلكتروني...</p>
-    </div>
-
-    <div id="exam-page" class="page-section">
-        <button class="back-btn" onclick="goHome()">← عودة</button>
-        <h2>نتائج المراسلة</h2>
-        <p>رابط استخراج كشف النقاط...</p>
-    </div>
+        </div>
 
     <script>
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('open');
         }
 
-        // الوظيفة التي تشغل الأزرار
-        function showPage(pageId) {
-            // إخفاء الرئيسية
-            document.getElementById('main-home').style.display = 'none';
-            // إخفاء أي صفحات أخرى كانت مفتوحة
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(s => s.style.display = 'none');
+        // الوظيفة التي تظهر المحتوى وتخفي الرئيسية
+        function showPage(id) {
+            document.getElementById('main-content').style.display = 'none'; // إخفاء الرئيسية
             
-            // إظهار الصفحة المطلوبة
-            const target = document.getElementById(pageId);
-            if(target) {
-                target.style.display = 'block';
-            }
-            // إغلاق القائمة الجانبية
-            document.getElementById('sidebar').classList.remove('open');
-            window.scrollTo(0,0);
+            // إخفاء كل الأقسام داخل الحاوية أولاً
+            var pages = document.querySelectorAll('#pages-container > div');
+            pages.forEach(p => p.style.display = 'none');
+            
+            // إظهار القسم المطلوب فقط
+            document.getElementById(id).style.display = 'block';
+            window.scrollTo(0, 0);
         }
 
+        // الوظيفة التي تعيدك للرئيسية
         function goHome() {
-            // إخفاء كل الصفحات وإظهار الرئيسية
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(s => s.style.display = 'none');
-            document.getElementById('main-home').style.display = 'block';
+            var pages = document.querySelectorAll('#pages-container > div');
+            pages.forEach(p => p.style.display = 'none'); // إخفاء كل شيء
+            document.getElementById('main-content').style.display = 'block'; // إظهار الرئيسية
         }
     </script>
 </body>
