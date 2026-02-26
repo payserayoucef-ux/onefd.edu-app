@@ -6,45 +6,140 @@
     <title>الدراسة بالمراسلة - يوسف</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4719018034232696" crossorigin="anonymous"></script>
-    <meta name="description" content="البوابة الرسمية لخدمات ONEFD...">
-    
+    <meta name="google-adsense-account" content="ca-pub-4719018034232696">
+    <meta name="description" content="البوابة الرسمية لخدمات ONEFD: التسجيل في المراسلة 2026/2025، تحميل فروض المراقبة الذاتية، شرح الفرض الإلكتروني، ونتائج المراسلة.">
+    <meta name="keywords" content="الدراسة بالمراسلة في الجزائر, ديوان التعليم والتكوين عن بعد, ONEFD, التسجيل في المراسلة, فروض المراسلة, الفرض الإلكتروني, نتائج المراسلة, شهادة إثبات المستوى, امتحان المراسلة, المراسلة 2025, 2026">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* [ ... أكواد CSS الخاصة بك تظل كما هي ... ] */
-        body { font-family: 'Arial', sans-serif; background-color: #f4f7f6; margin: 0; direction: rtl; text-align: right; }
-        header { background-color: #007bff; color: white; padding: 15px; display: flex; align-items: center; position: sticky; top: 0; z-index: 100; }
-        .header-title { margin: 0 auto; font-size: 1.2rem; }
-        .menu-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
-        
-        #sidebar { height: 100%; width: 250px; position: fixed; z-index: 150; top: 0; right: -250px; background-color: #111; transition: 0.5s; padding-top: 60px; }
-        #sidebar.open { right: 0; }
-        #sidebar a { padding: 15px 25px; text-decoration: none; color: #818181; display: block; border-bottom: 1px solid #333; }
-        #sidebar a:hover { color: #fff; background-color: #007bff; }
-        .close-btn { position: absolute; top: 10px; left: 10px; font-size: 30px; color: white; background: none; border: none; cursor: pointer; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+            overflow-x: hidden;
+        }
 
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-title { margin: 0 auto; font-size: 1.2rem; }
+
+        .menu-btn {
+            background: none; border: none; color: white;
+            font-size: 1.5rem; cursor: pointer; padding: 0 10px;
+        }
+
+        /* القائمة الجانبية */
+        #sidebar {
+            height: 100%; width: 250px; position: fixed;
+            z-index: 150; top: 0; right: -250px;
+            background-color: #111; transition: 0.5s;
+            padding-top: 60px; box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #sidebar.open { right: 0; }
+
+        #sidebar a {
+            padding: 15px 25px; text-decoration: none;
+            font-size: 16px; color: #818181; display: block;
+            transition: 0.3s; border-bottom: 1px solid #333;
+        }
+
+        #sidebar a:hover { color: #f1f1f1; background-color: #007bff; }
+
+        .close-btn {
+            position: absolute; top: 10px; left: 15px;
+            font-size: 30px; color: white; background: none; border: none; cursor: pointer;
+        }
+
+        /* المحتوى الرئيسي */
         #main-content { padding: 20px; max-width: 800px; margin: 0 auto; }
-        .main-buttons-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
-        .main-btn { background: white; border: 2px solid #007bff; padding: 20px; border-radius: 10px; cursor: pointer; text-align: center; transition: 0.3s; }
-        .main-btn:hover { background: #007bff; color: white; }
-        
+
+        .welcome-section { text-align: center; padding: 20px 0; color: #007bff; }
+        .welcome-section h2 { font-size: 1.1rem; color: #555; font-weight: normal; line-height: 1.6; }
+
+        .main-buttons-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px; margin-top: 20px;
+        }
+
+        .main-btn {
+            background-color: white; color: #007bff; border: 2px solid #007bff;
+            padding: 20px 10px; font-size: 1rem; font-weight: bold;
+            border-radius: 10px; cursor: pointer; transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: center;
+        }
+
+        .main-btn i { display: block; font-size: 2rem; margin-bottom: 10px; }
+
+        .main-btn:hover { background-color: #007bff; color: white; transform: translateY(-3px); }
+
+        .exam-info-btn { border-style: dashed; }
+
         /* حاوية الصفحات */
-        #pages-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 200; display: none; overflow-y: auto; padding: 20px; box-sizing: border-box;}
-        .sub-page { background: white; padding: 20px; border-radius: 10px; max-width: 700px; margin: 20px auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .back-btn { background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-bottom: 20px; }
+        #pages-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #f4f7f6; z-index: 200; display: none;
+            overflow-y: auto; padding: 20px; box-sizing: border-box;
+        }
+
+        .sub-page {
+            max-width: 800px; margin: 40px auto; background: white;
+            padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .back-btn {
+            background-color: #dc3545; color: white; border: none;
+            padding: 10px 20px; border-radius: 5px; cursor: pointer;
+            display: flex; align-items: center; gap: 8px; margin-bottom: 15px;
+        }
+
+        /* أيقونات التواصل */
+        .social-media-container {
+            display: flex; justify-content: center; align-items: center;
+            padding: 20px 0; gap: 15px; flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 45px; height: 45px; display: flex; align-items: center;
+            justify-content: center; border-radius: 50%; color: white;
+            font-size: 1.5rem; transition: 0.3s;
+        }
+
+        .telegram { background-color: #0088cc; }
+        .whatsapp { background-color: #25d366; }
+        .instagram { background-color: #c32aa3; }
+        .facebook { background-color: #4267b2; }
+        .youtube { background-color: #ff0000; }
         
-        .social-media-container { display: flex; justify-content: center; gap: 15px; padding: 20px; }
-        .social-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; }
-        .telegram { background: #0088cc; } .whatsapp { background: #25d366; } .facebook { background: #4267b2; }
+        .social-icon:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
 
     <div id="sidebar">
         <button class="close-btn" onclick="toggleSidebar()">&times;</button>
-        <a href="#" onclick="showPage('about-page')"><i class="fas fa-lightbulb"></i> ما هي المراسلة؟</a>
-        <a href="#" onclick="showPage('check-level-page')"><i class="fas fa-check"></i> التحقق من القبول</a>
+        <a href="#" onclick="showPage('about-page')"><i class="fas fa-lightbulb"></i> ما هي الدراسة بالمراسلة؟</a>
+        <a href="#" onclick="showPage('check-level-page')"><i class="fas fa-check-circle"></i> التحقق من القبول</a>
+        <a href="#" onclick="showPage('centers-page')"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
+        <a href="#" onclick="showPage('donation-page')"><i class="fas fa-heart"></i> التبرع لدعم الموقع</a>
         <a href="#" onclick="shareApp()"><i class="fas fa-share-alt"></i> مشاركة الموقع</a>
+        <a href="mailto:paserayoucef@gmail.com" style="background:#dc3545; color:white; margin:10px; border-radius:5px;">الإبلاغ عن مشكلة</a>
     </div>
 
     <header>
@@ -53,72 +148,105 @@
     </header>
 
     <main id="main-content">
-        <div class="welcome-section" style="text-align: center; padding: 20px;">
+        <div class="welcome-section">
             <h1>أهلاً بك أيها المتعلم 🌻</h1>
-            <p>كل ما تحتاجه للدراسة عن بعد في مكان واحد.</p>
+            <h2>موقع يوسف يجمع لك: التسجيل، تحميل الفروض الذاتية 1 و 2، الفرض الإلكتروني، سحب الاستدعاءات، ونتائج المراسلة في مكان واحد.</h2>
         </div>
 
         <div class="main-buttons-container">
-            <button class="main-btn" onclick="showPage('registration-page')"><i class="fas fa-user-plus"></i><br>التسجيل</button>
-            <button class="main-btn" onclick="showPage('documents-page')"><i class="fas fa-file-alt"></i><br>سحب الوثائق</button>
-            <button class="main-btn" onclick="showPage('exam-info-page')"><i class="fas fa-bullhorn"></i><br>معلومات الشهادة</button>
+            <button class="main-btn" onclick="showPage('reg-page')"><i class="fas fa-user-plus"></i> التسجيل في المراسلة</button>
+            <button class="main-btn" onclick="showPage('docs-page')"><i class="fas fa-file-alt"></i> سحب الوثائق</button>
+            <button class="main-btn" onclick="showPage('platforms-page')"><i class="fas fa-book-reader"></i> الأرضيات التعليمية</button>
+            <button class="main-btn" onclick="showPage('homework-page')"><i class="fas fa-laptop-code"></i> الفرض الإلكتروني</button>
+            <button class="main-btn" onclick="showPage('cert-page')"><i class="fas fa-certificate"></i> التسجيل في الشهادة</button>
+            <button class="main-btn exam-info-btn" onclick="showPage('info-page')"><i class="fas fa-bullhorn"></i> معلومات الشهادة</button>
         </div>
 
+        <hr style="margin: 30px 0; opacity: 0.2;">
+
         <div class="social-media-container">
+            <p style="width:100%; text-align:center; font-weight:bold;">تواصل معنا:</p>
             <a href="https://t.me/youcef_info_2" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
             <a href="https://wa.me/213665074666" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/youcef.info2" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/g/1BfUsNqXFf/" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com/@youcef_info" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
         </div>
     </main>
 
     <div id="pages-container">
-        <button class="back-btn" onclick="closePage()">إغلاق العودة للرئيسية</button>
+        <button class="back-btn" onclick="closePage()"><i class="fas fa-arrow-right"></i> عودة للرئيسية</button>
         
-        <div id="registration-page" class="sub-page" style="display:none;">
-            <h2>صفحة التسجيل</h2>
-            <p>هنا تضع روابط أو معلومات التسجيل في المراسلة.</p>
+        <div id="reg-page" class="sub-page" style="display:none;">
+            <h2>التسجيل في المراسلة 2025/2026</h2>
+            <p>يمكنك التسجيل عبر الرابط الرسمي للديوان الوطني ONEFD عند افتتاحه.</p>
+            <a href="http://www.onefd.edu.dz" target="_blank" style="color:blue;">انقر هنا للتوجه للموقع الرسمي</a>
+        </div>
+
+        <div id="info-page" class="sub-page" style="display:none;">
+            <h2>معلومات التسجيل في الشهادة</h2>
+            <div style="background:#e7f4ff; padding:15px; border-radius:8px;">
+                <ul>
+                    <li>يتم التسجيل عادة في شهر أكتوبر ونوفمبر.</li>
+                    <li>يجب التأكد من صحة المعلومات الشخصية عند التسجيل.</li>
+                    <li style="color:red; font-weight:bold;">ملاحظة: حقوق التسجيل تدفع عبر البريد (الذهبية أو حوالة).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="centers-page" class="sub-page" style="display:none;">
+            <h2>الاتصال بالمراكز الولائية</h2>
+            <p>اختر ولايتك للحصول على رقم الهاتف والعنوان:</p>
+            <select style="width:100%; padding:10px;">
+                <option>الجزائر (وسط، شرق، غرب)</option>
+                <option>وهران</option>
+                <option>قسنطينة</option>
+                <option>المسيلة</option>
+                </select>
+        </div>
+
+        <div id="check-level-page" class="sub-page" style="display:none;">
+            <h2>التحقق من قبولك في المستوى الأعلى</h2>
+            <input type="number" placeholder="أدخل رقم التسجيل" style="width:90%; padding:10px; margin-bottom:10px;">
+            <button style="background:#28a745; color:white; border:none; padding:10px; width:100%;">تحقق الآن</button>
         </div>
 
         <div id="about-page" class="sub-page" style="display:none;">
             <h2>ما هي الدراسة بالمراسلة؟</h2>
-            <p>هي نظام تعليمي تابع للديوان الوطني للتعليم والتكوين عن بعد (ONEFD)...</p>
+            <p>هي نظام تعليمي مرن يسمح للطلبة الذين انقطعوا عن الدراسة بالعودة وتحصيل شهادات رسمية (بيام، باك) معترف بها من طرف الدولة.</p>
         </div>
-
-        </div>
+    </div>
 
     <script>
-        // دالة فتح وإغلاق القائمة الجانبية
+        // دالة فتح/إغلاق القائمة الجانبية
         function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            if (sidebar.style.right === "0px") {
-                sidebar.style.right = "-250px";
-            } else {
-                sidebar.style.right = "0px";
-            }
+            const sb = document.getElementById('sidebar');
+            sb.classList.toggle('open');
         }
 
-        // دالة عرض الصفحات الفرعية
+        // دالة إظهار الصفحات
         function showPage(pageId) {
-            // إخفاء جميع الصفحات أولاً داخل الحاوية
+            // إخفاء كل الصفحات الفرعية أولاً
             const pages = document.querySelectorAll('.sub-page');
             pages.forEach(p => p.style.display = 'none');
 
             // إظهار الحاوية الكبيرة
             document.getElementById('pages-container').style.display = 'block';
             
-            // إظهار الصفحة المطلوبة فقط
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.style.display = 'block';
+            // إظهار الصفحة المطلوبة
+            const selected = document.getElementById(pageId);
+            if(selected) {
+                selected.style.display = 'block';
             } else {
-                alert("هذه الصفحة قيد التطوير حالياً.");
+                alert("هذا القسم سيتم تحديثه قريباً بالروابط الرسمية.");
             }
-            
-            // إغلاق القائمة الجانبية إذا كانت مفتوحة
-            document.getElementById('sidebar').style.right = "-250px";
+
+            // إغلاق القائمة الجانبية تلقائياً
+            document.getElementById('sidebar').classList.remove('open');
+            window.scrollTo(0,0);
         }
 
-        // دالة إغلاق الصفحة والعودة للرئيسية
+        // دالة العودة
         function closePage() {
             document.getElementById('pages-container').style.display = 'none';
         }
@@ -128,10 +256,19 @@
             if (navigator.share) {
                 navigator.share({
                     title: 'موقع المراسلة - يوسف',
+                    text: 'كل ما تحتاجه للدراسة بالمراسلة في الجزائر',
                     url: window.location.href
                 });
             } else {
-                alert("نسخ الرابط: " + window.location.href);
+                alert("انسخ الرابط وشاركه: " + window.location.href);
+            }
+        }
+
+        // إغلاق القائمة عند الضغط خارجها
+        window.onclick = function(event) {
+            const sb = document.getElementById('sidebar');
+            if (event.target == sb) {
+                sb.classList.remove('open');
             }
         }
     </script>
