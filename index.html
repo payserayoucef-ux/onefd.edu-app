@@ -979,7 +979,26 @@
     const html = `
         <div class="sub-page">
             <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            // --- دالة صفحة التبرع (أضف هذا الكود قبل </script>) ---
+function buildDonationPage() {
+    const html = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
             <h2>دعم وتطوير الموقع ☕</h2>
+            <div style="text-align: center; padding: 20px;">
+                <p>إذا كنت تستفيد من خدماتنا، يمكنك المساهمة في استمرار الموقع وتطويره من خلال التبرع البسيط.</p>
+                <div style="background: #fff9c4; padding: 15px; border-radius: 10px; border: 1px dashed #fbc02d; margin-top: 20px; direction: ltr;">
+                    <p><b>طرق الدفع المتاحة حالياً:</b></p>
+                    <p><i class="fas fa-credit-card"></i> <b>BaridiMob (RIP):</b> <br> <span style="user-select: all; color: #d32f2f; font-weight: bold;">00799999002233445566</span></p>
+                    <p><i class="fas fa-university"></i> <b>CCP:</b> <br> <span style="user-select: all; color: #d32f2f; font-weight: bold;">22334455 مفتاح 88</span></p>
+                </div>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: #666;">شكراً لكل من يدعمنا لنستمر في خدمتكم مجاناً.</p>
+            </div>
+        </div>
+    `;
+    pagesContainer.innerHTML = html;
+}
+                <h2>دعم وتطوير الموقع ☕</h2>
             <div style="text-align: center; padding: 20px;">
                 <p>إذا كنت تستفيد من خدماتنا، يمكنك المساهمة في استمرار الموقع وتطويره من خلال التبرع البسيط.</p>
                 <div style="background: #fff9c4; padding: 15px; border-radius: 10px; border: 1px dashed #fbc02d; margin-top: 20px;">
@@ -1127,6 +1146,7 @@
     </script>
 </body>
 </html>
+
 
 
 
