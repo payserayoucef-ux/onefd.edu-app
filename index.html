@@ -1107,9 +1107,38 @@
     document.getElementById('main-content').style.display = 'none';
     pagesContainer.style.display = 'block';
 }
+        function openArticle(articleId) {
+    const pagesContainer = document.getElementById('pages-container');
+    let content = "";
+
+    // --- إضافة مقال التعريف بالدراسة بالمراسلة ---
+    if (articleId === 'about-correspondence') {
+        content = `
+            <h2>تعرف على الدراسة بالمراسلة في الجزائر</h2>
+            <p>الدراسة بالمراسلة هي نظام تعليمي يتيح للطلاب متابعة دراستهم والحصول على شهادات تعليمية دون الحاجة للحضور اليومي إلى المؤسسات التعليمية.</p>
+            <h3>مميزات هذا النظام:</h3>
+            <ul>
+                <li><strong>المرونة:</strong> يمكنك الدراسة في الوقت الذي يناسبك ومن أي مكان.</li>
+                <li><strong>التكلفة:</strong> تعتبر أقل تكلفة مقارنة بالتعليم النظامي.</li>
+                <li><strong>الشهادات:</strong> الشهادات التي يتحصل عليها الطالب معترف بها رسمياً.</li>
+            </ul>
+            <p>يهدف الديوان الوطني للتعليم والتكوين عن بعد (ONEFD) إلى توفير فرص ثانية للتعليم لمن انقطعوا عن الدراسة أو من يرغبون في رفع مستواهم العلمي.</p>
+        `;
+    }
+    // يمكنك إضافة شروط else if أخرى للمقالات القادمة
+
+    const html = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="buildArticlesPage()"><i class="fas fa-arrow-right"></i> العودة للقائمة</button>
+            <div style="padding: 20px; line-height: 1.6;">${content}</div>
+        </div>
+    `;
+    pagesContainer.innerHTML = html;
+}
     </script>
 </body>
 </html>
+
 
 
 
