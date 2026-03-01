@@ -506,6 +506,18 @@
             pagesContainer.style.display = 'block';
            
             pagesContainer.innerHTML = '';
+            // --- دالة الساعة الرقمية ---
+    function updateClock() {
+        const now = new Date();
+        // تنسيق الوقت (ساعة:دقيقة:ثانية)
+        const timeString = now.toLocaleTimeString('ar-EG', { hour12: false });
+        document.getElementById('clock').innerText = timeString;
+    }
+
+    // تحديث الساعة كل ثانية
+    setInterval(updateClock, 1000);
+    // تشغيل الساعة فور تحميل الصفحة
+    updateClock();
            
             // إضافة دوال buildPage() لتشغيل الأزرار
             if (pageId === 'registration-page') {
@@ -1090,6 +1102,7 @@
     </script>
 </body>
 </html>
+
 
 
 
