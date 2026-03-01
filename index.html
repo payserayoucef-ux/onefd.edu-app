@@ -2,54 +2,51 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>مستخرج الوثائق الإدارية - الجزائر</title>
+    <title>مستخرج التصريح الشرفي الرسمي</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
-        body { font-family: 'Arial', sans-serif; background: #f0f0f0; padding: 20px; }
-        .form-container { max-width: 700px; margin: auto; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .form-container h2 { text-align: center; color: #333; margin-bottom: 20px; }
-        input, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
-        button { width: 100%; padding: 15px; background: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px; font-weight: bold; }
-        button:hover { background: #219150; }
+        body { font-family: 'Arial', sans-serif; background: #555; padding: 20px; }
+        .setup-box { max-width: 600px; margin: 0 auto 20px; background: white; padding: 20px; border-radius: 8px; }
+        .setup-box input, .setup-box textarea { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; background: #1e8449; color: white; border: none; font-size: 18px; cursor: pointer; border-radius: 4px; }
 
-        /* إعدادات ورقة الـ PDF */
-        #printable-area {
-            display: none; /* مخفي في الموقع ويظهر في الـ PDF */
+        /* تنسيق الورقة المطابق للصور */
+        #paper {
             width: 210mm;
             height: 297mm;
-            padding: 25mm 20mm;
+            padding: 25mm 15mm;
             background: white;
-            box-sizing: border-box;
+            margin: auto;
+            display: none; /* يظهر عند الطباعة فقط */
             position: relative;
             color: black;
-            direction: rtl;
+            box-sizing: border-box;
         }
 
-        .pdf-title { text-align: center; font-size: 28px; font-weight: bold; text-decoration: underline; margin-bottom: 60px; }
-        .pdf-intro { font-size: 20px; font-weight: bold; margin-bottom: 30px; }
+        .title { text-align: center; font-size: 28px; font-weight: bold; text-decoration: underline; margin-bottom: 50px; }
+        .intro { text-align: right; font-weight: bold; font-size: 20px; margin-bottom: 25px; }
         
-        /* جعل الأسطر تمتد بكامل العرض */
-        .pdf-row { 
+        /* نظام الأسطر الممتدة من الهامش للهامش */
+        .line { 
             display: flex; 
-            justify-content: space-between; /* توزيع الكلمات على كامل السطر */
-            align-items: center; 
+            justify-content: space-between; 
+            align-items: baseline; 
             width: 100%; 
             margin-bottom: 25px; 
-            font-size: 19px;
+            font-size: 18px;
         }
 
-        .field-label { font-weight: bold; white-space: nowrap; }
-        .field-value { border-bottom: 1px dotted #000; flex-grow: 1; margin: 0 10px; text-align: center; min-height: 25px; }
+        .label { font-weight: bold; white-space: nowrap; }
+        .dots { border-bottom: 1px dotted #000; flex-grow: 1; margin: 0 5px; text-align: center; font-weight: normal; min-height: 22px; }
 
-        .reason-box { margin-top: 40px; font-size: 20px; line-height: 1.8; }
-        .reason-text { font-weight: bold; border-bottom: 1px dotted #000; display: inline-block; width: 70%; text-align: center; }
+        .reason-section { margin-top: 50px; font-size: 19px; }
+        .reason-content { display: block; width: 100%; border-bottom: 1px dotted #000; margin-top: 15px; min-height: 30px; text-align: center; }
 
-        /* منطقة الإمضاءات */
-        .pdf-footer {
+        .footer {
             position: absolute;
-            bottom: 4.5cm;
-            left: 20mm;
-            right: 20mm;
+            bottom: 4.5cm; /* الارتفاع المطلوب من الأسفل */
+            left: 15mm;
+            right: 15mm;
             display: flex;
             justify-content: space-between;
             font-size: 20px;
@@ -59,61 +56,61 @@
 </head>
 <body>
 
-<div class="form-container">
-    <h2>تعبئة بيانات التصريح الشرفي</h2>
-    <input type="text" id="inName" placeholder="الاسم واللقب">
+<div class="setup-box">
+    <h3 style="text-align: center;">إدخال معلومات التصريح</h3>
+    <input type="text" id="inName" placeholder="السيد(ة)">
     <input type="text" id="inBirthDate" placeholder="المولود(ة) بتاريخ">
-    <input type="text" id="inBirthPlace" placeholder="بـ (مكان الميلاد)">
-    <input type="number" id="inIdNum" placeholder="رقم بطاقة التعريف الوطنية">
+    <input type="text" id="inBirthPlace" placeholder="بـ">
+    <input type="text" id="inIdNum" placeholder="رقم بطاقة التعريف الوطنية">
     <input type="text" id="inIdDate" placeholder="الصادرة بتاريخ">
     <input type="text" id="inMun" placeholder="عن بلدية">
     <input type="text" id="inProv" placeholder="ولاية">
-    <textarea id="inReason" rows="3" placeholder="أصرح بمقتضى شرفي بأنني... (مثال: لا أمارس أي نشاط مأجور)"></textarea>
-    <button onclick="generatePDF()">تحميل الوثيقة PDF</button>
+    <textarea id="inReason" rows="3" placeholder="أصرح بمقتضى شرفي بأنني..."></textarea>
+    <button onclick="download()">استخراج بصيغة PDF</button>
 </div>
 
-<div id="printable-area">
-    <div class="pdf-title">تصــريح شـرفــي</div>
+<div id="paper">
+    <div class="title">تصـريح شـرفــي</div>
     
-    <div class="pdf-intro">أنا الممضي أسفله،</div>
+    <div class="intro">أنا الممضي أسفله،</div>
 
-    <div class="pdf-row">
-        <span class="field-label">السيد(ة):</span>
-        <span class="field-value" id="outName"></span>
-        <span class="field-label">المولود(ة) بتاريخ:</span>
-        <span class="field-value" id="outBirthDate"></span>
-        <span class="field-label">بـ:</span>
-        <span class="field-value" id="outBirthPlace"></span>
+    <div class="line">
+        <span class="label">السيد(ة):</span>
+        <span class="dots" id="outName"></span>
+        <span class="label">المولود(ة) بتاريخ:</span>
+        <span class="dots" id="outBirthDate"></span>
+        <span class="label">بـ:</span>
+        <span class="dots" id="outBirthPlace"></span>
     </div>
 
-    <div class="pdf-row">
-        <span class="field-label">و الحامل لبطاقة التعريف الوطنية رقم:</span>
-        <span class="field-value" id="outIdNum"></span>
-        <span class="field-label">الصادرة بتاريخ:</span>
-        <span class="field-value" id="outIdDate"></span>
+    <div class="line">
+        <span class="label">و الحامل لبطاقة التعريف الوطنية رقم:</span>
+        <span class="dots" id="outIdNum"></span>
+        <span class="label">الصادرة بتاريخ:</span>
+        <span class="dots" id="outIdDate"></span>
     </div>
 
-    <div class="pdf-row" style="width: 80%;">
-        <span class="field-label">عن بلدية:</span>
-        <span class="field-value" id="outMun"></span>
-        <span class="field-label">ولاية:</span>
-        <span class="field-value" id="outProv"></span>
+    <div class="line" style="width: 80%; margin-right: auto; margin-left: 0;">
+        <span class="label">عن بلدية:</span>
+        <span class="dots" id="outMun"></span>
+        <span class="label">ولاية:</span>
+        <span class="dots" id="outProv"></span>
     </div>
 
-    <div class="reason-box">
-        <span class="field-label">أصرح بمقتضى شرفي بأنني:</span>
-        <span class="reason-text" id="outReason"></span>
+    <div class="reason-section">
+        <span class="label">أصرح بمقتضى شرفي بأنني:</span>
+        <span class="reason-content" id="outReason"></span>
     </div>
 
-    <div class="pdf-footer">
+    <div class="footer">
         <span>مصادقة البلدية</span>
         <span>إمضاء المعني</span>
     </div>
 </div>
 
 <script>
-    function generatePDF() {
-        // ربط المدخلات بالوثيقة
+    function download() {
+        // تعبئة البيانات في القالب
         document.getElementById('outName').innerText = document.getElementById('inName').value;
         document.getElementById('outBirthDate').innerText = document.getElementById('inBirthDate').value;
         document.getElementById('outBirthPlace').innerText = document.getElementById('inBirthPlace').value;
@@ -123,14 +120,14 @@
         document.getElementById('outProv').innerText = document.getElementById('inProv').value;
         document.getElementById('outReason').innerText = document.getElementById('inReason').value;
 
-        const element = document.getElementById('printable-area');
+        const element = document.getElementById('paper');
         element.style.display = 'block';
 
         const opt = {
             margin: 0,
-            filename: 'تصريح_شرفي_رسمي.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 3 },
+            filename: 'تصريح_شرفي.pdf',
+            image: { type: 'jpeg', quality: 1 },
+            html2canvas: { scale: 4, useCORS: true, letterRendering: true },
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
 
