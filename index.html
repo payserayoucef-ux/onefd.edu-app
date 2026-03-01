@@ -2,51 +2,62 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>مستخرج التصريح الشرفي الرسمي</title>
+    <title>تصريح شرفي - أبعاد دقيقة</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
-        body { font-family: 'Arial', sans-serif; background: #555; padding: 20px; }
-        .setup-box { max-width: 600px; margin: 0 auto 20px; background: white; padding: 20px; border-radius: 8px; }
-        .setup-box input, .setup-box textarea { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        button { width: 100%; padding: 15px; background: #1e8449; color: white; border: none; font-size: 18px; cursor: pointer; border-radius: 4px; }
+        /* تنسيق واجهة المستخدم */
+        body { font-family: 'Arial', sans-serif; background: #e0e0e0; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .input-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 500px; margin-bottom: 20px; }
+        input, textarea { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; background: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 18px; }
 
-        /* تنسيق الورقة المطابق للصور */
-        #paper {
+        /* تنسيق الورقة الرسمية (A4) */
+        #document-to-print {
+            display: none; /* يظهر فقط أثناء التوليد */
             width: 210mm;
             height: 297mm;
-            padding: 15mm 10mm;
             background: white;
-            margin: auto;
-            display: none; /* يظهر عند الطباعة فقط */
+            margin: 0;
+            padding: 20mm; /* هامش 2 سم من جميع الجوانب */
+            box-sizing: border-box;
             position: relative;
             color: black;
-            box-sizing: border-box;
+            line-height: 1.8;
         }
 
-        .title { text-align: center; font-size: 28px; font-weight: bold; text-decoration: underline; margin-bottom: 50px; }
-        .intro { text-align: right; font-weight: bold; font-size: 20px; margin-bottom: 25px; }
-        
-        /* نظام الأسطر الممتدة من الهامش للهامش */
-        .line { 
+        /* العنوان: 2 سم من الأعلى (محسوبة ضمن الـ padding) */
+        .header-title { 
+            text-align: center; 
+            font-size: 26px; 
+            font-weight: bold; 
+            text-decoration: underline; 
+            margin-top: 0; /* يبدأ فوراً بعد الهامش العلوي 2سم */
+            margin-bottom: 40px; 
+        }
+
+        .intro-line { font-weight: bold; font-size: 20px; margin-bottom: 30px; text-align: right; }
+
+        /* الأسطر ممتدة بالكامل */
+        .data-row { 
             display: flex; 
             justify-content: space-between; 
-            align-items: baseline; 
             width: 100%; 
-            margin-bottom: 25px; 
-            font-size: 18px;
+            margin-bottom: 20px; 
+            font-size: 18px; 
         }
 
-        .label { font-weight: bold; white-space: nowrap; }
-        .dots { border-bottom: 1px dotted #000; flex-grow: 1; margin: 0 5px; text-align: center; font-weight: normal; min-height: 22px; }
+        .label-bold { font-weight: bold; white-space: nowrap; }
+        .fill-dots { border-bottom: 1px dotted #000; flex-grow: 1; margin: 0 8px; text-align: center; font-weight: normal; }
 
-        .reason-section { margin-top: 50px; font-size: 19px; }
-        .reason-content { display: block; width: 100%; border-bottom: 1px dotted #000; margin-top: 15px; min-height: 30px; text-align: center; }
+        .statement-area { margin-top: 40px; font-size: 20px; }
+        .reason-output { border-bottom: 1px dotted #000; display: inline-block; width: 65%; text-align: center; font-weight: bold; }
 
-        .footer {
+        /* التواقيع: 2 سم من الأسفل */
+        .footer-signatures {
             position: absolute;
-            bottom: 4.5cm; /* الارتفاع المطلوب من الأسفل */
-            left: 15mm;
-            right: 15mm;
+            bottom: 20mm; /* مسافة 2 سم من الحافة السفلية */
+            left: 20mm;   /* مسافة 2 سم من اليسار */
+            right: 20mm;  /* مسافة 2 سم من اليمين */
             display: flex;
             justify-content: space-between;
             font-size: 20px;
@@ -56,78 +67,78 @@
 </head>
 <body>
 
-<div class="setup-box">
-    <h3 style="text-align: center;">إدخال معلومات التصريح</h3>
-    <input type="text" id="inName" placeholder="السيد(ة)">
-    <input type="text" id="inBirthDate" placeholder="المولود(ة) بتاريخ">
-    <input type="text" id="inBirthPlace" placeholder="بـ">
-    <input type="text" id="inIdNum" placeholder="رقم بطاقة التعريف الوطنية">
-    <input type="text" id="inIdDate" placeholder="الصادرة بتاريخ">
-    <input type="text" id="inMun" placeholder="عن بلدية">
-    <input type="text" id="inProv" placeholder="ولاية">
-    <textarea id="inReason" rows="3" placeholder="أصرح بمقتضى شرفي بأنني..."></textarea>
-    <button onclick="download()">استخراج بصيغة PDF</button>
+<div class="input-card">
+    <h2 style="text-align: center;">نموذج التصريح الشرفي</h2>
+    <input type="text" id="name" placeholder="السيد(ة)">
+    <input type="text" id="dob" placeholder="المولود(ة) بتاريخ">
+    <input type="text" id="pob" placeholder="بـ (مكان الميلاد)">
+    <input type="text" id="idNum" placeholder="رقم بطاقة التعريف الوطنية">
+    <input type="text" id="idDate" placeholder="الصادرة بتاريخ">
+    <input type="text" id="mun" placeholder="عن بلدية">
+    <input type="text" id="prov" placeholder="ولاية">
+    <textarea id="reason" placeholder="أصرح بمقتضى شرفي بأنني..."></textarea>
+    <button onclick="exportToPDF()">تحميل الوثيقة (PDF)</button>
 </div>
 
-<div id="paper">
-    <div class="title">تصـريح شـرفــي</div>
+<div id="document-to-print">
+    <div class="header-title">تصــريح شـرفــي</div>
     
-    <div class="intro">أنا الممضي أسفله،</div>
+    <div class="intro-line">أنا الممضي أسفله،</div>
 
-    <div class="line">
-        <span class="label">السيد(ة):</span>
-        <span class="dots" id="outName"></span>
-        <span class="label">المولود(ة) بتاريخ:</span>
-        <span class="dots" id="outBirthDate"></span>
-        <span class="label">بـ:</span>
-        <span class="dots" id="outBirthPlace"></span>
+    <div class="data-row">
+        <span class="label-bold">السيد(ة):</span>
+        <span class="fill-dots" id="out-name"></span>
+        <span class="label-bold">المولود(ة) بتاريخ:</span>
+        <span class="fill-dots" id="out-dob"></span>
+        <span class="label-bold">بـ:</span>
+        <span class="fill-dots" id="out-pob"></span>
     </div>
 
-    <div class="line">
-        <span class="label">و الحامل لبطاقة التعريف الوطنية رقم:</span>
-        <span class="dots" id="outIdNum"></span>
-        <span class="label">الصادرة بتاريخ:</span>
-        <span class="dots" id="outIdDate"></span>
+    <div class="data-row">
+        <span class="label-bold">و الحامل لبطاقة التعريف الوطنية رقم:</span>
+        <span class="fill-dots" id="out-idNum"></span>
+        <span class="label-bold">الصادرة بتاريخ:</span>
+        <span class="fill-dots" id="out-idDate"></span>
     </div>
 
-    <div class="line" style="width: 80%; margin-right: auto; margin-left: 0;">
-        <span class="label">عن بلدية:</span>
-        <span class="dots" id="outMun"></span>
-        <span class="label">ولاية:</span>
-        <span class="dots" id="outProv"></span>
+    <div class="data-row" style="width: 80%;">
+        <span class="label-bold">عن بلدية:</span>
+        <span class="fill-dots" id="out-mun"></span>
+        <span class="label-bold">ولاية:</span>
+        <span class="fill-dots" id="out-prov"></span>
     </div>
 
-    <div class="reason-section">
-        <span class="label">أصرح بمقتضى شرفي بأنني:</span>
-        <span class="reason-content" id="outReason"></span>
+    <div class="statement-area">
+        <span class="label-bold">أصرح بمقتضى شرفي بأنني:</span>
+        <span class="reason-output" id="out-reason"></span>
     </div>
 
-    <div class="footer">
+    <div class="footer-signatures">
         <span>مصادقة البلدية</span>
         <span>إمضاء المعني</span>
     </div>
 </div>
 
 <script>
-    function download() {
-        // تعبئة البيانات في القالب
-        document.getElementById('outName').innerText = document.getElementById('inName').value;
-        document.getElementById('outBirthDate').innerText = document.getElementById('inBirthDate').value;
-        document.getElementById('outBirthPlace').innerText = document.getElementById('inBirthPlace').value;
-        document.getElementById('outIdNum').innerText = document.getElementById('inIdNum').value;
-        document.getElementById('outIdDate').innerText = document.getElementById('inIdDate').value;
-        document.getElementById('outMun').innerText = document.getElementById('inMun').value;
-        document.getElementById('outProv').innerText = document.getElementById('inProv').value;
-        document.getElementById('outReason').innerText = document.getElementById('inReason').value;
+    function exportToPDF() {
+        // نقل النصوص
+        document.getElementById('out-name').innerText = document.getElementById('name').value;
+        document.getElementById('out-dob').innerText = document.getElementById('dob').value;
+        document.getElementById('out-pob').innerText = document.getElementById('pob').value;
+        document.getElementById('out-idNum').innerText = document.getElementById('idNum').value;
+        document.getElementById('out-idDate').innerText = document.getElementById('idDate').value;
+        document.getElementById('out-mun').innerText = document.getElementById('mun').value;
+        document.getElementById('out-prov').innerText = document.getElementById('prov').value;
+        document.getElementById('out-reason').innerText = document.getElementById('reason').value;
 
-        const element = document.getElementById('paper');
+        const element = document.getElementById('document-to-print');
         element.style.display = 'block';
 
         const opt = {
             margin: 0,
-            filename: 'تصريح_شرفي.pdf',
+            filename: 'تصريح_شرفي_جزائري.pdf',
             image: { type: 'jpeg', quality: 1 },
-            html2canvas: { scale: 4, useCORS: true, letterRendering: true },
+            html2canvas: { scale: 4 },
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
 
@@ -139,4 +150,3 @@
 
 </body>
 </html>
-
