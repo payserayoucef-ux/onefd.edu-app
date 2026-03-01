@@ -1092,7 +1092,39 @@
             pagesContainer.innerHTML = html;
         }
 
-        function buildArticlesPage() {
+       function buildArticlesPage() {
+    const pagesContainer = document.getElementById('pages-container');                
+    
+    // --- قائمة المقالات (هنا سيعرض الموقع المقالات) ---
+    const articles = [
+        { title: "ما هي الدراسة بالمراسلة؟", id: "about-correspondence" }
+        // يمكنك إضافة المزيد هنا لاحقاً
+    ];
+
+    let articlesHtml = '';
+    articles.forEach(art => {
+        articlesHtml += `
+            <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 8px;">
+                <h3 style="color: #007bff; margin-top: 0;">${art.title}</h3>
+                <button class="sub-page-btn" onclick="openArticle('${art.id}')">اقرأ المزيد</button>
+            </div>
+        `;
+    });
+
+    const html = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2>📝 المقالات التعليمية</h2>
+            ${articlesHtml}
+        </div>
+    `;
+    
+    pagesContainer.innerHTML = html;
+    
+    // التأكد من إظهار الصفحة
+    document.getElementById('main-content').style.display = 'none';
+    pagesContainer.style.display = 'block';
+}
     const pagesContainer = document.getElementById('pages-container');                
     const html = `
         <div class="sub-page">
@@ -1138,6 +1170,7 @@
     </script>
 </body>
 </html>
+
 
 
 
