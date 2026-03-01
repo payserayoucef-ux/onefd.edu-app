@@ -438,7 +438,6 @@
             <i class="fas fa-bars"></i>
         </button>
         <h1 class="header-title">الدراسة بالمراسلة - يوسف</h1>
-<span id="clock" style="font-size: 1.5rem; font-weight: bold; font-family: monospace; color: white;"></span>
     </header>
 
     <main id="main-content">
@@ -506,31 +505,6 @@
             pagesContainer.style.display = 'block';
            
             pagesContainer.innerHTML = '';
-            // --- دالة الساعة الرقمية المحدثة ---
-function updateClock() {
-    const now = new Date();
-    
-    // تنسيق الوقت بالأرقام الإنجليزية (en-US)
-    const timeString = now.toLocaleTimeString('en-US', { 
-        hour12: false, 
-        hour: '2-digit', 
-        minute: '2-digit', 
-        second: '2-digit' 
-    });
-    
-    document.getElementById('clock').innerText = timeString;
-}
-
-// تحديث الساعة كل ثانية
-setInterval(updateClock, 1000);
-// تشغيل الساعة فور تحميل الصفحة
-updateClock();
-    }
-
-    // تحديث الساعة كل ثانية
-    setInterval(updateClock, 1000);
-    // تشغيل الساعة فور تحميل الصفحة
-    updateClock();
            
             // إضافة دوال buildPage() لتشغيل الأزرار
             if (pageId === 'registration-page') {
@@ -1115,9 +1089,6 @@ updateClock();
     </script>
 </body>
 </html>
-
-
-
 
 
 
