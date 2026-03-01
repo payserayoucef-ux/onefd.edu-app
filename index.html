@@ -448,9 +448,6 @@
         </div>
 
         <div class="main-buttons-container">
-            <button class="main-btn" onclick="showPage('articles-page')">
-    <i class="fas fa-newspaper"></i> مقالات تعليمية
-</button>
             <button class="main-btn" onclick="showPage('registration-page')">
                 <i class="fas fa-user-plus"></i> التسجيل في المراسلة
             </button>
@@ -509,12 +506,9 @@
            
             pagesContainer.innerHTML = '';
            
-            // إضافة دوال buildPage();لتشغيل الأزرار
+            // إضافة دوال buildPage() لتشغيل الأزرار
             if (pageId === 'registration-page') {
                 buildRegistrationPage();
-            } else if (pageId === 'articles-page') {
-                buildArticlesPage();
-
             } else if (pageId === 'documents-page') {
                 buildDocumentsPage();
             } else if (pageId === 'platforms-page') {
@@ -1092,86 +1086,9 @@
             pagesContainer.innerHTML = html;
         }
 
-       function buildArticlesPage() {
-    const pagesContainer = document.getElementById('pages-container');                
-    
-    // --- قائمة المقالات (هنا سيعرض الموقع المقالات) ---
-    const articles = [
-        { title: "ما هي الدراسة بالمراسلة؟", id: "about-correspondence" }
-        // يمكنك إضافة المزيد هنا لاحقاً
-    ];
-
-    let articlesHtml = '';
-    articles.forEach(art => {
-        articlesHtml += `
-            <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 8px;">
-                <h3 style="color: #007bff; margin-top: 0;">${art.title}</h3>
-                <button class="sub-page-btn" onclick="openArticle('${art.id}')">اقرأ المزيد</button>
-            </div>
-        `;
-    });
-
-    const html = `
-        <div class="sub-page">
-            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-            <h2>📝 المقالات التعليمية</h2>
-            ${articlesHtml}
-        </div>
-    `;
-    
-    pagesContainer.innerHTML = html;
-    
-    // التأكد من إظهار الصفحة
-    document.getElementById('main-content').style.display = 'none';
-    pagesContainer.style.display = 'block';
-}
-    const pagesContainer = document.getElementById('pages-container');                
-    const html = `
-        <div class="sub-page">
-            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-            <h2>📝 مقالات تعليمية</h2>
-            <div style="text-align: center; padding: 20px;">
-                <p>قريباً سيتم إضافة المقالات هنا...</p>
-            </div>
-        </div>
-    `;
-    pagesContainer.innerHTML = html;
-    document.getElementById('main-content').style.display = 'none';
-    pagesContainer.style.display = 'block';
-}
-        function openArticle(articleId) {
-    const pagesContainer = document.getElementById('pages-container');
-    let content = "";
-
-    // --- إضافة مقال التعريف بالدراسة بالمراسلة ---
-    if (articleId === 'about-correspondence') {
-        content = `
-            <h2>تعرف على الدراسة بالمراسلة في الجزائر</h2>
-            <p>الدراسة بالمراسلة هي نظام تعليمي يتيح للطلاب متابعة دراستهم والحصول على شهادات تعليمية دون الحاجة للحضور اليومي إلى المؤسسات التعليمية.</p>
-            <h3>مميزات هذا النظام:</h3>
-            <ul>
-                <li><strong>المرونة:</strong> يمكنك الدراسة في الوقت الذي يناسبك ومن أي مكان.</li>
-                <li><strong>التكلفة:</strong> تعتبر أقل تكلفة مقارنة بالتعليم النظامي.</li>
-                <li><strong>الشهادات:</strong> الشهادات التي يتحصل عليها الطالب معترف بها رسمياً.</li>
-            </ul>
-            <p>يهدف الديوان الوطني للتعليم والتكوين عن بعد (ONEFD) إلى توفير فرص ثانية للتعليم لمن انقطعوا عن الدراسة أو من يرغبون في رفع مستواهم العلمي.</p>
-        `;
-    }
-    // يمكنك إضافة شروط else if أخرى للمقالات القادمة
-
-    const html = `
-        <div class="sub-page">
-            <button class="back-btn" onclick="buildArticlesPage()"><i class="fas fa-arrow-right"></i> العودة للقائمة</button>
-            <div style="padding: 20px; line-height: 1.6;">${content}</div>
-        </div>
-    `;
-    pagesContainer.innerHTML = html;
-}
     </script>
 </body>
 </html>
-
-
 
 
 
