@@ -179,23 +179,6 @@
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .main-btn.donation-btn {
-    border-color: #e74c3c;
-    color: #e74c3c;
-}
-
-.main-btn.donation-btn:hover {
-    background-color: #e74c3c;
-    color: white;
-}
-
-.main-btn.donation-btn i {
-    color: #e74c3c;
-}
-
-.main-btn.donation-btn:hover i {
-    color: white;
-}
        
         /* تنسيق الزر الجديد المطلوب - زر معلومات التسجيل */
         .main-btn.exam-info-btn {
@@ -483,9 +466,6 @@
             <button class="main-btn exam-info-btn" onclick="showPage('exam-info-page')">
                 <i class="fas fa-bullhorn"></i> معلومات التسجيل في الشهادة
             </button>
-            <button class="main-btn donation-btn" onclick="showPage('donation-page')">
-    <i class="fas fa-heart" style="color: #e74c3c;"></i> دعم وتبرع للموقع
-</button>
         </div>
 
         <hr>
@@ -975,43 +955,6 @@
                         نحن نشكركم على دعمكم، ربي يوفقكم 🌻
                     </p>
                 </div>
-                function buildDonationPage() {
-    const html = `
-        <div class="sub-page">
-            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-            // --- دالة صفحة التبرع (أضف هذا الكود قبل </script>) ---
-function buildDonationPage() {
-    const html = `
-        <div class="sub-page">
-            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-            <h2>دعم وتطوير الموقع ☕</h2>
-            <div style="text-align: center; padding: 20px;">
-                <p>إذا كنت تستفيد من خدماتنا، يمكنك المساهمة في استمرار الموقع وتطويره من خلال التبرع البسيط.</p>
-                <div style="background: #fff9c4; padding: 15px; border-radius: 10px; border: 1px dashed #fbc02d; margin-top: 20px; direction: ltr;">
-                    <p><b>طرق الدفع المتاحة حالياً:</b></p>
-                    <p><i class="fas fa-credit-card"></i> <b>BaridiMob (RIP):</b> <br> <span style="user-select: all; color: #d32f2f; font-weight: bold;">00799999002233445566</span></p>
-                    <p><i class="fas fa-university"></i> <b>CCP:</b> <br> <span style="user-select: all; color: #d32f2f; font-weight: bold;">22334455 مفتاح 88</span></p>
-                </div>
-                <p style="margin-top: 20px; font-size: 0.9rem; color: #666;">شكراً لكل من يدعمنا لنستمر في خدمتكم مجاناً.</p>
-            </div>
-        </div>
-    `;
-    pagesContainer.innerHTML = html;
-}
-                <h2>دعم وتطوير الموقع ☕</h2>
-            <div style="text-align: center; padding: 20px;">
-                <p>إذا كنت تستفيد من خدماتنا، يمكنك المساهمة في استمرار الموقع وتطويره من خلال التبرع البسيط.</p>
-                <div style="background: #fff9c4; padding: 15px; border-radius: 10px; border: 1px dashed #fbc02d; margin-top: 20px;">
-                    <p><b>طرق الدفع المتاحة حالياً:</b></p>
-                    <p><i class="fas fa-credit-card"></i> <b>BaridiMob (RIP):</b> <br> <span style="user-select: all; color: #d32f2f;">00799999002233445566</span></p>
-                    <p><i class="fas fa-university"></i> <b>CCP:</b> <br> <span style="user-select: all; color: #d32f2f;">22334455 مفتاح 88</span></p>
-                </div>
-                <p style="margin-top: 20px; font-size: 0.9rem; color: #666;">شكراً لكل من يدعمنا لنستمر في خدمتكم مجاناً.</p>
-            </div>
-        </div>
-    `;
-    pagesContainer.innerHTML = html;
-}
             `;
             pagesContainer.innerHTML = html;
         }
@@ -1146,8 +1089,6 @@ function buildDonationPage() {
     </script>
 </body>
 </html>
-
-
 
 
 
