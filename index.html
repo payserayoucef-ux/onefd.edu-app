@@ -448,6 +448,9 @@
         </div>
 
         <div class="main-buttons-container">
+            <button class="main-btn" onclick="showPage('articles-page')">
+    <i class="fas fa-newspaper"></i> مقالات تعليمية
+</button>
             <button class="main-btn" onclick="showPage('registration-page')">
                 <i class="fas fa-user-plus"></i> التسجيل في المراسلة
             </button>
@@ -506,9 +509,12 @@
            
             pagesContainer.innerHTML = '';
            
-            // إضافة دوال buildPage() لتشغيل الأزرار
+            // إضافة دوال buildPage();لتشغيل الأزرار
             if (pageId === 'registration-page') {
                 buildRegistrationPage();
+            } else if (pageId === 'articles-page') {
+                buildArticlesPage();
+
             } else if (pageId === 'documents-page') {
                 buildDocumentsPage();
             } else if (pageId === 'platforms-page') {
@@ -1086,6 +1092,21 @@
             pagesContainer.innerHTML = html;
         }
 
+        function buildArticlesPage() {
+    const pagesContainer = document.getElementById('pages-container');                
+    const html = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2>📝 مقالات تعليمية</h2>
+            <div style="text-align: center; padding: 20px;">
+                <p>قريباً سيتم إضافة المقالات هنا...</p>
+            </div>
+        </div>
+    `;
+    pagesContainer.innerHTML = html;
+    document.getElementById('main-content').style.display = 'none';
+    pagesContainer.style.display = 'block';
+}
     </script>
 </body>
 </html>
