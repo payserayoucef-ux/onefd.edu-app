@@ -1190,6 +1190,47 @@
             `;
             pagesContainer.innerHTML = html;
         }
+        function buildPrivacyPolicyPage() {
+    const container = document.getElementById('pages-container') || (typeof pagesContainer !== 'undefined' ? pagesContainer : null);
+    
+    if (container) {
+        container.innerHTML = `
+            <div class="sub-page">
+                <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">سياسة الخصوصية</h2>
+                
+                <div style="line-height: 1.8; color: #333; text-align: right; padding: 15px; background: #fff; border-radius: 8px; border: 1px solid #eee;">
+                    <p>نحن نقدر خصوصيتك تماماً. يرجى العلم أن موقعنا يستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربة المستخدم ولأغراض عرض الإعلانات عبر برنامج <strong>Google AdSense</strong>.</p>
+                    <p><strong>جمع البيانات:</strong> نحن لا نقوم بجمع أي بيانات شخصية (مثل الأسماء أو أرقام الهاتف) بشكل مباشر. جميع الروابط المتوفرة في الموقع هي روابط رسمية تابعة للديوان الوطني للتعليم والتكوين عن بعد (ONEFD).</p>
+                    <p><strong>إعلانات الطرف الثالث:</strong> قد تستخدم شركات إعلانات طرف ثالث معلومات حول زياراتك لهذا الموقع لتقديم إعلانات حول السلع والخدمات التي تهمك.</p>
+                    <p>باستخدامك لموقعنا، فإنك توافق على سياسة الخصوصية المتبعة لدينا.</p>
+                </div>
+            </div>
+        `;
+        window.scrollTo(0, 0);
+    }
+        }
+
+        function buildAboutUsPage() {
+    const container = document.getElementById('pages-container') || (typeof pagesContainer !== 'undefined' ? pagesContainer : null);
+    
+    if (container) {
+        container.innerHTML = `
+            <div class="sub-page">
+                <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">من نحن</h2>
+                
+                <div style="line-height: 1.8; color: #333; text-align: right; padding: 15px; background: #fff; border-radius: 8px; border: 1px solid #eee;">
+                    <p><strong>بوابة المراسلة التعليمية:</strong> هي منصة إرشادية جزائرية مستقلة، تهدف إلى مساعدة الطلاب والمتعلمين عن بعد في الوصول السريع والسهل لمختلف الخدمات الرقمية الخاصة بالديوان الوطني (ONEFD).</p>
+                    <p><strong>رؤيتنا:</strong> نسعى لتنظيم الروابط الرسمية (التسجيلات، الفروض الإلكترونية، استخراج الاستدعاءات) في واجهة واحدة بسيطة ومريحة لتوفير الوقت والجهد على الطالب الجزائري.</p>
+                    <p><strong>تنبيه:</strong> نود التأكيد على أن هذا الموقع هو عمل تطوعي تعليمي وليس الموقع الرسمي للديوان، نحن فقط نسهل الوصول للروابط الرسمية لخدمة زملائنا الطلبة.</p>
+                </div>
+            </div>
+        `;
+        window.scrollTo(0, 0);
+    }
+        }
+        
 
     </script>
     </div> 
@@ -1210,6 +1251,7 @@
 
 </body>
 </html>
+
 
 
 
