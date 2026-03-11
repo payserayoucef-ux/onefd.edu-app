@@ -551,6 +551,7 @@
             setTimeout(() => {
                 window.open(url, '_blank');
                 hideLoading();
+        
             }, 500); // 500ms انتظار قبل الفتح
         }
 
@@ -576,165 +577,8 @@
             loadingOverlay.classList.add('hidden');
         }
        
-        // أداة لبناء أزرار الروابط
-        function createLinkButton(text, url) {
-            return `<button class="sub-page-btn" onclick="openExternalLink('${url}', '${text}')">
-                ${text} <i class="fas fa-external-link-alt" style="float: left;"></i>
-            </button>`;
-        }
-       
-        // --- دوال بناء الصفحات الفرعية (تم الحفاظ على الدوال الأصلية) ---
-
-                 function buildRegistrationPage() {
-            const html = `
-                <div class="sub-page">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">دليل التسجيل في المراسلة 2026 🌻</h2>
-                    
-                    <article style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #d1e7ff; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-                        <h3 style="color: #2c3e50; font-size: 1.3rem; margin-top: 0;">كيفية التسجيل في الديوان الوطني ONEFD</h3>
-                        <p>
-                            يعتبر <strong>التسجيل في المراسلة</strong> عملية أساسية لكل متعلم يرغب في نيل شهادة إثبات المستوى. تبدأ التسجيلات عادة في شهر سبتمبر وتستمر لعدة أشهر، حيث يتاح للمتعلمين الجدد والقدامى اختيار الشعبة والمستوى الدراسي المناسب.
-                        </p>
-                        <p>
-                            يجب على المتعلم التأكد من دقة المعلومات الشخصية المدخلة، خاصة رقم الهاتف والعنوان، لضمان استلام التنبيهات الرسمية. بعد التسجيل الأولي، يتم التوجه لدفع حقوق التسجيل عبر <strong>منصة الدفع الإلكتروني epay</strong> التابعة لبريد الجزائر.
-                        </p>
-                        <p style="font-style: italic; color: #0056b3; background: #eef7ff; padding: 10px; border-radius: 5px;">
-                            ملاحظة: تأكد من تحميل وصل التسجيل فور الانتهاء، فهو وثيقتك الرسمية لإثبات العملية أمام المركز الولائي.
-                        </p>
-                    </article>
-
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        ${createLinkButton('الولوج لصفحة تسجيل متعلم جديد', 'https://inscriptic.onefd.edu.dz/preinscription/')}
-                        ${createLinkButton('الولوج لصفحة تسجيل متعلم سابق', 'https://inscriptic.onefd.edu.dz/preinscription/')}
-                    </div>
-
-                    <div style="margin-top: 20px; padding: 10px; background: #fff3cd; border-right: 5px solid #ffc107; font-size: 0.95rem;">
-                        <strong>نصيحة يوسف:</strong> احتفظ بكلمة المرور الخاصة بحسابك، ستحتاجها لاحقاً لسحب فروض المراسلة واستدعاء الامتحان.
-                    </div>
-                </div>
-            `;
-            pagesContainer.innerHTML = html;
-        }
-
-
-                function buildDocumentsPage() {
-            const html = `
-                <div class="sub-page">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">سحب وطبع الوثائق 🌻</h2>
-                    
-                    <article style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333;">
-                        <h3 style="color: #2c3e50; font-size: 1.2rem; margin-top: 0;">دليل استخراج وثائق المراسلة ONEFD</h3>
-                        <p>
-                            تعد مرحلة <strong>سحب الوثائق</strong> من أهم الخطوات للمتعلم في الديوان الوطني للتعليم والتكوين عن بعد. يوفر موقعنا روابط مباشرة وآمنة لاستخراج كافة الأوراق الرسمية التي يحتاجها الطالب خلال موسمه الدراسي.
-                        </p>
-                        <p>
-                            يمكنك من خلال هذه الصفحة <strong>استخراج رقم التسجيل</strong> في حال نسيانه، وهو الرقم الضروري للولوج إلى الحساب الشخصي. كما نتيح لك الوصول الفوري لـ <strong>سحب استدعاء امتحان المستوى</strong> و <strong>كشف النقاط</strong> فور صدور النتائج الرسمية.
-                        </p>
-                        <p>
-                            بالنسبة للناجحين، تتوفر هنا أيضاً روابط <strong>استخراج شهادة إثبات المستوى</strong>، وهي الوثيقة الرسمية التي تثبت نجاح المتعلم وانتقاله للمستوى الدراسي الأعلى.
-                        </p>
-                    </article>
-
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
-                        ${createLinkButton('معلومات الحساب', 'https://inscriptic.onefd.edu.dz/preinscription/')}
-                        ${createLinkButton('حساب المستخدم', 'https://inscriptic.onefd.edu.dz/preinscription/auth/login/')}
-                        ${createLinkButton('ارفاق وثائق الثبوتية', 'https://e-devoir-3am.onefd.edu.dz/preinscription/index.php/upload_documents/')}
-                        ${createLinkButton('استخراج رقم التسجيل', 'https://inscriptic.onefd.edu.dz/numins/num_ins_index.php')}
-                        ${createLinkButton('استخراج استدعاء امتحان المستوى', 'https://inscriptic.onefd.edu.dz/convocation_2025/cen2012.php')}
-                        ${createLinkButton('استخراج كشف النقاط', 'http://inscriptic.onefd.edu.dz/releve/matricule.php')}
-                        ${createLinkButton('استخراج شهادة إثبات المستوى', 'https://www.onefd.edu.dz/att_niv_2025/')}
-                    </div>
-
-                    <div style="margin-top: 20px; padding: 10px; background: #e7f4ff; border-right: 5px solid #007bff; font-size: 0.9rem;">
-                        <strong>ملاحظة هامة:</strong> تأكد من توفر طابعة متصلة بجهازك قبل البدء في سحب الاستدعاءات أو كشوف النقاط لضمان الحصول على نسخة ورقية واضحة.
-                    </div>
-                </div>
-            `;
-            pagesContainer.innerHTML = html;
-        }
-
-
-        function buildPlatformsPage() {
-            const html = `
-                <div class="sub-page">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">الأرضيات التعليمية (Scolarium) 🌻</h2>
-                    
-                    <article style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                        <h3 style="color: #2c3e50; font-size: 1.2rem; margin-top: 0;">منصة سكولاريوم ONEFD: بوابتك للدروس والملخصات</h3>
-                        <p>
-                            تعد <strong>الأرضيات التعليمية Scolarium</strong> الركيزة الأساسية لنظام الدراسة بالمراسلة في الجزائر. تتيح هذه المنصة الرقمية للمتعلمين الوصول إلى المحتوى الدراسي الكامل، بما في ذلك الدروس التفاعلية، الفروض المحلولة، والمصادر التعليمية لكل من الطورين المتوسط والثانوي.
-                        </p>
-                        <p>
-                            من خلال الدخول إلى <strong>أرضية المراسلة</strong> الموافقة لمستواك، يمكنك تحميل الكتب الإلكترونية بصيغة PDF والتواصل مع الأساتذة عبر المنتديات المخصصة. يهدف موقعنا إلى تسهيل هذا النفاذ عبر توفير روابط مباشرة لكل مستوى دراسي لضمان عدم ضياع المتعلم بين المنصات المختلفة.
-                        </p>
-                        <p style="background: #f1f8ff; padding: 10px; border-radius: 5px; border-right: 4px solid #007bff;">
-                            <strong>نصيحة تقنية:</strong> لاستخدام الأرضية بنجاح، يجب عليك تفعيل حسابك باستخدام اسم المستخدم وكلمة المرور المستخرجة من وصل التسجيل الأولي.
-                        </p>
-                    </article>
-
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
-                        ${createLinkButton('الأرضية التعليمية - المستوى المتوسط', 'http://scolarium-moyen.onefd.edu.dz/login/index.php')}
-                        ${createLinkButton('الأرضية التعليمية - أولى ثانوي', 'http://scolarium-1as.onefd.edu.dz/login/index.php')}
-                        ${createLinkButton('الأرضية التعليمية - الثانية ثانوي', 'http://scolarium-2as.onefd.edu.dz/login/index.php')}
-                        ${createLinkButton('الأرضية التعليمية - الثالثة ثانوي', 'http://scolarium-3as.onefd.edu.dz/login/index.php')}
-                    </div>
-
-                    <div style="margin-top: 20px; padding: 10px; background: #fff3cd; border-right: 5px solid #ffc107; font-size: 0.9rem;">
-                        <strong>تنبيه للمتعلمين:</strong> الأرضية التعليمية ضرورية جداً لإجراء الفرض الإلكتروني وتحميل دروس الدعم، تأكد من مراجعتها أسبوعياً.
-                    </div>
-                </div>
-            `;
-            pagesContainer.innerHTML = html;
-        }
-
-
-        function buildEHomeworkPage() {
-            const html = `
-                <div class="sub-page" id="e-homework-main">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>منصة الفرض الإلكتروني 🌻</h2>
-                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')">
-                        <i class="fas fa-graduation-cap"></i> المستوى المتوسط
-                    </button>
-                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')">
-                        <i class="fas fa-graduation-cap"></i> المستوى الثانوي
-                    </button>
-                </div>
-            `;
-            pagesContainer.innerHTML = html;
-        }
-
-                function buildEHomeworkPage() {
-            const html = `
-                <div class="sub-page" id="e-homework-main">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">منصة الفرض الإلكتروني (E-Devoir) 🌻</h2>
-                    
-                    <article style="background-color: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
-                        <h3 style="color: #d32f2f; font-size: 1.3rem; margin-top: 0;">دليل إجراء الفروض الإلكترونية عبر منصة ONEFD</h3>
-                        <p>
-                            تعتبر <strong>منصة الفرض الإلكتروني</strong> أداة تعليمية أساسية يعتمد عليها الديوان الوطني للتعليم والتكوين عن بعد لتقييم المتعلمين. يهدف هذا النظام إلى قياس استيعاب الطالب للدروس المقدمة خلال الموسم الدراسي، وتلعب العلامة المتحصل عليها دوراً كبيراً في حساب <strong>معدل المراقبة المستمرة</strong>.
-                        </p>
-                        <p>
-                            لضمان سير العملية بنجاح، يجب على المتعلم اختيار الطور الدراسي الصحيح (متوسط أو ثانوي) ثم الولوج باستخدام بياناته الشخصية. نحن نوفر لك هنا وصولاً مباشراً إلى الأرضيات الرسمية لتجنب الاكتظاظ وضمان تسجيل إجاباتك في الوقت المحدد.
-                        </p>
-                        <div style="background: #fff8e1; padding: 10px; border-right: 4px solid #ffc107; font-size: 0.95rem; margin-top: 10px;">
-                            <strong>نصيحة للمتعلم:</strong> يفضل إجراء الفرض في أوقات خارج ذروة الاستخدام لضمان استقرار المنصة وسرعة تحميل الأسئلة.
-                        </div>
-                    </article>
-
-                    <p style="text-align: center; font-weight: bold; color: #555; margin-bottom: 15px;">يرجى اختيار الطور الدراسي الخاص بك:</p>
-                    
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')" style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
-                            <span><i class="fas fa-graduation-cap"></i> المستوى المتوسط</span>
-                            <i class="fas fa-chevron-left" style="font-size: 0.8rem; color: #ccc;"></i>
-                        </button>
-                        
-        // --- دالة صنع الأزرار المطورة لضمان العمل ---
+        
+            // --- دالة صنع الأزرار المطورة لضمان العمل ---
         function createLinkButton(text, url) {
             return `
                 <button class="sub-page-btn" onclick="window.open('${url}', '_blank')" style="cursor: pointer; position: relative; z-index: 10;">
@@ -841,9 +685,53 @@
             `;
             pagesContainer.innerHTML = html;
         }
-
         
 
+        function buildExamInfoPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2><i class="fas fa-bullhorn"></i> معلومات هامة للتسجيل في الامتحان</h2>
+
+                    <div class="info-section">
+                        <p style="font-weight: bold; color: #007bff;">
+                            بعد التسجيل الإلكتروني ودفع المستحقات باستعمال البطاقة النقدية "الذهبية" لبريد الجزائر، عليك الحرص على:
+                        </p>
+                        <ul>
+                            <li>الاحتفاظ **بحسابك الإلكتروني** في مكان آمن بعيداً عن متناول طرف ثالث.</li>
+                        </ul>
+                        <p style="font-weight: bold;">يُستعمل الحساب الإلكتروني في المراحل اللاحقة وهي:</p>
+                        <ul>
+                            <li>دفع حقوق التسجيل.</li>
+                            <li>مراجعة بياناتك والتأكد من التسجيل.</li>
+                            <li>استخراج استدعاء اختبار مادة التربية البدنية والرياضية للمعنيين بها.</li>
+                            <li>استخراج استدعاء الاختبارات الكتابية.</li>
+                            <li>الاطلاع على النتائج وسحب كشوف النقاط.</li>
+                        </ul>
+                       
+                        <p>
+                            **وصل إلكتروني لدفع حقوق التسجيل**، مستخرج من الموقع **epay.education.dz**، عليك التأكد من صحة المعلومات المدونة عليه والاحتفاظ به كإثبات لعملية تسديد حقوق التسجيل.
+                        </p>
+                    </div>
+
+                    <h3><i class="fas fa-wheelchair"></i> ملاحظة خاصة بالإعاقة</h3>
+                    <p class="important-note">
+                        في حالة **إعاقة بصرية** أو **عدم القدرة على الكتابة في الامتحان بكلتا اليدين بسبب إعاقة حركية**، عليك تقديم ملف طبي إلى مصالح مديرية التربية أو المراكز التابعة للديوان الوطني للتعليم والتكوين عن بعد يثبت الحالة.
+                    </p>
+                    <p style="font-weight: bold;">يتكون الملف من:</p>
+                    <ul>
+                        <li>استمارة طلب رخصة نتيجة إعاقة حسب النموذج المستخرج من الموقع، مصادق عليها من طرف طبيب مختص.</li>
+                        <li>شهادة طبية صادرة عن طبيب مختص.</li>
+                        <li>نسخة من بطاقة الإعاقة.</li>
+                    </ul>
+                   
+                    <h3>اختر نوع الامتحان (دفع الرسوم إلكترونياً)</h3>
+                    ${createLinkButton('التعليم المتوسط (BEM)', 'https://epay.education.dz/auth')}
+                    ${createLinkButton('الثالثة ثانوي (BAC)', 'https://epay.education.dz/auth')}
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
         function buildAboutPage() {
             const html = `
                 <div class="sub-page">
@@ -1201,21 +1089,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
