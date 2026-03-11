@@ -796,18 +796,46 @@
             pagesContainer.innerHTML = html;
         }
 
-        function buildExamRegistrationPage() {
-            const html = `
-                <div class="sub-page">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>التسجيل في الشهادة الرسمية 🏆</h2>
-                    <p>اختر نوع الشهادة التي ترغب في التسجيل فيها:</p>
-                    ${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://bem.onec.dz/')}
-                    ${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://bac.onec.dz/')}
-                </div>
-            `;
-            pagesContainer.innerHTML = html;
+                function buildExamRegistrationPage() {
+            // الوصول للحاوية باستخدام الاسم البرمجي الخاص بك
+            const container = document.getElementById('pages-container') || (typeof pagesContainer !== 'undefined' ? pagesContainer : null);
+            
+            if (container) {
+                container.innerHTML = `
+                    <div class="sub-page">
+                        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                        <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">التسجيل في الشهادة الرسمية 🏆</h2>
+                        
+                        <article style="background: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                            <h3 style="color: #2c3e50; font-size: 1.2rem; margin-top: 0;">دليل التسجيل في امتحانات البكالوريا والتعليم المتوسط</h3>
+                            <p>
+                                يتيح الديوان الوطني للمسابقات والامتحانات للمترشحين الأحرار التابعين للمراسلة <strong>(ONEFD)</strong> التسجيل في شهادتي <strong>البكالوريا (BAC)</strong> و<strong>التعليم المتوسط (BEM)</strong> عبر المنصات الرقمية المخصصة لذلك.
+                            </p>
+                            <p>
+                                يجب على كل مترشح التأكد من صحة المعلومات الشخصية عند ملء الاستمارة، ثم القيام بطبعها والتوجه لمراكز الدفع المعتمدة لإتمام ملف الترشح الورقي ودفعه في الآجال التي تحددها وزارة التربية الوطنية.
+                            </p>
+                        </article>
+
+                        <p style="text-align: center; font-weight: bold; color: #555; margin-bottom: 15px;">روابط التسجيل الرسمية:</p>
+
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <button class="sub-page-btn" onclick="window.open('https://bem.onec.dz/', '_blank')" style="cursor: pointer;">
+                                <i class="fas fa-external-link-alt"></i> التسجيل في شهادة التعليم المتوسط (BEM)
+                            </button>
+                            <button class="sub-page-btn" onclick="window.open('https://bac.onec.dz/', '_blank')" style="cursor: pointer;">
+                                <i class="fas fa-external-link-alt"></i> التسجيل في شهادة البكالوريا (BAC)
+                            </button>
+                        </div>
+
+                        <div style="margin-top: 25px; padding: 15px; background: #fff3cd; border: 1px dashed #ffc107; border-radius: 8px; font-size: 0.9rem; text-align: center;">
+                            <strong>تنبيه هام:</strong> يرجى مراجعة الملف المطلوب بعناية قبل التوجه لمديرية التربية لضمان قبول ملفكم.
+                        </div>
+                    </div>
+                `;
+                window.scrollTo(0, 0); 
+            }
         }
+
 
         function buildAboutPage() {
             const html = `
@@ -1166,3 +1194,4 @@
     </script>
 </body>
 </html>
+
