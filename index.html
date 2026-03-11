@@ -795,50 +795,40 @@
             pagesContainer.innerHTML = html;
         }
 
-                            function buildOfficialExamPage() {
-            // البحث عن الحاوية بطريقة ذكية لضمان عدم فشل العملية
-            let container = document.getElementById('pages-container');
+         function buildOfficialExamPage() {
+            // استخدام المسار المباشر للحاوية لضمان عدم حدوث صفحة بيضاء
+            const container = document.getElementById('pages-container') || pagesContainer;
             
-            // إذا لم يجد الـ ID، يحاول البحث عن المتغير الذي تستخدمه الأزرار الأخرى
-            if (!container && typeof pagesContainer !== 'undefined') {
-                container = pagesContainer;
-            }
-
             if (container) {
-                const html = `
+                container.innerHTML = `
                     <div class="sub-page">
                         <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                         <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">التسجيل في الشهادة الرسمية 🏆</h2>
                         
-                        <article style="background: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                        <article style="background: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333;">
                             <h3 style="color: #2c3e50; font-size: 1.2rem; margin-top: 0;">دليل التسجيل في امتحانات البكالوريا والتعليم المتوسط</h3>
-                            <p>
-                                يتيح الديوان الوطني للمسابقات والامتحانات للمترشحين الأحرار التابعين للمراسلة <strong>(ONEFD)</strong> التسجيل في شهادتي <strong>البكالوريا (BAC)</strong> و<strong>التعليم المتوسط (BEM)</strong> عبر منصاته الرقمية المخصصة.
-                            </p>
-                            <p>
-                                يجب على المترشح ملء استمارة التسجيل بدقة، وطباعتها، ثم التوجه لمديرية التربية التابع لها لإيداع الملف الورقي في الآجال القانونية لضمان قبول ملفه رسمياً.
-                            </p>
+                            <p>يتيح الديوان الوطني للمسابقات والامتحانات للمترشحين الأحرار التابعين للمراسلة التسجيل في شهادتي <strong>البكالوريا (BAC)</strong> و<strong>التعليم المتوسط (BEM)</strong> عبر منصاته الرقمية المخصصة.</p>
+                            <p>يجب ملء الاستمارة بدقة وطباعتها ثم دفع الملف الورقي في الآجال القانونية لضمان قبول ملفك رسمياً.</p>
                         </article>
 
-                        <p style="text-align: center; font-weight: bold; color: #555; margin-bottom: 15px;">اختر الشهادة المطلوبة للتوجه لموقع التسجيل:</p>
-
                         <div style="display: flex; flex-direction: column; gap: 12px;">
-                            ${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://bem.onec.dz/')}
-                            ${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://bac.onec.dz/')}
+                            <button class="sub-page-btn" onclick="window.open('https://bem.onec.dz/', '_blank')">
+                                <i class="fas fa-external-link-alt"></i> التسجيل في شهادة التعليم المتوسط (BEM)
+                            </button>
+                            <button class="sub-page-btn" onclick="window.open('https://bac.onec.dz/', '_blank')">
+                                <i class="fas fa-external-link-alt"></i> التسجيل في شهادة البكالوريا (BAC)
+                            </button>
                         </div>
 
                         <div style="margin-top: 25px; padding: 15px; background: #fff3cd; border: 1px dashed #ffc107; border-radius: 8px; font-size: 0.9rem; text-align: center;">
-                            <strong>تنبيه:</strong> تأكد من حفظ اسم المستخدم وكلمة السر، ستحتاجهما لسحب الاستدعاء لاحقاً.
+                            <strong>تنبيه:</strong> احتفظ بكلمة السر الخاصة بك لسحب الاستدعاء لاحقاً.
                         </div>
                     </div>
                 `;
-                container.innerHTML = html;
                 window.scrollTo(0, 0); 
-            } else {
-                // رسالة تنبيه لك في حال فشل الكود في العثور على المكان
-                alert("عذراً، تعذر تحميل الصفحة. يرجى التأكد من أن عنصر pages-container موجود في ملف HTML الخاص بك.");
             }
         }
+
 
 
         function buildAboutPage() {
@@ -1198,6 +1188,7 @@
     </script>
 </body>
 </html>
+
 
 
 
