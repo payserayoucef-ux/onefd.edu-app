@@ -795,10 +795,15 @@
             pagesContainer.innerHTML = html;
         }
 
-                    function buildOfficialExamPage() {
-            // 1. التأكد من وجود الحاوية قبل البدء
-            const container = document.getElementById('pages-container') || (typeof pagesContainer !== 'undefined' ? pagesContainer : null);
+                            function buildOfficialExamPage() {
+            // البحث عن الحاوية بطريقة ذكية لضمان عدم فشل العملية
+            let container = document.getElementById('pages-container');
             
+            // إذا لم يجد الـ ID، يحاول البحث عن المتغير الذي تستخدمه الأزرار الأخرى
+            if (!container && typeof pagesContainer !== 'undefined') {
+                container = pagesContainer;
+            }
+
             if (container) {
                 const html = `
                     <div class="sub-page">
@@ -830,8 +835,8 @@
                 container.innerHTML = html;
                 window.scrollTo(0, 0); 
             } else {
-                // إذا ظهر هذا الخطأ في Console فالمشكلة في تعريف الـ ID بالـ HTML
-                console.error("خطأ: لم يتم العثور على الحاوية المخصصة لعرض الصفحات.");
+                // رسالة تنبيه لك في حال فشل الكود في العثور على المكان
+                alert("عذراً، تعذر تحميل الصفحة. يرجى التأكد من أن عنصر pages-container موجود في ملف HTML الخاص بك.");
             }
         }
 
@@ -1193,6 +1198,7 @@
     </script>
 </body>
 </html>
+
 
 
 
