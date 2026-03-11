@@ -796,38 +796,38 @@
         }
 
          function buildOfficialExamPage() {
-            // استخدام المسار المباشر للحاوية لضمان عدم حدوث صفحة بيضاء
-            const container = document.getElementById('pages-container') || pagesContainer;
-            
-            if (container) {
-                container.innerHTML = `
-                    <div class="sub-page">
-                        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                        <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">التسجيل في الشهادة الرسمية 🏆</h2>
-                        
-                        <article style="background: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333;">
-                            <h3 style="color: #2c3e50; font-size: 1.2rem; margin-top: 0;">دليل التسجيل في امتحانات البكالوريا والتعليم المتوسط</h3>
-                            <p>يتيح الديوان الوطني للمسابقات والامتحانات للمترشحين الأحرار التابعين للمراسلة التسجيل في شهادتي <strong>البكالوريا (BAC)</strong> و<strong>التعليم المتوسط (BEM)</strong> عبر منصاته الرقمية المخصصة.</p>
-                            <p>يجب ملء الاستمارة بدقة وطباعتها ثم دفع الملف الورقي في الآجال القانونية لضمان قبول ملفك رسمياً.</p>
-                        </article>
+    // محاولة الوصول للحاوية بأبسط طريقة ممكنة
+    const container = document.getElementById('pages-container') || pagesContainer;
+    
+    if (container) {
+        // كتابة الكود مباشرة دون الاعتماد على دوال خارجية
+        container.innerHTML = `
+            <div class="sub-page">
+                <button class="back-btn" onclick="goBack()" style="background:#d32f2f; color:white; padding:10px 20px; border:none; border-radius:5px; margin-bottom:15px; cursor:pointer;">
+                    <i class="fas fa-arrow-right"></i> رجوع
+                </button>
+                
+                <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">التسجيل في الشهادة الرسمية 🏆</h2>
+                
+                <article style="background: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333;">
+                    <h3 style="color: #2c3e50; font-size: 1.2rem; margin-top: 0;">دليل التسجيل في امتحانات البكالوريا والتعليم المتوسط</h3>
+                    <p>يتيح الديوان الوطني للمسابقات والامتحانات للمترشحين الأحرار التابعين للمراسلة التسجيل في شهادتي <strong>البكالوريا (BAC)</strong> و<strong>التعليم المتوسط (BEM)</strong> عبر منصاته الرقمية المخصصة.</p>
+                </article>
 
-                        <div style="display: flex; flex-direction: column; gap: 12px;">
-                            <button class="sub-page-btn" onclick="window.open('https://bem.onec.dz/', '_blank')">
-                                <i class="fas fa-external-link-alt"></i> التسجيل في شهادة التعليم المتوسط (BEM)
-                            </button>
-                            <button class="sub-page-btn" onclick="window.open('https://bac.onec.dz/', '_blank')">
-                                <i class="fas fa-external-link-alt"></i> التسجيل في شهادة البكالوريا (BAC)
-                            </button>
-                        </div>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <button class="sub-page-btn" onclick="window.open('https://bem.onec.dz/', '_blank')" style="padding: 15px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; text-align: right;">
+                        <i class="fas fa-external-link-alt"></i> التسجيل في شهادة التعليم المتوسط (BEM)
+                    </button>
+                    <button class="sub-page-btn" onclick="window.open('https://bac.onec.dz/', '_blank')" style="padding: 15px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; text-align: right;">
+                        <i class="fas fa-external-link-alt"></i> التسجيل في شهادة البكالوريا (BAC)
+                    </button>
+                </div>
+            </div>
+        `;
+        window.scrollTo(0, 0);
+    }
+}
 
-                        <div style="margin-top: 25px; padding: 15px; background: #fff3cd; border: 1px dashed #ffc107; border-radius: 8px; font-size: 0.9rem; text-align: center;">
-                            <strong>تنبيه:</strong> احتفظ بكلمة السر الخاصة بك لسحب الاستدعاء لاحقاً.
-                        </div>
-                    </div>
-                `;
-                window.scrollTo(0, 0); 
-            }
-        }
 
 
 
@@ -1188,6 +1188,7 @@
     </script>
 </body>
 </html>
+
 
 
 
