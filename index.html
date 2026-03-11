@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+هاذا هو الكود البرمجي تبعي اعطيني كودا للنص واين اضعه: <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4719018034232696"
@@ -612,35 +612,9 @@
                 </div>
             `;
             pagesContainer.innerHTML = html;
-        }
+                }
         
-
-        
-
-        function buildPlatformsPage() {
-            const html = `
-                <div class="sub-page">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>الأرضيات التعليمية (Scolarium) 🌻</h2>
-                    ${createLinkButton('المستوى المتوسط', 'http://scolarium-moyen.onefd.edu.dz/login/index.php')}
-                    ${createLinkButton('مستوى أولى ثانوي', 'http://scolarium-1as.onefd.edu.dz/login/index.php')}
-                    ${createLinkButton('مستوى الثانية ثانوي', 'http://scolarium-2as.onefd.edu.dz/login/index.php')}
-                    ${createLinkButton('مستوى الثالثة ثانوي', 'http://scolarium-3as.onefd.edu.dz/login/index.php')}
-                </div>
-            `;
-            pagesContainer.innerHTML = html;
-        }
-
-        function buildEHomeworkPage() {
-            const html = `
-                <div class="sub-page" id="e-homework-main">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>منصة الفرض الإلكتروني 🌻</h2>
-                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')">
-                        <i class="fas fa-graduation-cap"></i> المستوى المتوسط
-                    </button>
-                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')">
-                        <i class="fas fa-graduation-cap"></i> المستو        function buildDocumentsPage() {
+                function buildDocumentsPage() {
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
@@ -675,12 +649,76 @@
                 </div>
             `;
             pagesContainer.innerHTML = html;
-    
+        }
+
+
+                function buildPlatformsPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">الأرضيات التعليمية (Scolarium) 🌻</h2>
+                    
+                    <article style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <h3 style="color: #2c3e50; font-size: 1.2rem; margin-top: 0;">منصة سكولاريوم ONEFD: بوابتك للدروس والملخصات</h3>
+                        <p>
+                            تعد <strong>الأرضيات التعليمية Scolarium</strong> الركيزة الأساسية لنظام الدراسة بالمراسلة في الجزائر. تتيح هذه المنصة الرقمية للمتعلمين الوصول إلى المحتوى الدراسي الكامل، بما في ذلك الدروس التفاعلية، الفروض المحلولة، والمصادر التعليمية لكل من الطورين المتوسط والثانوي.
+                        </p>
+                        <p>
+                            من خلال الدخول إلى <strong>أرضية المراسلة</strong> الموافقة لمستواك، يمكنك تحميل الكتب الإلكترونية بصيغة PDF والتواصل مع الأساتذة عبر المنتديات المخصصة. يهدف موقعنا إلى تسهيل هذا النفاذ عبر توفير روابط مباشرة لكل مستوى دراسي لضمان عدم ضياع المتعلم بين المنصات المختلفة.
+                        </p>
+                        <p style="background: #f1f8ff; padding: 10px; border-radius: 5px; border-right: 4px solid #007bff;">
+                            <strong>نصيحة تقنية:</strong> لاستخدام الأرضية بنجاح، يجب عليك تفعيل حسابك باستخدام اسم المستخدم وكلمة المرور المستخرجة من وصل التسجيل الأولي.
+                        </p>
+                    </article>
+
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        ${createLinkButton('الأرضية التعليمية - المستوى المتوسط', 'http://scolarium-moyen.onefd.edu.dz/login/index.php')}
+                        ${createLinkButton('الأرضية التعليمية - أولى ثانوي', 'http://scolarium-1as.onefd.edu.dz/login/index.php')}
+                        ${createLinkButton('الأرضية التعليمية - الثانية ثانوي', 'http://scolarium-2as.onefd.edu.dz/login/index.php')}
+                        ${createLinkButton('الأرضية التعليمية - الثالثة ثانوي', 'http://scolarium-3as.onefd.edu.dz/login/index.php')}
+                    </div>
+
+                    <div style="margin-top: 20px; padding: 10px; background: #fff3cd; border-right: 5px solid #ffc107; font-size: 0.9rem;">
+                        <strong>تنبيه للمتعلمين:</strong> الأرضية التعليمية ضرورية جداً لإجراء الفرض الإلكتروني وتحميل دروس الدعم، تأكد من مراجعتها أسبوعياً.
+                    </div>
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
+
+
+                function buildEHomeworkPage() {
+            const html = `
+                <div class="sub-page" id="e-homework-main">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">منصة الفرض الإلكتروني (E-Devoir) 🌻</h2>
+                    
+                    <article style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                        <h3 style="color: #d32f2f; font-size: 1.25rem; margin-top: 0;">دليل إجراء الفرض الإلكتروني للمراسلة 2026</h3>
+                        <p>
+                            يعتبر <strong>الفرض الإلكتروني</strong> (E-Devoir) مرحلة حاسمة في المسار الدراسي لمتعلمي الديوان الوطني ONEFD. تكمن أهمية هذا الفرض في كونه يساهم بشكل مباشر في <strong>نقطة المراقبة المستمرة</strong>، مما يساعد الطالب في رفع معدله السنوي وتعزيز فرص نجاحه في امتحان المستوى.
+                        </p>
+                        <p>
+                            يتم إجراء الفرض عبر منصات رقمية مخصصة لكل مستوى دراسي. يجب على المتعلم الدخول باستخدام رقم التسجيل وتاريخ الميلاد، ثم الإجابة على الأسئلة المقترحة في زمن محدد. نحن في موقعنا نوفر لكم روابط مباشرة وسريعة لجميع المستويات (من أولى متوسط إلى الثالثة ثانوي) لتسهيل الوصول للمنصة دون عناء.
+                        </p>
+                        <p style="background: #fff8e1; padding: 12px; border-radius: 6px; border-right: 5px solid #ffc107; font-weight: bold;">
+                            تنبيه: تأكد من جودة اتصال الإنترنت قبل بدء الفرض الإلكتروني، واحرص على ضغط زر "إرسال" فور الانتهاء لضمان تسجيل علامتك بنجاح.
+                        </p>
+                    </article>
+
+                    <p style="text-align: center; font-weight: bold; color: #555; margin-bottom: 15px;">اختر طورك الدراسي للتوجه لروابط الفروض:</p>
+                    
+                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')" style="background-color: #007bff; color: white;">
+                        <i class="fas fa-graduation-cap"></i> المستوى المتوسط
+                    </button>
+                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')" style="background-color: #28a745; color: white;">
+                        <i class="fas fa-graduation-cap"></i> المستوى الثانوي
                     </button>
                 </div>
             `;
             pagesContainer.innerHTML = html;
         }
+
 
         function buildEHomeworkLevel(level) {
             const homeworkMainDiv = document.getElementById('e-homework-main');
