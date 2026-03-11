@@ -717,23 +717,6 @@
         }
 
 
-       // --- دالة سياسة الخصوصية ---
-function buildPrivacyPolicyPage() {
-    const container = document.getElementById('pages-container') || (typeof pagesContainer !== 'undefined' ? pagesContainer : null);
-    if (container) {
-        container.innerHTML = `
-            <div class="sub-page">
-                <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">سياسة الخصوصية</h2>
-                <div style="line-height: 1.8; color: #333; text-align: right; padding: 20px; background: #fff; border-radius: 10px; border: 1px solid #eee;">
-                    <p>نحن نقدر خصوصيتك، ونود إعلامك بأن موقعنا يستخدم ملفات تعريف الارتباط (Cookies) الخاصة ببرنامج <strong>Google AdSense</strong> لعرض الإعلانات المناسبة لك.</p>
-                    <p>نحن لا نقوم بجمع بيانات شخصية بشكل مباشر، وكل الروابط المتوفرة هي روابط خارجية رسمية تابعة للديوان الوطني ONEFD.</p>
-                </div>
-            </div>
-        `;
-        window.scrollTo(0, 0);
-    }
-}
 
 // --- دالة من نحن ---
 function buildAboutUsPage() {
@@ -1195,6 +1178,7 @@ function buildAboutUsPage() {
     </script>
 </body>
 </html>
+
 
 
 
