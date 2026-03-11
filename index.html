@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+هاذا هو الكود البرمجي تبعي اعطيني كودا للنص واين اضعه: <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4719018034232696"
@@ -589,26 +589,29 @@
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>التسجيل في المراسلة 2026 🌻</h2>
+                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">دليل التسجيل في المراسلة 2026 🌻</h2>
                     
-                    <article style="background-color: #fdfdfd; padding: 15px; border-radius: 8px; border: 1px solid #eee; margin-bottom: 20px; line-height: 1.7; color: #444;">
-                        <h3 style="color: #007bff; font-size: 1.2rem;">دليل التسجيل في المراسلة (ONEFD) لجميع المستويات</h3>
+                    <article style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #d1e7ff; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                        <h3 style="color: #2c3e50; font-size: 1.3rem; margin-top: 0;">كيفية التسجيل في الديوان الوطني ONEFD</h3>
                         <p>
-                            يعتبر <strong>التسجيل في المراسلة</strong> فرصة ذهبية للمتعلمين في الجزائر لمواصلة مسارهم الدراسي عن بعد. سواء كنت ترغب في التسجيل كـ <strong>متعلم جديد</strong> (لأول مرة) أو <strong>متعلم سابق</strong> (إعادة تسجيل)، فإن الديوان الوطني للتعليم والتكوين عن بعد يوفر أرضية رقمية متطورة للقيام بالعملية.
+                            يعتبر <strong>التسجيل في المراسلة</strong> عملية أساسية لكل متعلم يرغب في نيل شهادة إثبات المستوى. تبدأ التسجيلات عادة في شهر سبتمبر وتستمر لعدة أشهر، حيث يتاح للمتعلمين الجدد والقدامى اختيار الشعبة والمستوى الدراسي المناسب.
                         </p>
                         <p>
-                            للنجاح في التسجيل، يجب عليك اختيار صنفك الصحيح؛ حيث يقوم المتعلم الجديد بملء استمارة المعلومات لأول مرة ورفع الوثائق، بينما يكتفي المتعلم السابق بتحديث بياناته ودفع الرسوم. تأكد من توفر <strong>البطاقة الذهبية</strong> لتسهيل عملية الدفع الإلكتروني عبر منصة epay.
+                            يجب على المتعلم التأكد من دقة المعلومات الشخصية المدخلة، خاصة رقم الهاتف والعنوان، لضمان استلام التنبيهات الرسمية. بعد التسجيل الأولي، يتم التوجه لدفع حقوق التسجيل عبر <strong>منصة الدفع الإلكتروني epay</strong> التابعة لبريد الجزائر.
+                        </p>
+                        <p style="font-style: italic; color: #0056b3; background: #eef7ff; padding: 10px; border-radius: 5px;">
+                            ملاحظة: تأكد من تحميل وصل التسجيل فور الانتهاء، فهو وثيقتك الرسمية لإثبات العملية أمام المركز الولائي.
                         </p>
                     </article>
 
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
-                        ${createLinkButton('رابط تسجيل متعلم جديد (المنصة الرسمية)', 'https://inscriptic.onefd.edu.dz/preinscription/')}
-                        ${createLinkButton('رابط تسجيل متعلم سابق (تجديد التسجيل)', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        ${createLinkButton('الولوج لصفحة تسجيل متعلم جديد', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                        ${createLinkButton('الولوج لصفحة تسجيل متعلم سابق', 'https://inscriptic.onefd.edu.dz/preinscription/')}
                     </div>
 
-                    <p style="margin-top: 15px; font-size: 0.9rem; color: #666; border-right: 3px solid #28a745; padding-right: 10px;">
-                        نصيحة: بعد الانتهاء من التسجيل الأولي، قم بطبع وصل التأكيد واحتفظ برقم التسجيل الخاص بك لاستخدامه في سحب الاستدعاءات لاحقاً.
-                    </p>
+                    <div style="margin-top: 20px; padding: 10px; background: #fff3cd; border-right: 5px solid #ffc107; font-size: 0.95rem;">
+                        <strong>نصيحة يوسف:</strong> احتفظ بكلمة المرور الخاصة بحسابك، ستحتاجها لاحقاً لسحب فروض المراسلة واستدعاء الامتحان.
+                    </div>
                 </div>
             `;
             pagesContainer.innerHTML = html;
@@ -721,34 +724,43 @@
         }
 
 
-        function buildEHomeworkLevel(level) {
-            const homeworkMainDiv = document.getElementById('e-homework-main');
-            let buttonsHtml = '';
-            let title = '';
+                function buildEHomeworkPage() {
+            const html = `
+                <div class="sub-page" id="e-homework-main">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">منصة الفرض الإلكتروني (E-Devoir) 🌻</h2>
+                    
+                    <article style="background-color: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                        <h3 style="color: #d32f2f; font-size: 1.3rem; margin-top: 0;">دليل إجراء الفروض الإلكترونية عبر منصة ONEFD</h3>
+                        <p>
+                            تعتبر <strong>منصة الفرض الإلكتروني</strong> أداة تعليمية أساسية يعتمد عليها الديوان الوطني للتعليم والتكوين عن بعد لتقييم المتعلمين. يهدف هذا النظام إلى قياس استيعاب الطالب للدروس المقدمة خلال الموسم الدراسي، وتلعب العلامة المتحصل عليها دوراً كبيراً في حساب <strong>معدل المراقبة المستمرة</strong>.
+                        </p>
+                        <p>
+                            لضمان سير العملية بنجاح، يجب على المتعلم اختيار الطور الدراسي الصحيح (متوسط أو ثانوي) ثم الولوج باستخدام بياناته الشخصية. نحن نوفر لك هنا وصولاً مباشراً إلى الأرضيات الرسمية لتجنب الاكتظاظ وضمان تسجيل إجاباتك في الوقت المحدد.
+                        </p>
+                        <div style="background: #fff8e1; padding: 10px; border-right: 4px solid #ffc107; font-size: 0.95rem; margin-top: 10px;">
+                            <strong>نصيحة للمتعلم:</strong> يفضل إجراء الفرض في أوقات خارج ذروة الاستخدام لضمان استقرار المنصة وسرعة تحميل الأسئلة.
+                        </div>
+                    </article>
 
-            if (level === 'moyen') {
-                title = 'الفرض الإلكتروني - المستوى المتوسط';
-                buttonsHtml = `
-                    ${createLinkButton('أولى متوسط', 'https://e-devoir-1am.onefd.edu.dz/')}
-                    ${createLinkButton('ثانية متوسط', 'https://e-devoir-2am.onefd.edu.dz/')}
-                    ${createLinkButton('ثالثة متوسط', 'https://e-devoir-3am.onefd.edu.dz/')}
-                    ${createLinkButton('الرابعة متوسط', 'https://e-devoir-4am.onefd.edu.dz/')}
-                `;
-            } else if (level === 'secondary') {
-                title = 'الفرض الإلكتروني - المستوى الثانوي';
-                buttonsHtml = `
-                    ${createLinkButton('أولى ثانوي', 'https://e-devoir-1as.onefd.edu.dz/index.php/welcome')}
-                    ${createLinkButton('الثانية ثانوي', 'https://e-devoir-2as.onefd.edu.dz/index.php/welcome')}
-                    ${createLinkButton('الثالثة ثانوي', 'https://e-devoir-3as.onefd.edu.dz/index.php/welcome')}
-                `;
-            }
-
-            homeworkMainDiv.innerHTML = `
-                <button class="back-btn" onclick="buildEHomeworkPage()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                <h2>${title}</h2>
-                ${buttonsHtml}
+                    <p style="text-align: center; font-weight: bold; color: #555; margin-bottom: 15px;">يرجى اختيار الطور الدراسي الخاص بك:</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')" style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
+                            <span><i class="fas fa-graduation-cap"></i> المستوى المتوسط</span>
+                            <i class="fas fa-chevron-left" style="font-size: 0.8rem; color: #ccc;"></i>
+                        </button>
+                        
+                        <button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')" style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
+                            <span><i class="fas fa-graduation-cap"></i> المستوى الثانوي</span>
+                            <i class="fas fa-chevron-left" style="font-size: 0.8rem; color: #ccc;"></i>
+                        </button>
+                    </div>
+                </div>
             `;
+            pagesContainer.innerHTML = html;
         }
+
 
         function buildExamInfoPage() {
             const html = `
@@ -1190,69 +1202,7 @@
             `;
             pagesContainer.innerHTML = html;
         }
-        
-<footer style="text-align: center; padding: 20px; border-top: 1px solid #ddd; margin-top: 40px; background-color: #f9f9f9;">
-    
-    <button onclick="showPolicy('privacy')" style="background:none; border:none; color:#007bff; text-decoration:underline; cursor:pointer; font-size: 14px; margin: 0 10px;">
-        سياسة الخصوصية
-    </button>
 
-    <button onclick="showPolicy('about')" style="background:none; border:none; color:#007bff; text-decoration:underline; cursor:pointer; font-size: 14px; margin: 0 10px;">
-        من نحن
-    </button>
-
-    <p style="font-size: 11px; color: #999; margin-top: 10px;">&copy; 2026 بوابة المراسلة التعليمية</p>
-</footer>
-
-<script>
-<div id="custom-footer" style="text-align: center; padding: 20px; border-top: 1px solid #ddd; margin-top: 50px; background-color: #f9f9f9; width: 100%; display: block !important;">
-    
-    <button type="button" onclick="showPolicy('privacy')" style="background:none; border:none; color:#007bff; text-decoration:underline; cursor:pointer; font-size: 14px; margin: 0 15px; display: inline-block;">
-        سياسة الخصوصية
-    </button>
-
-    <button type="button" onclick="showPolicy('about')" style="background:none; border:none; color:#007bff; text-decoration:underline; cursor:pointer; font-size: 14px; margin: 0 15px; display: inline-block;">
-        من نحن
-    </button>
-
-    <p style="font-size: 11px; color: #999; margin-top: 10px;">&copy; 2026 بوابة المراسلة التعليمية</p>
-</div>
-
-<script>
-function showPolicy(type) {
-    // محاولة الوصول للحاوية التي تظهر فيها الأزرار الزرقاء
-    const container = document.getElementById('pages-container') || (typeof pagesContainer !== 'undefined' ? pagesContainer : null);
-    
-    if (!container) {
-        alert("خطأ: لم يتم العثور على الحاوية الرئيسية");
-        return;
-    }
-
-    let title = (type === 'privacy') ? "سياسة الخصوصية" : "من نحن";
-    let content = (type === 'privacy') 
-        ? "نحن نحترم خصوصيتك تماماً. يرجى العلم أن موقعنا يستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربة المستخدم ولأغراض عرض الإعلانات عبر برنامج Google AdSense. نحن لا نجمع أي بيانات شخصية، وجميع الروابط المتوفرة هي روابط رسمية تابعة للديوان الوطني ONEFD." 
-        : "بوابة المراسلة التعليمية هي منصة إرشادية مستقلة تهدف لتسهيل الوصول للخدمات الرقمية الخاصة بالديوان الوطني (ONEFD). نحن نسعى لتنظيم الروابط الهامة في واجهة واحدة لتوفير الوقت والجهد على الطالب الجزائري.";
-
-    container.innerHTML = `
-        <div class="sub-page" style="padding:20px; text-align:right; background:#fff;">
-            <button class="back-btn" onclick="location.reload()" style="background:#d32f2f; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; margin-bottom:20px;">
-                <i class="fas fa-arrow-right"></i> رجوع للرئيسية
-            </button>
-            <h2 style="color:#007bff; border-bottom:2px solid #007bff; padding-bottom:10px;">${title}</h2>
-            <div style="line-height:1.8; color:#333; padding:20px; border:1px solid #eee; border-radius:10px; margin-top:10px;">
-                <p>${content}</p>
-            </div>
-        </div>
-    `;
-    window.scrollTo(0, 0);
-}
-</script>
-    
+    </script>
 </body>
 </html>
-
-
-
-
-
-
