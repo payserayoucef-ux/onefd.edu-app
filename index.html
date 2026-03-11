@@ -1205,34 +1205,41 @@
 </footer>
 
 <script>
-// دالة واحدة شاملة لتشغيل الصفحتين بدون أخطاء
+<div id="custom-footer" style="text-align: center; padding: 20px; border-top: 1px solid #ddd; margin-top: 50px; background-color: #f9f9f9; width: 100%; display: block !important;">
+    
+    <button type="button" onclick="showPolicy('privacy')" style="background:none; border:none; color:#007bff; text-decoration:underline; cursor:pointer; font-size: 14px; margin: 0 15px; display: inline-block;">
+        سياسة الخصوصية
+    </button>
+
+    <button type="button" onclick="showPolicy('about')" style="background:none; border:none; color:#007bff; text-decoration:underline; cursor:pointer; font-size: 14px; margin: 0 15px; display: inline-block;">
+        من نحن
+    </button>
+
+    <p style="font-size: 11px; color: #999; margin-top: 10px;">&copy; 2026 بوابة المراسلة التعليمية</p>
+</div>
+
+<script>
 function showPolicy(type) {
-    // محاولة العثور على الحاوية الرئيسية
+    // محاولة الوصول للحاوية التي تظهر فيها الأزرار الزرقاء
     const container = document.getElementById('pages-container') || (typeof pagesContainer !== 'undefined' ? pagesContainer : null);
     
     if (!container) {
-        alert("خطأ: لم يتم العثور على مكان عرض الصفحات");
+        alert("خطأ: لم يتم العثور على الحاوية الرئيسية");
         return;
     }
 
-    let title = "";
-    let content = "";
-
-    if (type === 'privacy') {
-        title = "سياسة الخصوصية";
-        content = `نحن نحترم خصوصيتك. موقعنا يستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربة المستخدم وعرض إعلانات Google AdSense المناسبة. نحن لا نجمع أي بيانات شخصية، وجميع الروابط المتوفرة توجهك للمواقع الرسمية للديوان الوطني (ONEFD) بشكل آمن.`;
-    } else {
-        title = "من نحن";
-        content = "بوابة المراسلة هي منصة تعليمية جزائرية مستقلة تهدف لتسهيل الوصول للروابط الرسمية الخاصة بالديوان الوطني (ONEFD). هدفنا هو تنظيم الروابط (تسجيل، فروض، نتائج) في واجهة واحدة لتوفير الوقت على الطالب.";
-    }
+    let title = (type === 'privacy') ? "سياسة الخصوصية" : "من نحن";
+    let content = (type === 'privacy') 
+        ? "نحن نحترم خصوصيتك تماماً. يرجى العلم أن موقعنا يستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربة المستخدم ولأغراض عرض الإعلانات عبر برنامج Google AdSense. نحن لا نجمع أي بيانات شخصية، وجميع الروابط المتوفرة هي روابط رسمية تابعة للديوان الوطني ONEFD." 
+        : "بوابة المراسلة التعليمية هي منصة إرشادية مستقلة تهدف لتسهيل الوصول للخدمات الرقمية الخاصة بالديوان الوطني (ONEFD). نحن نسعى لتنظيم الروابط الهامة في واجهة واحدة لتوفير الوقت والجهد على الطالب الجزائري.";
 
     container.innerHTML = `
-        <div class="sub-page" style="padding:20px; text-align:right;">
-            <button class="back-btn" onclick="location.reload()" style="background:#f44336; color:white; padding:8px 15px; border:none; border-radius:5px; cursor:pointer; margin-bottom:15px;">
+        <div class="sub-page" style="padding:20px; text-align:right; background:#fff;">
+            <button class="back-btn" onclick="location.reload()" style="background:#d32f2f; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; margin-bottom:20px;">
                 <i class="fas fa-arrow-right"></i> رجوع للرئيسية
             </button>
-            <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">${title}</h2>
-            <div style="line-height: 1.8; color: #333; background: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 8px; margin-top:15px;">
+            <h2 style="color:#007bff; border-bottom:2px solid #007bff; padding-bottom:10px;">${title}</h2>
+            <div style="line-height:1.8; color:#333; padding:20px; border:1px solid #eee; border-radius:10px; margin-top:10px;">
                 <p>${content}</p>
             </div>
         </div>
@@ -1240,8 +1247,10 @@ function showPolicy(type) {
     window.scrollTo(0, 0);
 }
 </script>
+    
 </body>
 </html>
+
 
 
 
