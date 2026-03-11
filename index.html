@@ -795,9 +795,11 @@
             pagesContainer.innerHTML = html;
         }
 
-                        function buildOfficialExamPage() {
-            // تأكد من أن هذا المتغير pagesContainer معرف في كودك الأصلي
-            if (typeof pagesContainer !== 'undefined') {
+                    function buildOfficialExamPage() {
+            // 1. التأكد من وجود الحاوية قبل البدء
+            const container = document.getElementById('pages-container') || (typeof pagesContainer !== 'undefined' ? pagesContainer : null);
+            
+            if (container) {
                 const html = `
                     <div class="sub-page">
                         <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
@@ -825,12 +827,14 @@
                         </div>
                     </div>
                 `;
-                pagesContainer.innerHTML = html;
-                // تأكد من صعود الصفحة للأعلى عند الفتح
+                container.innerHTML = html;
                 window.scrollTo(0, 0); 
             } else {
-                console.error("خطأ: لم يتم العثور على حاوية الصفحات pagesContainer");
+                // إذا ظهر هذا الخطأ في Console فالمشكلة في تعريف الـ ID بالـ HTML
+                console.error("خطأ: لم يتم العثور على الحاوية المخصصة لعرض الصفحات.");
+            }
         }
+
 
         function buildAboutPage() {
             const html = `
@@ -1189,6 +1193,7 @@
     </script>
 </body>
 </html>
+
 
 
 
