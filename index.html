@@ -618,22 +618,43 @@
         }
 
 
-        function buildDocumentsPage() {
+                function buildDocumentsPage() {
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>سحب وطبع الوثائق 🌻</h2>
-                    ${createLinkButton('معلومات الحساب', 'https://inscriptic.onefd.edu.dz/preinscription/')}
-                    ${createLinkButton('حساب المستخدم', 'https://inscriptic.onefd.edu.dz/preinscription/auth/login/')}
-                    ${createLinkButton('ارفاق وثائق الثبوتية', 'https://e-devoir-3am.onefd.edu.dz/preinscription/index.php/upload_documents/')}
-                    ${createLinkButton('استخراج رقم التسجيل', 'https://inscriptic.onefd.edu.dz/numins/num_ins_index.php')}
-                    ${createLinkButton('استخراج استدعاء امتحان المستوى', 'https://inscriptic.onefd.edu.dz/convocation_2025/cen2012.php')}
-                    ${createLinkButton('استخراج كشف النقاط', 'http://inscriptic.onefd.edu.dz/releve/matricule.php')}
-                    ${createLinkButton('استخراج شهادة إثبات المستوى', 'https://www.onefd.edu.dz/att_niv_2025/')}
+                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">سحب وطبع الوثائق 🌻</h2>
+                    
+                    <article style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333;">
+                        <h3 style="color: #2c3e50; font-size: 1.2rem; margin-top: 0;">دليل استخراج وثائق المراسلة ONEFD</h3>
+                        <p>
+                            تعد مرحلة <strong>سحب الوثائق</strong> من أهم الخطوات للمتعلم في الديوان الوطني للتعليم والتكوين عن بعد. يوفر موقعنا روابط مباشرة وآمنة لاستخراج كافة الأوراق الرسمية التي يحتاجها الطالب خلال موسمه الدراسي.
+                        </p>
+                        <p>
+                            يمكنك من خلال هذه الصفحة <strong>استخراج رقم التسجيل</strong> في حال نسيانه، وهو الرقم الضروري للولوج إلى الحساب الشخصي. كما نتيح لك الوصول الفوري لـ <strong>سحب استدعاء امتحان المستوى</strong> و <strong>كشف النقاط</strong> فور صدور النتائج الرسمية.
+                        </p>
+                        <p>
+                            بالنسبة للناجحين، تتوفر هنا أيضاً روابط <strong>استخراج شهادة إثبات المستوى</strong>، وهي الوثيقة الرسمية التي تثبت نجاح المتعلم وانتقاله للمستوى الدراسي الأعلى.
+                        </p>
+                    </article>
+
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        ${createLinkButton('معلومات الحساب', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                        ${createLinkButton('حساب المستخدم', 'https://inscriptic.onefd.edu.dz/preinscription/auth/login/')}
+                        ${createLinkButton('ارفاق وثائق الثبوتية', 'https://e-devoir-3am.onefd.edu.dz/preinscription/index.php/upload_documents/')}
+                        ${createLinkButton('استخراج رقم التسجيل', 'https://inscriptic.onefd.edu.dz/numins/num_ins_index.php')}
+                        ${createLinkButton('استخراج استدعاء امتحان المستوى', 'https://inscriptic.onefd.edu.dz/convocation_2025/cen2012.php')}
+                        ${createLinkButton('استخراج كشف النقاط', 'http://inscriptic.onefd.edu.dz/releve/matricule.php')}
+                        ${createLinkButton('استخراج شهادة إثبات المستوى', 'https://www.onefd.edu.dz/att_niv_2025/')}
+                    </div>
+
+                    <div style="margin-top: 20px; padding: 10px; background: #e7f4ff; border-right: 5px solid #007bff; font-size: 0.9rem;">
+                        <strong>ملاحظة هامة:</strong> تأكد من توفر طابعة متصلة بجهازك قبل البدء في سحب الاستدعاءات أو كشوف النقاط لضمان الحصول على نسخة ورقية واضحة.
+                    </div>
                 </div>
             `;
             pagesContainer.innerHTML = html;
         }
+
 
         function buildPlatformsPage() {
             const html = `
@@ -1110,6 +1131,7 @@
     </script>
 </body>
 </html>
+
 
 
 
