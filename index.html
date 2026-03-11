@@ -551,7 +551,6 @@
             setTimeout(() => {
                 window.open(url, '_blank');
                 hideLoading();
-        
             }, 500); // 500ms انتظار قبل الفتح
         }
 
@@ -577,115 +576,140 @@
             loadingOverlay.classList.add('hidden');
         }
        
-        
-            // --- دالة صنع الأزرار المطورة لضمان العمل ---
+        // أداة لبناء أزرار الروابط
         function createLinkButton(text, url) {
-            return `
-                <button class="sub-page-btn" onclick="window.open('${url}', '_blank')" style="cursor: pointer; position: relative; z-index: 10;">
-                    <i class="fas fa-external-link-alt"></i> ${text}
-                </button>
-            `;
+            return `<button class="sub-page-btn" onclick="openExternalLink('${url}', '${text}')">
+                ${text} <i class="fas fa-external-link-alt" style="float: left;"></i>
+            </button>`;
         }
+       
+        // --- دوال بناء الصفحات الفرعية (تم الحفاظ على الدوال الأصلية) ---
 
-        // 1. صفحة التسجيل في المراسلة
-        function buildRegistrationPage() {
+                function buildRegistrationPage() {
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">دليل التسجيل في المراسلة 2026 🌻</h2>
-                    <article style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 20px; line-height: 1.6;">
-                        <h3 style="font-size: 1.1rem; color: #333;">كيفية التسجيل في الديوان الوطني ONEFD</h3>
-                        <p>تبدأ عملية <strong>التسجيل في المراسلة</strong> باختيار المستوى الدراسي بدقة، ثم دفع حقوق التسجيل عبر منصة بريد الجزائر الإلكترونية لضمان تفعيل الحساب الرسمي للمتعلم.</p>
+                    <h2>التسجيل في المراسلة 2026 🌻</h2>
+                    
+                    <article style="background-color: #fdfdfd; padding: 15px; border-radius: 8px; border: 1px solid #eee; margin-bottom: 20px; line-height: 1.7; color: #444;">
+                        <h3 style="color: #007bff; font-size: 1.2rem;">دليل التسجيل في المراسلة (ONEFD) لجميع المستويات</h3>
+                        <p>
+                            يعتبر <strong>التسجيل في المراسلة</strong> فرصة ذهبية للمتعلمين في الجزائر لمواصلة مسارهم الدراسي عن بعد. سواء كنت ترغب في التسجيل كـ <strong>متعلم جديد</strong> (لأول مرة) أو <strong>متعلم سابق</strong> (إعادة تسجيل)، فإن الديوان الوطني للتعليم والتكوين عن بعد يوفر أرضية رقمية متطورة للقيام بالعملية.
+                        </p>
+                        <p>
+                            للنجاح في التسجيل، يجب عليك اختيار صنفك الصحيح؛ حيث يقوم المتعلم الجديد بملء استمارة المعلومات لأول مرة ورفع الوثائق، بينما يكتفي المتعلم السابق بتحديث بياناته ودفع الرسوم. تأكد من توفر <strong>البطاقة الذهبية</strong> لتسهيل عملية الدفع الإلكتروني عبر منصة epay.
+                        </p>
                     </article>
+
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        ${createLinkButton('الولوج لصفحة تسجيل متعلم جديد', 'https://inscriptic.onefd.edu.dz/preinscription/')}
-                        ${createLinkButton('الولوج لصفحة تسجيل متعلم سابق', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                        ${createLinkButton('رابط تسجيل متعلم جديد (المنصة الرسمية)', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                        ${createLinkButton('رابط تسجيل متعلم سابق (تجديد التسجيل)', 'https://inscriptic.onefd.edu.dz/preinscription/')}
                     </div>
+
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #666; border-right: 3px solid #28a745; padding-right: 10px;">
+                        نصيحة: بعد الانتهاء من التسجيل الأولي، قم بطبع وصل التأكيد واحتفظ برقم التسجيل الخاص بك لاستخدامه في سحب الاستدعاءات لاحقاً.
+                    </p>
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
+        
+
+        
+
+        function buildPlatformsPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2>الأرضيات التعليمية (Scolarium) 🌻</h2>
+                    ${createLinkButton('المستوى المتوسط', 'http://scolarium-moyen.onefd.edu.dz/login/index.php')}
+                    ${createLinkButton('مستوى أولى ثانوي', 'http://scolarium-1as.onefd.edu.dz/login/index.php')}
+                    ${createLinkButton('مستوى الثانية ثانوي', 'http://scolarium-2as.onefd.edu.dz/login/index.php')}
+                    ${createLinkButton('مستوى الثالثة ثانوي', 'http://scolarium-3as.onefd.edu.dz/login/index.php')}
                 </div>
             `;
             pagesContainer.innerHTML = html;
         }
 
-        // 2. صفحة سحب وطبع الوثائق
-        function buildDocumentsPage() {
+        function buildEHomeworkPage() {
+            const html = `
+                <div class="sub-page" id="e-homework-main">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2>منصة الفرض الإلكتروني 🌻</h2>
+                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')">
+                        <i class="fas fa-graduation-cap"></i> المستوى المتوسط
+                    </button>
+                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')">
+                        <i class="fas fa-graduation-cap"></i> المستو        function buildDocumentsPage() {
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">سحب وطبع الوثائق 🌻</h2>
-                    <article style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 20px; line-height: 1.6;">
-                        <p>نقدم لكم روابط مباشرة لاستخراج <strong>رقم التسجيل</strong>، <strong>استدعاء امتحان المستوى</strong>، و <strong>كشوف النقاط</strong> السنوية لجميع المتعلمين عن بعد عبر ربوع الوطن.</p>
+                    
+                    <article style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333;">
+                        <h3 style="color: #2c3e50; font-size: 1.2rem; margin-top: 0;">دليل استخراج وثائق المراسلة ONEFD</h3>
+                        <p>
+                            تعد مرحلة <strong>سحب الوثائق</strong> من أهم الخطوات للمتعلم في الديوان الوطني للتعليم والتكوين عن بعد. يوفر موقعنا روابط مباشرة وآمنة لاستخراج كافة الأوراق الرسمية التي يحتاجها الطالب خلال موسمه الدراسي.
+                        </p>
+                        <p>
+                            يمكنك من خلال هذه الصفحة <strong>استخراج رقم التسجيل</strong> في حال نسيانه، وهو الرقم الضروري للولوج إلى الحساب الشخصي. كما نتيح لك الوصول الفوري لـ <strong>سحب استدعاء امتحان المستوى</strong> و <strong>كشف النقاط</strong> فور صدور النتائج الرسمية.
+                        </p>
+                        <p>
+                            بالنسبة للناجحين، تتوفر هنا أيضاً روابط <strong>استخراج شهادة إثبات المستوى</strong>، وهي الوثيقة الرسمية التي تثبت نجاح المتعلم وانتقاله للمستوى الدراسي الأعلى.
+                        </p>
                     </article>
+
                     <div style="display: flex; flex-direction: column; gap: 10px;">
                         ${createLinkButton('معلومات الحساب', 'https://inscriptic.onefd.edu.dz/preinscription/')}
                         ${createLinkButton('حساب المستخدم', 'https://inscriptic.onefd.edu.dz/preinscription/auth/login/')}
+                        ${createLinkButton('ارفاق وثائق الثبوتية', 'https://e-devoir-3am.onefd.edu.dz/preinscription/index.php/upload_documents/')}
                         ${createLinkButton('استخراج رقم التسجيل', 'https://inscriptic.onefd.edu.dz/numins/num_ins_index.php')}
                         ${createLinkButton('استخراج استدعاء امتحان المستوى', 'https://inscriptic.onefd.edu.dz/convocation_2025/cen2012.php')}
                         ${createLinkButton('استخراج كشف النقاط', 'http://inscriptic.onefd.edu.dz/releve/matricule.php')}
                         ${createLinkButton('استخراج شهادة إثبات المستوى', 'https://www.onefd.edu.dz/att_niv_2025/')}
                     </div>
-                </div>
-            `;
-            pagesContainer.innerHTML = html;
-        }
 
-        // 3. صفحة الأرضيات التعليمية (Scolarium)
-        function buildPlatformsPage() {
-            const html = `
-                <div class="sub-page">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">الأرضيات التعليمية (Scolarium) 🌻</h2>
-                    <article style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 20px; line-height: 1.6;">
-                        <p>تسمح منصة <strong>سكولاريوم</strong> للمتعلم بالوصول إلى الدروس التفاعلية وتحميل الفروض والكتب الإلكترونية الخاصة بالطورين المتوسط والثانوي لمتابعة الدراسة بانتظام.</p>
-                    </article>
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
-                        ${createLinkButton('الأرضية التعليمية - المستوى المتوسط', 'http://scolarium-moyen.onefd.edu.dz/login/index.php')}
-                        ${createLinkButton('الأرضية التعليمية - أولى ثانوي', 'http://scolarium-1as.onefd.edu.dz/login/index.php')}
-                        ${createLinkButton('الأرضية التعليمية - الثانية ثانوي', 'http://scolarium-2as.onefd.edu.dz/login/index.php')}
-                        ${createLinkButton('الأرضية التعليمية - الثالثة ثانوي', 'http://scolarium-3as.onefd.edu.dz/login/index.php')}
+                    <div style="margin-top: 20px; padding: 10px; background: #e7f4ff; border-right: 5px solid #007bff; font-size: 0.9rem;">
+                        <strong>ملاحظة هامة:</strong> تأكد من توفر طابعة متصلة بجهازك قبل البدء في سحب الاستدعاءات أو كشوف النقاط لضمان الحصول على نسخة ورقية واضحة.
                     </div>
                 </div>
             `;
             pagesContainer.innerHTML = html;
-        }
-
-        // 4. صفحة منصة الفرض الإلكتروني
-        function buildEHomeworkPage() {
-            const html = `
-                <div class="sub-page" id="e-homework-main">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">منصة الفرض الإلكتروني 🌻</h2>
-                    <article style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 20px; line-height: 1.6;">
-                        <p>إجراء <strong>الفرض الإلكتروني</strong> ضروري لحساب علامة المراقبة المستمرة. اختر طورك الدراسي (متوسط أو ثانوي) للولوج مباشرة للمنصة الرسمية وتسجيل إجاباتك.</p>
-                    </article>
-                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')" style="background-color: #007bff; color: white; margin-bottom: 10px;">
-                        <i class="fas fa-graduation-cap"></i> المستوى المتوسط
-                    </button>
-                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')" style="background-color: #28a745; color: white;">
-                        <i class="fas fa-graduation-cap"></i> المستوى الثانوي
+    
                     </button>
                 </div>
             `;
             pagesContainer.innerHTML = html;
         }
 
-        // 5. صفحة التسجيل في الشهادة الرسمية (BAC/BEM)
-        function buildOfficialExamPage() {
-            const html = `
-                <div class="sub-page">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">التسجيل في الشهادة الرسمية 🏆</h2>
-                    <article style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 20px; line-height: 1.6;">
-                        <p>روابط التسجيل في شهادتي <strong>البكالوريا</strong> و <strong>التعليم المتوسط</strong> للمترشحين الأحرار التابعين للديوان الوطني ONEFD عبر موقع الديوان الوطني للامتحانات والمسابقات.</p>
-                    </article>
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
-                        ${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://bem.onec.dz/')}
-                        ${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://bac.onec.dz/')}
-                    </div>
-                </div>
+        function buildEHomeworkLevel(level) {
+            const homeworkMainDiv = document.getElementById('e-homework-main');
+            let buttonsHtml = '';
+            let title = '';
+
+            if (level === 'moyen') {
+                title = 'الفرض الإلكتروني - المستوى المتوسط';
+                buttonsHtml = `
+                    ${createLinkButton('أولى متوسط', 'https://e-devoir-1am.onefd.edu.dz/')}
+                    ${createLinkButton('ثانية متوسط', 'https://e-devoir-2am.onefd.edu.dz/')}
+                    ${createLinkButton('ثالثة متوسط', 'https://e-devoir-3am.onefd.edu.dz/')}
+                    ${createLinkButton('الرابعة متوسط', 'https://e-devoir-4am.onefd.edu.dz/')}
+                `;
+            } else if (level === 'secondary') {
+                title = 'الفرض الإلكتروني - المستوى الثانوي';
+                buttonsHtml = `
+                    ${createLinkButton('أولى ثانوي', 'https://e-devoir-1as.onefd.edu.dz/index.php/welcome')}
+                    ${createLinkButton('الثانية ثانوي', 'https://e-devoir-2as.onefd.edu.dz/index.php/welcome')}
+                    ${createLinkButton('الثالثة ثانوي', 'https://e-devoir-3as.onefd.edu.dz/index.php/welcome')}
+                `;
+            }
+
+            homeworkMainDiv.innerHTML = `
+                <button class="back-btn" onclick="buildEHomeworkPage()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                <h2>${title}</h2>
+                ${buttonsHtml}
             `;
-            pagesContainer.innerHTML = html;
         }
-        
 
         function buildExamInfoPage() {
             const html = `
@@ -732,6 +756,20 @@
             `;
             pagesContainer.innerHTML = html;
         }
+
+        function buildExamRegistrationPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2>التسجيل في الشهادة الرسمية 🏆</h2>
+                    <p>اختر نوع الشهادة التي ترغب في التسجيل فيها:</p>
+                    ${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://bem.onec.dz/')}
+                    ${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://bac.onec.dz/')}
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+        }
+
         function buildAboutPage() {
             const html = `
                 <div class="sub-page">
