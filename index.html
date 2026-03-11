@@ -795,14 +795,35 @@
             pagesContainer.innerHTML = html;
         }
 
-        function buildExamRegistrationPage() {
+                function buildOfficialExamPage() {
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>التسجيل في الشهادة الرسمية 🏆</h2>
-                    <p>اختر نوع الشهادة التي ترغب في التسجيل فيها:</p>
-                    ${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://bem.onec.dz/')}
-                    ${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://bac.onec.dz/')}
+                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">التسجيل في الشهادة الرسمية 🏆</h2>
+                    
+                    <article style="background-color: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                        <h3 style="color: #2c3e50; font-size: 1.25rem; margin-top: 0;">دليل التسجيل في الامتحانات النهائية (البكالوريا والبيام)</h3>
+                        <p>
+                            تعد مرحلة <strong>التسجيل في الشهادات الرسمية</strong> خطوة مصيرية لكل متعلم عن بُعد. سواء كنت تهدف لنيل شهادة <strong>البكالوريا (BAC)</strong> أو شهادة <strong>التعليم المتوسط (BEM)</strong>، فإن الالتزام بالمواعيد المحددة من طرف وزارة التربية الوطنية والديوان الوطني للامتحانات والمسابقات هو أمر ضروري.
+                        </p>
+                        <p>
+                            من خلال هذه الصفحة، نوفر للمترشحين الأحرار والمتعلمين التابعين للديوان الوطني للتعليم والتكوين عن بعد روابط مباشرة للتسجيل الأولي وتأكيد المعلومات. نوصي دائماً بمراجعة الملف الورقي المطلوب ودفعه في الآجال المحددة على مستوى مديريات التربية لضمان قبول الترشح.
+                        </p>
+                        <p style="background: #e8f5e9; padding: 10px; border-radius: 6px; border-right: 5px solid #4caf50; font-size: 0.95rem;">
+                            <strong>معلومات هامة:</strong> تأكد من دقة المعلومات الشخصية (الاسم، اللقب، وتاريخ الميلاد) كما هي مكتوبة في شهادة الميلاد لتفادي أي أخطاء في الشهادة النهائية.
+                        </p>
+                    </article>
+
+                    <p style="text-align: center; font-weight: bold; color: #555; margin-bottom: 15px;">اختر نوع الشهادة التي ترغب في التسجيل فيها:</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        ${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://bem.onec.dz/')}
+                        ${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://bac.onec.dz/')}
+                    </div>
+
+                    <div style="margin-top: 25px; padding: 15px; background: #fff3cd; border: 1px dashed #ffc107; border-radius: 8px; font-size: 0.9rem;">
+                        <strong>نصيحة يوسف:</strong> بعد الانتهاء من التسجيل الإلكتروني، لا تنسَ طبع وصل الاستلام والاحتفاظ بكلمة السر الخاصة بك لمتابعة حالة الملف لاحقاً.
+                    </div>
                 </div>
             `;
             pagesContainer.innerHTML = html;
@@ -1165,3 +1186,4 @@
     </script>
 </body>
 </html>
+
