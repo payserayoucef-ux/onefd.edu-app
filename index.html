@@ -585,17 +585,38 @@
        
         // --- دوال بناء الصفحات الفرعية (تم الحفاظ على الدوال الأصلية) ---
 
-        function buildRegistrationPage() {
+                 function buildRegistrationPage() {
             const html = `
                 <div class="sub-page">
                     <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2>التسجيل في المراسلة 🌻</h2>
-                    ${createLinkButton('تسجيل متعلم جديد', 'https://inscriptic.onefd.edu.dz/preinscription/')}
-                    ${createLinkButton('تسجيل متعلم سابق', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">دليل التسجيل في المراسلة 2026 🌻</h2>
+                    
+                    <article style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #d1e7ff; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                        <h3 style="color: #2c3e50; font-size: 1.3rem; margin-top: 0;">كيفية التسجيل في الديوان الوطني ONEFD</h3>
+                        <p>
+                            يعتبر <strong>التسجيل في المراسلة</strong> عملية أساسية لكل متعلم يرغب في نيل شهادة إثبات المستوى. تبدأ التسجيلات عادة في شهر سبتمبر وتستمر لعدة أشهر، حيث يتاح للمتعلمين الجدد والقدامى اختيار الشعبة والمستوى الدراسي المناسب.
+                        </p>
+                        <p>
+                            يجب على المتعلم التأكد من دقة المعلومات الشخصية المدخلة، خاصة رقم الهاتف والعنوان، لضمان استلام التنبيهات الرسمية. بعد التسجيل الأولي، يتم التوجه لدفع حقوق التسجيل عبر <strong>منصة الدفع الإلكتروني epay</strong> التابعة لبريد الجزائر.
+                        </p>
+                        <p style="font-style: italic; color: #0056b3; background: #eef7ff; padding: 10px; border-radius: 5px;">
+                            ملاحظة: تأكد من تحميل وصل التسجيل فور الانتهاء، فهو وثيقتك الرسمية لإثبات العملية أمام المركز الولائي.
+                        </p>
+                    </article>
+
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        ${createLinkButton('الولوج لصفحة تسجيل متعلم جديد', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                        ${createLinkButton('الولوج لصفحة تسجيل متعلم سابق', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                    </div>
+
+                    <div style="margin-top: 20px; padding: 10px; background: #fff3cd; border-right: 5px solid #ffc107; font-size: 0.95rem;">
+                        <strong>نصيحة يوسف:</strong> احتفظ بكلمة المرور الخاصة بحسابك، ستحتاجها لاحقاً لسحب فروض المراسلة واستدعاء الامتحان.
+                    </div>
                 </div>
             `;
             pagesContainer.innerHTML = html;
         }
+
 
         function buildDocumentsPage() {
             const html = `
@@ -1089,6 +1110,7 @@
     </script>
 </body>
 </html>
+
 
 
 
