@@ -466,8 +466,8 @@
             <button class="main-btn exam-info-btn" onclick="showPage('exam-info-page')">
                 <i class="fas fa-bullhorn"></i> معلومات التسجيل في الشهادة
             </button>
-            <button class="main-btn quiz-btn" onclick="showPage('quiz-page')" style="background-color: transparent; color: #007bff; border-color: #007bff; transition: all 0.3s;" onmouseover="this.style.backgroundColor='#007bff'; this.style.borderColor='white'; this.style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='#007bff'; this.style.color='#007bff';">
-    <i class="fas fa-edit" style="color: #ff6600;"></i> 🔥 محاكي الفرض الإلكتروني (يوسف)
+            <button class="main-btn quiz-btn" onclick="showPage('quiz-page')" style="background-color: transparent; color: #007bff; border-color: #007bff; transition: all 0.3s;" onmouseover="this.style.backgroundColor='#007bff'; this.style.borderColor='white'; this.style.color='white'; this.querySelector('.quiz-icon').style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='#007bff'; this.style.color='#007bff'; this.querySelector('.quiz-icon').style.color='#007bff';">
+    <i class="fas fa-edit quiz-icon" style="color: #007bff; transition: all 0.3s;"></i> 🔥 محاكي الفرض الإلكتروني (يوسف)
 </button>
         </div>
 
@@ -1209,6 +1209,7 @@
     </script>
 </body>
 </html>
+
 
 
 
