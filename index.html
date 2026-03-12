@@ -2155,14 +2155,7 @@ const allQuizData = {
         { q: "Le passé simple du verbe 'Faire' (Je):", a: "Fis", options: ["Faisais", "Fis", "Fait", "Ferai"] }
     ]
             }
-         // متغيرات التحكم في المحاكي
-let currentQuestions = [];
-let currentIndex = 0;
-let score = 0;
-let selectedLevel = "";
-let selectedSubject = "";
 
-// 1. دالة بدء المحاكي (تُستدعى عند الضغط على أي زر مستوى/مادة)
 function startSimulator(level, subject) {
     // التأكد من وجود البيانات في المتغير الضخم allQuizData
     if (allQuizData[level] && allQuizData[level][subject]) {
@@ -2251,6 +2244,7 @@ function exitSimulator() {
     </script>
 </body>
 </html>
+
 
 
 
