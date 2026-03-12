@@ -1205,10 +1205,263 @@
             `;
             pagesContainer.innerHTML = html;
         }
+        // --- [ابدأ] كود JavaScript الخاص بـ "محاكي الفرض الإلكتروني" (يوسف) ---
+
+// 1. بيانات الأسئلة (مثال لـ 20 سؤال رياضيات)
+// لكل مادة 20 سؤالاً، ولكل سؤال نقطة واحدة.
+const mathsQuestions = [
+    { q: "ما هو ناتج العملية التالية: 7 + 5 × 3؟", a: "22", options: ["22", "36", "15", "25"] },
+    { q: "حل المعادلة: 2x - 4 = 10", a: "x = 7", options: ["x = 3", "x = 7", "x = 5", "x = 14"] },
+    { q: "ما هي قيمة π التقريبية؟", a: "3.14", options: ["2.14", "3.14", "3.41", "2.41"] },
+    { q: "ما هو الجذر التربيعي للعدد 144؟", a: "12", options: ["10", "12", "14", "16"] },
+    { q: "ما هو ناتج: 10²؟", a: "100", options: ["20", "100", "200", "50"] },
+    { q: "إذا كان مثلث قائم الزاوية طول ضلعيه القائمين 3سم و 4سم، فما طول الوتر؟", a: "5سم", options: ["5سم", "7سم", "6سم", "8سم"] },
+    { q: "بسط العبارة: 3(x + 2) - 2x", a: "x + 6", options: ["x + 6", "5x + 6", "x + 2", "5x + 2"] },
+    { q: "ما هو ناتج العملية: (2 + 3)²؟", a: "25", options: ["10", "13", "25", "20"] },
+    { q: "ما هو العدد الأولي الأصغر؟", a: "2", options: ["1", "2", "3", "0"] },
+    { q: "ما هو قياس الزاوية القائمة؟", a: "90 درجة", options: ["45 درجة", "90 درجة", "180 درجة", "60 درجة"] },
+    { q: "ما هو مقلوب العدد 5؟", a: "1/5", options: ["1/5", "5/1", "-5", "0.5"] },
+    { q: "احسب ناتج: 15% من 200؟", a: "30", options: ["15", "30", "45", "60"] },
+    { q: "ما هي مساحة مستطيل طوله 8سم وعرضه 5سم؟", a: "40 سم²", options: ["13 سم²", "40 سم²", "26 سم²", "30 سم²"] },
+    { q: "ما هو المعكوس الجمعي للعدد -7؟", a: "7", options: ["7", "1/7", "-1/7", "0"] },
+    { q: "ما هو ناتج: (-3) × (-4)؟", a: "12", options: ["12", "-12", "7", "-7"] },
+    { q: "ما هي قيمة العبارة 2a + b إذا كانت a=3 و b=4؟", a: "10", options: ["10", "11", "14", "12"] },
+    { q: "أي من الأعداد التالية يقبل القسمة على 3؟", a: "123", options: ["121", "122", "123", "124"] },
+    { q: "ما هو حجم مكعب طول ضلعه 3سم؟", a: "27 سم³", options: ["9 سم³", "27 سم³", "18 سم³", "12 سم³"] },
+    { q: "ما هو الوسيط لمجموعة الأعداد: 3, 7, 9, 4, 6؟", a: "6", options: ["6", "7", "4", "5.8"] },
+    { q: "ما هو ناتج: 0 × 100؟", a: "0", options: ["0", "100", "1", "00"] }
+];
+
+// 2. دوال بناء المحتوى (تُضاف داخل الدالة showPage الموجودة لديك)
+// سنقوم بتعديل الدالة showPage لتستقبل المعرف الجديد 'quiz-page'
+
+// [نصيحة] استبدل الدالة showPage الموجودة لديك بالكامل بهذه الدالة المعدلة:
+function showPage(pageId) {
+    toggleSidebar();
+    currentExternalUrl = null;
+    pagesContainer.innerHTML = '';
+    
+    // تفعيل المؤقت للفرض الإلكتروني إذا تم اختيار الصفحة
+    if (pageId === 'quiz-page') {
+        buildQuizPage();
+        return;
+    }
+
+    // ... باقي أكواد الدالة showPage الأصلية الخاصة بك تستمر هنا ...
+    // (انسخ باقي محتوى الدالة الأصلية من كودك)
+}
+
+// 3. دوال بناء صفحة الفرض (الديناميكية)
+
+// دالة لبناء صفحة الفرض بالكامل داخل pagesContainer
+function buildQuizPage() {
+    pagesContainer.innerHTML = '';
+    pagesContainer.style.display = 'block';
+
+    let html = `
+        <div class="sub-page quiz-page fade-in">
+            <button class="back-btn" onclick="closeQuizPage()">
+                <i class="fas fa-arrow-right"></i> رجوع
+            </button>
+            <h2><i class="fas fa-edit"></i> محاكي الفرض الإلكتروني - يوسف</h2>
+
+            <div id="quiz-timer-display" class="quiz-timer">00:00</div>
+
+            <div id="quiz-section-home" class="fade-in">
+                <div class="info-section">
+                    <p>مرحباً بك، يوسف، في منصة محاكاة الفروض الإلكترونية. تم تصميم هذا النظام لمساعدتك على التدرب على إدارة الوقت ونمط الأسئلة قبل الفروض الحقيقية.</p>
+                    <p>لكل مادة 20 سؤالاً، ولكل سؤال نقطة واحدة. يبدأ العد التنازلي عند الضغط على زر "ابدأ الفرض" داخل صفحة المادة.</p>
+                    <p>يرجى اختيار الطور الدراسي للبدء:</p>
+                </div>
+                <div class="main-buttons-container">
+                    <button class="main-btn quiz-phase-btn btn-middle" onclick="showQuizLevels('middle')">الطور المتوسط</button>
+                    <button class="main-btn quiz-phase-btn btn-high" onclick="showQuizLevels('high')">الطور الثانوي</button>
+                </div>
+            </div>
+
+            <div id="quiz-section-levels" class="hidden fade-in">
+                <h3 id="quiz-levels-title">اختر السنة الدراسية</h3>
+                <div id="quiz-secondary-article" class="info-section hidden">
+                    <p>أهلاً بك في فضاء الطور الثانوي. هذه مرحلة حاسمة وتتطلب تركيزاً عالياً. يرجى اختيار سنتك الدراسية بدقة لضمان ظهور الأسئلة المناسبة لمستواك التعليمي.</p>
+                </div>
+                <div class="main-buttons-container" id="quiz-levels-buttons-container">
+                    </div>
+            </div>
+
+            <div id="quiz-section-exam" class="hidden fade-in">
+                <h3 id="quiz-exam-title">فرض مادة الرياضيات</h3>
+                <div id="quiz-pre-start-area" class="info-section">
+                    <p>أنت الآن جاهز لبدء محاكاة فرض مادة الرياضيات. بمجرد الضغط على زر "ابدأ"، سيتم تحميل الأسئلة الـ 20 وسيبدأ المؤقت التنازلي فوراً.</p>
+                </div>
+                <button class="main-btn timing" id="btn-start-exam" style="width: 100%; margin-top: 15px;">ابدأ الفرض (20 دقيقة)</button>
+                
+                <form id="quiz-exam-form" class="hidden" style="margin-top: 20px;">
+                    </form>
+
+                <button class="main-btn" id="btn-submit-exam" class="hidden" style="background-color: #28a745; color: white; margin-top: 30px; width: 100%;">تسليم الإجابات</button>
+            </div>
+
+            <div id="quiz-section-result" class="hidden fade-in result-card">
+                <h1>النتيجة النهائية</h1>
+                <h2>شكراً لمشاركتك، يوسف!</h2>
+                <p>لقد أتممت محاكاة الفرض الإلكتروني بنجاح. إليك النتيجة التي تحصلت عليها:</p>
+                <div class="score-display">
+                    <span id="quiz-final-score">0</span>
+                    <span class="score-muted"> / 20</span>
+                </div>
+                <p id="quiz-score-message"></p>
+                <button onclick="buildQuizPage()" class="main-btn" style="background-color: #007bff; color: white; width: auto; margin-top: 20px;">العودة للرئيسية</button>
+            </div>
+
+        </div>
+    `;
+    pagesContainer.innerHTML = html;
+}
+
+// دوال إدارة التنقل الداخلي والمؤقت (يجب تعريفها عالمياً لتتمكن من استدعائها من الـ HTML)
+
+window.closeQuizPage = function() {
+    clearInterval(quizTimerInterval); // إيقاف المؤقت إذا كان يعمل
+    pagesContainer.style.display = 'none';
+};
+
+window.showQuizLevels = function(phase) {
+    document.getElementById('quiz-section-home').classList.add('hidden');
+    document.getElementById('quiz-section-levels').classList.remove('hidden');
+    
+    const levelsTitle = document.getElementById('quiz-levels-title');
+    const secondaryArticle = document.getElementById('quiz-secondary-article');
+    const buttonsContainer = document.getElementById('quiz-levels-buttons-container');
+    buttonsContainer.innerHTML = ''; // تفريغ الحاوية
+
+    let levels = [];
+    if (phase === 'middle') {
+        levelsTitle.innerText = "اختر السنة الدراسية - الطور المتوسط";
+        secondaryArticle.classList.add('hidden');
+        levels = ["أولى متوسط", "ثانية متوسط", "ثالثة متوسط", "رابعة متوسط"];
+    } else {
+        levelsTitle.innerText = "اختر السنة الدراسية - الطور الثانوي";
+        secondaryArticle.classList.remove('hidden');
+        levels = ["أولى ثانوي", "ثانية ثانوي", "ثالثة ثانوي"];
+    }
+
+    levels.forEach(level => {
+        const btn = document.createElement('button');
+        btn.className = "main-btn exam-info-btn"; // استخدام تنسيق الأزرار الموجود لديك
+        btn.innerText = level;
+        btn.onclick = () => startQuizExam(level);
+        buttonsContainer.appendChild(btn);
+    });
+};
+
+window.startQuizExam = function(level) {
+    document.getElementById('quiz-section-levels').classList.add('hidden');
+    document.getElementById('quiz-section-exam').classList.remove('hidden');
+    document.getElementById('quiz-exam-title').innerText = `فرض مادة الرياضيات - السنة ${level}`;
+};
+
+// إدارة المؤقت والفرض
+let quizTimerInterval;
+let quizTimeLeft;
+
+// تعريف المستمعين للأزرار داخل واجهة الفرض (بعد بنائها)
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.id === 'btn-start-exam') {
+        e.target.classList.add('hidden');
+        document.getElementById('quiz-pre-start-area').classList.add('hidden');
+        document.getElementById('quiz-exam-form').classList.remove('hidden');
+        document.getElementById('btn-submit-exam').classList.remove('hidden');
+        document.getElementById('quiz-timer-display').classList.remove('hidden');
+
+        // 1. توليد الأسئلة الـ 20
+        generateQuestions(mathsQuestions);
+        
+        // 2. بدء العد التنازلي: 20 دقيقة = 1200 ثانية
+        startQuizTimer(1200);
+    }
+    
+    if (e.target && e.target.id === 'btn-submit-exam') {
+        calculateScoreAndSubmit();
+    }
+});
+
+// دالة لتوليد الأسئلة الـ 20
+function generateQuestions(questionsArray) {
+    const form = document.getElementById('quiz-exam-form');
+    form.innerHTML = '';
+    
+    questionsArray.forEach((qData, index) => {
+        const qNumber = index + 1;
+        const qCard = document.createElement('div');
+        qCard.className = "question-card";
+        qCard.innerHTML = `
+            <h4>السؤال ${qNumber}: ${qData.q}</h4>
+            ${qData.options.map(opt => `
+                <label class="option-label">
+                    <input type="radio" name="q${qNumber}" value="${opt}" required>
+                    <span class="option-text">${opt}</span>
+                </label>
+            `).join('')}
+        `;
+        form.appendChild(qCard);
+    });
+}
+
+// دالة لبدء المؤقت
+function startQuizTimer(durationSeconds) {
+    quizTimeLeft = durationSeconds;
+    updateQuizTimerUI();
+    clearInterval(quizTimerInterval);
+    quizTimerInterval = setInterval(() => {
+        quizTimeLeft--;
+        updateQuizTimerUI();
+        if (quizTimeLeft <= 0) {
+            clearInterval(quizTimerInterval);
+            document.getElementById('quiz-timer-display').innerText = "00:00";
+            alert("انتهى الوقت المخصص للفرض! تم تسليم إجاباتك تلقائياً وعرض النتيجة.");
+            calculateScoreAndSubmit();
+        } else if (quizTimeLeft < 180) { // أقل من 3 دقائق
+            document.getElementById('quiz-timer-display').classList.add('urgent');
+        }
+    }, 1000);
+}
+
+// دالة لتحديث عرض المؤقت
+function updateQuizTimerUI() {
+    const minutes = Math.floor(quizTimeLeft / 60);
+    const seconds = quizTimeLeft % 60;
+    document.getElementById('quiz-timer-text').innerText = 
+        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+// دالة لحساب النقاط وتسليم الفرض
+function calculateScoreAndSubmit() {
+    clearInterval(quizTimerInterval);
+    document.getElementById('quiz-timer-display').classList.add('hidden');
+    document.getElementById('quiz-section-exam').classList.add('hidden');
+    document.getElementById('quiz-section-result').classList.remove('hidden');
+
+    let score = 0;
+    const formData = new FormData(document.getElementById('quiz-exam-form'));
+    mathsQuestions.forEach((qData, index) => {
+        if (formData.get(`q${index + 1}`) === qData.a) {
+            score++;
+        }
+    });
+
+    document.getElementById('quiz-final-score').innerText = score;
+    const msg = document.getElementById('quiz-score-message');
+    if (score === 20) { msg.innerText = "أداء مثالي! امتياز، يوسف."; msg.style.color = "#28a745"; }
+    else if (score >= 15) { msg.innerText = "أحسنت جداً! أداء ممتاز وقريب من العلامة الكاملة."; msg.style.color = "#28a745"; }
+    else if (score >= 10) { msg.innerText = "جيد جداً، لقد نجحت. يمكنك تحسين مستواك بالمراجعة."; msg.style.color = "#ff6600"; }
+    else { msg.innerText = "لا تقلق، هذه محاكاة. يرجى مراجعة المواد وإعادة المحاولة لبناء الثقة."; msg.style.color = "#dc3545"; }
+}
+
 
     </script>
 </body>
 </html>
+
 
 
 
