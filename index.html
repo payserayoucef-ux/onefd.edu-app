@@ -16,6 +16,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
    
     <style>
+    /* تنسيق الحاوية الرئيسية */
+    #quiz-container {
+        display: none;
+        max-width: 800px;
+        margin: 20px auto;
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        padding: 20px;
+        direction: rtl;
+        font-family: 'Arial', sans-serif;
+    }
+    /* تنبيه قيد التطوير */
+    .dev-alert {
+        background: #fff3cd;
+        color: #856404;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: bold;
+        border: 1px solid #ffeeba;
+    }
+    /* أزرار الخيارات */
+    .quiz-opt-btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+    .quiz-opt-btn:hover { background: #e9ecef; border-color: #3498db; }
+    /* المؤقت */
+    #timer-display {
+        font-size: 20px;
+        color: #e74c3c;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 15px;
+    }
         /* [ ... أكواد CSS مُصحَّحة ومكتملة ... ] */
        
 /* تنسيق عام */
@@ -1205,136 +1250,13 @@
             `;
             pagesContainer.innerHTML = html;
         }
-          // 1. قاعدة البيانات الشاملة (4 متوسط + 3 ثانوي)
-const allQuizData = {
-    // الطور المتوسط
-    'أولى متوسط': { 'الرياضيات': getDummyQuestions('رياضيات 1م'), 'اللغة العربية': getDummyQuestions('عربية 1م') },
-    'ثانية متوسط': { 'الرياضيات': getDummyQuestions('رياضيات 2م'), 'اللغة العربية': getDummyQuestions('عربية 2م') },
-    'ثالثة متوسط': { 'الرياضيات': getDummyQuestions('رياضيات 3م'), 'اللغة العربية': getDummyQuestions('عربية 3م') },
-    'رابعة متوسط': { 'الرياضيات': getDummyQuestions('رياضيات 4م'), 'اللغة العربية': getDummyQuestions('عربية 4م') },
-    
-    // الطور الثانوي
-    'أولى ثانوي': { 'الرياضيات': getDummyQuestions('رياضيات 1ث'), 'اللغة العربية': getDummyQuestions('عربية 1ث') },
-    'ثانية ثانوي': { 'الرياضيات': getDummyQuestions('رياضيات 2ث'), 'اللغة العربية': getDummyQuestions('عربية 2ث') },
-    'ثالثة ثانوي': { 
-        'الرياضيات': [
-            { q: "نهاية eˣ عند +∞ هي:", a: "+∞", options: ["0", "1", "+∞", "-∞"] },
-            { q: "قيمة ln(1) تساوي:", a: "0", options: ["1", "e", "0", "-1"] },
-            // ... أضف بقية الـ 20 سؤالاً هنا
-        ], 
-        'اللغة العربية': [
-            { q: "رائد مدرسة البعث والإحياء هو:", a: "البارودي", options: ["شوقي", "البارودي", "حافظ", "مطران"] },
-            // ... أضف بقية الـ 20 سؤالاً هنا
-        ] 
-    }
-};
+          
 
-// وظيفة لإنشاء أسئلة تجريبية سريعة (يمكنك استبدالها بأسئلتك الحقيقية)
-function getDummyQuestions(label) {
-    let qArray = [];
-    for(let i=1; i<=20; i++) {
-        qArray.push({
-            q: `سؤال ${i} في مادة ${label}: ما هو الجواب الصحيح؟`,
-            a: "الخيار الأول",
-            options: ["الخيار الأول", "الخيار الثاني", "الخيار الثالث", "الخيار الرابع"]
-        });
-    }
-    return qArray;
-}
-
-// 2. متغيرات المحرك
-let currentQuestions = [];
-let currentIndex = 0;
-let score = 0;
-let timer;
-let timeLeft = 20 * 60; // 20 دقيقة بالثواني
-
-// 3. دالة بدء المحاكي
-function startSimulator(level, subject) {
-    if (allQuizData[level] && allQuizData[level][subject]) {
-        currentQuestions = allQuizData[level][subject];
-        currentIndex = 0;
-        score = 0;
-        timeLeft = 20 * 60; 
-
-        document.getElementById('main-menu').style.display = 'none';
-        document.getElementById('quiz-container').style.display = 'block';
-        
-        startTimer();
-        loadQuestion();
-    } else {
-        alert("القسم قيد التحديث!");
-    }
-}
-
-// 4. دالة المؤقت
-function startTimer() {
-    clearInterval(timer);
-    timer = setInterval(() => {
-        let minutes = Math.floor(timeLeft / 60);
-        let seconds = timeLeft % 60;
-        document.getElementById('timer-display').innerText = 
-            `الوقت المتبقي: ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-        
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            showResult("انتهى الوقت!");
-        }
-        timeLeft--;
-    }, 1000);
-}
-
-// 5. عرض السؤال
-function loadQuestion() {
-    const qData = currentQuestions[currentIndex];
-    document.getElementById('question-text').innerText = `السؤال ${currentIndex + 1}: ${qData.q}`;
-    const optionsGrid = document.getElementById('options-grid');
-    optionsGrid.innerHTML = ''; 
-
-    qData.options.forEach(opt => {
-        const btn = document.createElement('button');
-        btn.className = 'quiz-opt-btn';
-        btn.innerText = opt;
-        btn.onclick = () => {
-            if (opt === qData.a) score++;
-            nextQuestion();
-        };
-        optionsGrid.appendChild(btn);
-    });
-}
-
-function nextQuestion() {
-    currentIndex++;
-    if (currentIndex < currentQuestions.length) {
-        loadQuestion();
-    } else {
-        showResult("أتممت جميع الأسئلة!");
-    }
-}
-
-// 6. عرض النتيجة النهائية
-function showResult(message) {
-    clearInterval(timer);
-    const quizContent = document.getElementById('quiz-content');
-    quizContent.innerHTML = `
-        <div class="result-box">
-            <h2>${message}</h2>
-            <p>نتيجتك: ${score} من ${currentQuestions.length}</p>
-            <button onclick="exitSimulator()" class="exit-btn">خروج والعودة للقائمة</button>
-        </div>
-    `;
-}
-
-// 7. دالة الخروج
-function exitSimulator() {
-    clearInterval(timer);
-    location.reload(); // إعادة تحميل الصفحة لتصفير كل شيء
-                                }
-            
         
     </script>
 </body>
 </html>
+
 
 
 
