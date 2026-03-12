@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محاكي الفرض الإلكتروني - الدراسة بالمراسلة - يوسف</title>
+    
+    <style>
+        /* 1. المتغيرات اللوحية للألوان (للحفاظ على التنسيق) */
+        :root {
+            --primary-blue: #0088cc; /* الأزرق من الشعار */
+            --primary-orange: #ff6600; /* البرتقالي من الشعار */
+            --primary-yellow: #ffcc00; /* الأصفر من الشعار */
+            --bg-light: #f9f9f9;
+            --text-dark: #333;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* 2. التنسيقات العامة والأساسية */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* خط عربي واضح */
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px; /* عرض الصفحة الأقصى */
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        /* 3. تنسيقات العناوين والنصوص */
+        h1, h2, h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-yellow);
+            display: inline-block;
+            padding-bottom: 10px;
+            width: 100%;
+        }
+
+        h2 {
+            color: var(--primary-orange);
+            margin-top: 30px;
+        }
+
+        .description {
+            background-color: #f0f8ff; /* خلفية زرقاء فاتحة جداً للنص */
+            padding: 20px;
+            border-right: 5px solid var(--primary-blue);
+            border-radius: 5px;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        /* 4. تنسيقات الأزرار (أهم جزء) */
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap; /* للسماح بملائمة الأزرار على الشاشات الصغيرة */
+            justify-content: center;
+            gap: 20px; /* المسافة بين الأزرار */
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px; /* أزرار دائرية الحواف */
+            cursor: pointer;
+            transition: all 0.3s ease; /* تأثير حركي عند المرور */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            min-width: 200px; /* عرض أدنى للأزرار */
+        }
+
+        button:hover {
+            transform: translateY(-3px); /* تأثير الرفع عند المرور */
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        }
+
+        button:active {
+            transform: translateY(1px); /* تأثير الضغط */
+        }
+
+        /* أزرار الأطوار الرئيسية */
+        #btn-middle {
+            background-color: var(--primary-orange);
+            color: var(--white);
+        }
+
+        #btn-high {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* أزرار السنوات الدراسية */
+        .year-btn {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .year-btn:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* أزرار التحكم بالفرض */
+        #btn-start {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            width: 100%; /* ملء العرض بالكامل */
+            margin-top: 20px;
+        }
+
+        #btn-submit {
+            background-color: #28a745; /* أخضر للتسليم */
+            color: var(--white);
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        /* 5. تنسيقات الأقسام المخفية والمظهرة */
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 6. تنسيقات المؤقت والفرض */
+        #timer-display {
+            position: fixed; /* ثابت في الزاوية */
+            top: 20px;
+            left: 20px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        #timer-display.urgent {
+            background-color: #dc3545; /* أحمر عند اقتراب الوقت */
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+        }
+
+        .question-block {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--primary-yellow);
+        }
+
+        .option-label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            background-color: var(--white);
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            transition: background-color 0.2s;
+        }
+
+        .option-label:hover {
+            background-color: #e9ecef;
+        }
+
+        input[type="radio"] {
+            margin-left: 10px;
+            transform: scale(1.2);
+        }
+
+        /* 7. التجاوب مع الشاشات الصغيرة (Media Queries) */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            button {
+                width: 100%; /* الأزرار تملأ العرض على الهواتف */
+                font-size: 1.1em;
+            }
+
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
+
+            #timer-display {
+                top: auto;
+                bottom: 20px; /* المؤقت أسفل الشاشة على الهواتف */
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="timer-display" class="hidden">00:00:00</div>
+
+    <div class="container">
+        
+        <div id="section-home" class="fade-in">
+            <h1>محاكي الفرض الإلكتروني - يوسف</h1>
+            
+            <div class="description">
+                <p>مرحباً بك في منصة محاكاة الفروض الإلكترونية. تم تصميم هذا النظام لمساعدتك على التدرب وبناء الثقة قبل الفروض الحقيقية. اختر الطور الدراسي الخاص بك للبدء.</p>
+                <p><strong>ملاحظة:</strong> سيبدأ العد التنازلي للفرض فقط عند الضغط على زر "ابدأ الفرض" داخل صفحة المادة.</p>
+            </div>
+
+            <div class="btn-container">
+                <button id="btn-middle">الطور المتوسط</button>
+                <button id="btn-high">الطور الثانوي</button>
+            </div>
+        </div>
+
+        <div id="section-levels" class="hidden fade-in">
+            <h2 id="levels-title">اختر السنة الدراسية</h2>
+            
+            <div id="description-levels" class="description hidden">
+                <p>لقد اخترت الطور الثانوي. يرجى اختيار السنة الدراسية بدقة لضمان ظهور المواد والأسئلة المناسبة لمستواك.</p>
+            </div>
+
+            <div id="group-middle" class="btn-container hidden">
+                <button class="year-btn" data-year="أولى متوسط">أولى متوسط</button>
+                <button class="year-btn" data-year="ثانية متوسط">ثانية متوسط</button>
+                <button class="year-btn" data-year="ثالثة متوسط">ثالثة متوسط</button>
+                <button class="year-btn" data-year="رابعة متوسط">رابعة متوسط</button>
+            </div>
+
+            <div id="group-high" class="btn-container hidden">
+                <button class="year-btn" data-year="أولى ثانوي">أولى ثانوي</button>
+                <button class="year-btn" data-year="ثانية ثانوي">ثانية ثانوي</button>
+                <button class="year-btn" data-year="ثالثة ثانوي">ثالثة ثانوي</button>
+            </div>
+        </div>
+
+        <div id="section-exam" class="hidden fade-in">
+            <h2 id="exam-title">فرض مادة الرياضيات</h2>
+            
+            <div id="start-area">
+                <div class="description">
+                    <p>أنت الآن جاهز لبدء الفرض. بمجرد الضغط على الزر أدناه، سيتم تحميل الأسئلة وسيبدأ العد التنازلي.</p>
+                </div>
+                <button id="btn-start">ابدأ الفرض</button>
+            </div>
+
+            <div id="questions-area" class="hidden">
+                
+                <div class="question-block">
+                    <h3>السؤال الأول:</h3>
+                    <p>ما هو ناتج العملية التالية: 5 + 3 × 2؟</p>
+                    <label class="option-label"><input type="radio" name="q1" value="أ"> أ) 16</label>
+                    <label class="option-label"><input type="radio" name="q1" value="ب"> ب) 11</label>
+                    <label class="option-label"><input type="radio" name="q1" value="ج"> ج) 13</label>
+                </div>
+
+                <div class="question-block">
+                    <h3>السؤال الثاني:</h3>
+                    <p>أي من العبارات التالية صحيحة؟</p>
+                    <label class="option-label"><input type="radio" name="q2" value="أ"> أ) الشمس تدور حول الأرض</label>
+                    <label class="option-label"><input type="radio" name="q2" value="ب"> ب) الأرض تدور حول الشمس</label>
+                </div>
+
+                <button id="btn-submit">تسليم الإجابات</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 1. تحديد العناصر الرئيسية في الصفحة
+        const secHome = document.getElementById('section-home');
+        const secLevels = document.getElementById('section-levels');
+        const secExam = document.getElementById('section-exam');
+        
+        const btnMiddle = document.getElementById('btn-middle');
+        const btnHigh = document.getElementById('btn-high');
+        const levelsTitle = document.getElementById('levels-title');
+        const descLevels = document.getElementById('description-levels');
+        const groupMiddle = document.getElementById('group-middle');
+        const groupHigh = document.getElementById('group-high');
+        const yearBtns = document.querySelectorAll('.year-btn');
+        
+        const examTitle = document.getElementById('exam-title');
+        const startArea = document.getElementById('start-area');
+        const btnStart = document.getElementById('btn-start');
+        const questionsArea = document.getElementById('questions-area');
+        const btnSubmit = document.getElementById('btn-submit');
+        const timerDisplay = document.getElementById('timer-display');
+
+        // 2. متغيرات المؤقت
+        let timerInterval;
+        let timeLeft; // بالثواني
+        const totalExamTimeSeconds = 120 * 60; // ساعتان (120 دقيقة) للفرض بالكامل
+
+        // 3. دوال التنقل (الضغط على الأزرار)
+
+        // الضغط على "الطور المتوسط"
+        btnMiddle.addEventListener('click', () => {
+            secHome.classList.add('hidden');
+            secLevels.classList.remove('hidden');
+            levelsTitle.innerText = "اختر السنة الدراسية - الطور المتوسط";
+            groupMiddle.classList.remove('hidden');
+            groupHigh.classList.add('hidden');
+            descLevels.classList.add('hidden'); // إخفاء النص الإضافي للثانوي
+        });
+
+        // الضغط على "الطور الثانوي"
+        btnHigh.addEventListener('click', () => {
+            secHome.classList.add('hidden');
+            secLevels.classList.remove('hidden');
+            levelsTitle.innerText = "اختر السنة الدراسية - الطور الثانوي";
+            groupHigh.classList.remove('hidden');
+            groupMiddle.classList.add('hidden');
+            descLevels.classList.remove('hidden'); // إظهار النص الإضافي للثانوي (كما طلبت)
+        });
+
+        // الضغط على أي سنة دراسية
+        yearBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const selectedYear = btn.getAttribute('data-year');
+                secLevels.classList.add('hidden');
+                secExam.classList.remove('hidden');
+                examTitle.innerText = `فرض مادة الرياضيات - السنة ${selectedYear}`;
+                startArea.classList.remove('hidden'); // إظهار منطقة "ابدأ"
+                questionsArea.classList.add('hidden'); // إخفاء الأسئلة
+                timerDisplay.classList.add('hidden'); // التأكد من إخفاء المؤقت
+            });
+        });
+
+        // الضغط على "ابدأ الفرض"
+        btnStart.addEventListener('click', () => {
+            startArea.classList.add('hidden'); // إخفاء زر ابدأ
+            questionsArea.classList.remove('hidden'); // إظهار الأسئلة
+            timerDisplay.classList.remove('hidden'); // إظهار المؤقت
+            startTimer(totalExamTimeSeconds); // بدء المؤقت لمدة ساعتين
+        });
+
+        // الضغط على "تسليم الإجابات"
+        btnSubmit.addEventListener('click', () => {
+            submitExam();
+        });
+
+        // 4. دوال المؤقت والفرض
+
+        function startTimer(durationSeconds) {
+            timeLeft = durationSeconds;
+            updateTimerDisplay(); // تحديث فوري قبل بدء الـ interval
+
+            clearInterval(timerInterval); // إيقاف أي مؤقت سابق
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.innerText = "00:00:00";
+                    alert("انتهى الوقت! تم تسليم إجاباتك تلقائياً.");
+                    submitExam();
+                } else if (timeLeft < 300) { // أقل من 5 دقائق
+                    timerDisplay.classList.add('urgent');
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+
+            timerDisplay.innerText = 
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        function submitExam() {
+            clearInterval(timerInterval);
+            timerDisplay.classList.add('hidden');
+            questionsArea.classList.add('hidden');
+            
+            // في المستقبل، هنا سترسل البيانات للخادم أو تحسب النتيجة
+            secExam.innerHTML = `
+                <div class="fade-in">
+                    <h1>شكراً لك، يوسف!</h1>
+                    <div class="description">
+                        <p>لقد تم تسليم إجاباتك بنجاح. سيتم مراجعتها وعرض النتائج قريباً.</p>
+                        <p>يمكنك العودة إلى الصفحة الرئيسية أو إغلاق الصفحة.</p>
+                    </div>
+                    <div class="btn-container">
+                        <button onclick="location.reload()" style="background-color: var(--primary-blue); color: white;">العودة للرئيسية</button>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+  </html>
+  
