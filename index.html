@@ -2155,11 +2155,103 @@ const allQuizData = {
         { q: "Le passé simple du verbe 'Faire' (Je):", a: "Fis", options: ["Faisais", "Fis", "Fait", "Ferai"] }
     ]
             }
-         
+         // متغيرات التحكم في المحاكي
+let currentQuestions = [];
+let currentIndex = 0;
+let score = 0;
+let selectedLevel = "";
+let selectedSubject = "";
+
+// 1. دالة بدء المحاكي (تُستدعى عند الضغط على أي زر مستوى/مادة)
+function startSimulator(level, subject) {
+    // التأكد من وجود البيانات في المتغير الضخم allQuizData
+    if (allQuizData[level] && allQuizData[level][subject]) {
+        selectedLevel = level;
+        selectedSubject = subject;
+        currentQuestions = allQuizData[level][subject];
+        currentIndex = 0;
+        score = 0;
+
+        // إظهار واجهة المحاكي وإخفاء القائمة الرئيسية
+        document.getElementById('main-menu').style.display = 'none';
+        document.getElementById('quiz-container').style.display = 'block';
+        
+        updateProgress();
+        renderQuestion();
+    } else {
+        alert("عذراً، هذا القسم قيد التحديث أو البيانات غير مكتملة.");
+    }
+}
+
+// 2. دالة عرض السؤال
+function renderQuestion() {
+    const questionData = currentQuestions[currentIndex];
+    const questionText = document.getElementById('question-text');
+    const optionsDiv = document.getElementById('options-grid');
+
+    questionText.innerText = `السؤال ${currentIndex + 1}: ${questionData.q}`;
+    optionsDiv.innerHTML = ''; // تنظيف الخيارات السابقة
+
+    questionData.options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-option-btn';
+        btn.innerText = option;
+        btn.onclick = () => handleAnswer(option, questionData.a);
+        optionsDiv.appendChild(btn);
+    });
+}
+
+// 3. دالة معالجة الإجابة
+function handleAnswer(selected, correct) {
+    if (selected === correct) {
+        score++;
+    }
+    
+    currentIndex++;
+    
+    if (currentIndex < currentQuestions.length) {
+        updateProgress();
+        renderQuestion();
+    } else {
+        showResult();
+    }
+}
+
+// 4. دالة تحديث شريط التقدم
+function updateProgress() {
+    const progress = (currentIndex / currentQuestions.length) * 100;
+    document.getElementById('progress-bar').style.width = progress + '%';
+}
+
+// 5. دالة عرض النتيجة النهائية
+function showResult() {
+    const quizContent = document.getElementById('quiz-content');
+    const percent = (score / currentQuestions.length) * 100;
+    
+    quizContent.innerHTML = `
+        <div class="result-screen">
+            <h2>أحسنت! انتهى الاختبار</h2>
+            <p>المستوى: ${selectedLevel} - ${selectedSubject}</p>
+            <div class="score-circle">${score}/${currentQuestions.length}</div>
+            <p>نسبة النجاح: ${percent}%</p>
+            <button class="exit-btn" onclick="exitSimulator()">خروج والعودة للقائمة</button>
+        </div>
+    `;
+}
+
+// 6. دالة الخروج (التي طلبتها)
+function exitSimulator() {
+    // إعادة ضبط الواجهة
+    document.getElementById('quiz-container').style.display = 'none';
+    document.getElementById('main-menu').style.display = 'block';
+    // إعادة تحميل الصفحة اختيارياً لتنظيف الذاكرة
+    // location.reload(); 
+        }
         
     </script>
 </body>
 </html>
+
 
 
 
