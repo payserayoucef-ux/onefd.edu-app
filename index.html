@@ -739,36 +739,59 @@
 
 
                 function buildEHomeworkPage() {
-            const html = `
-                <div class="sub-page" id="e-homework-main">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">منصة الفرض الإلكتروني (E-Devoir) 🌻</h2>
-                    
-                    <article style="background-color: #ffffff; padding: 20px; border-radius: 10px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                        <h3 style="color: #d32f2f; font-size: 1.25rem; margin-top: 0;">دليل إجراء الفرض الإلكتروني للمراسلة 2026</h3>
-                        <p>
-                            يعتبر <strong>الفرض الإلكتروني</strong> (E-Devoir) مرحلة حاسمة في المسار الدراسي لمتعلمي الديوان الوطني ONEFD. تكمن أهمية هذا الفرض في كونه يساهم بشكل مباشر في <strong>نقطة المراقبة المستمرة</strong>، مما يساعد الطالب في رفع معدله السنوي وتعزيز فرص نجاحه في امتحان المستوى.
-                        </p>
-                        <p>
-                            يتم إجراء الفرض عبر منصات رقمية مخصصة لكل مستوى دراسي. يجب على المتعلم الدخول باستخدام رقم التسجيل وتاريخ الميلاد، ثم الإجابة على الأسئلة المقترحة في زمن محدد. نحن في موقعنا نوفر لكم روابط مباشرة وسريعة لجميع المستويات (من أولى متوسط إلى الثالثة ثانوي) لتسهيل الوصول للمنصة دون عناء.
-                        </p>
-                        <p style="background: #fff8e1; padding: 12px; border-radius: 6px; border-right: 5px solid #ffc107; font-weight: bold;">
-                            تنبيه: تأكد من جودة اتصال الإنترنت قبل بدء الفرض الإلكتروني، واحرص على ضغط زر "إرسال" فور الانتهاء لضمان تسجيل علامتك بنجاح.
-                        </p>
-                    </article>
+    // بناء هيكل الصفحة (HTML) داخل متغير JavaScript
+    const html = `
+        <div class="ehomework-container" style="direction: rtl; font-family: sans-serif; padding: 20px;">
+            <h1 style="text-align: center; color: #333; margin-bottom: 30px;">منصة الفروض الإلكترونية - ONEFD</h1>
 
-                    <p style="text-align: center; font-weight: bold; color: #555; margin-bottom: 15px;">اختر طورك الدراسي للتوجه لروابط الفروض:</p>
-                    
-                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')" style="background-color: #007bff; color: white;">
-                        <i class="fas fa-graduation-cap"></i> المستوى المتوسط
-                    </button>
-                    <button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')" style="background-color: #28a745; color: white;">
-                        <i class="fas fa-graduation-cap"></i> المستوى الثانوي
-                    </button>
+            <div class="level-section moyen" style="margin-bottom: 40px; border: 1px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
+                <div class="section-header" style="display: flex; align-items: center; gap: 10px; background-color: #e8f4fd; color: #0c5460; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #bee5eb;">
+                    <i class="fas fa-info-circle" style="font-size: 1.3rem;"></i>
+                    <p style="margin: 0; font-weight: bold;">اختر المستوى الدراسي للطور المتوسط للولوج إلى منصة الفروض الإلكترونية الخاصة بك:</p>
                 </div>
-            `;
-            pagesContainer.innerHTML = html;
-        }
+                
+                <div class="buttons-list" style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://e-devoir-1am.onefd.edu.dz/index.php/welcome" target="_blank" class="sub-level-link" style="display: block; width: 100%; padding: 15px; background-color: #f8f9fa; border: 1px solid #ddd; border-radius: 6px; text-align: right; text-decoration: none; color: #333; font-weight: bold; transition: background-color 0.2s;">
+                        <i class="fas fa-book-reader" style="margin-left: 10px;"></i> السنة الأولى متوسط
+                    </a>
+                    <a href="https://e-devoir-2am.onefd.edu.dz/index.php/welcome" target="_blank" class="sub-level-link" style="display: block; width: 100%; padding: 15px; background-color: #f8f9fa; border: 1px solid #ddd; border-radius: 6px; text-align: right; text-decoration: none; color: #333; font-weight: bold; transition: background-color 0.2s;">
+                        <i class="fas fa-book-reader" style="margin-left: 10px;"></i> السنة الثانية متوسط
+                    </a>
+                    <a href="https://e-devoir-3am.onefd.edu.dz/index.php/welcome" target="_blank" class="sub-level-link" style="display: block; width: 100%; padding: 15px; background-color: #f8f9fa; border: 1px solid #ddd; border-radius: 6px; text-align: right; text-decoration: none; color: #333; font-weight: bold; transition: background-color 0.2s;">
+                        <i class="fas fa-book-reader" style="margin-left: 10px;"></i> السنة الثالثة متوسط
+                    </a>
+                    <a href="https://e-devoir-4am.onefd.edu.dz/index.php/welcome" target="_blank" class="sub-level-link" style="display: block; width: 100%; padding: 15px; background-color: #f8f9fa; border: 1px solid #ddd; border-radius: 6px; text-align: right; text-decoration: none; color: #333; font-weight: bold; transition: background-color 0.2s;">
+                        <i class="fas fa-book-reader" style="margin-left: 10px;"></i> السنة الرابعة متوسط
+                    </a>
+                </div>
+            </div>
+
+            <div class="level-section secondary" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9;">
+                <div class="section-header" style="display: flex; align-items: center; gap: 10px; background-color: #eafaf1; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;">
+                    <i class="fas fa-info-circle" style="font-size: 1.3rem;"></i>
+                    <p style="margin: 0; font-weight: bold;">اختر المستوى الدراسي للطور الثانوي للولوج إلى منصة الفروض الإلكترونية الخاصة بك:</p>
+                </div>
+                
+                <div class="buttons-list" style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://e-devoir-1as.onefd.edu.dz/index.php/welcome" target="_blank" class="sub-level-link" style="display: block; width: 100%; padding: 15px; background-color: #f8f9fa; border: 1px solid #ddd; border-radius: 6px; text-align: right; text-decoration: none; color: #333; font-weight: bold; transition: background-color 0.2s;">
+                        <i class="fas fa-user-graduate" style="margin-left: 10px;"></i> السنة الأولى ثانوي
+                    </a>
+                    <a href="https://e-devoir-2as.onefd.edu.dz/index.php/welcome" target="_blank" class="sub-level-link" style="display: block; width: 100%; padding: 15px; background-color: #f8f9fa; border: 1px solid #ddd; border-radius: 6px; text-align: right; text-decoration: none; color: #333; font-weight: bold; transition: background-color 0.2s;">
+                        <i class="fas fa-user-graduate" style="margin-left: 10px;"></i> السنة الثانية ثانوي
+                    </a>
+                    <a href="https://e-devoir-3as.onefd.edu.dz/index.php/welcome" target="_blank" class="sub-level-link" style="display: block; width: 100%; padding: 15px; background-color: #f8f9fa; border: 1px solid #ddd; border-radius: 6px; text-align: right; text-decoration: none; color: #333; font-weight: bold; transition: background-color 0.2s;">
+                        <i class="fas fa-user-graduate" style="margin-left: 10px;"></i> السنة الثالثة ثانوي
+                    </a>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // هنا يجب إضافة الكود البرمجي الذي يقوم بحقن متغير 'html' داخل عنصر الـ DOM المناسب في صفحتك.
+    // مثال:
+    // document.getElementById('content-area').innerHTML = html;
+}
+
 
 
 
