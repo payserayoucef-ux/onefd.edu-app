@@ -771,43 +771,6 @@
         }
 
 
-                function buildEHomeworkPage() {
-            const html = `
-                <div class="sub-page" id="e-homework-main">
-                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-                    <h2 style="color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px;">منصة الفرض الإلكتروني (E-Devoir) 🌻</h2>
-                    
-                    <article style="background-color: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; margin-bottom: 25px; line-height: 1.8; color: #333; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
-                        <h3 style="color: #d32f2f; font-size: 1.3rem; margin-top: 0;">دليل إجراء الفروض الإلكترونية عبر منصة ONEFD</h3>
-                        <p>
-                            تعتبر <strong>منصة الفرض الإلكتروني</strong> أداة تعليمية أساسية يعتمد عليها الديوان الوطني للتعليم والتكوين عن بعد لتقييم المتعلمين. يهدف هذا النظام إلى قياس استيعاب الطالب للدروس المقدمة خلال الموسم الدراسي، وتلعب العلامة المتحصل عليها دوراً كبيراً في حساب <strong>معدل المراقبة المستمرة</strong>.
-                        </p>
-                        <p>
-                            لضمان سير العملية بنجاح، يجب على المتعلم اختيار الطور الدراسي الصحيح (متوسط أو ثانوي) ثم الولوج باستخدام بياناته الشخصية. نحن نوفر لك هنا وصولاً مباشراً إلى الأرضيات الرسمية لتجنب الاكتظاظ وضمان تسجيل إجاباتك في الوقت المحدد.
-                        </p>
-                        <div style="background: #fff8e1; padding: 10px; border-right: 4px solid #ffc107; font-size: 0.95rem; margin-top: 10px;">
-                            <strong>نصيحة للمتعلم:</strong> يفضل إجراء الفرض في أوقات خارج ذروة الاستخدام لضمان استقرار المنصة وسرعة تحميل الأسئلة.
-                        </div>
-                    </article>
-
-                    <p style="text-align: center; font-weight: bold; color: #555; margin-bottom: 15px;">يرجى اختيار الطور الدراسي الخاص بك:</p>
-                    
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')" style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
-                            <span><i class="fas fa-graduation-cap"></i> المستوى المتوسط</span>
-                            <i class="fas fa-chevron-left" style="font-size: 0.8rem; color: #ccc;"></i>
-                        </button>
-                        
-                        <button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')" style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
-                            <span><i class="fas fa-graduation-cap"></i> المستوى الثانوي</span>
-                            <i class="fas fa-chevron-left" style="font-size: 0.8rem; color: #ccc;"></i>
-                        </button>
-                    </div>
-                </div>
-            `;
-            pagesContainer.innerHTML = html;
-        }
-
 
         function buildExamInfoPage() {
             const html = `
