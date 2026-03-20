@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مواعيد الفروض - الدراسة بالمراسلة يوسف</title>
+    <style>
+        /* ========== التنسيقات العامة ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', 'Cairo', 'Almarai', sans-serif;
+            background: linear-gradient(135deg, #0a0f1a 0%, #0f172a 100%);
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ========== القائمة الجانبية ========== */
+        .sidebar {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #0b1120 0%, #0a0f1a 100%);
+            border-radius: 32px;
+            padding: 24px 20px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        /* عنوان القائمة */
+        .sidebar-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #FFD966, #FFB347);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ========== موشن جرافيك - الأستاذ المتحرك ========== */
+        .teacher-motion {
+            background: linear-gradient(145deg, #1a1f2e, #0f1422);
+            border-radius: 60px;
+            padding: 20px 15px;
+            margin-bottom: 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+            animation: borderPulse 2s infinite;
+        }
+
+        @keyframes borderPulse {
+            0% { border-color: rgba(255, 215, 0, 0.3); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.2); }
+            50% { border-color: rgba(255, 215, 0, 0.8); box-shadow: 0 0 15px 2px rgba(255, 215, 0, 0.3); }
+            100% { border-color: rgba(255, 215, 0, 0.3); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+
+        .teacher-motion-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .teacher-avatar {
+            font-size: 70px;
+            animation: teacherWave 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes teacherWave {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(-5deg); }
+            75% { transform: translateY(5px) rotate(5deg); }
+        }
+
+        .teacher-writing {
+            font-size: 55px;
+            animation: writingMove 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes writingMove {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(8px); }
+        }
+
+        .teacher-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #FFD966;
+            background: rgba(0,0,0,0.5);
+            padding: 8px 16px;
+            border-radius: 40px;
+            margin-top: 12px;
+            display: inline-block;
+        }
+
+        /* ========== بطاقات المواعيد ========== */
+        .event-card {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 24px;
+            padding: 18px;
+            margin-bottom: 20px;
+            border-right: 4px solid;
+            transition: transform 0.2s, box-shadow 0.2s;
+            backdrop-filter: blur(4px);
+        }
+
+        .event-card:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4);
+        }
+
+        .event-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .event-icon {
+            font-size: 32px;
+        }
+
+        .event-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            flex: 1;
+        }
+
+        .event-date {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .event-duration {
+            background: rgba(0,0,0,0.4);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        .status-active {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+        }
+
+        .status-expired {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .status-upcoming {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+        }
+
+        .countdown {
+            font-size: 22px;
+            font-weight: 800;
+            font-family: monospace;
+            margin-top: 12px;
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+            padding: 8px;
+            border-radius: 16px;
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            color: #FFD966;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-right: 3px solid #FFD966;
+            padding-right: 12px;
+        }
+
+        .back-home {
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+            color: #FFD966;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 30px;
+            background: rgba(255,215,0,0.1);
+        }
+
+        hr {
+            border-color: rgba(255,215,0,0.2);
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    
+    <!-- عنوان القائمة الجانبية -->
+    <div class="sidebar-title">
+        📅 مواعيد الفروض والامتحانات 🎓
+    </div>
+
+    <!-- ========== موشن جرافيك - الأستاذ المتحرك ========== -->
+    <div class="teacher-motion">
+        <div class="teacher-motion-content">
+            <div class="teacher-avatar">👨‍🏫</div>
+            <div class="teacher-writing">✍️📖</div>
+            <div class="teacher-avatar">📚✨</div>
+        </div>
+        <div class="teacher-text">
+            📝 الأستاذ يوسف: تابع المواعيد ولا تفوت أي فرض! 🎯
+        </div>
+    </div>
+
+    <!-- ========== 1. فرض المراقبة الذاتية رقم 01 (منتهي) ========== -->
+    <div class="event-card" style="border-right-color: #ef4444;">
+        <div class="event-header">
+            <span class="event-icon">📝📅</span>
+            <span class="event-title">📝 فرض المراقبة الذاتية رقم 01</span>
+        </div>
+        <div class="event-date">
+            📍 22 ديسمبر 2025 → 22 جانفي 2026
+            <span class="event-duration">⏱️ 32 يوم</span>
+        </div>
+        <div class="status-badge status-expired">
+            🔴 انتهى ❌
+        </div>
+    </div>
+
+    <!-- ========== 2. تحميل فروض الذاتية رقم 01 (منتهي) ========== -->
+    <div class="event-card" style="border-right-color: #ef4444;">
+        <div class="event-header">
+            <span class="event-icon">📥📄</span>
+            <span class="event-title">📥 تحميل فروض الذاتية رقم 01</span>
+        </div>
+        <div class="event-date">
+            📍 13 جانفي 2026 → 10 فيفري 2026
+        </div>
+        <div class="status-badge status-expired">
+            🔴 انتهى ❌
+        </div>
+    </div>
+
+    <!-- ========== 3. الفرض الذاتي رقم 02 (ناشط - عد تنازلي) ========== -->
+    <div class="event-card" style="border-right-color: #22c55e;" id="event-3">
+        <div class="event-header">
+            <span class="event-icon">📝⚡</span>
+            <span class="event-title">📝 الفرض الذاتي رقم 02</span>
+        </div>
+        <div class="event-date">
+            📍 16 مارس 2026 → 16 ابريل 2026
+            <span class="event-duration">⏱️ 32 يوم</span>
+        </div>
+        <div class="status-badge status-active" id="status-3">
+            🟢 ناشط ✅
+        </div>
+        <div class="countdown" id="countdown-3"></div>
+    </div>
+
+    <!-- ========== 4. الفرض الإلكتروني 2026 ========== -->
+    <div class="event-card" style="border-right-color: #22c55e;" id="event-4">
+        <div class="event-header">
+            <span class="event-icon">💻📱</span>
+            <span class="event-title">💻 الفرض الإلكتروني 2026</span>
+        </div>
+        <div class="event-date">
+            📍 16 مارس 2026 → 14 ابريل 2026
+            <span class="event-duration">⏱️ 30 يوم</span>
+        </div>
+        <div class="status-badge status-active" id="status-4">
+            🟢 بدأ ✅
+        </div>
+        <div class="countdown" id="countdown-4"></div>
+    </div>
+
+    <!-- ========== 5. تحميل تصحيح الفرض الذاتي رقم 02 (لم يبدأ بعد) ========== -->
+    <div class="event-card" style="border-right-color: #f97316;" id="event-5">
+        <div class="event-header">
+            <span class="event-icon">✅📘</span>
+            <span class="event-title">✅ تحميل تصحيح الفرض الذاتي رقم 02</span>
+        </div>
+        <div class="event-date">
+            📍 13 ابريل 2026 → 30 ابريل 2026
+            <span class="event-duration">⏱️ 18 يوم</span>
+        </div>
+        <div class="status-badge status-upcoming" id="status-5">
+            🟠 لم يبدأ بعد
+        </div>
+        <div class="countdown" id="countdown-5"></div>
+    </div>
+
+    <!-- ========== 6. امتحان إثبات المستوى (حضوري) ========== -->
+    <div class="event-card" style="border-right-color: #f97316;" id="event-6">
+        <div class="event-header">
+            <span class="event-icon">📝🏫</span>
+            <span class="event-title">📝 الامتحان الحضوري (امتحان إثبات المستوى)</span>
+        </div>
+        <div class="event-date">
+            📍 1 ماي 2026 (يوم واحد فقط)
+            <span class="event-duration">⏱️ مدة الامتحان: 1 يوم</span>
+        </div>
+        <div class="status-badge status-upcoming" id="status-6">
+            🟠 لم يبدأ بعد
+        </div>
+        <div class="countdown" id="countdown-6"></div>
+    </div>
+
+    <!-- رابط العودة للصفحة الرئيسية -->
+    <a href="index.html" class="back-home">🏠 العودة إلى الصفحة الرئيسية</a>
+
+</div>
+
+<script>
+    // ========== دوال العد التنازلي والتحديث التلقائي ==========
+    function updateCountdowns() {
+        const now = new Date();
+
+        // قائمة الأحداث
+        const events = [
+            { id: '3', start: '2026-03-16', end: '2026-04-16', activeText: '🟢 ناشط ✅', expiredText: '🔴 انتهى ❌', upcomingText: '🟠 لم يبدأ بعد' },
+            { id: '4', start: '2026-03-16', end: '2026-04-14', activeText: '🟢 بدأ ✅', expiredText: '🔴 انتهى ❌', upcomingText: '🟠 لم يبدأ بعد' },
+            { id: '5', start: '2026-04-13', end: '2026-04-30', activeText: '🟢 متاح الآن ✅', expiredText: '🔴 انتهى ❌', upcomingText: '🟠 لم يبدأ بعد' },
+            { id: '6', start: '2026-05-01', end: '2026-05-01', activeText: '🟢 الامتحان الآن ✅', expiredText: '🔴 انتهى ❌', upcomingText: '🟠 لم يبدأ بعد' }
+        ];
+
+        events.forEach(event => {
+            const startDate = new Date(event.start);
+            const endDate = new Date(event.end);
+            endDate.setHours(23, 59, 59, 999);
+            
+            const countdownElement = document.getElementById(`countdown-${event.id}`);
+            const statusElement = document.getElementById(`status-${event.id}`);
+            const cardElement = document.getElementById(`event-${event.id}`);
+
+            if (!countdownElement) return;
+
+            if (now < startDate) {
+                // لم يبدأ بعد: عرض العد التنازلي لموعد البدء
+                const diffMs = startDate - now;
+                const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diffMs % (86400000)) / (3600000));
+                const minutes = Math.floor((diffMs % 3600000) / 60000);
+                countdownElement.innerHTML = `⏳ يبدأ بعد: ${days} يوم ${hours} ساعة ${minutes} دقيقة`;
+                if (statusElement) {
+                    statusElement.className = 'status-badge status-upcoming';
+                    statusElement.innerHTML = event.upcomingText;
+                }
+                if (cardElement) cardElement.style.borderRightColor = '#f97316';
+            }
+            else if (now >= startDate && now <= endDate) {
+                // الفعالية نشطة
+                const diffMs = endDate - now;
+                const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diffMs % (86400000)) / (3600000));
+                const minutes = Math.floor((diffMs % 3600000) / 60000);
+                countdownElement.innerHTML = `⏰ متبقي: ${days} يوم ${hours} ساعة ${minutes} دقيقة`;
+                if (statusElement) {
+                    statusElement.className = 'status-badge status-active';
+                    statusElement.innerHTML = event.activeText;
+                }
+                if (cardElement) cardElement.style.borderRightColor = '#22c55e';
+            }
+            else {
+                // انتهت الفعالية
+                countdownElement.innerHTML = '⏰ انتهى';
+                if (statusElement) {
+                    statusElement.className = 'status-badge status-expired';
+                    statusElement.innerHTML = event.expiredText;
+                }
+                if (cardElement) cardElement.style.borderRightColor = '#ef4444';
+            }
+        });
+    }
+
+    // تحديث العد التنازلي كل ثانية
+    updateCountdowns();
+    setInterval(updateCountdowns, 1000);
+</script>
+
+</body>
+</html>
