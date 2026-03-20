@@ -635,6 +635,66 @@
             background: #f8f9fa;
         }
         
+        /* تنسيقات صفحة المواعيد */
+        .teacher-motion {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .teacher-icon {
+            width: 70px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        .teacher-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .schedule-container {
+            margin-bottom: 25px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-right: 8px solid;
+            transition: 0.3s;
+        }
+        
+        .card.active {
+            border-right-color: #28a745;
+        }
+        
+        .card.future {
+            border-right-color: #fd7e14;
+        }
+        
+        .card.expired {
+            border-right-color: #dc3545;
+            opacity: 0.9;
+        }
+        
+        .status {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+        
+        .red {
+            color: #dc3545;
+        }
+        
         /* تحسينات للهواتف */
         @media (max-width: 768px) {
             .main-buttons-container {
@@ -651,6 +711,11 @@
             
             .social-media-container {
                 flex-wrap: wrap;
+            }
+            
+            .teacher-motion {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
@@ -678,6 +743,10 @@
         <a href="#" onclick="shareApp()"><i class="fas fa-share-alt"></i> مشاركة الموقع</a>
         <a href="#" onclick="showPage('privacy-policy-page'); return false;"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a>
         <a href="#" onclick="showPage('who-we-are-page'); return false;"><i class="fas fa-users"></i> من نحن</a>
+        <!-- الزر الجديد: مواعيد الفروض والامتحانات -->
+        <a href="#" onclick="showPage('deadlines-page'); return false;" style="background: #f0f0f0; border-right: 4px solid #fd7e14;">
+            <i class="fas fa-calendar-alt"></i> 📅 مواعيد الفروض والامتحانات
+        </a>
         <a href="mailto:paserayoucef@gmail.com?subject=إبلاغ عن مشكلة" style="background: #dc3545; color: white;">
             <i class="fas fa-exclamation-triangle"></i> الإبلاغ عن مشكلة
         </a>
@@ -693,7 +762,7 @@
     <main id="main-content">
        
         <div class="welcome-section">
-            <h1><i class="fas fa-smile-wink"></i> مرحبا بك <i class="fas fa-smile-wink"></i></h1>
+            <h1><i class="fas fa-smile-wink"></i> أهلاً بك أيها المتعلم <i class="fas fa-smile-wink"></i></h1>
              <h2>مع موقع الدراسة كل شيء بين يديك: التسجيل في المراسلة، تحميل الفروض الذاتية رقم 01 و رقم 02، اجراء الفرض الالكتروني، سحب استدعاد امتحان اثبات المستوى، سحب استدعاء التربية البدنية، سحب استدعاء شهادة البكالوريا، دروس المراسلة لجميع الشعب، ملخصات الدروس بكالوريا و غادي نسهلو عليك كل شيء في موقع واحد</h2>
         </div>
 
@@ -777,7 +846,9 @@
             } else if (pageId === 'privacy-policy-page') {
                 buildPrivacyPolicyPage(); 
             } else if (pageId === 'who-we-are-page') {
-                buildWhoWeArePage(); 
+                buildWhoWeArePage();
+            } else if (pageId === 'deadlines-page') {
+                buildDeadlinesPage();
             }
         }
 
@@ -1399,8 +1470,119 @@
             pagesContainer.innerHTML = html;
         }
 
-        // إضافة دالة buildEHomeworkPage للرجوع إليها
+        // صفحة المواعيد مع العد التنازلي
+        function buildDeadlinesPage() {
+            const html = `
+                <div class="sub-page">
+                    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+                    <h2><i class="fas fa-calendar-alt"></i> 📅 مواعيد الفروض والامتحانات</h2>
+                    
+                    <div class="teacher-motion">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1995/1995571.png" alt="معلم" class="teacher-icon">
+                        <div class="teacher-text">
+                            📘 الأستاذ يشرح: "الانضباط في المواعيد أساس النجاح"
+                        </div>
+                    </div>
+
+                    <div class="schedule-container" id="fraud1">
+                        <div class="card expired">
+                            <h3>📝 فرض المراقبة الذاتية رقم 1</h3>
+                            <p>📅 22 ديسمبر 2025 → 22 جانفي 2026</p>
+                            <p>⏱️ المدة: 32 يومًا</p>
+                            <p class="status red">❌ انتهى</p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-container" id="fraud2">
+                        <div class="card expired">
+                            <h3>📥 تحميل فروض الذاتية رقم 1</h3>
+                            <p>📅 13 جانفي 2026 → 10 فيفري 2026</p>
+                            <p>⏱️ المدة: 29 يومًا</p>
+                            <p class="status red">❌ انتهى</p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-container" id="fraud3">
+                        <div class="card active" data-end="2026-04-16">
+                            <h3>📥 تحميل الفرض الذاتي رقم 2</h3>
+                            <p>📅 16 مارس 2026 → 16 أبريل 2026</p>
+                            <p>⏱️ المدة: 32 يومًا</p>
+                            <p class="status">🟢 نشط - <span class="countdown"></span></p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-container" id="fraud4">
+                        <div class="card active" data-end="2026-04-14">
+                            <h3>💻 الفرض الإلكتروني 2026</h3>
+                            <p>📅 16 مارس 2026 → 14 أبريل 2026</p>
+                            <p>⏱️ المدة: 30 يومًا</p>
+                            <p class="status">🟢 نشط - <span class="countdown"></span></p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-container" id="fraud5">
+                        <div class="card future" data-end="2026-04-30">
+                            <h3>📥 تحميل تصحيح الفرض الذاتي رقم 2</h3>
+                            <p>📅 13 أبريل 2026 → 30 أبريل 2026</p>
+                            <p>⏱️ المدة: 18 يومًا</p>
+                            <p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-container" id="exam">
+                        <div class="card future" data-end="2026-05-01">
+                            <h3>📝 الامتحان الحضوري (إثبات المستوى)</h3>
+                            <p>📅 1 ماي 2026</p>
+                            <p>⏱️ المدة: يوم واحد</p>
+                            <p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            pagesContainer.innerHTML = html;
+            
+            // تشغيل العد التنازلي
+            updateCountdowns();
+            setInterval(updateCountdowns, 60000);
+        }
+
+        // دالة تحديث العد التنازلي
+        function updateCountdowns() {
+            document.querySelectorAll('.card[data-end]').forEach(card => {
+                const endDate = new Date(card.getAttribute('data-end'));
+                const now = new Date();
+                const diff = endDate - now;
+
+                const countdownSpan = card.querySelector('.countdown');
+                const statusSpan = card.querySelector('.status');
+
+                if (diff <= 0) {
+                    statusSpan.innerHTML = '🔴 انتهى';
+                    card.classList.remove('active', 'future');
+                    card.classList.add('expired');
+                } else {
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((diff % (86400000)) / (3600000));
+                    const minutes = Math.floor((diff % 3600000) / 60000);
+                    if (countdownSpan) {
+                        countdownSpan.innerHTML = `${days} يوم ${hours} ساعة ${minutes} دقيقة`;
+                    }
+
+                    if (card.classList.contains('future')) {
+                        statusSpan.innerHTML = `🟠 لم يبدأ بعد - ${days} يوم متبقي`;
+                    } else if (card.classList.contains('active')) {
+                        statusSpan.innerHTML = `🟢 نشط - متبقي ${days} يوم`;
+                    }
+                }
+            });
+        }
+
+        // إضافة الدوال للنطاق العام
         window.buildEHomeworkPage = buildEHomeworkPage;
+        window.checkLevelResult = checkLevelResult;
+        window.displayCenterInfo = displayCenterInfo;
+        window.copyToClipboard = copyToClipboard;
+        window.updateCountdowns = updateCountdowns;
     </script>
 </body>
 </html>
