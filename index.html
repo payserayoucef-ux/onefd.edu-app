@@ -1041,9 +1041,6 @@
                     <div style="background:#f0f0f0; padding:15px; border-radius:10px; margin-top:20px; text-align:center">
                         <h3>📊 نتيجتك التقريبية: ${finalGrade.toFixed(2)} / 20</h3>
                         <p style="color:#dc3545; font-weight:bold;">⚠️ هذه النتيجة ليست دقيقة بنسبة 100%، بل هي تقديرية. عليك الاجتهاد أكثر لتحقيق أعلى معدل حقيقي.</p>
-                        <p>🔹 المعدل المرجح للمواد: ${weightedAvg.toFixed(2)} (بعد خصم 5 نقاط: ${(weightedAvg-5).toFixed(2)})<br>
-                        🔹 نقاط التحميلات: ${downloadPoints}<br>
-                        🔹 نقطة المنتدى: ${forumPoint}</p>
                     </div>
                 `;
             }
@@ -1068,12 +1065,12 @@
 
                     <div id="download-questions" style="margin:20px 0; display:none;">
                         <h3>📥 نشاطاتك خلال السنة</h3>
+                        <div class="question"><label>هل تشارك بانتظام في المنتدى التعليمي؟</label> <button class="yes-no-btn" data-q="forum">نعم</button> <button class="yes-no-btn" data-q="forum">لا</button> <span class="status"></span></div>
                         <div class="question"><label>هل قمت بتحميل الفرض الذاتي رقم 01؟</label> <button class="yes-no-btn" data-q="self1">نعم</button> <button class="yes-no-btn" data-q="self1">لا</button> <span class="status"></span></div>
                         <div class="question"><label>هل قمت بتحميل تصحيح الفرض الذاتي رقم 01؟</label> <button class="yes-no-btn" data-q="corr1">نعم</button> <button class="yes-no-btn" data-q="corr1">لا</button> <span class="status"></span></div>
                         <div class="question"><label>هل قمت بتحميل الفرض الذاتي رقم 02؟</label> <button class="yes-no-btn" data-q="self2">نعم</button> <button class="yes-no-btn" data-q="self2">لا</button> <span class="status"></span></div>
                         <div class="question"><label>هل قمت بتحميل تصحيح الفرض الذاتي رقم 02؟</label> <button class="yes-no-btn" data-q="corr2">نعم</button> <button class="yes-no-btn" data-q="corr2">لا</button> <span class="status"></span></div>
                         <div class="question"><label>هل اجتزت الفرض الإلكتروني؟</label> <button class="yes-no-btn" data-q="eHomework">نعم</button> <button class="yes-no-btn" data-q="eHomework">لا</button> <span class="status"></span></div>
-                        <div class="question"><label>هل تشارك بانتظام في المنتدى التعليمي؟</label> <button class="yes-no-btn" data-q="forum">نعم</button> <button class="yes-no-btn" data-q="forum">لا</button> <span class="status"></span></div>
                     </div>
 
                     <div id="marks-table-container" style="display:none;">
