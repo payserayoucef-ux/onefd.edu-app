@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- تم تعليق AdSense مؤقتاً - قم بإلغاء التعليق بعد القبول -->
+    <!-- تم تعليق AdSense مؤقتاً حتى قبول الموقع - قم بإلغاء التعليق بعد القبول -->
     <!--
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4719018034232696"
      crossorigin="anonymous"></script>
@@ -12,62 +12,204 @@
     <meta name="keywords" content="ONEFD, الدراسة بالمراسلة, فروض المراسلة, الفرض الإلكتروني, امتحان المستوى, نتائج المراسلة, مراكز ONEFD, الجزائر">
     <meta name="author" content="يوسف">
     <meta name="robots" content="index, follow">
+    <meta name="google-adsense-account" content="ca-pub-4719018034232696">
     <title>الدراسة بالمراسلة - دليل شامل لخدمات ONEFD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ====== جميع التنسيقات (نفس الكود الأصلي مع تحسينات طفيفة) ====== */
-        :root { --primary: #1e3c72; --secondary: #2a5298; --accent: #ff9800; --light: #f8f9fa; --dark: #343a40; --success: #28a745; --danger: #dc3545; --warning: #ffc107; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'Tajawal', Arial, sans-serif; }
-        body { background: #f0f2f5; color: var(--dark); direction: rtl; text-align: right; line-height: 1.6; min-height: 100vh; }
-        .cookie-consent { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.9); color: white; padding: 15px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px; z-index: 1000; backdrop-filter: blur(5px); font-size: 14px; }
+        /* ====== المتغيرات والحركات الخفيفة ====== */
+        :root {
+            --primary: #1e3c72;
+            --secondary: #2a5298;
+            --accent: #ff9800;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Tajawal', 'Arial', sans-serif;
+        }
+        body {
+            background: #f0f2f5;
+            color: var(--dark);
+            direction: rtl;
+            text-align: right;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        /* شريط الكوكيز الثابت */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            font-size: 14px;
+        }
         .cookie-consent a { color: var(--warning); text-decoration: underline; }
-        .cookie-buttons button { background: var(--primary); border: none; color: white; padding: 8px 16px; margin-right: 10px; border-radius: 5px; cursor: pointer; }
-        .share-popup { position: fixed; bottom: 80px; left: 20px; right: 20px; max-width: 380px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 1100; padding: 20px; text-align: center; border: 1px solid var(--primary); animation: fadeIn 0.3s ease; }
-        .share-popup h3 { color: var(--primary); margin-bottom: 10px; }
-        .share-popup p { margin-bottom: 15px; font-size: 0.9rem; }
-        .share-popup .share-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-        .share-popup .share-buttons button { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 30px; cursor: pointer; font-size: 0.9rem; transition: 0.2s; }
-        .share-popup .share-buttons button:hover { background: var(--secondary); }
-        .share-popup .close-popup { position: absolute; top: 10px; left: 10px; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #999; }
-        .voice-btn { background: var(--accent); color: #333; border: none; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; margin-top: 10px; display: inline-flex; align-items: center; gap: 5px; }
-        @media (max-width:768px){ .share-popup{left:10px;right:10px;bottom:70px} }
-        header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .cookie-buttons button {
+            background: var(--primary);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            margin-right: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* نافذة المشاركة للمستخدم الجديد */
+        .share-popup {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            right: 20px;
+            max-width: 380px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1100;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--primary);
+            animation: fadeIn 0.3s ease;
+            direction: rtl;
+        }
+        .share-popup h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .share-popup p {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        .share-popup .share-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .share-popup .share-buttons button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .share-popup .share-buttons button:hover {
+            background: var(--secondary);
+        }
+        .share-popup .close-popup {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #999;
+        }
+        .voice-btn {
+            background: var(--accent);
+            color: #333;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        @media (max-width: 768px) {
+            .share-popup { left: 10px; right: 10px; bottom: 70px; }
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
         .header-title { font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
         .clock-container { background: rgba(0,0,0,0.2); padding: 5px 12px; border-radius: 30px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
         .menu-btn { background: rgba(255,255,255,0.2); border: none; color: white; font-size: 1.3rem; padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: 0.2s; }
         .menu-btn:hover { background: rgba(255,255,255,0.3); }
-        #sidebar { position: fixed; right: -280px; top: 0; width: 280px; height: 100%; background: white; z-index: 200; transition: 0.3s; box-shadow: -2px 0 10px rgba(0,0,0,0.1); overflow-y: auto; padding-top: 20px; }
+        /* القائمة الجانبية */
+        #sidebar {
+            position: fixed;
+            right: -280px;
+            top: 0;
+            width: 280px;
+            height: 100%;
+            background: white;
+            z-index: 200;
+            transition: 0.3s;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            padding-top: 20px;
+        }
         #sidebar.open { right: 0; }
         .close-btn { position: absolute; left: 20px; top: 15px; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--primary); }
         .sidebar-header { text-align: center; padding: 20px; border-bottom: 1px solid #ddd; margin-bottom: 15px; }
-        #sidebar a { display: block; padding: 12px 20px; color: var(--dark); text-decoration: none; border-bottom: 1px solid #eee; transition: 0.2s; cursor: pointer; }
+        #sidebar a { display: block; padding: 12px 20px; color: var(--dark); text-decoration: none; border-bottom: 1px solid #eee; transition: 0.2s; }
         #sidebar a:hover { background: var(--primary); color: white; }
         #sidebar a i { margin-left: 10px; width: 25px; }
+        /* المحتوى الرئيسي */
         #main-content { padding: 20px; max-width: 1200px; margin: 0 auto; animation: fadeIn 0.5s ease; }
         .welcome-section { background: white; border-radius: 20px; padding: 30px 20px; text-align: center; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .welcome-section h1 { color: var(--primary); margin-bottom: 15px; }
         .welcome-section h2 { font-size: 1rem; font-weight: normal; color: #555; }
         .main-buttons-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 20px; margin: 30px 0; }
-        .main-btn { background: white; border: 2px solid var(--primary); border-radius: 15px; padding: 20px 10px; text-align: center; font-weight: bold; cursor: pointer; transition: 0.2s; display: block; text-decoration: none; color: var(--dark); }
+        .main-btn { background: white; border: 2px solid var(--primary); border-radius: 15px; padding: 20px 10px; text-align: center; font-weight: bold; cursor: pointer; transition: 0.2s; }
         .main-btn i { font-size: 2rem; display: block; margin-bottom: 10px; color: var(--primary); }
         .main-btn:hover { background: var(--primary); color: white; transform: translateY(-3px); }
         .main-btn:hover i { color: white; }
         .social-media-container { background: white; border-radius: 50px; padding: 15px 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
-        .social-icon { width: 45px; height: 45px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; transition: 0.2s; text-decoration: none; }
+        .social-icon { width: 45px; height: 45px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; transition: 0.2s; }
         .social-icon:hover { transform: scale(1.1); }
         .telegram { background: #0088cc; }
         .whatsapp { background: #25d366; }
         .instagram { background: #e1306c; }
         .facebook { background: #4267b2; }
         .youtube { background: #ff0000; }
+        /* الصفحات الفرعية */
         #pages-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); z-index: 300; overflow-y: auto; display: none; padding: 20px; }
         .sub-page { max-width: 1000px; margin: 20px auto; background: white; border-radius: 20px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
         .sub-page h2 { color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px; }
         .back-btn { background: #e9ecef; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; margin-bottom: 20px; display: inline-flex; align-items: center; gap: 8px; }
-        .sub-page-btn { display: block; width: 100%; background: #f8f9fa; border: 1px solid #dee2e6; border-right: 4px solid var(--primary); padding: 12px; margin-bottom: 10px; text-align: right; border-radius: 8px; cursor: pointer; font-weight: bold; text-decoration: none; color: var(--dark); }
+        .sub-page-btn { display: block; width: 100%; background: #f8f9fa; border: 1px solid #dee2e6; border-right: 4px solid var(--primary); padding: 12px; margin-bottom: 10px; text-align: right; border-radius: 8px; cursor: pointer; font-weight: bold; }
         .sub-page-btn:hover { background: var(--primary); color: white; }
         .sub-page-btn i { margin-left: 10px; }
+        /* التنسيقات العامة */
         .info-section { background: #f8f9fa; padding: 20px; border-radius: 12px; margin: 20px 0; border: 1px solid #ddd; }
         .card { background: white; border-radius: 15px; padding: 20px; margin-bottom: 20px; border-right: 5px solid; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .card.active { border-right-color: var(--success); }
@@ -77,8 +219,8 @@
         .upcoming-buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 10px 0; }
         .upcoming-btn { background: var(--success); color: white; border-radius: 30px; padding: 8px 16px; font-size: 0.85rem; }
         footer { background: var(--dark); color: #ccc; text-align: center; padding: 20px; margin-top: 40px; font-size: 0.85rem; }
-        footer a { color: var(--warning); text-decoration: none; cursor: pointer; }
-        @media (max-width:768px){ .main-buttons-container{grid-template-columns:1fr} .sub-page{padding:15px} }
+        footer a { color: var(--warning); text-decoration: none; }
+        @media (max-width: 768px) { .main-buttons-container { grid-template-columns: 1fr; } .sub-page { padding: 15px; } }
         .hidden { display: none; }
         .result-message { padding: 12px; border-radius: 8px; margin-top: 15px; text-align: center; }
         .success { background: #d4edda; color: #155724; }
@@ -89,21 +231,20 @@
         th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
         th { background: var(--primary); color: white; }
         .center-info { margin-top: 20px; padding: 15px; background: #f1f3f5; border-radius: 12px; }
-        .marquee-container { background: #ffc107; text-align: center; padding: 5px; font-weight: bold; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
 <!-- شريط الموافقة على الكوكيز -->
 <div id="cookieConsent" class="cookie-consent" style="display: none;">
-    <span>🔒 نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربتك وعرض إعلانات مخصصة عبر Google AdSense. باستمرارك في التصفح، فإنك توافق على استخدامها. <a href="#" id="privacyLinkFromCookie">اقرأ سياسة الخصوصية</a></span>
+    <span>🔒 نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربتك وعرض إعلانات مخصصة عبر Google AdSense. باستمرارك في التصفح، فإنك توافق على استخدامها. <a href="#" onclick="showPage('privacy-policy-page'); return false;">اقرأ سياسة الخصوصية</a></span>
     <div class="cookie-buttons">
         <button id="acceptCookies">موافق</button>
         <button id="declineCookies">رفض (لن تظهر إعلانات مخصصة)</button>
     </div>
 </div>
 
-<!-- نافذة الترحيب للمستخدم الجديد -->
+<!-- نافذة الترحيب للمستخدم الجديد مع صوت ذكاء اصطناعي -->
 <div id="sharePopup" class="share-popup" style="display: none;">
     <button class="close-popup" onclick="closeSharePopup()"><i class="fas fa-times"></i></button>
     <h3><i class="fas fa-bell"></i> مرحباً بك!</h3>
@@ -116,18 +257,17 @@
     </div>
 </div>
 
-<!-- القائمة الجانبية -->
 <div id="sidebar">
     <button class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
     <div class="sidebar-header"><i class="fas fa-graduation-cap fa-2x"></i><h3>القائمة الرئيسية</h3></div>
-    <a data-page="about"><i class="fas fa-info-circle"></i> ما هي الدراسة بالمراسلة؟</a>
-    <a data-page="deadlines"><i class="fas fa-calendar-alt"></i> 📅 مواعيد الفروض والامتحانات</a>
-    <a data-page="check-level"><i class="fas fa-chart-line"></i> التحقق من القبول بالمستوى الأعلى</a>
-    <a data-page="centers"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
-    <a data-page="donation"><i class="fas fa-heart"></i> دعم الموقع (تبرع)</a>
-    <a data-page="contact"><i class="fas fa-envelope"></i> اتصل بنا</a>
-    <a data-page="privacy-policy"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a>
-    <a data-page="who-we-are"><i class="fas fa-users"></i> من نحن</a>
+    <a href="#" onclick="showPage('about-page'); return false;"><i class="fas fa-info-circle"></i> ما هي الدراسة بالمراسلة؟</a>
+    <a href="#" onclick="showPage('deadlines-page'); return false;"><i class="fas fa-calendar-alt"></i> 📅 مواعيد الفروض والامتحانات</a>
+    <a href="#" onclick="showPage('check-level-page'); return false;"><i class="fas fa-chart-line"></i> التحقق من القبول بالمستوى الأعلى</a>
+    <a href="#" onclick="showPage('centers-page'); return false;"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
+    <a href="#" onclick="showPage('donation-page'); return false;"><i class="fas fa-heart"></i> دعم الموقع (تبرع)</a>
+    <a href="#" onclick="showPage('contact-page'); return false;"><i class="fas fa-envelope"></i> اتصل بنا</a>
+    <a href="#" onclick="showPage('privacy-policy-page'); return false;"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a>
+    <a href="#" onclick="showPage('who-we-are-page'); return false;"><i class="fas fa-users"></i> من نحن</a>
     <a href="#" onclick="shareApp(); return false;"><i class="fas fa-share-alt"></i> مشاركة الموقع</a>
     <a href="mailto:paserayoucef@gmail.com?subject=مشكلة في الموقع" style="background:#dc3545; color:white;"><i class="fas fa-exclamation-triangle"></i> الإبلاغ عن مشكلة</a>
 </div>
@@ -140,7 +280,7 @@
     <h1 class="header-title"><i class="fas fa-graduation-cap"></i> الدراسة بالمراسلة</h1>
 </header>
 
-<div class="marquee-container">📢 منصة شاملة لخدمات ONEFD: التسجيل، الفروض، الامتحانات، النتائج وأدوات مساعدة (الموقع غير رسمي)</div>
+<div class="marquee-container" style="background:#ffc107; text-align:center; padding:5px; font-weight:bold;">📢 منصة شاملة لخدمات ONEFD: التسجيل، الفروض، الامتحانات، النتائج وأدوات مساعدة (الموقع غير رسمي)</div>
 <div id="upcomingEventsContainer" class="upcoming-buttons"></div>
 
 <main id="main-content">
@@ -149,12 +289,12 @@
         <h2>كل ما تحتاجه في مكان واحد: التسجيل، الفروض الذاتية (رقم 01 و 02)، الفرض الإلكتروني، استدعاءات الامتحانات، النتائج، والمراكز الولائية. نتمنى لك التوفيق والنجاح 🌟</h2>
     </div>
     <div class="main-buttons-container">
-        <a class="main-btn" data-page="registration"><i class="fas fa-user-plus"></i> التسجيل في المراسلة</a>
-        <a class="main-btn" data-page="documents"><i class="fas fa-file-alt"></i> سحب الوثائق</a>
-        <a class="main-btn" data-page="platforms"><i class="fas fa-chalkboard-user"></i> الأرضيات التعليمية</a>
-        <a class="main-btn" data-page="e-homework"><i class="fas fa-laptop-code"></i> الفرض الإلكتروني</a>
-        <a class="main-btn" data-page="exam-registration"><i class="fas fa-certificate"></i> التسجيل في الشهادة</a>
-        <a class="main-btn" data-page="exam-info"><i class="fas fa-bullhorn"></i> معلومات الامتحانات</a>
+        <button class="main-btn" onclick="showPage('registration-page')"><i class="fas fa-user-plus"></i> التسجيل في المراسلة</button>
+        <button class="main-btn" onclick="showPage('documents-page')"><i class="fas fa-file-alt"></i> سحب الوثائق</button>
+        <button class="main-btn" onclick="showPage('platforms-page')"><i class="fas fa-chalkboard-user"></i> الأرضيات التعليمية</button>
+        <button class="main-btn" onclick="showPage('e-homework-page')"><i class="fas fa-laptop-code"></i> الفرض الإلكتروني</button>
+        <button class="main-btn" onclick="showPage('exam-registration-page')"><i class="fas fa-certificate"></i> التسجيل في الشهادة</button>
+        <button class="main-btn" onclick="showPage('exam-info-page')"><i class="fas fa-bullhorn"></i> معلومات الامتحانات</button>
     </div>
     <div class="social-media-container">
         <span>📱 تابعنا على:</span>
@@ -167,305 +307,259 @@
 </main>
 
 <div id="pages-container"></div>
-
 <footer>
     <p>© 2026 موقع الدراسة بالمراسلة - <strong>تطوعي وغير رسمي (غير تابع لـ ONEFD)</strong>. جميع الروابط تؤدي إلى خدمات رسمية حكومية. نحن مجرد مبادرة لتسهيل الوصول.</p>
-    <p><a data-page="privacy-policy">سياسة الخصوصية</a> | <a data-page="contact">اتصل بنا</a></p>
+    <p><a href="#" onclick="showPage('privacy-policy-page'); return false;">سياسة الخصوصية</a> | <a href="#" onclick="showPage('contact-page'); return false;">اتصل بنا</a></p>
 </footer>
 
 <script>
-    // ========== جميع الدوال والميزات مجمعة ==========
-    (function(){
-        // عناصر DOM
-        const mainContent = document.getElementById('main-content');
-        const pagesContainer = document.getElementById('pagesContainer');
-        // التوافق مع الأسماء المختلفة
-        const pagesContainerDiv = document.getElementById('pages-container');
-        
-        // دوال مساعدة
-        function toggleSidebar() { document.getElementById("sidebar").classList.toggle("open"); }
-        function goBack() { pagesContainerDiv.style.display = 'none'; mainContent.style.display = 'block'; pagesContainerDiv.innerHTML = ''; }
-        function openExternalLink(url) { window.open(url, '_blank', 'noopener noreferrer'); }
-        function shareApp() { if(navigator.share) navigator.share({title:'الدراسة بالمراسلة', text:'دليل شامل لخدمات ONEFD (موقع غير رسمي)', url:window.location.href}); else alert('انسخ الرابط: '+window.location.href); }
-        function createLinkButton(text, url) { return `<a class="sub-page-btn" href="#" onclick="openExternalLink('${url}'); return false;"><i class="fas fa-external-link-alt"></i> ${text}</a>`; }
-        
-        // الصوت (ذكاء اصطناعي)
-        window.speakIntro = function() {
-            if ('speechSynthesis' in window) {
-                const msg = new SpeechSynthesisUtterance();
-                msg.text = "مرحباً بك في موقع الدراسة بالمراسلة. هذا الموقع ليس رسمياً ولا يتبع الديوان الوطني للتعليم والتكوين عن بعد. هو مبادرة تطوعية لمساعدة الطلاب على الوصول السريع لخدمات ONEFD مثل التسجيل، الفروض، والامتحانات. نتمنى لك التوفيق.";
-                msg.lang = "ar-SA";
-                msg.rate = 0.9;
-                msg.pitch = 1;
-                window.speechSynthesis.cancel();
-                window.speechSynthesis.speak(msg);
+    // --- دوال مساعدة عامة ---
+    const pagesContainer = document.getElementById('pages-container');
+    function toggleSidebar() { document.getElementById("sidebar").classList.toggle("open"); }
+    function goBack() { pagesContainer.style.display = 'none'; document.getElementById('main-content').style.display = 'block'; pagesContainer.innerHTML = ''; }
+    function openExternalLink(url) { window.open(url, '_blank', 'noopener noreferrer'); }
+    function shareApp() { if(navigator.share) navigator.share({title:'الدراسة بالمراسلة', text:'دليل شامل لخدمات ONEFD (موقع غير رسمي)', url:window.location.href}); else alert('انسخ الرابط: '+window.location.href); }
+    function createLinkButton(text, url) { return `<button class="sub-page-btn" onclick="openExternalLink('${url}')"><i class="fas fa-external-link-alt"></i> ${text}</button>`; }
+    
+    // --- الصوت بالذكاء الاصطناعي ---
+    function speakIntro() {
+        if ('speechSynthesis' in window) {
+            const msg = new SpeechSynthesisUtterance();
+            msg.text = "مرحباً بك في موقع الدراسة بالمراسلة. هذا الموقع ليس رسمياً ولا يتبع الديوان الوطني للتعليم والتكوين عن بعد. هو مبادرة تطوعية لمساعدة الطلاب على الوصول السريع لخدمات ONEFD مثل التسجيل، الفروض، والامتحانات. نتمنى لك التوفيق.";
+            msg.lang = "ar-SA";
+            msg.rate = 0.9;
+            msg.pitch = 1;
+            window.speechSynthesis.cancel(); // إيقاف أي صوت سابق
+            window.speechSynthesis.speak(msg);
+        } else {
+            alert("متصفحك لا يدعم خاصية تحويل النص إلى صوت، يمكنك قراءة الإخلاء المسؤول في نافذة الترحيب.");
+        }
+    }
+
+    // --- نافذة الترحيب للمستخدم الجديد (مرة واحدة) ---
+    function showNewUserPopup() {
+        if (!localStorage.getItem('visitedBefore')) {
+            setTimeout(() => {
+                document.getElementById('sharePopup').style.display = 'block';
+            }, 1000);
+            localStorage.setItem('visitedBefore', 'true');
+        }
+    }
+    function closeSharePopup() {
+        document.getElementById('sharePopup').style.display = 'none';
+    }
+
+    // عرض الصفحات (كل المحتوى محفوظ)
+    function showPage(pageId) {
+        toggleSidebar();
+        document.getElementById('main-content').style.display = 'none';
+        pagesContainer.style.display = 'block';
+        if(pageId === 'registration-page') buildRegistrationPage();
+        else if(pageId === 'documents-page') buildDocumentsPage();
+        else if(pageId === 'platforms-page') buildPlatformsPage();
+        else if(pageId === 'e-homework-page') buildEHomeworkPage();
+        else if(pageId === 'exam-registration-page') buildExamRegistrationPage();
+        else if(pageId === 'exam-info-page') buildExamInfoPage();
+        else if(pageId === 'about-page') buildAboutPage();
+        else if(pageId === 'check-level-page') buildCheckLevelPage();
+        else if(pageId === 'centers-page') buildCentersPage();
+        else if(pageId === 'donation-page') buildDonationPage();
+        else if(pageId === 'privacy-policy-page') buildPrivacyPolicyPage();
+        else if(pageId === 'who-we-are-page') buildWhoWeArePage();
+        else if(pageId === 'deadlines-page') buildDeadlinesPage();
+        else if(pageId === 'contact-page') buildContactPage();
+    }
+    
+    // بناء الصفحات (كل المحتوى محفوظ كما هو مع التأكيد على عدم الرسمية في بعض النصوص)
+    function buildRegistrationPage() {
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-user-plus"></i> التسجيل في المراسلة</h2><p>خطوات التسجيل الإلكتروني، دفع الرسوم، وإيداع الملف الورقي. يجب اختيار المستوى المناسب وإدخال البيانات بدقة.</p>${createLinkButton('تسجيل متعلم جديد', 'https://inscriptic.onefd.edu.dz/preinscription/')}${createLinkButton('تسجيل متعلم سابق', 'https://inscriptic.onefd.edu.dz/preinscription/')}</div>`;
+    }
+    function buildDocumentsPage() {
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-file-alt"></i> سحب الوثائق</h2><p>استخراج استدعاءات الفروض، امتحان المستوى، كشوف النقاط، وشهادات التسجيل.</p>${createLinkButton('معلومات الحساب', 'https://inscriptic.onefd.edu.dz/preinscription/')}${createLinkButton('حساب المستخدم', 'https://inscriptic.onefd.edu.dz/preinscription/auth/login/')}${createLinkButton('ارفاق وثائق الثبوتية', 'https://e-devoir-3am.onefd.edu.dz/preinscription/index.php/upload_documents/')}${createLinkButton('استخراج رقم التسجيل', 'https://inscriptic.onefd.edu.dz/numins/num_ins_index.php')}${createLinkButton('استخراج استدعاء امتحان المستوى', 'https://inscriptic.onefd.edu.dz/preinscription/')}${createLinkButton('استخراج كشف النقاط', 'http://inscriptic.onefd.edu.dz/releve/matricule.php')}${createLinkButton('استخراج شهادة إثبات المستوى', 'https://www.onefd.edu.dz/att_niv_2025/')}</div>`;
+    }
+    function buildPlatformsPage() {
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-chalkboard-user"></i> الأرضيات التعليمية Scolarium</h2><p>منصة الدروس والتمارين التفاعلية حسب المستوى.</p>${createLinkButton('المستوى المتوسط', 'http://scolarium-moyen.onefd.edu.dz/login/index.php')}${createLinkButton('أولى ثانوي', 'http://scolarium-1as.onefd.edu.dz/login/index.php')}${createLinkButton('الثانية ثانوي', 'http://scolarium-2as.onefd.edu.dz/login/index.php')}${createLinkButton('الثالثة ثانوي', 'http://scolarium-3as.onefd.edu.dz/login/index.php')}</div>`;
+    }
+    function buildEHomeworkPage() {
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-laptop-code"></i> الفرض الإلكتروني</h2><p>اختر المستوى:</p><button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')"><i class="fas fa-school"></i> المستوى المتوسط</button><button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')"><i class="fas fa-school"></i> المستوى الثانوي</button></div>`;
+    }
+    function buildEHomeworkLevel(level) {
+        let btns = '';
+        if(level === 'moyen') {
+            btns = createLinkButton('أولى متوسط', 'https://e-devoir-1am.onefd.edu.dz/') +
+                   createLinkButton('ثانية متوسط', 'https://e-devoir-2am.onefd.edu.dz/') +
+                   createLinkButton('ثالثة متوسط', 'https://e-devoir-3am.onefd.edu.dz/') +
+                   createLinkButton('الرابعة متوسط', 'https://e-devoir-4am.onefd.edu.dz/');
+        } else {
+            btns = createLinkButton('أولى ثانوي', 'https://e-devoir-1as.onefd.edu.dz/index.php/welcome') +
+                   createLinkButton('الثانية ثانوي', 'https://e-devoir-2as.onefd.edu.dz/index.php/welcome') +
+                   createLinkButton('الثالثة ثانوي', 'https://e-devoir-3as.onefd.edu.dz/index.php/welcome');
+        }
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="buildEHomeworkPage()"><i class="fas fa-arrow-right"></i> رجوع</button><h2>الفرض الإلكتروني - ${level==='moyen' ? 'المتوسط' : 'الثانوي'}</h2>${btns}</div>`;
+    }
+    function buildExamInfoPage() {
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-bullhorn"></i> معلومات هامة للتسجيل في الامتحان</h2><div class="info-section"><p>بعد التسجيل الإلكتروني ودفع المستحقات، احتفظ بحسابك لاستخراج الاستدعاءات. يتم الدفع عبر epay.education.dz. ملاحظة: لذوي الإعاقة تقديم ملف طبي.</p></div>${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://epay.education.dz/auth')}${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://epay.education.dz/auth')}</div>`;
+    }
+    function buildExamRegistrationPage() {
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-certificate"></i> التسجيل في الشهادة الرسمية</h2><p>لطلاب السنة الثالثة ثانوي والرابعة متوسط: يتوجب عليهم إجراء تسجيل إضافي في موقع الديوان الوطني للامتحانات والمسابقات (ONEC).</p>${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://bem.onec.dz/')}${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://bac.onec.dz/')}</div>`;
+    }
+    function buildAboutPage() {
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-lightbulb"></i> ما هي الدراسة بالمراسلة؟</h2><p>نظام تعليمي عن بعد يتيح إكمال المسار الدراسي لمن انقطع عن الدراسة. شروط الانتقال: معدل 9/20 فما فوق (ما عدا من الثانية ثانوي إلى الثالثة ثانوي يحتاج 10/20). رسوم التسجيل تبدأ من 1777 دج.</p><h3>الوثائق المطلوبة للتسجيل لأول مرة</h3><ul><li>صورة شمسية</li><li>شهادة ميلاد</li><li>بطاقة التعريف الوطنية</li><li>الشهادة المدرسية الأخيرة</li><li>إيصال الدفع</li><li>شهادة التحرر من الأمية (لمتعلمي محو الأمية)</li></ul><h3>حقوق التسجيل التقريبية</h3><table><thead><tr><th>طريقة الدراسة</th><th>المبلغ (دج)</th></tr></thead><tbody><tr><td>الدراسة بالكتاب</td><td>2677 دج</td></tr><tr><td>الدراسة بالقرص المضغوط</td><td>1977 دج</td></tr><tr><td>الدراسة عبر الأرضية (جدد)</td><td>1777 دج</td></tr><tr><td>الدراسة عبر الأرضية (قدامى معيدون)</td><td>1877 دج</td></tr></tbody></table><p class="info-section" style="margin-top:15px;"><i class="fas fa-exclamation-triangle"></i> <strong>تنبيه:</strong> هذا الموقع غير رسمي ولا يتبع ONEFD، وهو مبادرة شخصية لتسهيل الوصول للخدمات.</p></div>`;
+    }
+    function buildCheckLevelPage() {
+        pagesContainer.innerHTML = `<div class="sub-page" id="level-checker-content"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-check-circle"></i> التحقق من القبول في المستوى الأعلى</h2><select id="study-level"><option value="">-- اختر مستواك الدراسي --</option><option value="أولى متوسط">أولى متوسط</option><option value="ثانية متوسط">ثانية متوسط</option><option value="ثالثة متوسط">ثالثة متوسط</option><option value="رابعة متوسط">رابعة متوسط</option><option value="أولى ثانوي">أولى ثانوي</option><option value="الثانية ثانوي">الثانية ثانوي</option></select><input type="number" id="annual-average" placeholder="أدخل معدلك السنوي (من 20)" min="0" max="20" step="0.01"><button class="check-btn" onclick="checkLevelResult()">تحقق</button><div id="result-message" class="result-message hidden"></div><p style="margin-top:20px;"><i class="fas fa-info-circle"></i> ملاحظة: المعدل السنوي موجود في كشف النقاط للفصل الثالث.</p></div>`;
+    }
+    window.checkLevelResult = function() {
+        const level = document.getElementById('study-level').value;
+        const avg = parseFloat(document.getElementById('annual-average').value);
+        const req = { 'أولى متوسط':9, 'ثانية متوسط':9, 'ثالثة متوسط':9, 'رابعة متوسط':9, 'أولى ثانوي':9, 'الثانية ثانوي':10 }[level];
+        const div = document.getElementById('result-message');
+        if(!level || isNaN(avg)) { div.innerHTML='الرجاء إدخال بيانات صحيحة.'; div.className='result-message failure'; div.classList.remove('hidden'); return; }
+        if(avg >= req) { div.innerHTML=`✅ مبارك! معدلك ${avg.toFixed(2)} يسمح بالانتقال إلى المستوى الأعلى.`; div.className='result-message success'; }
+        else { div.innerHTML=`❌ للأسف، تحتاج معدل ${req} للانتقال. معدلك ${avg.toFixed(2)} يتطلب إعادة السنة.`; div.className='result-message failure'; }
+        div.classList.remove('hidden');
+    };
+    // قائمة المراكز الولائية الكاملة (27 مركزاً) - محفوظة بالكامل
+    const centersData = [
+        { id:1, name:'أدرار', states:'أدرار', address:'مقر الولاية القديمة ص.ب 76', phone:'049.36.12.31', fax:'049.36.12.31', email:'cwefd01@onefd.edu.dz' },
+        { id:2, name:'الشلف', states:'الشلف', address:'شارع بن باديس ص.ب 190', phone:'027.77.00.24', fax:'027.77.00.24', email:'cwefd02@onefd.edu.dz' },
+        { id:3, name:'الأغواط', states:'الأغواط، غرداية', address:'حي المعمورة بن عامر ص.ب 1800', phone:'029.13.24.30', fax:'029.13.24.30', email:'cwefd03@onefd.edu.dz' },
+        { id:4, name:'باتنة', states:'باتنة', address:'شارع 19 جوان 1965', phone:'033.25.80.77', fax:'/', email:'cwefd05@onefd.edu.dz' },
+        { id:5, name:'بجاية', states:'بجاية، جيجل', address:'حي 300 مسكن أحدادن', phone:'034.12.98.47', fax:'034.12.98.47', email:'cwefd06@onefd.edu.dz' },
+        { id:6, name:'بسكرة', states:'بسكرة', address:'شارع حمودة عبد الرزاق', phone:'033.53.08.56', fax:'033.53.08.56', email:'cwefd07@onefd.edu.dz' },
+        { id:7, name:'بشار', states:'بشار، تيندوف', address:'حي الجيهاني ص.ب 64 البرقة', phone:'049.23.87.28', fax:'049.23.87.28', email:'cwefd08@onefd.edu.dz' },
+        { id:8, name:'تمنراست', states:'تمنراست', address:'شارع 5 جزيلية سرسوف', phone:'029.32.23.20', fax:'029.32.23.20', email:'cwefd11@onefd.edu.dz' },
+        { id:9, name:'تبسة', states:'تبسة، خنشلة', address:'ص.ب 13 النهضة', phone:'037.58.59.49', fax:'037.58.59.49', email:'cwefd12@onefd.edu.dz' },
+        { id:10, name:'تلمسان', states:'تلمسان، عين تموشنت', address:'شارع دار الحديث ص.ب 314', phone:'043.27.59.30', fax:'043.27.59.30', email:'Cwefd13@onefd.edu.dz' },
+        { id:11, name:'تيارت', states:'تيارت', address:'حي الصوناتيبا ص.ب 111', phone:'046.22.50.47', fax:'046.22.50.47', email:'cwefd14@onefd.edu.dz' },
+        { id:12, name:'تيزي وزو', states:'تيزي وزو، بومرداس، البويرة', address:'شارع أحمد ملولي مدوحة', phone:'026.19.70.50', fax:'026.19.70.50', email:'cwefd15@onefd.edu.dz' },
+        { id:13, name:'الجزائر', states:'الجزائر، تيبازة', address:'شارع محمد مادة 1', phone:'021.66.42.11', fax:'021.66.42.11', email:'cwefd16@onefd.edu.dz' },
+        { id:14, name:'الجلفة', states:'الجلفة، المسيلة', address:'بجوار متوسطة الرايس محمد', phone:'027.93.03.92', fax:'027.93.03.92', email:'cwefd17@onefd.edu.dz' },
+        { id:15, name:'سطيف', states:'سطيف، برج بوعريريج', address:'شارع أول نوفمبر 1954 رقم 67', phone:'044.77.83.00', fax:'/', email:'cwefd19@onefd.edu.dz' },
+        { id:16, name:'سعيدة', states:'سعيدة، البيض، النعامة، معسكر', address:'شارع شبلي سعيد', phone:'048.43.35.93', fax:'048.43.35.93', email:'cwefd20@onefd.edu.dz' },
+        { id:17, name:'سكيكدة', states:'سكيكدة، ميلة', address:'شارع عيسى بولغب ص.ب 225 14', phone:'038.77.44.09', fax:'038.77.44.09', email:'cwefd21@onefd.edu.dz' },
+        { id:18, name:'عنابة', states:'عنابة، الطارف، قالمة', address:'حي جبهة التحرير الوطني', phone:'038.43.69.88', fax:'038.43.69.88', email:'cwefd23@onefd.edu.dz' },
+        { id:19, name:'قسنطينة', states:'قسنطينة، أم البواقي', address:'حي 20 أوت 1955 ص.ب 180', phone:'031.64.04.44', fax:'031.64.04.44', email:'cwefd25@onefd.edu.dz' },
+        { id:20, name:'المدية', states:'المدية، البليدة', address:'حي المصلى 01', phone:'025.73.07.04', fax:'025.73.07.04', email:'cwefd26@onefd.edu.dz' },
+        { id:21, name:'مستغانم', states:'مستغانم، غليزان', address:'حي بايموت ص.ب 502', phone:'045.40.91.14', fax:'045.40.91.14', email:'cwefd27@onefd.edu.dz' },
+        { id:22, name:'ورقلة', states:'ورقلة، إليزي', address:'شارع القدس ص.ب 920', phone:'029.71.17.06', fax:'029.71.17.06', email:'cwefd30@onefd.edu.dz' },
+        { id:23, name:'وهران', states:'وهران، سيدي بلعباس', address:'رقم 22 شارع شريط علي شريف ص.ب 1535 بريد صايم محمد', phone:'041.38.62.16', fax:'041.38.62.16', email:'cwefd31@onefd.edu.dz' },
+        { id:24, name:'تيسمسيلت', states:'تيسمسيلت', address:'شارع أول نوفمبر', phone:'046.57.54.73', fax:'046.57.54.73', email:'cwefd38@omefd.edu.dz' },
+        { id:25, name:'الوادي', states:'الوادي', address:'حي الأمير عبد القادر', phone:'032.11.41.35', fax:'032.11.41.35', email:'cwefd39@onefd.edu.dz' },
+        { id:26, name:'سوق أهراس', states:'سوق أهراس', address:'نهج مولود فرعون', phone:'037.82.10.09', fax:'037.82.10.09', email:'cwefd41@onefd.edu.dz' },
+        { id:27, name:'عين الدفلى', states:'عين الدفلى', address:'شارع مروان متوسطة بسكري فتيحة', phone:'027.51.56.56', fax:'027.51.56.11', email:'cwefd44@omefd.edu.dz' }
+    ];
+    function buildCentersPage() {
+        let options = '<option value="">-- اختر المركز --</option>';
+        for(let c of centersData) options += `<option value="${c.id}">${c.name}</option>`;
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</h2><p>اختر مركزك الولائي لعرض معلومات الاتصال:</p><select id="center-select" onchange="displayCenterInfo()">${options}</select><div id="center-details" class="center-info hidden"></div></div>`;
+        window.centersData = centersData;
+    }
+    window.displayCenterInfo = function() {
+        const id = document.getElementById('center-select').value;
+        const detailsDiv = document.getElementById('center-details');
+        if(!id) { detailsDiv.classList.add('hidden'); return; }
+        const center = centersData.find(c => c.id == id);
+        if(center) {
+            detailsDiv.innerHTML = `<h3><i class="fas fa-map-marker-alt"></i> مركز ${center.name}</h3><p><strong>الولايات التابعة:</strong> ${center.states}</p><p><strong>العنوان:</strong> ${center.address}</p><p><strong>الهاتف:</strong> <a href="tel:${center.phone}">${center.phone}</a></p><p><strong>الفاكس:</strong> ${center.fax}</p><p><strong>البريد الإلكتروني:</strong> <a href="mailto:${center.email}">${center.email}</a></p>`;
+            detailsDiv.classList.remove('hidden');
+        } else detailsDiv.classList.add('hidden');
+    };
+    function buildDonationPage() {
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-heart"></i> ساهم في دعم الموقع</h2><div class="donation-box"><h3>التبرع عن طريق بريدي موب</h3><p><span id="baridi-number" style="direction:ltr;">00799999001644493295</span> <button class="copy-btn" onclick="copyToClipboard('baridi-number')">نسخ</button></p></div><div class="donation-box"><h3>التبرع عن طريق تطبيق بينانس</h3><p><span id="binance-id" style="direction:ltr;">761600642</span> <button class="copy-btn" onclick="copyToClipboard('binance-id')">نسخ</button></p></div><p style="text-align:center; font-weight:bold;">شكراً لدعمكم، ربي يوفقكم 🌻</p></div>`;
+    }
+    window.copyToClipboard = function(id) { navigator.clipboard.writeText(document.getElementById(id).innerText); alert('تم نسخ الرقم بنجاح!'); };
+    function buildPrivacyPolicyPage() {
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-shield-alt"></i> سياسة الخصوصية</h2><p>نحن لا نقوم بجمع أي بيانات شخصية للمستخدمين. يستخدم هذا الموقع Google AdSense الذي قد يستخدم ملفات تعريف الارتباط (Cookies) لعرض إعلانات مخصصة بناءً على زياراتك السابقة. يمكنك إدارة ذلك من إعدادات متصفحك أو عبر <a href="https://adssettings.google.com" target="_blank">إعدادات الإعلانات من Google</a>.</p><p><strong>ملاحظة هامة:</strong> هذا الموقع غير رسمي ولا تابع للديوان الوطني للتعليم والتكوين عن بعد (ONEFD). جميع الروابط تؤدي إلى مواقع رسمية حكومية.</p></div>`;
+    }
+    function buildWhoWeArePage() {
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-users"></i> من نحن</h2><p>أنا <strong>يوسف</strong>، مطور هذا الموقع بهدف مساعدة طلاب المراسلة في الجزائر. الموقع <strong>تطوعي وغير رسمي</strong>، ويجمع جميع خدمات ONEFD في مكان واحد لتسهيل الوصول. يمكنك التواصل معي عبر وسائل التواصل المذكورة في الموقع.</p><div class="social-media-container" style="justify-content:flex-start;"><a href="https://t.me/youcef_info_2" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://wa.me/213665074666" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a><a href="https://www.instagram.com/youcef.info2" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/share/g/1BfUsNqXFf/" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a></div></div>`;
+    }
+    function buildDeadlinesPage() {
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-calendar-alt"></i> 📅 مواعيد الفروض والامتحانات</h2><div class="card expired"><h3>📝 فرض المراقبة الذاتية رقم 1</h3><p>22 ديسمبر 2025 → 22 جانفي 2026</p><p class="status red">❌ انتهى</p></div><div class="card expired"><h3>📥 تحميل فروض الذاتية رقم 1</h3><p>13 جانفي 2026 → 10 فيفري 2026</p><p class="status red">❌ انتهى</p></div><div class="card active" data-end="2026-04-16"><h3>📥 تحميل الفرض الذاتي رقم 2</h3><p>16 مارس 2026 → 16 أبريل 2026</p><p class="status">🟢 نشط - <span class="countdown"></span></p></div><div class="card active" data-end="2026-04-14"><h3>💻 الفرض الإلكتروني 2026</h3><p>16 مارس 2026 → 14 أبريل 2026</p><p class="status">🟢 نشط - <span class="countdown"></span></p></div><div class="card future" data-end="2026-04-30"><h3>📥 تحميل تصحيح الفرض الذاتي رقم 2</h3><p>13 أبريل 2026 → 30 أبريل 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div><div class="card future" data-end="2026-05-24"><h3>📝 الامتحان الحضوري (إثبات المستوى)</h3><p>24 ماي 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div><div class="card future" data-end="2026-06-11"><h3>📥 شهادة البكالوريا 2026 BAC</h3><p>07 جوان 2026 → 11 جوان 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div><div class="card future" data-end="2026-05-21"><h3>📥 شهادة التعليم المتوسط 2026 BEM</h3><p>19 ماي 2026 → 21 ماي 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div></div>`;
+        updateCountdowns();
+        setInterval(updateCountdowns, 60000);
+    }
+    function updateCountdowns() {
+        document.querySelectorAll('.card[data-end]').forEach(card => {
+            const end = new Date(card.getAttribute('data-end'));
+            const now = new Date();
+            const diff = end - now;
+            const span = card.querySelector('.countdown');
+            if(diff <= 0) {
+                if(span) span.innerText = 'انتهى';
+                card.classList.remove('active','future');
+                card.classList.add('expired');
             } else {
-                alert("متصفحك لا يدعم خاصية تحويل النص إلى صوت، يمكنك قراءة الإخلاء المسؤول في نافذة الترحيب.");
+                const days = Math.floor(diff / (1000*60*60*24));
+                const hours = Math.floor((diff % (86400000)) / 3600000);
+                const mins = Math.floor((diff % 3600000) / 60000);
+                if(span) span.innerText = `${days} يوم ${hours} ساعة ${mins} دقيقة`;
+                if(card.classList.contains('future') && span) span.innerText = `${days} يوم متبقي`;
             }
-        };
-        
-        // نافذة الترحيب
-        function showNewUserPopup() {
-            if (!localStorage.getItem('visitedBefore')) {
-                setTimeout(() => { document.getElementById('sharePopup').style.display = 'block'; }, 1000);
-                localStorage.setItem('visitedBefore', 'true');
-            }
-        }
-        window.closeSharePopup = function() { document.getElementById('sharePopup').style.display = 'none'; };
-        
-        // --- دوال بناء الصفحات (كل المحتوى الأصلي محفوظ) ---
-        function buildRegistrationPage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-user-plus"></i> التسجيل في المراسلة</h2><p>خطوات التسجيل الإلكتروني، دفع الرسوم، وإيداع الملف الورقي. يجب اختيار المستوى المناسب وإدخال البيانات بدقة.</p>${createLinkButton('تسجيل متعلم جديد', 'https://inscriptic.onefd.edu.dz/preinscription/')}${createLinkButton('تسجيل متعلم سابق', 'https://inscriptic.onefd.edu.dz/preinscription/')}</div>`;
-        }
-        function buildDocumentsPage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-file-alt"></i> سحب الوثائق</h2><p>استخراج استدعاءات الفروض، امتحان المستوى، كشوف النقاط، وشهادات التسجيل.</p>${createLinkButton('معلومات الحساب', 'https://inscriptic.onefd.edu.dz/preinscription/')}${createLinkButton('حساب المستخدم', 'https://inscriptic.onefd.edu.dz/preinscription/auth/login/')}${createLinkButton('ارفاق وثائق الثبوتية', 'https://e-devoir-3am.onefd.edu.dz/preinscription/index.php/upload_documents/')}${createLinkButton('استخراج رقم التسجيل', 'https://inscriptic.onefd.edu.dz/numins/num_ins_index.php')}${createLinkButton('استخراج استدعاء امتحان المستوى', 'https://inscriptic.onefd.edu.dz/preinscription/')}${createLinkButton('استخراج كشف النقاط', 'http://inscriptic.onefd.edu.dz/releve/matricule.php')}${createLinkButton('استخراج شهادة إثبات المستوى', 'https://www.onefd.edu.dz/att_niv_2025/')}</div>`;
-        }
-        function buildPlatformsPage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-chalkboard-user"></i> الأرضيات التعليمية Scolarium</h2><p>منصة الدروس والتمارين التفاعلية حسب المستوى.</p>${createLinkButton('المستوى المتوسط', 'http://scolarium-moyen.onefd.edu.dz/login/index.php')}${createLinkButton('أولى ثانوي', 'http://scolarium-1as.onefd.edu.dz/login/index.php')}${createLinkButton('الثانية ثانوي', 'http://scolarium-2as.onefd.edu.dz/login/index.php')}${createLinkButton('الثالثة ثانوي', 'http://scolarium-3as.onefd.edu.dz/login/index.php')}</div>`;
-        }
-        function buildEHomeworkPage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-laptop-code"></i> الفرض الإلكتروني</h2><p>اختر المستوى:</p><button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')"><i class="fas fa-school"></i> المستوى المتوسط</button><button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')"><i class="fas fa-school"></i> المستوى الثانوي</button></div>`;
-        }
-        window.buildEHomeworkLevel = function(level) {
-            let btns = '';
-            if(level === 'moyen') {
-                btns = createLinkButton('أولى متوسط', 'https://e-devoir-1am.onefd.edu.dz/') +
-                       createLinkButton('ثانية متوسط', 'https://e-devoir-2am.onefd.edu.dz/') +
-                       createLinkButton('ثالثة متوسط', 'https://e-devoir-3am.onefd.edu.dz/') +
-                       createLinkButton('الرابعة متوسط', 'https://e-devoir-4am.onefd.edu.dz/');
-            } else {
-                btns = createLinkButton('أولى ثانوي', 'https://e-devoir-1as.onefd.edu.dz/index.php/welcome') +
-                       createLinkButton('الثانية ثانوي', 'https://e-devoir-2as.onefd.edu.dz/index.php/welcome') +
-                       createLinkButton('الثالثة ثانوي', 'https://e-devoir-3as.onefd.edu.dz/index.php/welcome');
-            }
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="buildEHomeworkPage()"><i class="fas fa-arrow-right"></i> رجوع</button><h2>الفرض الإلكتروني - ${level==='moyen' ? 'المتوسط' : 'الثانوي'}</h2>${btns}</div>`;
-        };
-        window.buildEHomeworkPage = buildEHomeworkPage;
-        
-        function buildExamInfoPage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-bullhorn"></i> معلومات هامة للتسجيل في الامتحان</h2><div class="info-section"><p>بعد التسجيل الإلكتروني ودفع المستحقات، احتفظ بحسابك لاستخراج الاستدعاءات. يتم الدفع عبر epay.education.dz. ملاحظة: لذوي الإعاقة تقديم ملف طبي.</p></div>${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://epay.education.dz/auth')}${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://epay.education.dz/auth')}</div>`;
-        }
-        function buildExamRegistrationPage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-certificate"></i> التسجيل في الشهادة الرسمية</h2><p>لطلاب السنة الثالثة ثانوي والرابعة متوسط: يتوجب عليهم إجراء تسجيل إضافي في موقع الديوان الوطني للامتحانات والمسابقات (ONEC).</p>${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://bem.onec.dz/')}${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://bac.onec.dz/')}</div>`;
-        }
-        function buildAboutPage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-lightbulb"></i> ما هي الدراسة بالمراسلة؟</h2><p>نظام تعليمي عن بعد يتيح إكمال المسار الدراسي لمن انقطع عن الدراسة. شروط الانتقال: معدل 9/20 فما فوق (ما عدا من الثانية ثانوي إلى الثالثة ثانوي يحتاج 10/20). رسوم التسجيل تبدأ من 1777 دج.</p><h3>الوثائق المطلوبة للتسجيل لأول مرة</h3><ul><li>صورة شمسية</li><li>شهادة ميلاد</li><li>بطاقة التعريف الوطنية</li><li>الشهادة المدرسية الأخيرة</li><li>إيصال الدفع</li><li>شهادة التحرر من الأمية (لمتعلمي محو الأمية)</li></ul><h3>حقوق التسجيل التقريبية</h3><table><thead><tr><th>طريقة الدراسة</th><th>المبلغ (دج)</th></tr></thead><tbody><tr><td>الدراسة بالكتاب<th>2677 دج</th></tr><tr><td>الدراسة بالقرص المضغوط<th>1977 دج</th></tr><tr><td>الدراسة عبر الأرضية (جدد)<th>1777 دج</th></tr><tr><td>الدراسة عبر الأرضية (قدامى معيدون)<th>1877 دج</th></tr></tbody></table><p class="info-section"><i class="fas fa-exclamation-triangle"></i> <strong>تنبيه:</strong> هذا الموقع غير رسمي ولا يتبع ONEFD، وهو مبادرة شخصية لتسهيل الوصول للخدمات.</p></div>`;
-        }
-        function buildCheckLevelPage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page" id="level-checker-content"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-check-circle"></i> التحقق من القبول في المستوى الأعلى</h2><select id="study-level"><option value="">-- اختر مستواك الدراسي --</option><option value="أولى متوسط">أولى متوسط</option><option value="ثانية متوسط">ثانية متوسط</option><option value="ثالثة متوسط">ثالثة متوسط</option><option value="رابعة متوسط">رابعة متوسط</option><option value="أولى ثانوي">أولى ثانوي</option><option value="الثانية ثانوي">الثانية ثانوي</option></select><input type="number" id="annual-average" placeholder="أدخل معدلك السنوي (من 20)" min="0" max="20" step="0.01"><button class="check-btn" onclick="checkLevelResult()">تحقق</button><div id="result-message" class="result-message hidden"></div><p><i class="fas fa-info-circle"></i> ملاحظة: المعدل السنوي موجود في كشف النقاط للفصل الثالث.</p></div>`;
-            window.checkLevelResult = function() {
-                const level = document.getElementById('study-level').value;
-                const avg = parseFloat(document.getElementById('annual-average').value);
-                const req = { 'أولى متوسط':9, 'ثانية متوسط':9, 'ثالثة متوسط':9, 'رابعة متوسط':9, 'أولى ثانوي':9, 'الثانية ثانوي':10 }[level];
-                const div = document.getElementById('result-message');
-                if(!level || isNaN(avg)) { div.innerHTML='الرجاء إدخال بيانات صحيحة.'; div.className='result-message failure'; div.classList.remove('hidden'); return; }
-                if(avg >= req) { div.innerHTML=`✅ مبارك! معدلك ${avg.toFixed(2)} يسمح بالانتقال إلى المستوى الأعلى.`; div.className='result-message success'; }
-                else { div.innerHTML=`❌ للأسف، تحتاج معدل ${req} للانتقال. معدلك ${avg.toFixed(2)} يتطلب إعادة السنة.`; div.className='result-message failure'; }
-                div.classList.remove('hidden');
-            };
-        }
-        // المراكز الولائية (27 مركزاً)
-        const centersData = [
-            { id:1, name:'أدرار', states:'أدرار', address:'مقر الولاية القديمة ص.ب 76', phone:'049.36.12.31', fax:'049.36.12.31', email:'cwefd01@onefd.edu.dz' },
-            { id:2, name:'الشلف', states:'الشلف', address:'شارع بن باديس ص.ب 190', phone:'027.77.00.24', fax:'027.77.00.24', email:'cwefd02@onefd.edu.dz' },
-            { id:3, name:'الأغواط', states:'الأغواط، غرداية', address:'حي المعمورة بن عامر ص.ب 1800', phone:'029.13.24.30', fax:'029.13.24.30', email:'cwefd03@onefd.edu.dz' },
-            { id:4, name:'باتنة', states:'باتنة', address:'شارع 19 جوان 1965', phone:'033.25.80.77', fax:'/', email:'cwefd05@onefd.edu.dz' },
-            { id:5, name:'بجاية', states:'بجاية، جيجل', address:'حي 300 مسكن أحدادن', phone:'034.12.98.47', fax:'034.12.98.47', email:'cwefd06@onefd.edu.dz' },
-            { id:6, name:'بسكرة', states:'بسكرة', address:'شارع حمودة عبد الرزاق', phone:'033.53.08.56', fax:'033.53.08.56', email:'cwefd07@onefd.edu.dz' },
-            { id:7, name:'بشار', states:'بشار، تيندوف', address:'حي الجيهاني ص.ب 64 البرقة', phone:'049.23.87.28', fax:'049.23.87.28', email:'cwefd08@onefd.edu.dz' },
-            { id:8, name:'تمنراست', states:'تمنراست', address:'شارع 5 جزيلية سرسوف', phone:'029.32.23.20', fax:'029.32.23.20', email:'cwefd11@onefd.edu.dz' },
-            { id:9, name:'تبسة', states:'تبسة، خنشلة', address:'ص.ب 13 النهضة', phone:'037.58.59.49', fax:'037.58.59.49', email:'cwefd12@onefd.edu.dz' },
-            { id:10, name:'تلمسان', states:'تلمسان، عين تموشنت', address:'شارع دار الحديث ص.ب 314', phone:'043.27.59.30', fax:'043.27.59.30', email:'Cwefd13@onefd.edu.dz' },
-            { id:11, name:'تيارت', states:'تيارت', address:'حي الصوناتيبا ص.ب 111', phone:'046.22.50.47', fax:'046.22.50.47', email:'cwefd14@onefd.edu.dz' },
-            { id:12, name:'تيزي وزو', states:'تيزي وزو، بومرداس، البويرة', address:'شارع أحمد ملولي مدوحة', phone:'026.19.70.50', fax:'026.19.70.50', email:'cwefd15@onefd.edu.dz' },
-            { id:13, name:'الجزائر', states:'الجزائر، تيبازة', address:'شارع محمد مادة 1', phone:'021.66.42.11', fax:'021.66.42.11', email:'cwefd16@onefd.edu.dz' },
-            { id:14, name:'الجلفة', states:'الجلفة، المسيلة', address:'بجوار متوسطة الرايس محمد', phone:'027.93.03.92', fax:'027.93.03.92', email:'cwefd17@onefd.edu.dz' },
-            { id:15, name:'سطيف', states:'سطيف، برج بوعريريج', address:'شارع أول نوفمبر 1954 رقم 67', phone:'044.77.83.00', fax:'/', email:'cwefd19@onefd.edu.dz' },
-            { id:16, name:'سعيدة', states:'سعيدة، البيض، النعامة، معسكر', address:'شارع شبلي سعيد', phone:'048.43.35.93', fax:'048.43.35.93', email:'cwefd20@onefd.edu.dz' },
-            { id:17, name:'سكيكدة', states:'سكيكدة، ميلة', address:'شارع عيسى بولغب ص.ب 225 14', phone:'038.77.44.09', fax:'038.77.44.09', email:'cwefd21@onefd.edu.dz' },
-            { id:18, name:'عنابة', states:'عنابة، الطارف، قالمة', address:'حي جبهة التحرير الوطني', phone:'038.43.69.88', fax:'038.43.69.88', email:'cwefd23@onefd.edu.dz' },
-            { id:19, name:'قسنطينة', states:'قسنطينة، أم البواقي', address:'حي 20 أوت 1955 ص.ب 180', phone:'031.64.04.44', fax:'031.64.04.44', email:'cwefd25@onefd.edu.dz' },
-            { id:20, name:'المدية', states:'المدية، البليدة', address:'حي المصلى 01', phone:'025.73.07.04', fax:'025.73.07.04', email:'cwefd26@onefd.edu.dz' },
-            { id:21, name:'مستغانم', states:'مستغانم، غليزان', address:'حي بايموت ص.ب 502', phone:'045.40.91.14', fax:'045.40.91.14', email:'cwefd27@onefd.edu.dz' },
-            { id:22, name:'ورقلة', states:'ورقلة، إليزي', address:'شارع القدس ص.ب 920', phone:'029.71.17.06', fax:'029.71.17.06', email:'cwefd30@onefd.edu.dz' },
-            { id:23, name:'وهران', states:'وهران، سيدي بلعباس', address:'رقم 22 شارع شريط علي شريف ص.ب 1535 بريد صايم محمد', phone:'041.38.62.16', fax:'041.38.62.16', email:'cwefd31@onefd.edu.dz' },
-            { id:24, name:'تيسمسيلت', states:'تيسمسيلت', address:'شارع أول نوفمبر', phone:'046.57.54.73', fax:'046.57.54.73', email:'cwefd38@omefd.edu.dz' },
-            { id:25, name:'الوادي', states:'الوادي', address:'حي الأمير عبد القادر', phone:'032.11.41.35', fax:'032.11.41.35', email:'cwefd39@onefd.edu.dz' },
-            { id:26, name:'سوق أهراس', states:'سوق أهراس', address:'نهج مولود فرعون', phone:'037.82.10.09', fax:'037.82.10.09', email:'cwefd41@onefd.edu.dz' },
-            { id:27, name:'عين الدفلى', states:'عين الدفلى', address:'شارع مروان متوسطة بسكري فتيحة', phone:'027.51.56.56', fax:'027.51.56.11', email:'cwefd44@omefd.edu.dz' }
-        ];
-        function buildCentersPage() {
-            let options = '<option value="">-- اختر المركز --</option>';
-            for(let c of centersData) options += `<option value="${c.id}">${c.name}</option>`;
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</h2><p>اختر مركزك الولائي لعرض معلومات الاتصال:</p><select id="center-select" onchange="displayCenterInfo()">${options}</select><div id="center-details" class="center-info hidden"></div></div>`;
-            window.displayCenterInfo = function() {
-                const id = document.getElementById('center-select')?.value;
-                const detailsDiv = document.getElementById('center-details');
-                if(!id || !detailsDiv) return;
-                const center = centersData.find(c => c.id == id);
-                if(center) {
-                    detailsDiv.innerHTML = `<h3><i class="fas fa-map-marker-alt"></i> مركز ${center.name}</h3><p><strong>الولايات التابعة:</strong> ${center.states}</p><p><strong>العنوان:</strong> ${center.address}</p><p><strong>الهاتف:</strong> <a href="tel:${center.phone}">${center.phone}</a></p><p><strong>الفاكس:</strong> ${center.fax}</p><p><strong>البريد الإلكتروني:</strong> <a href="mailto:${center.email}">${center.email}</a></p>`;
-                    detailsDiv.classList.remove('hidden');
-                } else detailsDiv.classList.add('hidden');
-            };
-        }
-        function buildDonationPage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-heart"></i> ساهم في دعم الموقع</h2><div class="donation-box"><h3>التبرع عن طريق بريدي موب</h3><p><span id="baridi-number" style="direction:ltr;">00799999001644493295</span> <button class="copy-btn" onclick="copyToClipboard('baridi-number')">نسخ</button></p></div><div class="donation-box"><h3>التبرع عن طريق تطبيق بينانس</h3><p><span id="binance-id" style="direction:ltr;">761600642</span> <button class="copy-btn" onclick="copyToClipboard('binance-id')">نسخ</button></p></div><p style="text-align:center; font-weight:bold;">شكراً لدعمكم، ربي يوفقكم 🌻</p></div>`;
-        }
-        window.copyToClipboard = function(id) { navigator.clipboard.writeText(document.getElementById(id).innerText); alert('تم نسخ الرقم بنجاح!'); };
-        function buildPrivacyPolicyPage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-shield-alt"></i> سياسة الخصوصية</h2><p>نحن لا نقوم بجمع أي بيانات شخصية للمستخدمين. يستخدم هذا الموقع Google AdSense الذي قد يستخدم ملفات تعريف الارتباط (Cookies) لعرض إعلانات مخصصة بناءً على زياراتك السابقة. يمكنك إدارة ذلك من إعدادات متصفحك أو عبر <a href="https://adssettings.google.com" target="_blank">إعدادات الإعلانات من Google</a>.</p><p><strong>ملاحظة هامة:</strong> هذا الموقع غير رسمي ولا تابع للديوان الوطني للتعليم والتكوين عن بعد (ONEFD). جميع الروابط تؤدي إلى مواقع رسمية حكومية.</p></div>`;
-        }
-        function buildWhoWeArePage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-users"></i> من نحن</h2><p>أنا <strong>يوسف</strong>، مطور هذا الموقع بهدف مساعدة طلاب المراسلة في الجزائر. الموقع <strong>تطوعي وغير رسمي</strong>، ويجمع جميع خدمات ONEFD في مكان واحد لتسهيل الوصول. يمكنك التواصل معي عبر وسائل التواصل المذكورة في الموقع.</p><div class="social-media-container" style="justify-content:flex-start;"><a href="https://t.me/youcef_info_2" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://wa.me/213665074666" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a><a href="https://www.instagram.com/youcef.info2" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/share/g/1BfUsNqXFf/" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a></div></div>`;
-        }
-        function buildDeadlinesPage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-calendar-alt"></i> 📅 مواعيد الفروض والامتحانات</h2>
-            <div class="card expired"><h3>📝 فرض المراقبة الذاتية رقم 1</h3><p>22 ديسمبر 2025 → 22 جانفي 2026</p><p class="status red">❌ انتهى</p></div>
-            <div class="card expired"><h3>📥 تحميل فروض الذاتية رقم 1</h3><p>13 جانفي 2026 → 10 فيفري 2026</p><p class="status red">❌ انتهى</p></div>
-            <div class="card active" data-end="2026-04-16"><h3>📥 تحميل الفرض الذاتي رقم 2</h3><p>16 مارس 2026 → 16 أبريل 2026</p><p class="status">🟢 نشط - <span class="countdown"></span></p></div>
-            <div class="card active" data-end="2026-04-14"><h3>💻 الفرض الإلكتروني 2026</h3><p>16 مارس 2026 → 14 أبريل 2026</p><p class="status">🟢 نشط - <span class="countdown"></span></p></div>
-            <div class="card future" data-end="2026-04-30"><h3>📥 تحميل تصحيح الفرض الذاتي رقم 2</h3><p>13 أبريل 2026 → 30 أبريل 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div>
-            <div class="card future" data-end="2026-05-24"><h3>📝 الامتحان الحضوري (إثبات المستوى)</h3><p>24 ماي 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div>
-            <div class="card future" data-end="2026-06-11"><h3>📥 شهادة البكالوريا 2026 BAC</h3><p>07 جوان 2026 → 11 جوان 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div>
-            <div class="card future" data-end="2026-05-21"><h3>📥 شهادة التعليم المتوسط 2026 BEM</h3><p>19 ماي 2026 → 21 ماي 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div>
-            </div>`;
-            updateCountdowns();
-            setInterval(updateCountdowns, 60000);
-        }
-        function updateCountdowns() {
-            document.querySelectorAll('.card[data-end]').forEach(card => {
-                const end = new Date(card.getAttribute('data-end'));
-                const now = new Date();
-                const diff = end - now;
-                const span = card.querySelector('.countdown');
-                if(diff <= 0) {
-                    if(span) span.innerText = 'انتهى';
-                    card.classList.remove('active','future');
-                    card.classList.add('expired');
-                } else {
-                    const days = Math.floor(diff / (1000*60*60*24));
-                    const hours = Math.floor((diff % (86400000)) / 3600000);
-                    const mins = Math.floor((diff % 3600000) / 60000);
-                    if(span) span.innerText = `${days} يوم ${hours} ساعة ${mins} دقيقة`;
-                    if(card.classList.contains('future') && span) span.innerText = `${days} يوم متبقي`;
-                }
-            });
-        }
-        function buildContactPage() {
-            pagesContainerDiv.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-envelope"></i> اتصل بنا</h2><p>للاستفسارات أو الإبلاغ عن مشكلة: <a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></p><p>يمكنك أيضاً التواصل عبر وسائل التواصل الاجتماعي الموجودة في الموقع.</p></div>`;
-        }
-        
-        // --- نظام الروابط القابلة للفهرسة (History API) ---
-        function loadPage(pageId) {
-            mainContent.style.display = 'none';
-            pagesContainerDiv.style.display = 'block';
-            switch(pageId) {
-                case 'registration': buildRegistrationPage(); break;
-                case 'documents': buildDocumentsPage(); break;
-                case 'platforms': buildPlatformsPage(); break;
-                case 'e-homework': buildEHomeworkPage(); break;
-                case 'exam-registration': buildExamRegistrationPage(); break;
-                case 'exam-info': buildExamInfoPage(); break;
-                case 'about': buildAboutPage(); break;
-                case 'check-level': buildCheckLevelPage(); break;
-                case 'centers': buildCentersPage(); break;
-                case 'donation': buildDonationPage(); break;
-                case 'privacy-policy': buildPrivacyPolicyPage(); break;
-                case 'who-we-are': buildWhoWeArePage(); break;
-                case 'deadlines': buildDeadlinesPage(); break;
-                case 'contact': buildContactPage(); break;
-                default:
-                    mainContent.style.display = 'block';
-                    pagesContainerDiv.style.display = 'none';
-                    pagesContainerDiv.innerHTML = '';
-                    break;
-            }
-            // تحديث عنوان الصفحة
-            document.title = `الدراسة بالمراسلة - ${pageId.replace(/-/g,' ')}`;
-        }
-        
-        // التعامل مع النقر على الروابط (data-page)
-        function handleNavClick(e) {
-            let target = e.target.closest('[data-page]');
-            if(!target) return;
-            e.preventDefault();
-            const page = target.getAttribute('data-page');
-            if(page) {
-                history.pushState({page}, '', `/${page}`);
-                loadPage(page);
-                if(document.getElementById('sidebar').classList.contains('open')) toggleSidebar();
-            }
-        }
-        document.body.addEventListener('click', handleNavClick);
-        
-        // معالجة popstate (الرجوع والتقدم)
-        window.addEventListener('popstate', (event) => {
-            const path = window.location.pathname.substring(1);
-            if(path && path !== '') loadPage(path);
-            else loadPage('');
         });
-        
-        // عند تحميل الصفحة لأول مرة
-        const initialPath = window.location.pathname.substring(1);
-        if(initialPath && initialPath !== '') loadPage(initialPath);
-        
-        // --- الساعة والأحداث القادمة ---
-        function updateAlgeriaClock() {
-            const now = new Date().toLocaleString('en-US', {timeZone: 'Africa/Algiers'});
-            const d = new Date(now);
-            const h = d.getHours().toString().padStart(2,'0');
-            const m = d.getMinutes().toString().padStart(2,'0');
-            const s = d.getSeconds().toString().padStart(2,'0');
-            document.getElementById('algeriaClock').innerText = `${h}:${m}:${s}`;
+    }
+    function buildContactPage() {
+        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-envelope"></i> اتصل بنا</h2><p>للاستفسارات أو الإبلاغ عن مشكلة: <a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></p><p>يمكنك أيضاً التواصل عبر وسائل التواصل الاجتماعي الموجودة في الموقع.</p></div>`;
+    }
+    
+    // الساعة والأحداث القادمة (مع تحديث تاريخ الامتحان)
+    function updateAlgeriaClock() {
+        const now = new Date().toLocaleString('en-US', {timeZone: 'Africa/Algiers'});
+        const d = new Date(now);
+        const h = d.getHours().toString().padStart(2,'0');
+        const m = d.getMinutes().toString().padStart(2,'0');
+        const s = d.getSeconds().toString().padStart(2,'0');
+        document.getElementById('algeriaClock').innerText = `${h}:${m}:${s}`;
+    }
+    setInterval(updateAlgeriaClock, 1000);
+    updateAlgeriaClock();
+    
+    const upcomingEvents = [
+        { name: "📥 تحميل الفرض الذاتي رقم 2", start: "2026-03-16" },
+        { name: "💻 الفرض الإلكتروني 2026", start: "2026-03-16" },
+        { name: "📥 تحميل تصحيح الفرض الذاتي رقم 2", start: "2026-04-13" },
+        { name: "📝 الامتحان الحضوري (إثبات المستوى)", start: "2026-05-24" },
+        { name: "📥 شهادة التعليم المتوسط BEM", start: "2026-05-19" },
+        { name: "📥 شهادة البكالوريا BAC", start: "2026-06-07" }
+    ];
+    function updateUpcomingEvents() {
+        const container = document.getElementById('upcomingEventsContainer');
+        if(!container) return;
+        const today = new Date(); today.setHours(0,0,0,0);
+        const future = upcomingEvents.filter(ev => new Date(ev.start) > today);
+        if(future.length === 0) container.style.display = 'none';
+        else {
+            container.style.display = 'flex';
+            container.innerHTML = future.map(ev => {
+                const days = Math.ceil((new Date(ev.start) - today) / (1000*60*60*24));
+                return `<div class="upcoming-btn">📅 ${ev.name} : يبدأ بعد ${days} يوم</div>`;
+            }).join('');
         }
-        setInterval(updateAlgeriaClock, 1000);
-        updateAlgeriaClock();
+    }
+    setInterval(updateUpcomingEvents, 60000);
+    updateUpcomingEvents();
+    
+    // شريط الكوكيز ونافذة الترحيب
+    document.addEventListener('DOMContentLoaded', () => {
+        if(!localStorage.getItem('cookieConsent')) document.getElementById('cookieConsent').style.display = 'flex';
+        document.getElementById('acceptCookies').onclick = () => { localStorage.setItem('cookieConsent','accepted'); document.getElementById('cookieConsent').style.display = 'none'; };
+        document.getElementById('declineCookies').onclick = () => { localStorage.setItem('cookieConsent','declined'); document.getElementById('cookieConsent').style.display = 'none'; };
         
-        const upcomingEvents = [
-            { name: "📥 تحميل الفرض الذاتي رقم 2", start: "2026-03-16" },
-            { name: "💻 الفرض الإلكتروني 2026", start: "2026-03-16" },
-            { name: "📥 تحميل تصحيح الفرض الذاتي رقم 2", start: "2026-04-13" },
-            { name: "📝 الامتحان الحضوري (إثبات المستوى)", start: "2026-05-24" },
-            { name: "📥 شهادة التعليم المتوسط BEM", start: "2026-05-19" },
-            { name: "📥 شهادة البكالوريا BAC", start: "2026-06-07" }
-        ];
-        function updateUpcomingEvents() {
-            const container = document.getElementById('upcomingEventsContainer');
-            if(!container) return;
-            const today = new Date(); today.setHours(0,0,0,0);
-            const future = upcomingEvents.filter(ev => new Date(ev.start) > today);
-            if(future.length === 0) container.style.display = 'none';
-            else {
-                container.style.display = 'flex';
-                container.innerHTML = future.map(ev => {
-                    const days = Math.ceil((new Date(ev.start) - today) / (1000*60*60*24));
-                    return `<div class="upcoming-btn">📅 ${ev.name} : يبدأ بعد ${days} يوم</div>`;
-                }).join('');
-            }
-        }
-        setInterval(updateUpcomingEvents, 60000);
-        updateUpcomingEvents();
-        
-        // --- الكوكيز ونافذة الترحيب ---
-        document.addEventListener('DOMContentLoaded', () => {
-            if(!localStorage.getItem('cookieConsent')) document.getElementById('cookieConsent').style.display = 'flex';
-            document.getElementById('acceptCookies').onclick = () => { localStorage.setItem('cookieConsent','accepted'); document.getElementById('cookieConsent').style.display = 'none'; };
-            document.getElementById('declineCookies').onclick = () => { localStorage.setItem('cookieConsent','declined'); document.getElementById('cookieConsent').style.display = 'none'; };
-            document.getElementById('privacyLinkFromCookie').onclick = (e) => { e.preventDefault(); loadPage('privacy-policy'); document.getElementById('cookieConsent').style.display = 'none'; };
-            showNewUserPopup();
-        });
-        
-        // تصدير الدوال المطلوبة عالمياً
-        window.toggleSidebar = toggleSidebar;
-        window.goBack = goBack;
-        window.openExternalLink = openExternalLink;
-        window.shareApp = shareApp;
-        window.speakIntro = speakIntro;
-        window.closeSharePopup = closeSharePopup;
-        window.updateCountdowns = updateCountdowns;
-        window.checkLevelResult = null; // سيتم تعريفه داخل buildCheckLevelPage
-    })();
+        // إظهار نافذة الترحيب للمستخدم الجديد
+        showNewUserPopup();
+    });
+    
+    // إتاحة الدوال عالمياً
+    window.buildEHomeworkLevel = buildEHomeworkLevel;
+    window.buildEHomeworkPage = buildEHomeworkPage;
+    window.updateCountdowns = updateCountdowns;
+    window.showPage = showPage;
+    window.goBack = goBack;
+    window.toggleSidebar = toggleSidebar;
+    window.openExternalLink = openExternalLink;
+    window.speakIntro = speakIntro;
+    window.closeSharePopup = closeSharePopup;
 </script>
 </body>
 </html>
