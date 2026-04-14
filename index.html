@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="البوابة الشاملة لخدمات الديوان الوطني للتعليم والتكوين عن بعد (ONEFD) في الجزائر: التسجيل، الفروض، الامتحانات، النتائج، المراكز الولائية، وأدوات مفيدة للطلاب.">
-    <meta name="keywords" content="ONEFD, الدراسة بالمراسلة, فروض المراسلة, الفرض الإلكتروني, امتحان المستوى, نتائج المراسلة, مراكز ONEFD, الجزائر, حساب المعدل">
+    <meta name="keywords" content="ONEFD, الدراسة بالمراسلة, فروض المراسلة, الفرض الإلكتروني, امتحان المستوى, نتائج المراسلة, مراكز ONEFD, الجزائر">
     <meta name="author" content="يوسف">
     <meta name="robots" content="index, follow">
     <meta name="google-adsense-account" content="ca-pub-4719018034232696">
@@ -209,19 +209,7 @@
         .sub-page-btn { display: block; width: 100%; background: #f8f9fa; border: 1px solid #dee2e6; border-right: 4px solid var(--primary); padding: 12px; margin-bottom: 10px; text-align: right; border-radius: 8px; cursor: pointer; font-weight: bold; }
         .sub-page-btn:hover { background: var(--primary); color: white; }
         .sub-page-btn i { margin-left: 10px; }
-        /* تنسيق حاسبة المعدل */
-        .calc-options { display: flex; gap: 20px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
-        .calc-option { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 40px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-        .calc-option:hover { background: var(--secondary); }
-        .level-buttons, .branch-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; justify-content: center; }
-        .level-btn, .branch-btn { background: #e9ecef; border: none; padding: 8px 16px; border-radius: 30px; cursor: pointer; transition: 0.2s; }
-        .level-btn:hover, .branch-btn:hover { background: var(--primary); color: white; }
-        .marks-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .marks-table th, .marks-table td { border: 1px solid #ddd; padding: 8px; text-align: center; }
-        .marks-table th { background: var(--primary); color: white; }
-        .disabled-input { background: #f8d7da; cursor: not-allowed; }
-        .result-box { background: #d4edda; padding: 15px; border-radius: 12px; margin-top: 20px; text-align: center; font-weight: bold; }
-        .radio-group { margin: 20px 0; display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+        /* التنسيقات العامة */
         .info-section { background: #f8f9fa; padding: 20px; border-radius: 12px; margin: 20px 0; border: 1px solid #ddd; }
         .card { background: white; border-radius: 15px; padding: 20px; margin-bottom: 20px; border-right: 5px solid; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .card.active { border-right-color: var(--success); }
@@ -232,7 +220,7 @@
         .upcoming-btn { background: var(--success); color: white; border-radius: 30px; padding: 8px 16px; font-size: 0.85rem; }
         footer { background: var(--dark); color: #ccc; text-align: center; padding: 20px; margin-top: 40px; font-size: 0.85rem; }
         footer a { color: var(--warning); text-decoration: none; }
-        @media (max-width: 768px) { .main-buttons-container { grid-template-columns: 1fr; } .sub-page { padding: 15px; } .marks-table { font-size: 0.8rem; } }
+        @media (max-width: 768px) { .main-buttons-container { grid-template-columns: 1fr; } .sub-page { padding: 15px; } }
         .hidden { display: none; }
         .result-message { padding: 12px; border-radius: 8px; margin-top: 15px; text-align: center; }
         .success { background: #d4edda; color: #155724; }
@@ -307,8 +295,6 @@
         <button class="main-btn" onclick="showPage('e-homework-page')"><i class="fas fa-laptop-code"></i> الفرض الإلكتروني</button>
         <button class="main-btn" onclick="showPage('exam-registration-page')"><i class="fas fa-certificate"></i> التسجيل في الشهادة</button>
         <button class="main-btn" onclick="showPage('exam-info-page')"><i class="fas fa-bullhorn"></i> معلومات الامتحانات</button>
-        <!-- زر حاسبة المعدل الجديد -->
-        <button class="main-btn" onclick="showPage('calculator-page')"><i class="fas fa-calculator"></i> احسب معدلك</button>
     </div>
     <div class="social-media-container">
         <span>📱 تابعنا على:</span>
@@ -343,7 +329,7 @@
             msg.lang = "ar-SA";
             msg.rate = 0.9;
             msg.pitch = 1;
-            window.speechSynthesis.cancel();
+            window.speechSynthesis.cancel(); // إيقاف أي صوت سابق
             window.speechSynthesis.speak(msg);
         } else {
             alert("متصفحك لا يدعم خاصية تحويل النص إلى صوت، يمكنك قراءة الإخلاء المسؤول في نافذة الترحيب.");
@@ -382,10 +368,9 @@
         else if(pageId === 'who-we-are-page') buildWhoWeArePage();
         else if(pageId === 'deadlines-page') buildDeadlinesPage();
         else if(pageId === 'contact-page') buildContactPage();
-        else if(pageId === 'calculator-page') buildCalculatorPage();
     }
     
-    // باقي دوال بناء الصفحات (مختصرة مع الحفاظ على المحتوى)
+    // بناء الصفحات (كل المحتوى محفوظ كما هو مع التأكيد على عدم الرسمية في بعض النصوص)
     function buildRegistrationPage() {
         pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-user-plus"></i> التسجيل في المراسلة</h2><p>خطوات التسجيل الإلكتروني، دفع الرسوم، وإيداع الملف الورقي. يجب اختيار المستوى المناسب وإدخال البيانات بدقة.</p>${createLinkButton('تسجيل متعلم جديد', 'https://inscriptic.onefd.edu.dz/preinscription/')}${createLinkButton('تسجيل متعلم سابق', 'https://inscriptic.onefd.edu.dz/preinscription/')}</div>`;
     }
@@ -518,156 +503,7 @@
         pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-envelope"></i> اتصل بنا</h2><p>للاستفسارات أو الإبلاغ عن مشكلة: <a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></p><p>يمكنك أيضاً التواصل عبر وسائل التواصل الاجتماعي الموجودة في الموقع.</p></div>`;
     }
     
-    // --- حاسبة المعدل (الجزء الجديد المعاد كتابته بشكل آمن) ---
-    function buildCalculatorPage() {
-        let html = `<div class="sub-page" id="calculator-container"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-calculator"></i> احسب معدلك</h2>`;
-        html += `<div class="calc-options"><button class="calc-option" data-system="regular">📚 الدراسة (نظامي)</button><button class="calc-option" data-system="correspondence">✉️ الدراسة بالمراسلة</button></div>`;
-        html += `<div id="calc-content"></div></div>`;
-        pagesContainer.innerHTML = html;
-        // إضافة الأحداث
-        document.querySelectorAll('.calc-option').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const system = btn.dataset.system;
-                chooseCalculatorSystem(system);
-            });
-        });
-    }
-    
-    function chooseCalculatorSystem(system) {
-        const contentDiv = document.getElementById('calc-content');
-        if(system === 'regular') {
-            contentDiv.innerHTML = `<div class="level-buttons"><button class="level-cycle" data-cycle="moyen">الطور المتوسط</button><button class="level-cycle" data-cycle="secondaire">الطور الثانوي</button></div><div id="level-details"></div>`;
-            document.querySelectorAll('.level-cycle').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const cycle = btn.dataset.cycle;
-                    if(cycle === 'moyen') showMiddleSchoolLevels();
-                    else showSecondarySchoolLevels();
-                });
-            });
-        } else {
-            contentDiv.innerHTML = `<div class="level-buttons"><button class="level-cycle" data-cycle="moyen">الطور المتوسط</button><button class="level-cycle" data-cycle="secondaire">الطور الثانوي</button></div><div id="level-details"></div>`;
-            document.querySelectorAll('.level-cycle').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const cycle = btn.dataset.cycle;
-                    if(cycle === 'moyen') showCorrespondenceLevels();
-                    else showCorrespondenceLevels();
-                });
-            });
-        }
-    }
-    
-    function showMiddleSchoolLevels() {
-        const levels = ['أولى متوسط', 'ثانية متوسط', 'ثالثة متوسط', 'رابعة متوسط'];
-        let btns = levels.map(l => `<button class="level-btn" data-level="${l}">${l}</button>`).join('');
-        document.getElementById('level-details').innerHTML = `<div class="level-buttons">${btns}</div><div id="marks-table"></div>`;
-        document.querySelectorAll('.level-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                let level = btn.dataset.level;
-                showRegularSubjects(level);
-            });
-        });
-    }
-    
-    function showSecondarySchoolLevels() {
-        const branches = ['01 ثانوي أداب', '01 ثانوي علمي', '02 ثانوي أداب وفلسفة', '02 ثانوي لغات أجنبية', '02 ثانوي تسيير واقتصاد', '02 ثانوي علوم تجريبية', '02 ثانوي رياضيات', '02 ثانوي تقني رياضي', '03 ثانوي أداب وفلسفة', '03 ثانوي لغات أجنبية', '03 ثانوي تسيير واقتصاد', '03 ثانوي علوم تجريبية', '03 ثانوي رياضيات', '03 ثانوي تقني رياضي'];
-        let btns = branches.map(b => `<button class="level-btn" data-branch="${b}">${b}</button>`).join('');
-        document.getElementById('level-details').innerHTML = `<div class="branch-buttons">${btns}</div><div id="marks-table"></div>`;
-        document.querySelectorAll('.level-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                let branch = btn.dataset.branch;
-                showRegularSubjects(branch);
-            });
-        });
-    }
-    
-    function showRegularSubjects(levelOrBranch) {
-        let subjects = [];
-        if(levelOrBranch.includes('متوسط')) {
-            subjects = [
-                { name: 'رياضيات', coeff: 3, hasTwoHomeworks: true },
-                { name: 'علوم فيزيائية', coeff: 3, hasTwoHomeworks: true },
-                { name: 'علوم طبيعية', coeff: 2, hasTwoHomeworks: false },
-                { name: 'لغة عربية', coeff: 3, hasTwoHomeworks: true },
-                { name: 'تاريخ وجغرافيا', coeff: 2, hasTwoHomeworks: false },
-                { name: levelOrBranch === 'رابعة متوسط' ? 'لغة إنجليزية' : 'لغة فرنسية', coeff: 2, hasTwoHomeworks: false }
-            ];
-        } else if(levelOrBranch.includes('أداب') || levelOrBranch.includes('فلسفة')) {
-            subjects = [{ name: 'عربية', coeff: 4 }, { name: 'تاريخ وجغرافيا', coeff: 3 }, { name: 'فلسفة', coeff: 3 }, { name: 'إنجليزية', coeff: 3 }, { name: 'فرنسية', coeff: 3 }, { name: 'إسلامية', coeff: 2 }];
-        } else if(levelOrBranch.includes('علمي') || levelOrBranch.includes('علوم تجريبية')) {
-            subjects = [{ name: 'رياضيات', coeff: 4 }, { name: 'فيزياء', coeff: 4 }, { name: 'علوم ط', coeff: 4 }, { name: 'عربية', coeff: 3 }, { name: 'تاريخ وجغرافيا', coeff: 2 }, { name: 'إنجليزية', coeff: 2 }];
-        } else if(levelOrBranch.includes('رياضيات')) {
-            subjects = [{ name: 'رياضيات', coeff: 5 }, { name: 'فيزياء', coeff: 4 }, { name: 'علوم ط', coeff: 3 }, { name: 'عربية', coeff: 3 }, { name: 'تاريخ وجغرافيا', coeff: 2 }, { name: 'إنجليزية', coeff: 2 }];
-        } else if(levelOrBranch.includes('تقني رياضي')) {
-            subjects = [{ name: 'تكنولوجيا', coeff: 4 }, { name: 'رياضيات', coeff: 4 }, { name: 'فيزياء', coeff: 3 }, { name: 'عربية', coeff: 3 }, { name: 'تاريخ وجغرافيا', coeff: 2 }, { name: 'إنجليزية', coeff: 2 }];
-        } else if(levelOrBranch.includes('تسيير')) {
-            subjects = [{ name: 'محاسبة', coeff: 4 }, { name: 'اقتصاد', coeff: 4 }, { name: 'قانون', coeff: 3 }, { name: 'رياضيات', coeff: 3 }, { name: 'فرنسية', coeff: 2 }];
-        } else if(levelOrBranch.includes('لغات أجنبية')) {
-            subjects = [{ name: 'عربية', coeff: 3 }, { name: 'تاريخ وجغرافيا', coeff: 2 }, { name: 'إنجليزية', coeff: 4 }, { name: 'فرنسية', coeff: 4 }, { name: 'لغة ثانية', coeff: 3 }];
-        } else {
-            subjects = [{ name: 'مادة 1', coeff: 3 }, { name: 'مادة 2', coeff: 3 }, { name: 'مادة 3', coeff: 2 }];
-        }
-        let tableHtml = `<table class="marks-table"><thead><tr><th>المادة</th><th>المعامل</th><th>معدل المادة</th><th>المعدل × المعامل</th></tr></thead><tbody>`;
-        subjects.forEach(sub => {
-            tableHtml += `<tr><td>${sub.name}</td><td>${sub.coeff}</td><td><input type="number" step="0.01" class="subject-grade" data-coeff="${sub.coeff}" placeholder="0-20"></td><td class="weighted-cell">0</td></tr>`;
-        });
-        tableHtml += `</tbody></table><button id="calcRegularBtn" class="btn btn-primary">احسب المعدل</button><div id="regularResult"></div>`;
-        document.getElementById('marks-table').innerHTML = tableHtml;
-        document.getElementById('calcRegularBtn').addEventListener('click', () => {
-            let totalWeighted = 0, totalCoeff = 0;
-            document.querySelectorAll('.subject-grade').forEach(inp => {
-                let grade = parseFloat(inp.value);
-                let coeff = parseFloat(inp.dataset.coeff);
-                if(!isNaN(grade) && grade>=0 && grade<=20) {
-                    totalWeighted += grade * coeff;
-                    totalCoeff += coeff;
-                    inp.parentElement.nextElementSibling.innerText = (grade * coeff).toFixed(2);
-                } else {
-                    inp.parentElement.nextElementSibling.innerText = '0';
-                }
-            });
-            let avg = totalCoeff ? (totalWeighted / totalCoeff).toFixed(2) : 0;
-            document.getElementById('regularResult').innerHTML = `<div class="result-box">📊 معدلك التقريبي: ${avg} / 20</div>`;
-        });
-    }
-    
-    function showCorrespondenceLevels() {
-        let subjects = [
-            { name: 'رياضيات', coeff: 3 }, { name: 'علوم فيزيائية', coeff: 3 }, { name: 'علوم طبيعية', coeff: 2 },
-            { name: 'لغة عربية', coeff: 3 }, { name: 'تاريخ وجغرافيا', coeff: 2 }, { name: 'لغة إنجليزية', coeff: 2 }
-        ];
-        let tableHtml = `<p>أدخل نقاطك في مواد الفرض الإلكتروني 2026 (من 0 إلى 20):</p><table class="marks-table"><thead><tr><th>المادة</th><th>المعامل</th><th>النقطة</th></tr></thead><tbody>`;
-        subjects.forEach(sub => {
-            tableHtml += `<tr><td>${sub.name}</td><td>${sub.coeff}</td><td><input type="number" step="0.01" class="online-grade" data-coeff="${sub.coeff}" data-name="${sub.name}"></td></tr>`;
-        });
-        tableHtml += `</tbody></table><div class="radio-group"><label><input type="checkbox" id="hw1"> تحميل الفرض الذاتي 01</label><label><input type="checkbox" id="hw1corr"> تصحيحه</label><label><input type="checkbox" id="hw2"> تحميل الفرض الذاتي 02</label><label><input type="checkbox" id="hw2corr"> تصحيحه</label><label><input type="checkbox" id="forum"> مشاركة في المنتدى</label></div><button id="calcCorrBtn" class="btn btn-primary">احسب نقطة المراقبة المستمرة</button><div id="corrResult"></div>`;
-        document.getElementById('marks-table').innerHTML = tableHtml;
-        document.getElementById('calcCorrBtn').addEventListener('click', () => {
-            let grades = [];
-            document.querySelectorAll('.online-grade').forEach(inp => {
-                let grade = parseFloat(inp.value);
-                let coeff = parseFloat(inp.dataset.coeff);
-                if(!isNaN(grade) && grade>=0 && grade<=20) grades.push({ grade, coeff, name: inp.dataset.name });
-            });
-            if(grades.length === 0) { alert('الرجاء إدخال نقاط المواد'); return; }
-            let scores = grades.map(g => ({ score: g.grade * g.coeff, coeff: g.coeff }));
-            scores.sort((a,b) => b.score - a.score);
-            let best4 = scores.slice(0,4);
-            let totalWeighted = best4.reduce((s,item) => s + item.score,0);
-            let totalCoeff = best4.reduce((s,item) => s + item.coeff,0);
-            let avg = totalCoeff ? totalWeighted / totalCoeff : 0;
-            let points = 0;
-            if(document.getElementById('hw1').checked) points++;
-            if(document.getElementById('hw1corr').checked) points++;
-            if(document.getElementById('hw2').checked) points++;
-            if(document.getElementById('hw2corr').checked) points++;
-            if(document.getElementById('forum').checked) points++;
-            let final = avg + points;
-            final = Math.min(20, final);
-            document.getElementById('corrResult').innerHTML = `<div class="result-box">📊 نقطة المراقبة المستمرة التقريبية: ${final.toFixed(2)} / 20<br>🔹 متوسط أفضل 4 مواد: ${avg.toFixed(2)}<br>🔹 نقاط إضافية: ${points}</div>`;
-        });
-    }
-    
-    // الساعة والأحداث القادمة
+    // الساعة والأحداث القادمة (مع تحديث تاريخ الامتحان)
     function updateAlgeriaClock() {
         const now = new Date().toLocaleString('en-US', {timeZone: 'Africa/Algiers'});
         const d = new Date(now);
@@ -709,6 +545,8 @@
         if(!localStorage.getItem('cookieConsent')) document.getElementById('cookieConsent').style.display = 'flex';
         document.getElementById('acceptCookies').onclick = () => { localStorage.setItem('cookieConsent','accepted'); document.getElementById('cookieConsent').style.display = 'none'; };
         document.getElementById('declineCookies').onclick = () => { localStorage.setItem('cookieConsent','declined'); document.getElementById('cookieConsent').style.display = 'none'; };
+        
+        // إظهار نافذة الترحيب للمستخدم الجديد
         showNewUserPopup();
     });
     
@@ -722,7 +560,6 @@
     window.openExternalLink = openExternalLink;
     window.speakIntro = speakIntro;
     window.closeSharePopup = closeSharePopup;
-    window.chooseCalculatorSystem = chooseCalculatorSystem;
 </script>
 </body>
 </html>
