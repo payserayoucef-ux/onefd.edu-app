@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>دليلك التعليمي | خدمات الطالب الجزائري</title>
-    <meta name="description" content="دليل شامل للطالب الجزائري: مواعيد الفروض، حاسبة المعدل، مقالات تعليمية، وخدمات التربية البدنية 2026 - موقع مستقل غير رسمي.">
-    <meta name="keywords" content="دليل الطالب, الفرض الإلكتروني, استدعاء التربية البدنية, بكالوريا سبورت, بيام سبورت, الدراسة بالمراسلة, ONEFD">
-    <meta name="author" content="يوسف - دليل تعليمي">
+    <meta name="description" content="دليل شامل للطالب الجزائري: مواعيد الفروض، حاسبة المعدل، مقالات تعليمية، وخدمات ONEFD">
+    <meta name="keywords" content="دليل الطالب, الفرض الإلكتروني, استدعاء التربية البدنية, بكالوريا, بيام, الدراسة بالمراسلة, ONEFD">
+    <meta name="author" content="يوسف">
     <meta name="robots" content="index, follow">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -27,7 +27,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', 'Tajawal', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', 'Tajawal', system-ui, sans-serif;
         }
         body {
             background: var(--light-bg);
@@ -35,10 +35,8 @@
             direction: rtl;
             line-height: 1.5;
         }
-        /* هيدر عصري */
         header {
             background: white;
-            backdrop-filter: blur(0);
             padding: 1rem 2rem;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             position: sticky;
@@ -78,7 +76,6 @@
             cursor: pointer;
             color: var(--primary);
         }
-        /* القائمة الجانبية */
         .sidebar {
             position: fixed;
             right: -280px;
@@ -92,9 +89,7 @@
             padding: 1.5rem;
             overflow-y: auto;
         }
-        .sidebar.open {
-            right: 0;
-        }
+        .sidebar.open { right: 0; }
         .sidebar a {
             display: block;
             padding: 0.8rem 0;
@@ -114,13 +109,11 @@
             cursor: pointer;
             margin-bottom: 1rem;
         }
-        /* المحتوى الرئيسي */
         .container {
             max-width: 1300px;
             margin: 2rem auto;
             padding: 0 1.5rem;
         }
-        /* بطاقات الخدمات */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
@@ -150,7 +143,6 @@
             transform: translateY(-3px);
             border-color: var(--accent);
         }
-        /* بطاقة المقال الرئيسي */
         .featured-article {
             background: linear-gradient(135deg, #fff8eb, #ffffff);
             border-radius: 32px;
@@ -177,9 +169,6 @@
             margin: 1.5rem 0 0.5rem;
             color: var(--primary);
         }
-        .article-content p {
-            margin-bottom: 1rem;
-        }
         .info-box {
             background: #eef2fa;
             padding: 1rem;
@@ -196,6 +185,8 @@
             text-decoration: none;
             font-weight: 600;
             margin-top: 1rem;
+            border: none;
+            cursor: pointer;
         }
         .btn-outline {
             background: transparent;
@@ -215,13 +206,47 @@
             object-fit: cover;
             height: 180px;
         }
-        footer {
+        .sub-page {
             background: white;
+            border-radius: 28px;
             padding: 2rem;
-            text-align: center;
-            border-top: 1px solid #e2e8f0;
-            margin-top: 3rem;
-            color: var(--text-muted);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .sub-page h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .back-btn {
+            background: #eef2f5;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sub-page-btn {
+            display: block;
+            width: 100%;
+            background: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            border-right: 4px solid var(--accent);
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            text-align: right;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .sub-page-btn:hover {
+            background: var(--accent);
+            color: white;
         }
         .hidden-page {
             display: none;
@@ -229,29 +254,80 @@
         .active-page {
             display: block;
         }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1e2a3a;
+            color: white;
+            padding: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            z-index: 1000;
+            font-size: 0.8rem;
+        }
+        .share-popup {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            right: 20px;
+            max-width: 350px;
+            background: white;
+            border-radius: 24px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1100;
+            text-align: center;
+            border-top: 4px solid var(--accent);
+        }
         @media (max-width: 700px) {
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .featured-article {
-                padding: 1.2rem;
+                padding: 1rem;
             }
+        }
+        footer {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 3rem;
         }
     </style>
 </head>
 <body>
 
-<!-- القائمة الجانبية -->
 <div class="sidebar" id="sidebar">
     <div class="close-sidebar" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
-    <h3 style="margin-bottom: 1rem;">📘 دليل الطالب</h3>
+    <h3 style="margin-bottom: 1rem;">📘 القائمة</h3>
     <a href="#" onclick="showPage('home'); return false;"><i class="fas fa-home"></i> الرئيسية</a>
-    <a href="#" onclick="showPage('articles'); return false;"><i class="fas fa-newspaper"></i> مقالات تعليمية</a>
-    <a href="#" onclick="showPage('deadlines'); return false;"><i class="fas fa-calendar-alt"></i> مواعيد الفروض</a>
-    <a href="#" onclick="showPage('calculator'); return false;"><i class="fas fa-calculator"></i> حاسبة المعدل</a>
-    <a href="#" onclick="showPage('centers'); return false;"><i class="fas fa-phone-alt"></i> مراكز الولاية</a>
-    <a href="#" onclick="showPage('about'); return false;"><i class="fas fa-info-circle"></i> من نحن</a>
-    <a href="#" onclick="showPage('contact'); return false;"><i class="fas fa-envelope"></i> اتصل بنا</a>
+    <a href="#" onclick="showPage('registration-page'); return false;"><i class="fas fa-user-plus"></i> التسجيل في المراسلة</a>
+    <a href="#" onclick="showPage('documents-page'); return false;"><i class="fas fa-file-alt"></i> سحب الوثائق</a>
+    <a href="#" onclick="showPage('platforms-page'); return false;"><i class="fas fa-chalkboard-user"></i> الأرضيات التعليمية</a>
+    <a href="#" onclick="showPage('e-homework-page'); return false;"><i class="fas fa-laptop-code"></i> الفرض الإلكتروني</a>
+    <a href="#" onclick="showPage('exam-registration-page'); return false;"><i class="fas fa-certificate"></i> التسجيل في الشهادة</a>
+    <a href="#" onclick="showPage('exam-info-page'); return false;"><i class="fas fa-bullhorn"></i> معلومات الامتحانات</a>
+    <a href="#" onclick="showPage('deadlines-page'); return false;"><i class="fas fa-calendar-alt"></i> مواعيد الفروض</a>
+    <a href="#" onclick="showPage('check-level-page'); return false;"><i class="fas fa-chart-line"></i> التحقق من القبول</a>
+    <a href="#" onclick="showPage('centers-page'); return false;"><i class="fas fa-phone-alt"></i> مراكز الولاية</a>
+    <a href="#" onclick="showPage('donation-page'); return false;"><i class="fas fa-heart"></i> دعم الموقع</a>
+    <a href="#" onclick="showPage('calculator-page'); return false;"><i class="fas fa-calculator"></i> حاسبة المعدل</a>
+    <a href="#" onclick="showPage('about-page'); return false;"><i class="fas fa-info-circle"></i> من نحن</a>
+    <a href="#" onclick="showPage('contact-page'); return false;"><i class="fas fa-envelope"></i> اتصل بنا</a>
+    <a href="#" onclick="showPage('privacy-policy-page'); return false;"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a>
     <a href="#" onclick="shareApp(); return false;"><i class="fas fa-share-alt"></i> مشاركة الموقع</a>
     <a href="mailto:paserayoucef@gmail.com" style="color:#e74c3c;"><i class="fas fa-bug"></i> الإبلاغ عن مشكلة</a>
 </div>
@@ -274,19 +350,23 @@
         <div style="background: white; border-radius: 32px; padding: 2rem; text-align: center; margin-bottom: 2rem;">
             <h2 style="color: var(--primary);">🌟 مرحباً، طالب العلم</h2>
             <p style="margin-top: 0.5rem;">أدوات ومعلومات لمساعدتك في مسيرتك الدراسية (متوسط وثانوي)</p>
-            <button class="btn" onclick="showPage('articles')"><i class="fas fa-graduation-cap"></i> اقرأ المقالات التعليمية</button>
+            <button class="btn" onclick="showPage('calculator-page')"><i class="fas fa-calculator"></i> احسب معدلك</button>
         </div>
         
         <div class="services-grid">
-            <div class="service-card" onclick="showPage('deadlines')"><i class="fas fa-calendar-week"></i><span>مواعيد الفروض</span></div>
-            <div class="service-card" onclick="showPage('calculator')"><i class="fas fa-chart-line"></i><span>حاسبة المعدل</span></div>
-            <div class="service-card" onclick="window.open('https://inscriptic.onefd.edu.dz/preinscription/','_blank')"><i class="fas fa-user-plus"></i><span>تسجيل ONEFD</span></div>
-            <div class="service-card" onclick="window.open('https://bac.onec.dz/','_blank')"><i class="fas fa-file-alt"></i><span>استدعاء BAC</span></div>
-            <div class="service-card" onclick="window.open('https://bem.onec.dz/','_blank')"><i class="fas fa-file-pdf"></i><span>استدعاء BEM</span></div>
-            <div class="service-card" onclick="showPage('centers')"><i class="fas fa-map-marker-alt"></i><span>مراكز الولاية</span></div>
+            <div class="service-card" onclick="showPage('registration-page')"><i class="fas fa-user-plus"></i><span>التسجيل في المراسلة</span></div>
+            <div class="service-card" onclick="showPage('documents-page')"><i class="fas fa-file-alt"></i><span>سحب الوثائق</span></div>
+            <div class="service-card" onclick="showPage('platforms-page')"><i class="fas fa-chalkboard-user"></i><span>الأرضيات التعليمية</span></div>
+            <div class="service-card" onclick="showPage('e-homework-page')"><i class="fas fa-laptop-code"></i><span>الفرض الإلكتروني</span></div>
+            <div class="service-card" onclick="showPage('exam-registration-page')"><i class="fas fa-certificate"></i><span>التسجيل في الشهادة</span></div>
+            <div class="service-card" onclick="showPage('exam-info-page')"><i class="fas fa-bullhorn"></i><span>معلومات الامتحانات</span></div>
+            <div class="service-card" onclick="showPage('deadlines-page')"><i class="fas fa-calendar-week"></i><span>مواعيد الفروض</span></div>
+            <div class="service-card" onclick="showPage('calculator-page')"><i class="fas fa-chart-line"></i><span>حاسبة المعدل</span></div>
+            <div class="service-card" onclick="showPage('centers-page')"><i class="fas fa-map-marker-alt"></i><span>مراكز الولاية</span></div>
+            <div class="service-card" onclick="window.open('https://inscriptic.onefd.edu.dz/preinscription/','_blank')"><i class="fas fa-external-link-alt"></i><span>تسجيل ONEFD</span></div>
         </div>
 
-        <!-- المقال الرئيسي المميز -->
+        <!-- المقال الرئيسي (استدعاء التربية البدنية) -->
         <div class="featured-article">
             <div class="article-title">📢 كيفية سحب استدعاء التربية البدنية والرياضية (بيام وباك سبورت 2026)</div>
             <div class="article-meta"><i class="fas fa-calendar-alt"></i> آخر تحديث: أبريل 2026</div>
@@ -319,114 +399,47 @@
                 <p>احضر ببدلة رياضية كاملة وحذاء مناسب، تناول وجبة فطور متوازنة، لا تنس الاستدعاء + بطاقة التعريف الوطنية. احضر قبل نصف ساعة على الأقل.</p>
                 <p><strong>تنبيه هام:</strong> تأكد من توقيع الاستدعاء من طرف مدير المؤسسة إن كنت متمدرساً، واحتفظ به في مكان آمن حتى يوم الاختبار.</p>
                 <p>📅 الجدول التقريبي لدورة 2026: سحب الاستدعاءات من منتصف أفريل، الاختبارات الميدانية من نهاية أفريل إلى بداية ماي.</p>
-                <a href="#" class="btn" onclick="showPage('deadlines'); return false;"><i class="fas fa-calendar-check"></i> راجع مواعيد الفروض</a>
             </div>
         </div>
     </div>
 
-    <!-- صفحات أخرى (مختصرة لكن عاملة) -->
-    <div id="articlesPage" class="hidden-page">
-        <div style="background:white; border-radius: 28px; padding: 2rem;">
-            <h2>📖 مقالات تعليمية</h2>
-            <div class="featured-article" style="margin-top:1rem;">
-                <h3>كيفية سحب استدعاء التربية البدنية (باك وبيام سبورت 2026)</h3>
-                <p>دليل كامل يحتوي على الروابط الرسمية والخطوات التفصيلية ونصائح للنجاح في الاختبارات الرياضية.</p>
-                <a href="#" class="btn" onclick="showPage('home'); return false;">📖 اقرأ المقال كاملاً (في الصفحة الرئيسية)</a>
-            </div>
-            <div class="featured-article">
-                <h3>نصائح للتفوق في الفرض الإلكتروني</h3>
-                <p>استراتيجيات المراجعة وكيفية تجنب الأخطاء الشائعة.</p>
-                <a href="#" class="btn" onclick="showPage('home'); return false;">اقرأ المزيد</a>
-            </div>
-        </div>
-    </div>
-
-    <div id="deadlinesPage" class="hidden-page">
-        <div style="background:white; border-radius: 28px; padding: 2rem;">
-            <h2>📅 المواعيد الهامة 2026</h2>
-            <div class="card" style="border-right:5px solid #f9a826; padding:1rem; margin:1rem 0;"><strong>📥 تحميل الفرض الذاتي رقم 2:</strong> 16 مارس – 16 أبريل (نشط)</div>
-            <div class="card" style="border-right:5px solid #f9a826;"><strong>💻 الفرض الإلكتروني:</strong> 16 مارس – 14 أبريل (نشط)</div>
-            <div class="card" style="border-right:5px solid #27ae60;"><strong>📥 تحميل تصحيح الفرض الذاتي رقم 2:</strong> 13 – 30 أبريل (قريب)</div>
-            <div class="card" style="border-right:5px solid #27ae60;"><strong>📝 امتحان المستوى الحضوري:</strong> 24 ماي 2026</div>
-            <div class="card" style="border-right:5px solid #27ae60;"><strong>🏃 استدعاء التربية البدنية:</strong> منتصف أفريل – ماي 2026</div>
-        </div>
-    </div>
-
-    <div id="calculatorPage" class="hidden-page">
-        <div style="background:white; border-radius: 28px; padding: 2rem;">
-            <h2>🧮 حاسبة المعدل التقريبي</h2>
-            <p>(نسخة مبسطة – أدخل نقاطك حسب المواد)</p>
-            <div id="simpleCalc">
-                <div class="form-group"><label>الرياضيات (معامل 4):</label> <input type="number" id="math" step="0.25" min="0" max="20" style="width:100px; margin-right:10px;"></div>
-                <div class="form-group"><label>الفيزياء (معامل 4):</label> <input type="number" id="phy" step="0.25" min="0" max="20" style="width:100px;"></div>
-                <div class="form-group"><label>العلوم (معامل 3):</label> <input type="number" id="sci" step="0.25" min="0" max="20" style="width:100px;"></div>
-                <div class="form-group"><label>العربية (معامل 3):</label> <input type="number" id="arab" step="0.25" min="0" max="20" style="width:100px;"></div>
-                <button class="btn" id="calcSimpleBtn">احسب المعدل</button>
-                <div id="simpleResult" style="margin-top:1rem; font-weight:bold;"></div>
-            </div>
-        </div>
-    </div>
-
-    <div id="centersPage" class="hidden-page">
-        <div style="background:white; border-radius: 28px; padding: 2rem;">
-            <h2>📞 مراكز الولائية (ديوان التعليم عن بعد)</h2>
-            <p>اختر ولايتك:</p>
-            <select id="wilayaSelect" style="padding:0.5rem; margin:1rem 0;">
-                <option value="">-- اختر --</option>
-                <option value="الجزائر">الجزائر: 021.66.42.11</option>
-                <option value="وهران">وهران: 041.38.62.16</option>
-                <option value="قسنطينة">قسنطينة: 031.64.04.44</option>
-                <option value="عنابة">عنابة: 038.43.69.88</option>
-                <option value="باتنة">باتنة: 033.25.80.77</option>
-            </select>
-            <div id="centerInfo"></div>
-        </div>
-    </div>
-
-    <div id="aboutPage" class="hidden-page">
-        <div style="background:white; border-radius: 28px; padding: 2rem;">
-            <h2>📌 من نحن</h2>
-            <p>هذا الموقع هو مبادرة شخصية لتجميع المعلومات والخدمات التعليمية في مكان واحد، لمساعدة الطلاب الجزائريين (متوسط وثانوي) على الوصول السريع للمواعيد والاستدعاءات والأدوات المساعدة. <strong>ليس موقعاً رسمياً</strong> ولا يتبع أي جهة حكومية. جميع الروابط تؤدي إلى بوابات رسمية.</p>
-        </div>
-    </div>
-
-    <div id="contactPage" class="hidden-page">
-        <div style="background:white; border-radius: 28px; padding: 2rem;">
-            <h2>📧 اتصل بنا</h2>
-            <p>للاستفسار أو الإبلاغ عن مشكلة: <a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></p>
-            <p>يمكنك أيضاً استخدام وسائل التواصل في أسفل الموقع.</p>
-        </div>
-    </div>
+    <!-- جميع الصفحات الفرعية (الخدمات الكاملة) -->
+    <div id="registration-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')"><i class="fas fa-arrow-right"></i> رجوع</button><h2>التسجيل في المراسلة</h2><p>روابط التسجيل الرسمية:</p><button class="sub-page-btn" onclick="window.open('https://inscriptic.onefd.edu.dz/preinscription/','_blank')"><i class="fas fa-external-link-alt"></i> تسجيل متعلم جديد</button><button class="sub-page-btn" onclick="window.open('https://inscriptic.onefd.edu.dz/preinscription/','_blank')"><i class="fas fa-external-link-alt"></i> تسجيل متعلم سابق</button></div></div>
+    <div id="documents-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>سحب الوثائق</h2><button class="sub-page-btn" onclick="window.open('https://inscriptic.onefd.edu.dz/preinscription/','_blank')">معلومات الحساب</button><button class="sub-page-btn" onclick="window.open('https://inscriptic.onefd.edu.dz/preinscription/auth/login/','_blank')">حساب المستخدم</button><button class="sub-page-btn" onclick="window.open('https://inscriptic.onefd.edu.dz/numins/num_ins_index.php','_blank')">استخراج رقم التسجيل</button><button class="sub-page-btn" onclick="window.open('https://inscriptic.onefd.edu.dz/preinscription/','_blank')">استدعاء امتحان المستوى</button><button class="sub-page-btn" onclick="window.open('http://inscriptic.onefd.edu.dz/releve/matricule.php','_blank')">كشف النقاط</button><button class="sub-page-btn" onclick="window.open('https://www.onefd.edu.dz/att_niv_2025/','_blank')">شهادة إثبات المستوى</button></div></div>
+    <div id="platforms-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>الأرضيات التعليمية</h2><button class="sub-page-btn" onclick="window.open('http://scolarium-moyen.onefd.edu.dz/login/index.php','_blank')">المستوى المتوسط</button><button class="sub-page-btn" onclick="window.open('http://scolarium-1as.onefd.edu.dz/login/index.php','_blank')">أولى ثانوي</button><button class="sub-page-btn" onclick="window.open('http://scolarium-2as.onefd.edu.dz/login/index.php','_blank')">الثانية ثانوي</button><button class="sub-page-btn" onclick="window.open('http://scolarium-3as.onefd.edu.dz/login/index.php','_blank')">الثالثة ثانوي</button></div></div>
+    <div id="e-homework-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>الفرض الإلكتروني</h2><button class="sub-page-btn" onclick="window.open('https://e-devoir-1am.onefd.edu.dz/','_blank')">أولى متوسط</button><button class="sub-page-btn" onclick="window.open('https://e-devoir-2am.onefd.edu.dz/','_blank')">ثانية متوسط</button><button class="sub-page-btn" onclick="window.open('https://e-devoir-3am.onefd.edu.dz/','_blank')">ثالثة متوسط</button><button class="sub-page-btn" onclick="window.open('https://e-devoir-4am.onefd.edu.dz/','_blank')">الرابعة متوسط</button><button class="sub-page-btn" onclick="window.open('https://e-devoir-1as.onefd.edu.dz/index.php/welcome','_blank')">أولى ثانوي</button><button class="sub-page-btn" onclick="window.open('https://e-devoir-2as.onefd.edu.dz/index.php/welcome','_blank')">الثانية ثانوي</button><button class="sub-page-btn" onclick="window.open('https://e-devoir-3as.onefd.edu.dz/index.php/welcome','_blank')">الثالثة ثانوي</button></div></div>
+    <div id="exam-registration-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>التسجيل في الشهادة</h2><button class="sub-page-btn" onclick="window.open('https://bem.onec.dz/','_blank')">BEM</button><button class="sub-page-btn" onclick="window.open('https://bac.onec.dz/','_blank')">BAC</button></div></div>
+    <div id="exam-info-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>معلومات الامتحانات</h2><p>دفع الرسوم عبر epay.education.dz، استخراج الاستدعاءات.</p><button class="sub-page-btn" onclick="window.open('https://epay.education.dz/auth','_blank')">الدفع الإلكتروني</button></div></div>
+    <div id="deadlines-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>مواعيد الفروض والامتحانات</h2><div class="card"><strong>فرض المراقبة الذاتية رقم 1:</strong> 22 ديسمبر 2025 → 22 جانفي 2026 (منتهي)</div><div class="card"><strong>تحميل فروض الذاتية رقم 1:</strong> 13 جانفي → 10 فيفري 2026 (منتهي)</div><div class="card"><strong>تحميل الفرض الذاتي رقم 2:</strong> 16 مارس → 16 أبريل 2026 (نشط)</div><div class="card"><strong>الفرض الإلكتروني 2026:</strong> 16 مارس → 14 أبريل 2026 (نشط)</div><div class="card"><strong>تصحيح الفرض الذاتي رقم 2:</strong> 13 → 30 أبريل 2026</div><div class="card"><strong>امتحان إثبات المستوى:</strong> 24 ماي 2026</div><div class="card"><strong>شهادة البكالوريا BAC:</strong> 07 → 11 جوان 2026</div><div class="card"><strong>شهادة التعليم المتوسط BEM:</strong> 19 → 21 ماي 2026</div></div></div>
+    <div id="check-level-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>التحقق من القبول في المستوى الأعلى</h2><select id="study-level"><option>أولى متوسط</option><option>ثانية متوسط</option><option>ثالثة متوسط</option><option>رابعة متوسط</option><option>أولى ثانوي</option><option>الثانية ثانوي</option></select><input type="number" id="annual-average" placeholder="معدلك السنوي"><button class="btn" id="checkLevelBtn">تحقق</button><div id="levelResult"></div></div></div>
+    <div id="centers-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>مراكز الولائية</h2><select id="center-select"><option value="1">أدرار</option><option value="13">الجزائر</option><option value="23">وهران</option><option value="19">قسنطينة</option><option value="18">عنابة</option></select><div id="center-details"></div></div></div>
+    <div id="donation-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>دعم الموقع</h2><p>بريدي موب: 00799999001644493295</p><p>بينانس ID: 761600642</p></div></div>
+    <div id="calculator-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>حاسبة المعدل التقريبي</h2><div><label>الرياضيات (معامل 4):</label> <input type="number" id="calcMath" step="0.25"><label>الفيزياء (4):</label> <input type="number" id="calcPhys" step="0.25"><label>العلوم (3):</label> <input type="number" id="calcSci" step="0.25"><label>العربية (3):</label> <input type="number" id="calcArab" step="0.25"><button class="btn" id="doCalc">احسب</button><div id="calcResult"></div></div></div></div>
+    <div id="about-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>من نحن</h2><p>موقع غير رسمي، مبادرة شخصية لتجميع خدمات الطالب الجزائري.</p></div></div>
+    <div id="contact-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>اتصل بنا</h2><p>البريد: paserayoucef@gmail.com</p></div></div>
+    <div id="privacy-policy-page" class="hidden-page"><div class="sub-page"><button class="back-btn" onclick="showPage('home')">رجوع</button><h2>سياسة الخصوصية</h2><p>نحن لا نجمع بيانات شخصية، نستخدم ملفات تعريف الارتباط لتحسين التجربة.</p></div></div>
 </div>
 
 <footer>
     <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 1rem;">
-        <a href="https://t.me/youcef_info_2" target="_blank" class="social-icon" style="color:#0088cc;"><i class="fab fa-telegram fa-lg"></i></a>
-        <a href="https://wa.me/213665074666" target="_blank" class="social-icon" style="color:#25d366;"><i class="fab fa-whatsapp fa-lg"></i></a>
-        <a href="https://www.instagram.com/youcef.info2" target="_blank" class="social-icon" style="color:#e1306c;"><i class="fab fa-instagram fa-lg"></i></a>
-        <a href="https://www.facebook.com/share/g/1BfUsNqXFf/" target="_blank" class="social-icon" style="color:#4267b2;"><i class="fab fa-facebook-f fa-lg"></i></a>
+        <a href="https://t.me/youcef_info_2" target="_blank"><i class="fab fa-telegram fa-lg" style="color:#0088cc;"></i></a>
+        <a href="https://wa.me/213665074666" target="_blank"><i class="fab fa-whatsapp fa-lg" style="color:#25d366;"></i></a>
+        <a href="https://www.instagram.com/youcef.info2" target="_blank"><i class="fab fa-instagram fa-lg" style="color:#e1306c;"></i></a>
+        <a href="https://www.facebook.com/share/g/1BfUsNqXFf/" target="_blank"><i class="fab fa-facebook-f fa-lg" style="color:#4267b2;"></i></a>
     </div>
     <p>© 2026 دليلك التعليمي - موقع غير رسمي، لا نتبع أي جهة حكومية. جميع المعلومات للتوجيه فقط.</p>
 </footer>
 
 <script>
-    // وظائف عامة
-    function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('open');
-    }
+    function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
     function showPage(pageId) {
-        // إخفاء كل الصفحات
         document.querySelectorAll('#mainContainer > div[id$="Page"]').forEach(div => div.classList.add('hidden-page'));
-        const target = document.getElementById(pageId + 'Page');
+        const target = document.getElementById(pageId);
         if(target) target.classList.remove('hidden-page');
-        toggleSidebar(); // إغلاق القائمة الجانبية
-        // حفظ الصفحة الحالية
+        toggleSidebar();
         localStorage.setItem('lastPage', pageId);
     }
-    function shareApp() {
-        if(navigator.share) navigator.share({title:'دليلك التعليمي', text:'أدوات ومواعيد للطلاب الجزائريين', url:window.location.href});
-        else alert('يمكنك نسخ الرابط: '+window.location.href);
-    }
+    function shareApp() { if(navigator.share) navigator.share({title:'دليلك التعليمي', text:'أدوات ومواعيد للطلاب الجزائريين', url:window.location.href}); else alert('انسخ الرابط: '+window.location.href); }
     // الساعة
     function updateClock() {
         const now = new Date().toLocaleString('en-US', {timeZone: 'Africa/Algiers'});
@@ -434,33 +447,28 @@
         document.getElementById('algeriaClock').innerText = `${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}:${d.getSeconds().toString().padStart(2,'0')}`;
     }
     setInterval(updateClock,1000); updateClock();
-    // حاسبة بسيطة
-    document.getElementById('calcSimpleBtn')?.addEventListener('click', () => {
-        let math = parseFloat(document.getElementById('math').value) || 0;
-        let phy = parseFloat(document.getElementById('phy').value) || 0;
-        let sci = parseFloat(document.getElementById('sci').value) || 0;
-        let arab = parseFloat(document.getElementById('arab').value) || 0;
-        let total = (math*4)+(phy*4)+(sci*3)+(arab*3);
-        let coeff = 4+4+3+3;
-        let avg = coeff ? (total/coeff).toFixed(2) : 0;
-        document.getElementById('simpleResult').innerHTML = `📊 معدلك التقريبي: ${avg} / 20`;
+    // دوال الصفحات التفاعلية
+    document.getElementById('checkLevelBtn')?.addEventListener('click', function() {
+        let level = document.getElementById('study-level').value;
+        let avg = parseFloat(document.getElementById('annual-average').value);
+        let req = { 'أولى متوسط':9, 'ثانية متوسط':9, 'ثالثة متوسط':9, 'رابعة متوسط':9, 'أولى ثانوي':9, 'الثانية ثانوي':10 }[level];
+        let result = (avg >= req) ? `✅ مقبول للانتقال إلى المستوى الأعلى (معدلك ${avg})` : `❌ غير كاف، تحتاج ${req} (معدلك ${avg})`;
+        document.getElementById('levelResult').innerHTML = `<div class="card">${result}</div>`;
     });
-    // معلومات المراكز
-    document.getElementById('wilayaSelect')?.addEventListener('change', function() {
-        let val = this.value;
-        let infoDiv = document.getElementById('centerInfo');
-        if(val === 'الجزائر') infoDiv.innerHTML = '<p><i class="fas fa-map-marker-alt"></i> مركز الجزائر: شارع محمد مادة 1، هاتف: 021.66.42.11</p>';
-        else if(val === 'وهران') infoDiv.innerHTML = '<p>مركز وهران: رقم 22 شارع شريط علي شريف، هاتف: 041.38.62.16</p>';
-        else if(val === 'قسنطينة') infoDiv.innerHTML = '<p>مركز قسنطينة: حي 20 أوت 1955، هاتف: 031.64.04.44</p>';
-        else if(val === 'عنابة') infoDiv.innerHTML = '<p>مركز عنابة: حي جبهة التحرير الوطني، هاتف: 038.43.69.88</p>';
-        else if(val === 'باتنة') infoDiv.innerHTML = '<p>مركز باتنة: شارع 19 جوان 1965، هاتف: 033.25.80.77</p>';
-        else infoDiv.innerHTML = '';
+    document.getElementById('doCalc')?.addEventListener('click', function() {
+        let m = parseFloat(document.getElementById('calcMath').value)||0, p=parseFloat(document.getElementById('calcPhys').value)||0, s=parseFloat(document.getElementById('calcSci').value)||0, a=parseFloat(document.getElementById('calcArab').value)||0;
+        let total = m*4 + p*4 + s*3 + a*3, coeff=14;
+        let avg = (total/coeff).toFixed(2);
+        document.getElementById('calcResult').innerHTML = `<div class="card">📊 معدلك التقريبي: ${avg} / 20</div>`;
     });
-    // استعادة الصفحة السابقة
+    const centers = {1:{name:'أدرار', phone:'049.36.12.31', address:'مقر الولاية القديمة'},13:{name:'الجزائر', phone:'021.66.42.11', address:'شارع محمد مادة 1'},23:{name:'وهران', phone:'041.38.62.16', address:'شارع شريط علي شريف'},19:{name:'قسنطينة', phone:'031.64.04.44', address:'حي 20 أوت 1955'},18:{name:'عنابة', phone:'038.43.69.88', address:'حي جبهة التحرير الوطني'}};
+    document.getElementById('center-select')?.addEventListener('change', function() {
+        let c = centers[this.value];
+        if(c) document.getElementById('center-details').innerHTML = `<div class="card"><strong>${c.name}</strong><br>الهاتف: ${c.phone}<br>العنوان: ${c.address}</div>`;
+        else document.getElementById('center-details').innerHTML = '';
+    });
     let last = localStorage.getItem('lastPage');
-    if(last && last !== 'home') showPage(last);
-    // الروابط الخارجية في المقال
-    window.openExternal = function(url) { window.open(url, '_blank'); };
+    if(last && last !== 'homePage') showPage(last);
 </script>
 </body>
 </html>
