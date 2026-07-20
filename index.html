@@ -47,7 +47,7 @@
             color: var(--dark);
             direction: rtl;
             text-align: right;
-            line-height: 1.6;
+            line-height: 1.8;
             min-height: 100vh;
         }
         /* شريط الكوكيز الثابت */
@@ -206,6 +206,10 @@
         #pages-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); z-index: 300; overflow-y: auto; display: none; padding: 20px; }
         .sub-page { max-width: 1000px; margin: 20px auto; background: white; border-radius: 20px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
         .sub-page h2 { color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px; }
+        .sub-page h3 { color: var(--secondary); margin: 25px 0 15px 0; }
+        .sub-page p { margin-bottom: 15px; }
+        .sub-page ul, .sub-page ol { margin-right: 25px; margin-bottom: 15px; }
+        .sub-page li { margin-bottom: 8px; }
         .back-btn { background: #e9ecef; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; margin-bottom: 20px; display: inline-flex; align-items: center; gap: 8px; }
         .sub-page-btn { display: block; width: 100%; background: #f8f9fa; border: 1px solid #dee2e6; border-right: 4px solid var(--primary); padding: 12px; margin-bottom: 10px; text-align: right; border-radius: 8px; cursor: pointer; font-weight: bold; }
         .sub-page-btn:hover { background: var(--primary); color: white; }
@@ -232,6 +236,10 @@
         th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
         th { background: var(--primary); color: white; }
         .center-info { margin-top: 20px; padding: 15px; background: #f1f3f5; border-radius: 12px; }
+        .article-meta { color: #888; font-size: 0.9rem; margin-bottom: 20px; }
+        .highlight-box { background: #f0f7ff; border-right: 4px solid var(--primary); padding: 15px; border-radius: 8px; margin: 20px 0; }
+        .btn-group { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
+        .btn-group .sub-page-btn { width: auto; flex: 1; min-width: 200px; }
     </style>
 </head>
 <body>
@@ -291,7 +299,7 @@
     </div>
     <div class="main-buttons-container">
         <button class="main-btn" onclick="showPage('registration-page')"><i class="fas fa-user-plus"></i> التسجيل في المراسلة</button>
-        <button class="main-btn" onclick="showPage('documents-page')"><i class="fas fa-file-alt"></i> سحب الوثائق</butto.n>
+        <button class="main-btn" onclick="showPage('documents-page')"><i class="fas fa-file-alt"></i> سحب الوثائق</button>
         <button class="main-btn" onclick="showPage('platforms-page')"><i class="fas fa-chalkboard-user"></i> الأرضيات التعليمية</button>
         <button class="main-btn" onclick="showPage('e-homework-page')"><i class="fas fa-laptop-code"></i> الفرض الإلكتروني</button>
         <button class="main-btn" onclick="showPage('exam-registration-page')"><i class="fas fa-certificate"></i> التسجيل في الشهادة</button>
@@ -330,7 +338,7 @@
             msg.lang = "ar-SA";
             msg.rate = 0.9;
             msg.pitch = 1;
-            window.speechSynthesis.cancel(); // إيقاف أي صوت سابق
+            window.speechSynthesis.cancel();
             window.speechSynthesis.speak(msg);
         } else {
             alert("متصفحك لا يدعم خاصية تحويل النص إلى صوت، يمكنك قراءة الإخلاء المسؤول في نافذة الترحيب.");
@@ -350,41 +358,241 @@
         document.getElementById('sharePopup').style.display = 'none';
     }
 
-    // عرض الصفحات (كل المحتوى محفوظ)
+    // عرض الصفحات (مع مقالات احترافية)
     function showPage(pageId) {
         toggleSidebar();
         document.getElementById('main-content').style.display = 'none';
         pagesContainer.style.display = 'block';
-        if(pageId === 'registration-page') buildRegistrationPage();
-        else if(pageId === 'documents-page') buildDocumentsPage();
-        else if(pageId === 'platforms-page') buildPlatformsPage();
-        else if(pageId === 'e-homework-page') buildEHomeworkPage();
-        else if(pageId === 'exam-registration-page') buildExamRegistrationPage();
-        else if(pageId === 'exam-info-page') buildExamInfoPage();
-        else if(pageId === 'about-page') buildAboutPage();
-        else if(pageId === 'check-level-page') buildCheckLevelPage();
-        else if(pageId === 'centers-page') buildCentersPage();
-        else if(pageId === 'donation-page') buildDonationPage();
-        else if(pageId === 'privacy-policy-page') buildPrivacyPolicyPage();
-        else if(pageId === 'who-we-are-page') buildWhoWeArePage();
-        else if(pageId === 'deadlines-page') buildDeadlinesPage();
-        else if(pageId === 'contact-page') buildContactPage();
+        
+        const pageBuilders = {
+            'registration-page': buildRegistrationPage,
+            'documents-page': buildDocumentsPage,
+            'platforms-page': buildPlatformsPage,
+            'e-homework-page': buildEHomeworkPage,
+            'exam-registration-page': buildExamRegistrationPage,
+            'exam-info-page': buildExamInfoPage,
+            'about-page': buildAboutPage,
+            'check-level-page': buildCheckLevelPage,
+            'centers-page': buildCentersPage,
+            'donation-page': buildDonationPage,
+            'privacy-policy-page': buildPrivacyPolicyPage,
+            'who-we-are-page': buildWhoWeArePage,
+            'deadlines-page': buildDeadlinesPage,
+            'contact-page': buildContactPage
+        };
+        
+        if (pageBuilders[pageId]) pageBuilders[pageId]();
     }
     
-    // بناء الصفحات (كل المحتوى محفوظ كما هو مع التأكيد على عدم الرسمية في بعض النصوص)
+    // ========== مقالات احترافية لكل زر ==========
+    
+    // 1. مقال التسجيل في المراسلة
     function buildRegistrationPage() {
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-user-plus"></i> التسجيل في المراسلة</h2><p>خطوات التسجيل الإلكتروني، دفع الرسوم، وإيداع الملف الورقي. يجب اختيار المستوى المناسب وإدخال البيانات بدقة.</p>${createLinkButton('تسجيل متعلم جديد', 'https://inscriptic.onefd.edu.dz/preinscription/')}${createLinkButton('تسجيل متعلم سابق', 'https://inscriptic.onefd.edu.dz/preinscription/')}</div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-user-plus"></i> دليل التسجيل في الدراسة بالمراسلة</h2>
+            <div class="article-meta">📅 آخر تحديث: 20 يوليو 2026 | ⏱️ 5 دقائق للقراءة</div>
+            
+            <p>تعد <strong>الدراسة بالمراسلة</strong> في الجزائر فرصة ذهبية لمن يرغب في إكمال مساره التعليمي عن بعد. يوفر الديوان الوطني للتعليم والتكوين عن بعد (ONEFD) نظاماً متكاملاً يسمح للطلاب بمتابعة دراستهم من المنزل مع الحصول على شهادات رسمية معترف بها.</p>
+            
+            <h3>📌 شروط التسجيل في المراسلة</h3>
+            <ul>
+                <li><strong>العمر:</strong> يجب ألا يقل عمر المتقدم عن 16 سنة.</li>
+                <li><strong>المستوى الدراسي:</strong> يتطلب التسجيل في السنة الأولى متوسط أو السنة الأولى ثانوي على الأقل.</li>
+                <li><strong>المعدل:</strong> للانتقال من سنة إلى أخرى، يجب تحقيق معدل 9/20 (ما عدا الانتقال من الثانية ثانوي إلى الثالثة ثانوي يتطلب 10/20).</li>
+                <li><strong>الوثائق:</strong> يجب تقديم ملف كامل يشمل الشهادات المطلوبة.</li>
+            </ul>
+            
+            <h3>📋 الوثائق المطلوبة للتسجيل</h3>
+            <ul>
+                <li>صورة شمسية حديثة (عدد 2).</li>
+                <li>شهادة ميلاد (نسخة أصلية أو مصدقة).</li>
+                <li>بطاقة التعريف الوطنية (نسخة).</li>
+                <li>الشهادة المدرسية الأخيرة (كشف النقاط أو شهادة النجاح).</li>
+                <li>إيصال دفع رسوم التسجيل.</li>
+                <li>شهادة التحرر من الأمية (لمتعلمي محو الأمية).</li>
+            </ul>
+            
+            <h3>💰 رسوم التسجيل التقريبية</h3>
+            <table>
+                <thead><tr><th>طريقة الدراسة</th><th>المبلغ (دج)</th></tr></thead>
+                <tbody>
+                    <tr><td>الدراسة بالكتاب</td><td>2677 دج</td></tr>
+                    <tr><td>الدراسة بالقرص المضغوط</td><td>1977 دج</td></tr>
+                    <tr><td>الدراسة عبر الأرضية (جدد)</td><td>1777 دج</td></tr>
+                    <tr><td>الدراسة عبر الأرضية (قدامى معيدون)</td><td>1877 دج</td></tr>
+                </tbody>
+            </table>
+            <p class="highlight-box"><i class="fas fa-lightbulb"></i> <strong>نصيحة:</strong> تأكد من دفع الرسوم عبر المنصة الرسمية <a href="https://epay.education.dz" target="_blank">epay.education.dz</a> واحتفظ بإيصال الدفع.</p>
+            
+            <h3>🚀 خطوات التسجيل الإلكتروني</h3>
+            <ol>
+                <li>الدخول إلى رابط التسجيل الجديد.</li>
+                <li>ملء جميع البيانات الشخصية بدقة (الاسم، تاريخ الميلاد، العنوان، رقم الهاتف).</li>
+                <li>اختيار المستوى الدراسي المطلوب.</li>
+                <li>رفع الوثائق المطلوبة بصيغة PDF أو JPG.</li>
+                <li>دفع الرسوم عبر البطاقة الذهبية أو CCP.</li>
+                <li>طباعة استدعاء التسجيل وإرفاقه بالملف الورقي.</li>
+                <li>إيداع الملف الورقي في المركز الولائي التابع لك.</li>
+            </ol>
+            
+            <h3>🔗 روابط التسجيل الرسمية</h3>
+            <div class="btn-group">
+                ${createLinkButton('تسجيل متعلم جديد', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                ${createLinkButton('تسجيل متعلم سابق', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                ${createLinkButton('دفع الرسوم', 'https://epay.education.dz/auth')}
+            </div>
+            
+            <div class="highlight-box" style="border-right-color: var(--danger);">
+                <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
+                <strong>تنبيه هام:</strong> هذا الموقع غير رسمي ولا يتبع ONEFD. الروابط أعلاه تؤدي إلى المواقع الرسمية للديوان.
+            </div>
+        </div>`;
     }
+    
+    // 2. مقال سحب الوثائق
     function buildDocumentsPage() {
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-file-alt"></i> سحب الوثائق</h2><p>استخراج استدعاءات الفروض، امتحان المستوى، كشوف النقاط، وشهادات التسجيل.</p>${createLinkButton('معلومات الحساب', 'https://inscriptic.onefd.edu.dz/preinscription/')}${createLinkButton('حساب المستخدم', 'https://inscriptic.onefd.edu.dz/preinscription/auth/login/')}${createLinkButton('ارفاق وثائق الثبوتية', 'https://e-devoir-3am.onefd.edu.dz/preinscription/index.php/upload_documents/')}${createLinkButton('استخراج رقم التسجيل', 'https://inscriptic.onefd.edu.dz/numins/num_ins_index.php')}${createLinkButton('استخراج استدعاء امتحان المستوى', 'https://inscriptic.onefd.edu.dz/')}${createLinkButton('نتائج المتعلمين', 'https://inscriptic.onefd.edu.dz/')}${createLinkButton('استخراج شهادة إثبات المستوى', 'https://inscriptic.onefd.edu.dz/')}</div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-file-alt"></i> دليل سحب الوثائق والاستدعاءات</h2>
+            <div class="article-meta">📅 آخر تحديث: 20 يوليو 2026 | ⏱️ 4 دقائق للقراءة</div>
+            
+            <p>توفر منصة ONEFD العديد من الخدمات الإلكترونية التي تتيح للطلاب <strong>سحب الوثائق</strong> والاستدعاءات بسهولة. يمكنك من خلال الحساب الشخصي استخراج جميع المستندات الرسمية التي تحتاجها خلال مسيرتك الدراسية.</p>
+            
+            <h3>📄 أنواع الوثائق المتاحة</h3>
+            <ul>
+                <li><strong>استدعاء الفروض الذاتية:</strong> يحدد مواعيد تسليم وإيداع الفروض.</li>
+                <li><strong>استدعاء امتحان المستوى:</strong> يشمل مكان وتاريخ الامتحان الحضوري.</li>
+                <li><strong>كشف النقاط:</strong> يظهر العلامات المحصل عليها في كل مادة.</li>
+                <li><strong>شهادة التسجيل:</strong> تثبت انتسابك للدراسة بالمراسلة.</li>
+                <li><strong>شهادة إثبات المستوى:</strong> تثبت اجتيازك للسنة الدراسية.</li>
+                <li><strong>رقم التسجيل:</strong> رقم هوية فريد لكل متعلم.</li>
+            </ul>
+            
+            <h3>🖥️ كيفية سحب الوثائق خطوة بخطوة</h3>
+            <ol>
+                <li>الدخول إلى بوابة الديوان الوطني للتعليم والتكوين عن بعد.</li>
+                <li>تسجيل الدخول باستخدام اسم المستخدم وكلمة المرور.</li>
+                <li>اختيار الخدمة المطلوبة من القائمة الرئيسية.</li>
+                <li>إدخال البيانات المطلوبة مثل رقم التسجيل أو السنة الدراسية.</li>
+                <li>تحميل الوثيقة بصيغة PDF.</li>
+            </ol>
+            
+            <h3>📌 ملاحظات هامة</h3>
+            <ul>
+                <li>تأكد من صحة جميع بياناتك قبل طباعة الوثائق.</li>
+                <li>في حال وجود خطأ في الوثيقة، تواصل مع مركزك الولائي فوراً.</li>
+                <li>احتفظ بنسخة إلكترونية من جميع الوثائق على جهازك.</li>
+            </ul>
+            
+            <h3>🔗 روابط سحب الوثائق</h3>
+            <div class="btn-group">
+                ${createLinkButton('معلومات الحساب', 'https://inscriptic.onefd.edu.dz/preinscription/')}
+                ${createLinkButton('حساب المستخدم', 'https://inscriptic.onefd.edu.dz/preinscription/auth/login/')}
+                ${createLinkButton('ارفاق وثائق الثبوتية', 'https://e-devoir-3am.onefd.edu.dz/preinscription/index.php/upload_documents/')}
+                ${createLinkButton('استخراج رقم التسجيل', 'https://inscriptic.onefd.edu.dz/numins/num_ins_index.php')}
+                ${createLinkButton('استخراج استدعاء امتحان المستوى', 'https://inscriptic.onefd.edu.dz/')}
+                ${createLinkButton('نتائج المتعلمين', 'https://inscriptic.onefd.edu.dz/')}
+                ${createLinkButton('استخراج شهادة إثبات المستوى', 'https://inscriptic.onefd.edu.dz/')}
+            </div>
+        </div>`;
     }
+    
+    // 3. مقال الأرضيات التعليمية
     function buildPlatformsPage() {
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-chalkboard-user"></i> الأرضيات التعليمية Scolarium</h2><p>منصة الدروس والتمارين التفاعلية حسب المستوى.</p>${createLinkButton('المستوى المتوسط', 'http://scolarium-moyen.onefd.edu.dz/login/index.php')}${createLinkButton('أولى ثانوي', 'http://scolarium-1as.onefd.edu.dz/login/index.php')}${createLinkButton('الثانية ثانوي', 'http://scolarium-2as.onefd.edu.dz/login/index.php')}${createLinkButton('الثالثة ثانوي', 'http://scolarium-3as.onefd.edu.dz/login/index.php')}</div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-chalkboard-user"></i> دليل استخدام الأرضيات التعليمية Scolarium</h2>
+            <div class="article-meta">📅 آخر تحديث: 20 يوليو 2026 | ⏱️ 5 دقائق للقراءة</div>
+            
+            <p>تعد منصة <strong>Scolarium</strong> من أهم الأدوات التعليمية التي توفرها ONEFD لطلاب الدراسة بالمراسلة. تحتوي هذه المنصة على دروس تفاعلية، تمارين محلولة، وفروض تطبيقية لجميع المستويات الدراسية.</p>
+            
+            <h3>🎯 مميزات منصة Scolarium</h3>
+            <ul>
+                <li><strong>دروس تفاعلية:</strong> فيديوهات تعليمية وشرح نصي للمقررات الدراسية.</li>
+                <li><strong>تمارين تطبيقية:</strong> مجموعة من التمارين مع الحلول النموذجية.</li>
+                <li><strong>فروض محاكية:</strong> فروض مشابهة للفروض الذاتية لتدريب الطلاب.</li>
+                <li><strong>مجموعات نقاش:</strong> منتديات لطرح الأسئلة وتبادل الخبرات.</li>
+                <li><strong>تقييم ذاتي:</strong> اختبارات قصيرة لقياس مستوى الفهم.</li>
+            </ul>
+            
+            <h3>📚 المستويات المتوفرة على المنصة</h3>
+            <ul>
+                <li><strong>المستوى المتوسط:</strong> من الأولى متوسط إلى الرابعة متوسط.</li>
+                <li><strong>المستوى الثانوي:</strong> من الأولى ثانوي إلى الثالثة ثانوي.</li>
+            </ul>
+            
+            <h3>🚀 كيفية الاستفادة من المنصة</h3>
+            <ol>
+                <li>الدخول إلى رابط المنصة الخاص بمستواك الدراسي.</li>
+                <li>تسجيل الدخول باستخدام بيانات حسابك في ONEFD.</li>
+                <li>اختيار المادة الدراسية التي ترغب في دراستها.</li>
+                <li>مشاهدة الدروس وحل التمارين المقترحة.</li>
+                <li>المشاركة في المنتديات لطرح الأسئلة والاستفسارات.</li>
+            </ol>
+            
+            <h3>🔗 روابط الأرضيات التعليمية</h3>
+            <div class="btn-group">
+                ${createLinkButton('المستوى المتوسط', 'http://scolarium-moyen.onefd.edu.dz/login/index.php')}
+                ${createLinkButton('أولى ثانوي', 'http://scolarium-1as.onefd.edu.dz/login/index.php')}
+                ${createLinkButton('الثانية ثانوي', 'http://scolarium-2as.onefd.edu.dz/login/index.php')}
+                ${createLinkButton('الثالثة ثانوي', 'http://scolarium-3as.onefd.edu.dz/login/index.php')}
+            </div>
+            
+            <div class="highlight-box">
+                <i class="fas fa-lightbulb"></i>
+                <strong>نصيحة:</strong> خصص وقتاً يومياً لمتابعة الدروس على المنصة لتعزيز فهمك للمقررات الدراسية وزيادة فرص نجاحك.
+            </div>
+        </div>`;
     }
+    
+    // 4. مقال الفرض الإلكتروني
     function buildEHomeworkPage() {
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-laptop-code"></i> الفرض الإلكتروني</h2><p>اختر المستوى:</p><button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')"><i class="fas fa-school"></i> المستوى المتوسط</button><button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')"><i class="fas fa-school"></i> المستوى الثانوي</button></div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-laptop-code"></i> دليل الفرض الإلكتروني (E-Devoir)</h2>
+            <div class="article-meta">📅 آخر تحديث: 20 يوليو 2026 | ⏱️ 6 دقائق للقراءة</div>
+            
+            <p>الفرض الإلكتروني هو أحدث طريقة لتقييم طلاب <strong>الدراسة بالمراسلة</strong> في الجزائر. يتم إجراؤه عبر الإنترنت ضمن فترة زمنية محددة، ويتيح للطلاب إظهار مستواهم الدراسي في ظروف محكمة.</p>
+            
+            <h3>📌 ما هو الفرض الإلكتروني؟</h3>
+            <p>الفرض الإلكتروني هو اختبار يجريه الطالب عبر منصة رقمية تابعة لـ ONEFD. يتم طرح أسئلة متعددة الاختيارات أو أسئلة مقالية قصيرة، ويجب على الطالب الإجابة خلال وقت محدد.</p>
+            
+            <h3>📅 مواعيد الفرض الإلكتروني 2026</h3>
+            <ul>
+                <li><strong>فترة الفرض:</strong> 16 مارس 2026 → 14 أبريل 2026.</li>
+                <li><strong>نتائج الفرض:</strong> تُعلن بعد أسبوعين من انتهاء الفترة.</li>
+            </ul>
+            
+            <h3>🖥️ خطوات أداء الفرض الإلكتروني</h3>
+            <ol>
+                <li>الدخول إلى منصة الفرض الإلكتروني الخاصة بمستواك.</li>
+                <li>تسجيل الدخول باستخدام رقم التسجيل وكلمة المرور.</li>
+                <li>قراءة تعليمات الفرض بعناية.</li>
+                <li>بدء الإجابة على الأسئلة ضمن الوقت المحدد.</li>
+                <li>مراجعة الإجابات قبل الضغط على زر "إنهاء" نهائياً.</li>
+            </ol>
+            
+            <h3>🔗 روابط الفرض الإلكتروني</h3>
+            <p style="font-weight: bold;">اختر المستوى:</p>
+            <div class="btn-group">
+                <button class="sub-page-btn" onclick="buildEHomeworkLevel('moyen')"><i class="fas fa-school"></i> المستوى المتوسط</button>
+                <button class="sub-page-btn" onclick="buildEHomeworkLevel('secondary')"><i class="fas fa-school"></i> المستوى الثانوي</button>
+            </div>
+            
+            <div class="highlight-box" style="border-right-color: var(--warning);">
+                <i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i>
+                <strong>تنبيه هام:</strong> تأكد من استقرار الاتصال بالإنترنت قبل بدء الفرض، ولا تغلق المتصفح أثناء الاختبار لتجنب فقدان الإجابات.
+            </div>
+        </div>`;
     }
+    
     function buildEHomeworkLevel(level) {
+        let title = level === 'moyen' ? 'المستوى المتوسط' : 'المستوى الثانوي';
         let btns = '';
         if(level === 'moyen') {
             btns = createLinkButton('أولى متوسط', 'https://e-devoir-1am.onefd.edu.dz/') +
@@ -396,31 +604,165 @@
                    createLinkButton('الثانية ثانوي', 'https://e-devoir-2as.onefd.edu.dz/index.php/welcome') +
                    createLinkButton('الثالثة ثانوي', 'https://e-devoir-3as.onefd.edu.dz/index.php/welcome');
         }
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="buildEHomeworkPage()"><i class="fas fa-arrow-right"></i> رجوع</button><h2>الفرض الإلكتروني - ${level==='moyen' ? 'المتوسط' : 'الثانوي'}</h2>${btns}</div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="buildEHomeworkPage()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2>الفرض الإلكتروني - ${title}</h2>
+            <p>اختر مستواك الدراسي للدخول إلى منصة الفرض الإلكتروني الخاصة بك:</p>
+            <div class="btn-group">${btns}</div>
+            <div class="highlight-box">
+                <i class="fas fa-info-circle"></i>
+                <strong>تذكير:</strong> يجب إنجاز الفرض الإلكتروني ضمن الفترة المحددة (16 مارس - 14 أبريل 2026). لا تتردد في التواصل مع مركزك الولائي في حال واجهت أي صعوبات تقنية.
+            </div>
+        </div>`;
     }
-    function buildExamInfoPage() {
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-bullhorn"></i> معلومات هامة للتسجيل في الامتحان</h2><div class="info-section"><p>بعد التسجيل الإلكتروني ودفع المستحقات، احتفظ بحسابك لاستخراج الاستدعاءات. يتم الدفع عبر epay.education.dz. ملاحظة: لذوي الإعاقة تقديم ملف طبي.</p></div>${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://epay.education.dz/auth')}${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://epay.education.dz/auth')}</div>`;
-    }
+    
+    // 5. مقال التسجيل في الشهادة الرسمية
     function buildExamRegistrationPage() {
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-certificate"></i> التسجيل في الشهادة الرسمية</h2><p>لطلاب السنة الثالثة ثانوي والرابعة متوسط: يتوجب عليهم إجراء تسجيل إضافي في موقع الديوان الوطني للامتحانات والمسابقات (ONEC).</p>${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://bem.onec.dz/')}${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://bac.onec.dz/')}</div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-certificate"></i> دليل التسجيل في الشهادة الرسمية (BEM / BAC)</h2>
+            <div class="article-meta">📅 آخر تحديث: 20 يوليو 2026 | ⏱️ 6 دقائق للقراءة</div>
+            
+            <p>يعد <strong>التسجيل في الشهادة الرسمية</strong> خطوة حاسمة في مسار طلاب الدراسة بالمراسلة. سواء كنت في السنة الرابعة متوسط أو الثالثة ثانوي، يجب عليك إجراء تسجيل إضافي في الديوان الوطني للامتحانات والمسابقات (ONEC) للحصول على شهادات <strong>BEM</strong> أو <strong>BAC</strong>.</p>
+            
+            <h3>📌 شروط التسجيل في الشهادة</h3>
+            <ul>
+                <li>أن يكون الطالب مسجلاً في الدراسة بالمراسلة للسنة النهائية (رابعة متوسط أو ثالثة ثانوي).</li>
+                <li>أن يكون قد أجاز جميع الفروض الذاتية والإلكترونية بنجاح.</li>
+                <li>دفع رسوم التسجيل في الشهادة.</li>
+                <li>تقديم طلب التسجيل عبر منصة ONEC.</li>
+            </ul>
+            
+            <h3>📅 مواعيد التسجيل في الشهادات 2026</h3>
+            <ul>
+                <li><strong>شهادة التعليم المتوسط (BEM):</strong> التسجيل مفتوح من 1 مارس إلى 30 أبريل 2026.</li>
+                <li><strong>شهادة البكالوريا (BAC):</strong> التسجيل مفتوح من 15 فبراير إلى 15 أبريل 2026.</li>
+            </ul>
+            
+            <h3>🖥️ خطوات التسجيل في ONEC</h3>
+            <ol>
+                <li>الدخول إلى منصة ONEC الرسمية.</li>
+                <li>اختيار الشهادة التي ترغب في التسجيل فيها (BEM أو BAC).</li>
+                <li>إدخال رقم التسجيل الخاص بك في ONEFD.</li>
+                <li>ملء البيانات المطلوبة بدقة.</li>
+                <li>رفع الوثائق المطلوبة (صورة شمسية، بطاقة التعريف، إيصال الدفع).</li>
+                <li>طباعة استدعاء الامتحان بعد تأكيد التسجيل.</li>
+            </ol>
+            
+            <h3>🔗 روابط التسجيل في الشهادات</h3>
+            <div class="btn-group">
+                ${createLinkButton('التسجيل في شهادة التعليم المتوسط (BEM)', 'https://bem.onec.dz/')}
+                ${createLinkButton('التسجيل في شهادة البكالوريا (BAC)', 'https://bac.onec.dz/')}
+                ${createLinkButton('دفع رسوم الشهادة', 'https://epay.education.dz/auth')}
+            </div>
+            
+            <div class="highlight-box" style="border-right-color: var(--danger);">
+                <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
+                <strong>تنبيه:</strong> تأكد من إتمام التسجيل في الموعد المحدد، حيث لا يمكن التعديل أو التسجيل بعد انتهاء الفترة.
+            </div>
+        </div>`;
     }
+    
+    // 6. مقال معلومات الامتحانات
+    function buildExamInfoPage() {
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-bullhorn"></i> دليل شامل لمعلومات الامتحانات الرسمية</h2>
+            <div class="article-meta">📅 آخر تحديث: 20 يوليو 2026 | ⏱️ 5 دقائق للقراءة</div>
+            
+            <p>توفر هذه الصفحة جميع <strong>المعلومات الأساسية</strong> التي يحتاجها طلاب الدراسة بالمراسلة حول الامتحانات الرسمية (BEM و BAC)، من مواعيد التسجيل إلى شروط النجاح وإعلان النتائج.</p>
+            
+            <h3>📌 شهادة التعليم المتوسط (BEM)</h3>
+            <ul>
+                <li><strong>موعد الامتحان:</strong> 19 ماي 2026 → 21 ماي 2026.</li>
+                <li><strong>مواد الامتحان:</strong> اللغة العربية، اللغة الفرنسية، الرياضيات، التاريخ والجغرافيا، العلوم الطبيعية، التربية الإسلامية، اللغة الإنجليزية.</li>
+                <li><strong>معدل النجاح:</strong> 10/20 بمجموع المواد.</li>
+            </ul>
+            
+            <h3>📌 شهادة البكالوريا (BAC)</h3>
+            <ul>
+                <li><strong>موعد الامتحان:</strong> 07 جوان 2026 → 11 جوان 2026.</li>
+                <li><strong>مواد الامتحان:</strong> حسب الشعبة (علوم تجريبية، رياضيات، آداب، إلخ).</li>
+                <li><strong>معدل النجاح:</strong> 10/20 بمجموع المواد.</li>
+            </ul>
+            
+            <h3>📋 نصائح لاجتياز الامتحانات بنجاح</h3>
+            <ul>
+                <li>قم بمراجعة جميع المقررات قبل الامتحان بفترة كافية.</li>
+                <li>حل أكبر عدد ممكن من المواضيع السابقة.</li>
+                <li>احصل على قسط كافٍ من النوم ليلة الامتحان.</li>
+                <li>تأكد من إحضار جميع الأدوات المطلوبة (بطاقة التعريف، استدعاء الامتحان، أدوات الكتابة).</li>
+                <li>اقرأ الأسئلة بعناية ووزع وقتك بين المواد.</li>
+            </ul>
+            
+            <h3>🔗 روابط هامة</h3>
+            <div class="btn-group">
+                ${createLinkButton('التسجيل في BEM', 'https://bem.onec.dz/')}
+                ${createLinkButton('التسجيل في BAC', 'https://bac.onec.dz/')}
+                ${createLinkButton('دفع الرسوم', 'https://epay.education.dz/auth')}
+            </div>
+            
+            <div class="highlight-box">
+                <i class="fas fa-info-circle"></i>
+                <strong>ملاحظة:</strong> بعد التسجيل الإلكتروني ودفع المستحقات، احتفظ بحسابك لاستخراج الاستدعاءات. يتم إعلان النتائج عبر مواقع ONEC و ONEFD.
+            </div>
+        </div>`;
+    }
+    
+    // بقية الصفحات (محفوظة بنفس المحتوى ولكن مع تحسينات طفيفة)
     function buildAboutPage() {
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-lightbulb"></i> ما هي الدراسة بالمراسلة؟</h2><p>نظام تعليمي عن بعد يتيح إكمال المسار الدراسي لمن انقطع عن الدراسة. شروط الانتقال: معدل 9/20 فما فوق (ما عدا من الثانية ثانوي إلى الثالثة ثانوي يحتاج 10/20). رسوم التسجيل تبدأ من 1777 دج.</p><h3>الوثائق المطلوبة للتسجيل لأول مرة</h3><ul><li>صورة شمسية</li><li>شهادة ميلاد</li><li>بطاقة التعريف الوطنية</li><li>الشهادة المدرسية الأخيرة</li><li>إيصال الدفع</li><li>شهادة التحرر من الأمية (لمتعلمي محو الأمية)</li></ul><h3>حقوق التسجيل التقريبية</h3><table><thead><tr><th>طريقة الدراسة</th><th>المبلغ (دج)</th></tr></thead><tbody><tr><td>الدراسة بالكتاب</td><td>2677 دج</td></tr><tr><td>الدراسة بالقرص المضغوط</td><td>1977 دج</td></tr><tr><td>الدراسة عبر الأرضية (جدد)</td><td>1777 دج</td></tr><tr><td>الدراسة عبر الأرضية (قدامى معيدون)</td><td>1877 دج</td></tr></tbody></table><p class="info-section" style="margin-top:15px;"><i class="fas fa-exclamation-triangle"></i> <strong>تنبيه:</strong> هذا الموقع غير رسمي ولا يتبع ONEFD، وهو مبادرة شخصية لتسهيل الوصول للخدمات.</p></div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-lightbulb"></i> ما هي الدراسة بالمراسلة؟</h2>
+            <div class="article-meta">📅 آخر تحديث: 20 يوليو 2026 | ⏱️ 4 دقائق للقراءة</div>
+            <p>نظام تعليمي عن بعد يتيح إكمال المسار الدراسي لمن انقطع عن الدراسة. شروط الانتقال: معدل 9/20 فما فوق (ما عدا من الثانية ثانوي إلى الثالثة ثانوي يحتاج 10/20). رسوم التسجيل تبدأ من 1777 دج.</p>
+            <h3>الوثائق المطلوبة للتسجيل لأول مرة</h3>
+            <ul><li>صورة شمسية</li><li>شهادة ميلاد</li><li>بطاقة التعريف الوطنية</li><li>الشهادة المدرسية الأخيرة</li><li>إيصال الدفع</li><li>شهادة التحرر من الأمية (لمتعلمي محو الأمية)</li></ul>
+            <h3>حقوق التسجيل التقريبية</h3>
+            <table><thead><tr><th>طريقة الدراسة</th><th>المبلغ (دج)</th></tr></thead><tbody><tr><td>الدراسة بالكتاب</td><td>2677 دج</td></tr><tr><td>الدراسة بالقرص المضغوط</td><td>1977 دج</td></tr><tr><td>الدراسة عبر الأرضية (جدد)</td><td>1777 دج</td></tr><tr><td>الدراسة عبر الأرضية (قدامى معيدون)</td><td>1877 دج</td></tr></tbody></table>
+            <div class="highlight-box" style="border-right-color: var(--danger);"><i class="fas fa-exclamation-triangle"></i> <strong>تنبيه:</strong> هذا الموقع غير رسمي ولا يتبع ONEFD، وهو مبادرة شخصية لتسهيل الوصول للخدمات.</div>
+        </div>`;
     }
+    
     function buildCheckLevelPage() {
-        pagesContainer.innerHTML = `<div class="sub-page" id="level-checker-content"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-check-circle"></i> التحقق من القبول في المستوى الأعلى</h2><select id="study-level"><option value="">-- اختر مستواك الدراسي --</option><option value="أولى متوسط">أولى متوسط</option><option value="ثانية متوسط">ثانية متوسط</option><option value="ثالثة متوسط">ثالثة متوسط</option><option value="رابعة متوسط">رابعة متوسط</option><option value="أولى ثانوي">أولى ثانوي</option><option value="الثانية ثانوي">الثانية ثانوي</option></select><input type="number" id="annual-average" placeholder="أدخل معدلك السنوي (من 20)" min="0" max="20" step="0.01"><button class="check-btn" onclick="checkLevelResult()">تحقق</button><div id="result-message" class="result-message hidden"></div><p style="margin-top:20px;"><i class="fas fa-info-circle"></i> ملاحظة: المعدل السنوي موجود في كشف النقاط للفصل الثالث.</p></div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page" id="level-checker-content">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-check-circle"></i> التحقق من القبول في المستوى الأعلى</h2>
+            <div class="article-meta">📅 أداة تفاعلية للتحقق من شروط الانتقال</div>
+            <p>استخدم هذه الأداة لمعرفة ما إذا كان معدلك السنوي يؤهلك للانتقال إلى المستوى الدراسي الأعلى في نظام الدراسة بالمراسلة.</p>
+            <select id="study-level" style="width:100%; padding:10px; margin:10px 0; border-radius:8px; border:1px solid #ddd;">
+                <option value="">-- اختر مستواك الدراسي --</option>
+                <option value="أولى متوسط">أولى متوسط</option>
+                <option value="ثانية متوسط">ثانية متوسط</option>
+                <option value="ثالثة متوسط">ثالثة متوسط</option>
+                <option value="رابعة متوسط">رابعة متوسط</option>
+                <option value="أولى ثانوي">أولى ثانوي</option>
+                <option value="الثانية ثانوي">الثانية ثانوي</option>
+            </select>
+            <input type="number" id="annual-average" placeholder="أدخل معدلك السنوي (من 20)" min="0" max="20" step="0.01" style="width:100%; padding:10px; margin:10px 0; border-radius:8px; border:1px solid #ddd;">
+            <button class="sub-page-btn" onclick="checkLevelResult()" style="background:var(--primary); color:white; border:none;"><i class="fas fa-calculator"></i> تحقق</button>
+            <div id="result-message" class="result-message hidden"></div>
+            <p style="margin-top:20px;"><i class="fas fa-info-circle"></i> ملاحظة: المعدل السنوي موجود في كشف النقاط للفصل الثالث.</p>
+        </div>`;
     }
+    
     window.checkLevelResult = function() {
         const level = document.getElementById('study-level').value;
         const avg = parseFloat(document.getElementById('annual-average').value);
         const req = { 'أولى متوسط':9, 'ثانية متوسط':9, 'ثالثة متوسط':9, 'رابعة متوسط':9, 'أولى ثانوي':9, 'الثانية ثانوي':10 }[level];
         const div = document.getElementById('result-message');
-        if(!level || isNaN(avg)) { div.innerHTML='الرجاء إدخال بيانات صحيحة.'; div.className='result-message failure'; div.classList.remove('hidden'); return; }
+        if(!level || isNaN(avg)) { div.innerHTML='⚠️ الرجاء اختيار المستوى وإدخال المعدل بشكل صحيح.'; div.className='result-message failure'; div.classList.remove('hidden'); return; }
         if(avg >= req) { div.innerHTML=`✅ مبارك! معدلك ${avg.toFixed(2)} يسمح بالانتقال إلى المستوى الأعلى.`; div.className='result-message success'; }
         else { div.innerHTML=`❌ للأسف، تحتاج معدل ${req} للانتقال. معدلك ${avg.toFixed(2)} يتطلب إعادة السنة.`; div.className='result-message failure'; }
         div.classList.remove('hidden');
     };
-    // قائمة المراكز الولائية الكاملة (27 مركزاً) - محفوظة بالكامل
+    
+    // قائمة المراكز الولائية الكاملة (27 مركزاً)
     const centersData = [
         { id:1, name:'أدرار', states:'أدرار', address:'مقر الولاية القديمة ص.ب 76', phone:'049.36.12.31', fax:'049.36.12.31', email:'cwefd01@onefd.edu.dz' },
         { id:2, name:'الشلف', states:'الشلف', address:'شارع بن باديس ص.ب 190', phone:'027.77.00.24', fax:'027.77.00.24', email:'cwefd02@onefd.edu.dz' },
@@ -450,37 +792,123 @@
         { id:26, name:'سوق أهراس', states:'سوق أهراس', address:'نهج مولود فرعون', phone:'037.82.10.09', fax:'037.82.10.09', email:'cwefd41@onefd.edu.dz' },
         { id:27, name:'عين الدفلى', states:'عين الدفلى', address:'شارع مروان متوسطة بسكري فتيحة', phone:'027.51.56.56', fax:'027.51.56.11', email:'cwefd44@omefd.edu.dz' }
     ];
+    
     function buildCentersPage() {
         let options = '<option value="">-- اختر المركز --</option>';
         for(let c of centersData) options += `<option value="${c.id}">${c.name}</option>`;
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</h2><p>اختر مركزك الولائي لعرض معلومات الاتصال:</p><select id="center-select" onchange="displayCenterInfo()">${options}</select><div id="center-details" class="center-info hidden"></div></div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-phone-alt"></i> دليل المراكز الولائية للدراسة بالمراسلة</h2>
+            <div class="article-meta">📅 آخر تحديث: 20 يوليو 2026 | ⏱️ 3 دقائق للقراءة</div>
+            <p>اختر مركزك الولائي من القائمة أدناه لعرض معلومات الاتصال والعنوان:</p>
+            <select id="center-select" onchange="displayCenterInfo()" style="width:100%; padding:10px; margin:15px 0; border-radius:8px; border:1px solid #ddd;">${options}</select>
+            <div id="center-details" class="center-info hidden"></div>
+        </div>`;
         window.centersData = centersData;
     }
+    
     window.displayCenterInfo = function() {
         const id = document.getElementById('center-select').value;
         const detailsDiv = document.getElementById('center-details');
         if(!id) { detailsDiv.classList.add('hidden'); return; }
         const center = centersData.find(c => c.id == id);
         if(center) {
-            detailsDiv.innerHTML = `<h3><i class="fas fa-map-marker-alt"></i> مركز ${center.name}</h3><p><strong>الولايات التابعة:</strong> ${center.states}</p><p><strong>العنوان:</strong> ${center.address}</p><p><strong>الهاتف:</strong> <a href="tel:${center.phone}">${center.phone}</a></p><p><strong>الفاكس:</strong> ${center.fax}</p><p><strong>البريد الإلكتروني:</strong> <a href="mailto:${center.email}">${center.email}</a></p>`;
+            detailsDiv.innerHTML = `
+            <h3><i class="fas fa-map-marker-alt"></i> مركز ${center.name}</h3>
+            <p><strong>الولايات التابعة:</strong> ${center.states}</p>
+            <p><strong>العنوان:</strong> ${center.address}</p>
+            <p><strong>الهاتف:</strong> <a href="tel:${center.phone}">${center.phone}</a></p>
+            <p><strong>الفاكس:</strong> ${center.fax}</p>
+            <p><strong>البريد الإلكتروني:</strong> <a href="mailto:${center.email}">${center.email}</a></p>`;
             detailsDiv.classList.remove('hidden');
         } else detailsDiv.classList.add('hidden');
     };
+    
     function buildDonationPage() {
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-heart"></i> ساهم في دعم الموقع</h2><div class="donation-box"><h3>التبرع عن طريق بريدي موب</h3><p><span id="baridi-number" style="direction:ltr;">00799999001644493295</span> <button class="copy-btn" onclick="copyToClipboard('baridi-number')">نسخ</button></p></div><div class="donation-box"><h3>التبرع عن طريق تطبيق بينانس</h3><p><span id="binance-id" style="direction:ltr;">761600642</span> <button class="copy-btn" onclick="copyToClipboard('binance-id')">نسخ</button></p></div><p style="text-align:center; font-weight:bold;">شكراً لدعمكم، ربي يوفقكم 🌻</p></div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-heart"></i> ساهم في دعم الموقع</h2>
+            <p>نسعى دائماً لتطوير هذا الموقع وتقديم أفضل الخدمات لطلاب الدراسة بالمراسلة. يمكنك دعمنا من خلال التبرع عبر الوسائل التالية:</p>
+            <div class="donation-box"><h3>التبرع عن طريق بريدي موب</h3><p><span id="baridi-number" style="direction:ltr; font-size:1.2rem; font-weight:bold;">00799999001644493295</span> <button class="copy-btn" onclick="copyToClipboard('baridi-number')">نسخ</button></p></div>
+            <div class="donation-box"><h3>التبرع عن طريق تطبيق بينانس</h3><p><span id="binance-id" style="direction:ltr; font-size:1.2rem; font-weight:bold;">761600642</span> <button class="copy-btn" onclick="copyToClipboard('binance-id')">نسخ</button></p></div>
+            <p style="text-align:center; font-weight:bold; font-size:1.2rem; color:var(--primary);">شكراً لدعمكم، ربي يوفقكم 🌻</p>
+        </div>`;
     }
-    window.copyToClipboard = function(id) { navigator.clipboard.writeText(document.getElementById(id).innerText); alert('تم نسخ الرقم بنجاح!'); };
+    
+    window.copyToClipboard = function(id) { 
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('✅ تم نسخ الرقم بنجاح!');
+        }).catch(() => {
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('✅ تم نسخ الرقم بنجاح!');
+        });
+    };
+    
     function buildPrivacyPolicyPage() {
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-shield-alt"></i> سياسة الخصوصية</h2><p>نحن لا نقوم بجمع أي بيانات شخصية للمستخدمين. يستخدم هذا الموقع Google AdSense الذي قد يستخدم ملفات تعريف الارتباط (Cookies) لعرض إعلانات مخصصة بناءً على زياراتك السابقة. يمكنك إدارة ذلك من إعدادات متصفحك أو عبر <a href="https://adssettings.google.com" target="_blank">إعدادات الإعلانات من Google</a>.</p><p><strong>ملاحظة هامة:</strong> هذا الموقع غير رسمي ولا تابع للديوان الوطني للتعليم والتكوين عن بعد (ONEFD). جميع الروابط تؤدي إلى مواقع رسمية حكومية.</p></div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-shield-alt"></i> سياسة الخصوصية</h2>
+            <p>نحن في موقع الدراسة بالمراسلة نلتزم بحماية خصوصية زوارنا. إليك سياسة الخصوصية الخاصة بنا:</p>
+            <h3>جمع المعلومات</h3>
+            <p>نحن لا نقوم بجمع أي بيانات شخصية للمستخدمين. الموقع لا يحتوي على نماذج لتسجيل البيانات الشخصية.</p>
+            <h3>ملفات تعريف الارتباط (Cookies)</h3>
+            <p>يستخدم هذا الموقع Google AdSense الذي قد يستخدم ملفات تعريف الارتباط (Cookies) لعرض إعلانات مخصصة بناءً على زياراتك السابقة. يمكنك إدارة ذلك من إعدادات متصفحك أو عبر <a href="https://adssettings.google.com" target="_blank">إعدادات الإعلانات من Google</a>.</p>
+            <h3>الروابط الخارجية</h3>
+            <p>يحتوي الموقع على روابط تؤدي إلى مواقع رسمية حكومية (ONEFD، ONEC، وغيرها). لا نتحمل مسؤولية سياسات الخصوصية لتلك المواقع.</p>
+            <div class="highlight-box" style="border-right-color: var(--danger);">
+                <strong>ملاحظة هامة:</strong> هذا الموقع غير رسمي ولا تابع للديوان الوطني للتعليم والتكوين عن بعد (ONEFD). جميع الروابط تؤدي إلى مواقع رسمية حكومية.
+            </div>
+        </div>`;
     }
+    
     function buildWhoWeArePage() {
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-users"></i> من نحن</h2><p>أنا <strong>يوسف</strong>، مطور هذا الموقع بهدف مساعدة طلاب المراسلة في الجزائر. الموقع <strong>تطوعي وغير رسمي</strong>، ويجمع جميع خدمات ONEFD في مكان واحد لتسهيل الوصول. يمكنك التواصل معي عبر وسائل التواصل المذكورة في الموقع.</p><div class="social-media-container" style="justify-content:flex-start;"><a href="https://t.me/youcef_info_2" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://wa.me/213665074666" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a><a href="https://www.instagram.com/youcef.info2" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/share/g/1BfUsNqXFf/" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a></div></div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-users"></i> من نحن</h2>
+            <p>أنا <strong>يوسف</strong>، مطور هذا الموقع بهدف مساعدة طلاب المراسلة في الجزائر. الموقع <strong>تطوعي وغير رسمي</strong>، ويجمع جميع خدمات ONEFD في مكان واحد لتسهيل الوصول.</p>
+            <h3>رؤيتنا</h3>
+            <p>نسعى لتوفير منصة شاملة وموثوقة تمكن طلاب الدراسة بالمراسلة من الوصول السريع إلى جميع الخدمات والمعلومات التي يحتاجونها في مسيرتهم التعليمية.</p>
+            <h3>تواصل معنا</h3>
+            <p>يمكنك التواصل معي عبر وسائل التواصل الاجتماعي المذكورة في الموقع، أو عبر البريد الإلكتروني: <a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></p>
+            <div class="social-media-container" style="justify-content:flex-start; margin-top:15px;">
+                <a href="https://t.me/youcef_info_2" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
+                <a href="https://wa.me/213665074666" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/youcef.info2" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/g/1BfUsNqXFf/" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>`;
     }
+    
     function buildDeadlinesPage() {
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-calendar-alt"></i> 📅 مواعيد الفروض والامتحانات</h2><div class="card expired"><h3>📝 فرض المراقبة الذاتية رقم 1</h3><p>22 ديسمبر 2025 → 22 جانفي 2026</p><p class="status red">❌ انتهى</p></div><div class="card expired"><h3>📥 تحميل فروض الذاتية رقم 1</h3><p>13 جانفي 2026 → 10 فيفري 2026</p><p class="status red">❌ انتهى</p></div><div class="card active" data-end="2026-04-16"><h3>📥 تحميل الفرض الذاتي رقم 2</h3><p>16 مارس 2026 → 16 أبريل 2026</p><p class="status">🟢 نشط - <span class="countdown"></span></p></div><div class="card active" data-end="2026-04-14"><h3>💻 الفرض الإلكتروني 2026</h3><p>16 مارس 2026 → 14 أبريل 2026</p><p class="status">🟢 نشط - <span class="countdown"></span></p></div><div class="card future" data-end="2026-04-30"><h3>📥 تحميل تصحيح الفرض الذاتي رقم 2</h3><p>13 أبريل 2026 → 30 أبريل 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div><div class="card future" data-end="2026-05-24"><h3>📝 الامتحان الحضوري (إثبات المستوى)</h3><p>24 ماي 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div><div class="card future" data-end="2026-06-11"><h3>📥 شهادة البكالوريا 2026 BAC</h3><p>07 جوان 2026 → 11 جوان 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div><div class="card future" data-end="2026-05-21"><h3>📥 شهادة التعليم المتوسط 2026 BEM</h3><p>19 ماي 2026 → 21 ماي 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div></div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-calendar-alt"></i> 📅 مواعيد الفروض والامتحانات 2026</h2>
+            <div class="article-meta">⏱️ يتم تحديث المواعيد تلقائياً</div>
+            <div class="card expired"><h3>📝 فرض المراقبة الذاتية رقم 1</h3><p>22 ديسمبر 2025 → 22 جانفي 2026</p><p class="status red">❌ انتهى</p></div>
+            <div class="card expired"><h3>📥 تحميل فروض الذاتية رقم 1</h3><p>13 جانفي 2026 → 10 فيفري 2026</p><p class="status red">❌ انتهى</p></div>
+            <div class="card active" data-end="2026-04-16"><h3>📥 تحميل الفرض الذاتي رقم 2</h3><p>16 مارس 2026 → 16 أبريل 2026</p><p class="status">🟢 نشط - <span class="countdown"></span></p></div>
+            <div class="card active" data-end="2026-04-14"><h3>💻 الفرض الإلكتروني 2026</h3><p>16 مارس 2026 → 14 أبريل 2026</p><p class="status">🟢 نشط - <span class="countdown"></span></p></div>
+            <div class="card future" data-end="2026-04-30"><h3>📥 تحميل تصحيح الفرض الذاتي رقم 2</h3><p>13 أبريل 2026 → 30 أبريل 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div>
+            <div class="card future" data-end="2026-05-24"><h3>📝 الامتحان الحضوري (إثبات المستوى)</h3><p>24 ماي 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div>
+            <div class="card future" data-end="2026-06-11"><h3>📥 شهادة البكالوريا 2026 BAC</h3><p>07 جوان 2026 → 11 جوان 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div>
+            <div class="card future" data-end="2026-05-21"><h3>📥 شهادة التعليم المتوسط 2026 BEM</h3><p>19 ماي 2026 → 21 ماي 2026</p><p class="status">🟠 لم يبدأ بعد - <span class="countdown"></span></p></div>
+        </div>`;
         updateCountdowns();
         setInterval(updateCountdowns, 60000);
     }
+    
     function updateCountdowns() {
         document.querySelectorAll('.card[data-end]').forEach(card => {
             const end = new Date(card.getAttribute('data-end'));
@@ -500,11 +928,23 @@
             }
         });
     }
+    
     function buildContactPage() {
-        pagesContainer.innerHTML = `<div class="sub-page"><button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button><h2><i class="fas fa-envelope"></i> اتصل بنا</h2><p>للاستفسارات أو الإبلاغ عن مشكلة: <a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></p><p>يمكنك أيضاً التواصل عبر وسائل التواصل الاجتماعي الموجودة في الموقع.</p></div>`;
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-envelope"></i> اتصل بنا</h2>
+            <p>نحن هنا لمساعدتك! إذا كان لديك أي استفسار أو ملاحظة أو ترغب في الإبلاغ عن مشكلة، يمكنك التواصل معنا عبر:</p>
+            <ul>
+                <li><strong>البريد الإلكتروني:</strong> <a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></li>
+                <li><strong>تيليغرام:</strong> <a href="https://t.me/youcef_info_2" target="_blank">@youcef_info_2</a></li>
+                <li><strong>واتساب:</strong> <a href="https://wa.me/213665074666" target="_blank">+213 665 074 666</a></li>
+            </ul>
+            <p>نرد على جميع الاستفسارات في أقرب وقت ممكن. شكراً لزيارتك! 🙏</p>
+        </div>`;
     }
     
-    // الساعة والأحداث القادمة (مع تحديث تاريخ الامتحان)
+    // الساعة والأحداث القادمة
     function updateAlgeriaClock() {
         const now = new Date().toLocaleString('en-US', {timeZone: 'Africa/Algiers'});
         const d = new Date(now);
@@ -546,8 +986,6 @@
         if(!localStorage.getItem('cookieConsent')) document.getElementById('cookieConsent').style.display = 'flex';
         document.getElementById('acceptCookies').onclick = () => { localStorage.setItem('cookieConsent','accepted'); document.getElementById('cookieConsent').style.display = 'none'; };
         document.getElementById('declineCookies').onclick = () => { localStorage.setItem('cookieConsent','declined'); document.getElementById('cookieConsent').style.display = 'none'; };
-        
-        // إظهار نافذة الترحيب للمستخدم الجديد
         showNewUserPopup();
     });
     
@@ -561,6 +999,9 @@
     window.openExternalLink = openExternalLink;
     window.speakIntro = speakIntro;
     window.closeSharePopup = closeSharePopup;
+    window.checkLevelResult = checkLevelResult;
+    window.displayCenterInfo = displayCenterInfo;
+    window.copyToClipboard = copyToClipboard;
 </script>
 </body>
 </html>
