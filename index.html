@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="البوابة الشاملة لخدمات الديوان الوطني للتعليم والتكوين عن بعد (ONEFD) في الجزائر: التسجيل، الفروض، الامتحانات، النتائج، المراكز الولائية، وأدوات مفيدة للطلاب.">
-    <meta name="keywords" content="ONEFD, الدراسة بالمراسلة, فروض المراسلة, الفرض الإلكتروني, امتحان المستوى, نتائج المراسلة, مراكز ONEFD, الجزائر, التسجيلات الجامعية, الوكالة الوطنية للتشغيل, ANEM, وسيط">
+    <meta name="keywords" content="ONEFD, الدراسة بالمراسلة, فروض المراسلة, الفرض الإلكتروني, امتحان المستوى, نتائج المراسلة, مراكز ONEFD, الجزائر, التسجيلات الجامعية, الوكالة الوطنية للتشغيل, ANEM, وسيط, CNAS, CASNOS, شهادة السوابق العدلية">
     <meta name="author" content="يوسف">
     <meta name="robots" content="index, follow">
     <meta name="google-adsense-account" content="ca-pub-4719018034232696">
-    <title>الدراسة بالمراسلة - دليل شامل لخدمات ONEFD</title>
+    <title>الدراسة بالمراسلة - دليل شامل لخدمات ONEFD و CNAS و CASNOS وشهادة السوابق العدلية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* ====== جميع الأنماط كما هي ====== */
@@ -24,6 +24,9 @@
             --warning: #ffc107;
             --info: #17a2b8;
             --anem-color: #0056a7;
+            --cnas-color: #00897b;
+            --casnos-color: #e65100;
+            --justice-color: #1a237e;
         }
         * {
             margin: 0;
@@ -196,6 +199,18 @@
         .sidebar-privacy-item:hover { background: var(--dark) !important; color: white !important; border-right-color: white !important; }
         .sidebar-privacy-item i { color: #888 !important; }
         .sidebar-privacy-item:hover i { color: white !important; }
+        .sidebar-cnas-item { background: #e0f2f1 !important; border-right: 3px solid var(--cnas-color) !important; }
+        .sidebar-cnas-item:hover { background: var(--cnas-color) !important; color: white !important; border-right-color: white !important; }
+        .sidebar-cnas-item i { color: var(--cnas-color) !important; }
+        .sidebar-cnas-item:hover i { color: white !important; }
+        .sidebar-casnos-item { background: #fff3e0 !important; border-right: 3px solid var(--casnos-color) !important; }
+        .sidebar-casnos-item:hover { background: var(--casnos-color) !important; color: white !important; border-right-color: white !important; }
+        .sidebar-casnos-item i { color: var(--casnos-color) !important; }
+        .sidebar-casnos-item:hover i { color: white !important; }
+        .sidebar-justice-item { background: #e8eaf6 !important; border-right: 3px solid var(--justice-color) !important; }
+        .sidebar-justice-item:hover { background: var(--justice-color) !important; color: white !important; border-right-color: white !important; }
+        .sidebar-justice-item i { color: var(--justice-color) !important; }
+        .sidebar-justice-item:hover i { color: white !important; }
         #main-content { padding: 20px; max-width: 1200px; margin: 0 auto; animation: fadeIn 0.5s ease; }
         .welcome-section { background: white; border-radius: 20px; padding: 30px 20px; text-align: center; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .welcome-section h1 { color: var(--primary); margin-bottom: 15px; }
@@ -293,6 +308,15 @@
         th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
         th { background: var(--primary); color: white; }
         .center-info { margin-top: 20px; padding: 15px; background: #f1f3f5; border-radius: 12px; }
+        .cnas-card { background: linear-gradient(135deg, #e0f2f1, #b2dfdb); border-radius: 12px; padding: 20px; margin: 15px 0; border-right: 4px solid var(--cnas-color); }
+        .casnos-card { background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-radius: 12px; padding: 20px; margin: 15px 0; border-right: 4px solid var(--casnos-color); }
+        .justice-card { background: linear-gradient(135deg, #e8eaf6, #c5cae9); border-radius: 12px; padding: 20px; margin: 15px 0; border-right: 4px solid var(--justice-color); }
+        .btn-cnas { background: var(--cnas-color); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; display: inline-block; text-decoration: none; }
+        .btn-cnas:hover { background: #00695c; transform: scale(1.02); }
+        .btn-casnos { background: var(--casnos-color); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; display: inline-block; text-decoration: none; }
+        .btn-casnos:hover { background: #bf360c; transform: scale(1.02); }
+        .btn-justice { background: var(--justice-color); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; display: inline-block; text-decoration: none; }
+        .btn-justice:hover { background: #0d1442; transform: scale(1.02); }
     </style>
 </head>
 <body>
@@ -323,18 +347,27 @@
     <button class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
     <div class="sidebar-header"><i class="fas fa-graduation-cap fa-2x"></i><h3>القائمة الرئيسية</h3></div>
     
-    <!-- روابط فريدة لكل صفحة -->
+    <!-- خدمات التعليم -->
+    <div class="sidebar-section-title">🎓 خدمات التعليم</div>
     <a href="/about" onclick="showPage('about-page'); return false;"><i class="fas fa-info-circle"></i> ما هي الدراسة بالمراسلة؟</a>
     <a href="/deadlines" onclick="showPage('deadlines-page'); return false;"><i class="fas fa-calendar-alt"></i> 📅 مواعيد الفروض والامتحانات</a>
     <a href="/check-level" onclick="showPage('check-level-page'); return false;"><i class="fas fa-chart-line"></i> التحقق من القبول</a>
     <a href="/centers" onclick="showPage('centers-page'); return false;"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
     <a href="/university-registration" onclick="showPage('university-registration-page'); return false;"><i class="fas fa-university"></i> 🎓 التسجيلات الجامعية</a>
+    
+    <!-- الخدمات الإدارية -->
+    <div class="sidebar-section-title">📋 الخدمات الإدارية</div>
     <a href="/anem" onclick="showPage('anem-page'); return false;"><i class="fas fa-briefcase"></i> 🏢 الوكالة الوطنية للتشغيل</a>
+    <a href="/cnas" onclick="showPage('cnas-page'); return false;" class="sidebar-cnas-item"><i class="fas fa-heartbeat"></i> 🏥 طلب CNAS</a>
+    <a href="/casnos" onclick="showPage('casnos-page'); return false;" class="sidebar-casnos-item"><i class="fas fa-shield-alt"></i> 🛡️ طلب CASNOS</a>
+    <a href="/justice-record" onclick="showPage('justice-record-page'); return false;" class="sidebar-justice-item"><i class="fas fa-gavel"></i> ⚖️ شهادة السوابق العدلية</a>
+    
+    <hr class="sidebar-divider">
+    <div class="sidebar-section-title">❤️ دعم الموقع</div>
     <a href="/donation" onclick="showPage('donation-page'); return false;"><i class="fas fa-heart"></i> دعم الموقع (تبرع)</a>
     
     <hr class="sidebar-divider">
     <div class="sidebar-section-title">📌 معلومات الموقع</div>
-    
     <a href="/contact" onclick="showPage('contact-page'); return false;" class="sidebar-contact-item"><i class="fas fa-envelope"></i> 📧 اتصل بنا</a>
     <a href="/privacy-policy" onclick="showPage('privacy-policy-page'); return false;" class="sidebar-privacy-item"><i class="fas fa-shield-alt"></i> 🔒 سياسة الخصوصية</a>
     <a href="/who-we-are" onclick="showPage('who-we-are-page'); return false;" class="sidebar-about-item"><i class="fas fa-users"></i> 👤 من نحن</a>
@@ -352,13 +385,13 @@
     <h1 class="header-title"><i class="fas fa-graduation-cap"></i> الدراسة بالمراسلة</h1>
 </header>
 
-<div class="marquee-container" style="background:#ffc107; text-align:center; padding:5px; font-weight:bold;">📢 منصة شاملة لخدمات ONEFD والتسجيلات الجامعية والوكالة الوطنية للتشغيل (الموقع غير رسمي)</div>
+<div class="marquee-container" style="background:#ffc107; text-align:center; padding:5px; font-weight:bold;">📢 منصة شاملة لخدمات ONEFD، التسجيلات الجامعية، ANEM، CNAS، CASNOS، وشهادة السوابق العدلية (الموقع غير رسمي)</div>
 <div id="upcomingEventsContainer" class="upcoming-buttons"></div>
 
 <main id="main-content">
     <div class="welcome-section">
         <h1><i class="fas fa-smile-wink"></i> أهلاً بك في دليل الدراسة بالمراسلة</h1>
-        <h2>كل ما تحتاجه في مكان واحد: التسجيل، الفروض، الامتحانات، النتائج، المراكز الولائية، التسجيلات الجامعية، والوكالة الوطنية للتشغيل.</h2>
+        <h2>كل ما تحتاجه في مكان واحد: التسجيل، الفروض، الامتحانات، النتائج، المراكز الولائية، التسجيلات الجامعية، ANEM، CNAS، CASNOS، وشهادة السوابق العدلية.</h2>
     </div>
     <div class="main-buttons-container">
         <a href="/registration" class="main-btn" onclick="showPage('registration-page'); return false;"><i class="fas fa-user-plus"></i> التسجيل في المراسلة</a>
@@ -369,6 +402,9 @@
         <a href="/exam-info" class="main-btn" onclick="showPage('exam-info-page'); return false;"><i class="fas fa-bullhorn"></i> معلومات الامتحانات</a>
         <a href="/university-registration" class="main-btn" style="border-color:var(--success);" onclick="showPage('university-registration-page'); return false;"><i class="fas fa-university" style="color:var(--success);"></i> التسجيلات الجامعية</a>
         <a href="/anem" class="main-btn" style="border-color:var(--anem-color);" onclick="showPage('anem-page'); return false;"><i class="fas fa-briefcase" style="color:var(--anem-color);"></i> الوكالة الوطنية للتشغيل</a>
+        <a href="/cnas" class="main-btn" style="border-color:var(--cnas-color);" onclick="showPage('cnas-page'); return false;"><i class="fas fa-heartbeat" style="color:var(--cnas-color);"></i> 🏥 طلب CNAS</a>
+        <a href="/casnos" class="main-btn" style="border-color:var(--casnos-color);" onclick="showPage('casnos-page'); return false;"><i class="fas fa-shield-alt" style="color:var(--casnos-color);"></i> 🛡️ طلب CASNOS</a>
+        <a href="/justice-record" class="main-btn" style="border-color:var(--justice-color);" onclick="showPage('justice-record-page'); return false;"><i class="fas fa-gavel" style="color:var(--justice-color);"></i> ⚖️ شهادة السوابق العدلية</a>
     </div>
     <div class="social-media-container">
         <span>📱 تابعنا على:</span>
@@ -401,7 +437,6 @@
         pagesContainer.style.display = 'none'; 
         document.getElementById('main-content').style.display = 'block'; 
         pagesContainer.innerHTML = ''; 
-        // تحديث الرابط إلى الصفحة الرئيسية
         history.pushState(null, '', '/');
     }
     
@@ -427,6 +462,18 @@
     
     function createAnemButton(text, url, icon = 'fas fa-external-link-alt') {
         return `<a href="${url}" class="sub-page-btn" onclick="openExternalLink('${url}'); return false;" style="border-right-color: var(--anem-color); background: #f0f7ff;"><i class="${icon}"></i> ${text}</a>`;
+    }
+    
+    function createCnasButton(text, url, icon = 'fas fa-external-link-alt') {
+        return `<a href="${url}" class="sub-page-btn" onclick="openExternalLink('${url}'); return false;" style="border-right-color: var(--cnas-color); background: #e0f2f1;"><i class="${icon}"></i> ${text}</a>`;
+    }
+    
+    function createCasnosButton(text, url, icon = 'fas fa-external-link-alt') {
+        return `<a href="${url}" class="sub-page-btn" onclick="openExternalLink('${url}'); return false;" style="border-right-color: var(--casnos-color); background: #fff3e0;"><i class="${icon}"></i> ${text}</a>`;
+    }
+    
+    function createJusticeButton(text, url, icon = 'fas fa-external-link-alt') {
+        return `<a href="${url}" class="sub-page-btn" onclick="openExternalLink('${url}'); return false;" style="border-right-color: var(--justice-color); background: #e8eaf6;"><i class="${icon}"></i> ${text}</a>`;
     }
     
     // =====================================================
@@ -462,14 +509,13 @@
     }
 
     // =====================================================
-    // 4. عرض الصفحات مع تحديث الرابط (الميزة الجديدة)
+    // 4. عرض الصفحات مع تحديث الرابط
     // =====================================================
     function showPage(pageId) {
         toggleSidebar();
         document.getElementById('main-content').style.display = 'none';
         pagesContainer.style.display = 'block';
         
-        // تحديث الرابط في المتصفح بدون إعادة تحميل الصفحة
         const pageMap = {
             'registration-page': 'registration',
             'documents-page': 'documents',
@@ -482,6 +528,9 @@
             'centers-page': 'centers',
             'university-registration-page': 'university-registration',
             'anem-page': 'anem',
+            'cnas-page': 'cnas',
+            'casnos-page': 'casnos',
+            'justice-record-page': 'justice-record',
             'donation-page': 'donation',
             'privacy-policy-page': 'privacy-policy',
             'who-we-are-page': 'who-we-are',
@@ -506,6 +555,9 @@
             'centers-page': buildCentersPage,
             'university-registration-page': buildUniversityRegistrationPage,
             'anem-page': buildAnemPage,
+            'cnas-page': buildCnasPage,
+            'casnos-page': buildCasnosPage,
+            'justice-record-page': buildJusticeRecordPage,
             'donation-page': buildDonationPage,
             'privacy-policy-page': buildPrivacyPolicyPage,
             'who-we-are-page': buildWhoWeArePage,
@@ -517,12 +569,11 @@
     }
 
     // =====================================================
-    // 5. معالجة الروابط المباشرة (عند تحميل الصفحة أو تغيير الرابط)
+    // 5. معالجة الروابط المباشرة
     // =====================================================
     function handleRoute() {
         const path = window.location.pathname.replace('/', '');
         if (!path || path === '') {
-            // الصفحة الرئيسية
             pagesContainer.style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
             return;
@@ -540,6 +591,9 @@
             'centers': 'centers-page',
             'university-registration': 'university-registration-page',
             'anem': 'anem-page',
+            'cnas': 'cnas-page',
+            'casnos': 'casnos-page',
+            'justice-record': 'justice-record-page',
             'donation': 'donation-page',
             'privacy-policy': 'privacy-policy-page',
             'who-we-are': 'who-we-are-page',
@@ -549,7 +603,6 @@
         
         const pageId = routeMap[path];
         if (pageId) {
-            // عرض الصفحة مباشرة
             document.getElementById('main-content').style.display = 'none';
             pagesContainer.style.display = 'block';
             const pageBuilders = {
@@ -564,6 +617,9 @@
                 'centers-page': buildCentersPage,
                 'university-registration-page': buildUniversityRegistrationPage,
                 'anem-page': buildAnemPage,
+                'cnas-page': buildCnasPage,
+                'casnos-page': buildCasnosPage,
+                'justice-record-page': buildJusticeRecordPage,
                 'donation-page': buildDonationPage,
                 'privacy-policy-page': buildPrivacyPolicyPage,
                 'who-we-are-page': buildWhoWeArePage,
@@ -574,10 +630,7 @@
         }
     }
 
-    // الاستماع لتغيير الرابط (عند استخدام أزرار العودة والتقدم)
     window.addEventListener('popstate', handleRoute);
-    
-    // تحميل الصفحة المناسبة عند الدخول الأول
     window.addEventListener('DOMContentLoaded', handleRoute);
 
     // =====================================================
@@ -658,7 +711,6 @@
                 ${createLinkButton('استخراج رقم التسجيل', 'https://inscriptic.onefd.edu.dz/numins/num_ins_index.php')}
                 ${createLinkButton('نتائج المتعلمين', 'https://inscriptic.onefd.edu.dz/')}
                 ${createLinkButton('استخراج شهادة اثبات المستوى ', 'https://inscriptic.onefd.edu.dz/')}
-
             </div>
         </div>`;
     }
@@ -851,7 +903,247 @@
         </div>`;
     }
 
-    // 6.9 دعم الموقع
+    // =====================================================
+    // 6.9 صفحة CNAS (جديدة)
+    // =====================================================
+    function buildCnasPage() {
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <a href="/" class="back-btn" onclick="goBack(); return false;"><i class="fas fa-arrow-right"></i> رجوع</a>
+            <h2><i class="fas fa-heartbeat"></i> دليل طلب الانخراط في الصندوق الوطني للتأمين الاجتماعي (CNAS)</h2>
+            <div class="article-meta">📅 آخر تحديث: 21 يوليو 2026 | ⏱️ 6 دقائق للقراءة</div>
+            
+            <div class="highlight-box" style="border-right-color: var(--cnas-color); background: #e0f2f1;">
+                <i class="fas fa-info-circle" style="color: var(--cnas-color);"></i>
+                <strong>الصندوق الوطني للتأمين الاجتماعي (CNAS)</strong> هو المؤسسة العمومية المكلفة بتوفير التغطية الاجتماعية للعمال في الجزائر، بما في ذلك التأمين الصحي، التقاعد، والتعويضات الاجتماعية.
+            </div>
+            
+            <p>تعد خدمة <strong>طلب الانخراط في CNAS</strong> من الخدمات الأساسية التي يحتاجها كل عامل في القطاعين العام والخاص. يوفر الصندوق الوطني للتأمين الاجتماعي بوابة إلكترونية تمكن المستخدمين من:</p>
+            <ul>
+                <li><strong>التسجيل لأول مرة:</strong> إنشاء حساب جديد للانخراط في نظام التأمين الاجتماعي.</li>
+                <li><strong>تسجيل الدخول:</strong> الدخول إلى الحساب الشخصي لمتابعة الملفات والخدمات.</li>
+                <li><strong>الاستعلام عن الملفات:</strong> متابعة حالة الملفات والتعويضات.</li>
+                <li><strong>طلب التعويضات:</strong> تقديم طلبات التعويض عن المرض أو الحوادث.</li>
+            </ul>
+            
+            <h3>📌 ما هو CNAS؟</h3>
+            <p>CNAS (الصندوق الوطني للتأمين الاجتماعي) هو مؤسسة عمومية جزائرية تأسست لتوفير الحماية الاجتماعية للعمال. يغطي الصندوق عدة مجالات منها:</p>
+            <ul>
+                <li><strong>التأمين الصحي:</strong> تغطية تكاليف العلاج والأدوية.</li>
+                <li><strong>التقاعد:</strong> صرف المعاشات التقاعدية للعمال بعد انتهاء فترة الخدمة.</li>
+                <li><strong>تعويضات البطالة:</strong> تعويضات للعمال الذين فقدوا وظائفهم.</li>
+                <li><strong>تعويضات الحوادث:</strong> تعويضات عن حوادث العمل والأمراض المهنية.</li>
+            </ul>
+            
+            <h3>📋 المستندات المطلوبة للتسجيل في CNAS</h3>
+            <ul>
+                <li>رقم التعريف الوطني (18 رقماً).</li>
+                <li>بطاقة التعريف الوطنية (نسخة).</li>
+                <li>شهادة العمل من صاحب العمل.</li>
+                <li>شهادة الميلاد (نسخة).</li>
+                <li>صورة شمسية حديثة.</li>
+                <li>رقم الحساب البريدي (CCP) أو البنكي.</li>
+            </ul>
+            
+            <h3>🚀 خطوات التسجيل في منصة CNAS</h3>
+            <ol>
+                <li><span class="step-number">1</span> الدخول إلى رابط التسجيل في بوابة CNAS الإلكترونية.</li>
+                <li><span class="step-number">2</span> إدخال رقم التعريف الوطني المكون من 18 رقماً.</li>
+                <li><span class="step-number">3</span> إدخال البيانات الشخصية المطلوبة (الاسم، تاريخ الميلاد، العنوان).</li>
+                <li><span class="step-number">4</span> إدخال معلومات الاتصال (رقم الهاتف، البريد الإلكتروني).</li>
+                <li><span class="step-number">5</span> إنشاء كلمة مرور قوية وتأكيدها.</li>
+                <li><span class="step-number">6</span> تأكيد التسجيل عبر رمز التحقق المرسل إلى رقم الهاتف.</li>
+                <li><span class="step-number">7</span> انتظار مراجعة الملف من قبل مصالح CNAS.</li>
+            </ol>
+            
+            <h3>🔗 روابط منصة CNAS</h3>
+            <div class="btn-group">
+                ${createCnasButton('التسجيل لأول مرة (انخراط جديد)', 'https://elhanaa.cnas.dz/inscription.xhtml', 'fas fa-user-plus')}
+                ${createCnasButton('تسجيل الدخول (حساب مسبق)', 'https://elhanaa.cnas.dz/', 'fas fa-sign-in-alt')}
+            </div>
+            
+            <div class="cnas-card">
+                <h4><i class="fas fa-info-circle"></i> معلومات هامة عن CNAS</h4>
+                <ul>
+                    <li><strong>رقم التعريف الوطني:</strong> يجب أن يكون مكوناً من 18 رقماً.</li>
+                    <li><strong>التأمين الصحي:</strong> يغطي 80% من تكاليف العلاج.</li>
+                    <li><strong>التقاعد:</strong> يتم صرف المعاش بعد بلوغ سن 60 سنة.</li>
+                    <li><strong>تعويضات:</strong> يمكن تقديم طلب التعويض خلال 30 يوماً من تاريخ الحادثة.</li>
+                </ul>
+            </div>
+            
+            <div class="highlight-box" style="border-right-color: var(--danger);">
+                <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
+                <strong>تنبيه هام:</strong> هذا الموقع غير رسمي ولا يتبع CNAS. الروابط أعلاه تؤدي إلى المواقع الرسمية للصندوق الوطني للتأمين الاجتماعي.
+            </div>
+        </div>`;
+    }
+
+    // =====================================================
+    // 6.10 صفحة CASNOS (جديدة)
+    // =====================================================
+    function buildCasnosPage() {
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <a href="/" class="back-btn" onclick="goBack(); return false;"><i class="fas fa-arrow-right"></i> رجوع</a>
+            <h2><i class="fas fa-shield-alt"></i> دليل طلب الانخراط في الصندوق الوطني للتأمين عن البطالة (CASNOS)</h2>
+            <div class="article-meta">📅 آخر تحديث: 21 يوليو 2026 | ⏱️ 7 دقائق للقراءة</div>
+            
+            <div class="highlight-box" style="border-right-color: var(--casnos-color); background: #fff3e0;">
+                <i class="fas fa-info-circle" style="color: var(--casnos-color);"></i>
+                <strong>الصندوق الوطني للتأمين عن البطالة (CASNOS)</strong> هو مؤسسة عمومية جزائرية تأسست عام 1994، تهدف إلى توفير الحماية الاجتماعية للعمال الذين فقدوا وظائفهم، وتوفير تعويضات مالية مؤقتة للباحثين عن عمل.
+            </div>
+            
+            <p>تعد خدمة <strong>طلب الانخراط في CASNOS</strong> خطوة أساسية لكل عامل فقد وظيفته ويريد الاستفادة من تعويضات البطالة. يوفر الصندوق الوطني للتأمين عن البطالة بوابة إلكترونية تمكن المستخدمين من:</p>
+            <ul>
+                <li><strong>طلب الانخراط:</strong> تقديم طلب الانخراط في نظام التأمين عن البطالة.</li>
+                <li><strong>متابعة الملفات:</strong> الاستعلام عن حالة الملفات والتعويضات.</li>
+                <li><strong>صرف التعويضات:</strong> متابعة صرف تعويضات البطالة.</li>
+                <li><strong>تحديث المعلومات:</strong> تحديث البيانات الشخصية والمهنية.</li>
+            </ul>
+            
+            <h3>📌 ما هو CASNOS؟</h3>
+            <p>CASNOS (الصندوق الوطني للتأمين عن البطالة) هو مؤسسة عمومية جزائرية توفر الحماية الاجتماعية للعمال الذين فقدوا وظائفهم. يهدف الصندوق إلى:</p>
+            <ul>
+                <li><strong>توفير تعويضات البطالة:</strong> تعويض مالي مؤقت للعمال الذين فقدوا وظائفهم.</li>
+                <li><strong>إعادة التأهيل المهني:</strong> برامج تدريبية لتأهيل العمال للعودة إلى سوق العمل.</li>
+                <li><strong>التغطية الصحية:</strong> تغطية صحية للعمال الذين فقدوا وظائفهم.</li>
+                <li><strong>الدعم الاجتماعي:</strong> مساعدة العمال في فترة البحث عن عمل.</li>
+            </ul>
+            
+            <h3>📋 شروط الاستفادة من تعويضات CASNOS</h3>
+            <ul>
+                <li>أن يكون العامل مسجلاً في نظام الضمان الاجتماعي (CNAS).</li>
+                <li>أن يكون قد فقد وظيفته بشكل غير إرادي (إنهاء عقد العمل).</li>
+                <li>أن يكون قد عمل لمدة لا تقل عن 3 سنوات متصلة.</li>
+                <li>أن يكون الباحث عن عمل مسجلاً في ANEM.</li>
+                <li>ألا يكون قد بلغ سن التقاعد.</li>
+            </ul>
+            
+            <h3>📋 المستندات المطلوبة للتسجيل في CASNOS</h3>
+            <ul>
+                <li>رقم التعريف الوطني (18 رقماً).</li>
+                <li>بطاقة التعريف الوطنية (نسخة).</li>
+                <li>شهادة العمل من صاحب العمل السابق.</li>
+                <li>شهادة فقدان العمل.</li>
+                <li>شهادة التسجيل في ANEM.</li>
+                <li>رقم الحساب البريدي (CCP).</li>
+            </ul>
+            
+            <h3>🚀 خطوات طلب الانخراط في CASNOS</h3>
+            <ol>
+                <li><span class="step-number">1</span> الدخول إلى رابط طلب الانخراط في CASNOS.</li>
+                <li><span class="step-number">2</span> إدخال رقم التعريف الوطني المكون من 18 رقماً.</li>
+                <li><span class="step-number">3</span> إدخال رقم بطاقة العمل أو رقم التسجيل في CNAS.</li>
+                <li><span class="step-number">4</span> إدخال البيانات الشخصية والمهنية المطلوبة.</li>
+                <li><span class="step-number">5</span> رفع المستندات المطلوبة بصيغة PDF أو JPG.</li>
+                <li><span class="step-number">6</span> تأكيد الطلب ومتابعة حالة الملف.</li>
+            </ol>
+            
+            <h3>🔗 روابط منصة CASNOS</h3>
+            <div class="btn-group">
+                ${createCasnosButton('طلب الانخراط في CASNOS (غير المنخرطين)', 'https://damancom.casnos.dz/non-affiliation', 'fas fa-user-plus')}
+            </div>
+            
+            <div class="casnos-card">
+                <h4><i class="fas fa-info-circle"></i> معلومات هامة عن CASNOS</h4>
+                <ul>
+                    <li><strong>مدة التعويض:</strong> تتراوح بين 6 و 18 شهراً حسب فترة العمل.</li>
+                    <li><strong>قيمة التعويض:</strong> تتراوح بين 5000 و 15000 دج شهرياً.</li>
+                    <li><strong>شروط الاستفادة:</strong> يجب أن يكون العامل مسجلاً في CNAS لمدة 3 سنوات على الأقل.</li>
+                    <li><strong>إعادة التأهيل:</strong> يوفر CASNOS برامج تدريبية للعودة إلى سوق العمل.</li>
+                </ul>
+            </div>
+            
+            <div class="highlight-box" style="border-right-color: var(--danger);">
+                <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
+                <strong>تنبيه هام:</strong> هذا الموقع غير رسمي ولا يتبع CASNOS. الروابط أعلاه تؤدي إلى المواقع الرسمية للصندوق الوطني للتأمين عن البطالة.
+            </div>
+        </div>`;
+    }
+
+    // =====================================================
+    // 6.11 صفحة شهادة السوابق العدلية (جديدة)
+    // =====================================================
+    function buildJusticeRecordPage() {
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <a href="/" class="back-btn" onclick="goBack(); return false;"><i class="fas fa-arrow-right"></i> رجوع</a>
+            <h2><i class="fas fa-gavel"></i> دليل طلب شهادة السوابق العدلية (النسخة الإلكترونية)</h2>
+            <div class="article-meta">📅 آخر تحديث: 21 يوليو 2026 | ⏱️ 6 دقائق للقراءة</div>
+            
+            <div class="highlight-box" style="border-right-color: var(--justice-color); background: #e8eaf6;">
+                <i class="fas fa-info-circle" style="color: var(--justice-color);"></i>
+                <strong>شهادة السوابق العدلية (النسخة الإلكترونية)</strong> هي وثيقة رسمية تثبت خلو الشخص من السوابق العدلية، وتستخدم في العديد من الإجراءات الإدارية والقانونية.
+            </div>
+            
+            <p>تعد <strong>شهادة السوابق العدلية</strong> (المعروفة أيضاً باسم "الشهادة رقم 3") من الوثائق الأساسية التي يحتاجها كل مواطن جزائري. تستخدم هذه الشهادة في:</p>
+            <ul>
+                <li><strong>التوظيف:</strong> طلب العمل في القطاعين العام والخاص.</li>
+                <li><strong>الهجرة:</strong> طلب التأشيرات والإقامة في الخارج.</li>
+                <li><strong>الزواج:</strong> إتمام إجراءات عقد الزواج.</li>
+                <li><strong>التسجيل في الجامعات والمعاهد.</strong></li>
+                <li><strong>فتح الملفات الإدارية:</strong> مثل طلب السكن أو القروض.</li>
+            </ul>
+            
+            <h3>📌 ما هي شهادة السوابق العدلية؟</h3>
+            <p>شهادة السوابق العدلية هي وثيقة رسمية تصدر عن وزارة العدل الجزائرية، تثبت أن الشخص غير محكوم عليه بأي عقوبة جنائية أو تأديبية. توجد نوعان من الشهادات:</p>
+            <ul>
+                <li><strong>الشهادة العادية (ورقية):</strong> تصدر عن المحاكم ومجالس القضاء.</li>
+                <li><strong>الشهادة الإلكترونية:</strong> تصدر عبر البوابة الإلكترونية لوزارة العدل.</li>
+            </ul>
+            
+            <h3>📋 المستندات المطلوبة لطلب شهادة السوابق العدلية</h3>
+            <ul>
+                <li>رقم التعريف الوطني (18 رقماً).</li>
+                <li>بطاقة التعريف الوطنية (نسخة).</li>
+                <li>شهادة الميلاد (نسخة).</li>
+                <li>البريد الإلكتروني (للاستقبال الشهادة الإلكترونية).</li>
+                <li>رقم الهاتف الشخصي.</li>
+            </ul>
+            
+            <h3>🚀 خطوات طلب شهادة السوابق العدلية الإلكترونية</h3>
+            <ol>
+                <li><span class="step-number">1</span> الدخول إلى البوابة الإلكترونية لوزارة العدل.</li>
+                <li><span class="step-number">2</span> اختيار خدمة "طلب شهادة السوابق العدلية".</li>
+                <li><span class="step-number">3</span> إدخال رقم التعريف الوطني المكون من 18 رقماً.</li>
+                <li><span class="step-number">4</span> إدخال البريد الإلكتروني ورقم الهاتف.</li>
+                <li><span class="step-number">5</span> تأكيد الطلب عبر رمز التحقق المرسل إلى الهاتف أو البريد الإلكتروني.</li>
+                <li><span class="step-number">6</span> استلام الشهادة عبر البريد الإلكتروني في غضون 24 ساعة.</li>
+            </ol>
+            
+            <h3>📌 ملاحظات هامة</h3>
+            <ul>
+                <li><strong>رسوم الشهادة:</strong> مجانية للشهادة الإلكترونية.</li>
+                <li><strong>مدة الصلاحية:</strong> 3 أشهر من تاريخ الإصدار.</li>
+                <li><strong>التجديد:</strong> يمكن طلب شهادة جديدة بعد انتهاء صلاحية القديمة.</li>
+                <li><strong>النسخة الورقية:</strong> يمكن الحصول عليها من المحاكم إذا لزم الأمر.</li>
+            </ul>
+            
+            <h3>🔗 روابط وزارة العدل</h3>
+            <div class="btn-group">
+                ${createJusticeButton('تسجيل الدخول (لمن لديه حساب مسبق)', 'https://portail.mjustice.dz/remote/login?lang=fr', 'fas fa-sign-in-alt')}
+                ${createJusticeButton('طلب شهادة السوابق العدلية (تسجيل جديد)', 'https://e-casier.mjustice.dz/', 'fas fa-file-alt')}
+            </div>
+            
+            <div class="justice-card">
+                <h4><i class="fas fa-info-circle"></i> معلومات هامة عن شهادة السوابق العدلية</h4>
+                <ul>
+                    <li><strong>المدة:</strong> تصدر خلال 24 ساعة من تاريخ الطلب.</li>
+                    <li><strong>الصيغة:</strong> تصدر بصيغة PDF مع ختم إلكتروني.</li>
+                    <li><strong>الصلاحية:</strong> 3 أشهر من تاريخ الإصدار.</li>
+                    <li><strong>الاستخدام:</strong> تستخدم في جميع الإجراءات الإدارية والقانونية.</li>
+                </ul>
+            </div>
+            
+            <div class="highlight-box" style="border-right-color: var(--danger);">
+                <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
+                <strong>تنبيه هام:</strong> هذا الموقع غير رسمي ولا يتبع وزارة العدل. الروابط أعلاه تؤدي إلى المواقع الرسمية لوزارة العدل.
+            </div>
+        </div>`;
+    }
+
+    // 6.12 دعم الموقع
     function buildDonationPage() {
         pagesContainer.innerHTML = `
         <div class="sub-page">
@@ -867,7 +1159,7 @@
         navigator.clipboard.writeText(text).then(() => alert('✅ تم النسخ!'));
     };
 
-    // 6.10 ما هي الدراسة بالمراسلة
+    // 6.13 ما هي الدراسة بالمراسلة
     function buildAboutPage() {
         pagesContainer.innerHTML = `
         <div class="sub-page">
@@ -880,7 +1172,7 @@
         </div>`;
     }
 
-    // 6.11 التحقق من القبول
+    // 6.14 التحقق من القبول
     function buildCheckLevelPage() {
         pagesContainer.innerHTML = `
         <div class="sub-page">
@@ -913,7 +1205,7 @@
         div.classList.remove('hidden');
     };
 
-    // 6.12 المراكز الولائية
+    // 6.15 المراكز الولائية
     const centersData = [
         { id:1, name:'أدرار', states:'أدرار', address:'مقر الولاية القديمة ص.ب 76', phone:'049.36.12.31', email:'cwefd01@onefd.edu.dz' },
         { id:2, name:'الشلف', states:'الشلف', address:'شارع بن باديس ص.ب 190', phone:'027.77.00.24', email:'cwefd02@onefd.edu.dz' },
@@ -973,7 +1265,7 @@
         }
     };
 
-    // 6.13 سياسة الخصوصية
+    // 6.16 سياسة الخصوصية
     function buildPrivacyPolicyPage() {
         pagesContainer.innerHTML = `
         <div class="sub-page">
@@ -990,7 +1282,7 @@
         </div>`;
     }
 
-    // 6.14 من نحن
+    // 6.17 من نحن
     function buildWhoWeArePage() {
         pagesContainer.innerHTML = `
         <div class="sub-page">
@@ -1011,7 +1303,7 @@
         </div>`;
     }
 
-    // 6.15 المواعيد
+    // 6.18 المواعيد
     function buildDeadlinesPage() {
         pagesContainer.innerHTML = `
         <div class="sub-page">
@@ -1045,7 +1337,7 @@
         });
     }
 
-    // 6.16 اتصل بنا
+    // 6.19 اتصل بنا
     function buildContactPage() {
         pagesContainer.innerHTML = `
         <div class="sub-page">
