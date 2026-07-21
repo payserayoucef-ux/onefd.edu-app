@@ -10,11 +10,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="البوابة الشاملة لخدمات الديوان الوطني للتعليم والتكوين عن بعد (ONEFD) في الجزائر: التسجيل، الفروض، الامتحانات، النتائج، المراكز الولائية، وأدوات مفيدة للطلاب.">
-    <meta name="keywords" content="ONEFD, الدراسة بالمراسلة, فروض المراسلة, الفرض الإلكتروني, امتحان المستوى, نتائج المراسلة, مراكز ONEFD, الجزائر, التسجيلات الجامعية, دفع حقوق التسجيل">
+    <meta name="keywords" content="ONEFD, الدراسة بالمراسلة, فروض المراسلة, الفرض الإلكتروني, امتحان المستوى, نتائج المراسلة, مراكز ONEFD, الجزائر, التسجيلات الجامعية, الوكالة الوطنية للتشغيل, ANEM, وسيط">
     <meta name="author" content="يوسف">
     <meta name="robots" content="index, follow">
     <meta name="google-adsense-account" content="ca-pub-4719018034232696">
-    <title>الدراسة بالمراسلة - دليل شامل لخدمات ONEFD والتسجيلات الجامعية</title>
+    <title>الدراسة بالمراسلة - دليل شامل لخدمات ONEFD والتسجيلات الجامعية والوكالة الوطنية للتشغيل</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* ====== المتغيرات والحركات الخفيفة ====== */
@@ -27,6 +27,8 @@
             --success: #28a745;
             --danger: #dc3545;
             --warning: #ffc107;
+            --info: #17a2b8;
+            --anem-color: #0056a7;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -244,6 +246,13 @@
         .payment-card .amount { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
         .payment-card .btn-pay { background: var(--success); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
         .payment-card .btn-pay:hover { background: #218838; transform: scale(1.02); }
+        .anem-card { background: linear-gradient(135deg, #e8f0fe, #d4e4f7); border-radius: 12px; padding: 20px; margin: 15px 0; border-right: 4px solid var(--anem-color); }
+        .anem-card .btn-anem { background: var(--anem-color); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+        .anem-card .btn-anem:hover { background: #003d7a; transform: scale(1.02); }
+        .anem-card .anem-icon { font-size: 2rem; color: var(--anem-color); }
+        .step-number { display: inline-block; background: var(--primary); color: white; width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 30px; font-weight: bold; margin-left: 10px; }
+        .info-note { background: #fff3cd; border-right: 4px solid var(--warning); padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .info-note i { color: var(--warning); margin-left: 10px; }
     </style>
 </head>
 <body>
@@ -278,6 +287,7 @@
     <a href="#" onclick="showPage('check-level-page'); return false;"><i class="fas fa-chart-line"></i> التحقق من القبول بالمستوى الأعلى</a>
     <a href="#" onclick="showPage('centers-page'); return false;"><i class="fas fa-phone-alt"></i> الاتصال بالمراكز الولائية</a>
     <a href="#" onclick="showPage('university-registration-page'); return false;"><i class="fas fa-university"></i> 🎓 التسجيلات الجامعية القدامى</a>
+    <a href="#" onclick="showPage('anem-page'); return false;"><i class="fas fa-briefcase"></i> 🏢 الوكالة الوطنية للتشغيل</a>
     <a href="#" onclick="showPage('donation-page'); return false;"><i class="fas fa-heart"></i> دعم الموقع (تبرع)</a>
     <a href="#" onclick="showPage('contact-page'); return false;"><i class="fas fa-envelope"></i> اتصل بنا</a>
     <a href="#" onclick="showPage('privacy-policy-page'); return false;"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a>
@@ -294,13 +304,13 @@
     <h1 class="header-title"><i class="fas fa-graduation-cap"></i> الدراسة بالمراسلة</h1>
 </header>
 
-<div class="marquee-container" style="background:#ffc107; text-align:center; padding:5px; font-weight:bold;">📢 منصة شاملة لخدمات ONEFD والتسجيلات الجامعية: التسجيل، الفروض، الامتحانات، النتائج وأدوات مساعدة (الموقع غير رسمي)</div>
+<div class="marquee-container" style="background:#ffc107; text-align:center; padding:5px; font-weight:bold;">📢 منصة شاملة لخدمات ONEFD والتسجيلات الجامعية والوكالة الوطنية للتشغيل (الموقع غير رسمي)</div>
 <div id="upcomingEventsContainer" class="upcoming-buttons"></div>
 
 <main id="main-content">
     <div class="welcome-section">
         <h1><i class="fas fa-smile-wink"></i> أهلاً بك في دليل الدراسة بالمراسلة</h1>
-        <h2>كل ما تحتاجه في مكان واحد: التسجيل، الفروض الذاتية (رقم 01 و 02)، الفرض الإلكتروني، استدعاءات الامتحانات، النتائج، والمراكز الولائية. نتمنى لك التوفيق والنجاح 🌟</h2>
+        <h2>كل ما تحتاجه في مكان واحد: التسجيل، الفروض الذاتية، الفرض الإلكتروني، استدعاءات الامتحانات، النتائج، المراكز الولائية، التسجيلات الجامعية، والوكالة الوطنية للتشغيل. نتمنى لك التوفيق والنجاح 🌟</h2>
     </div>
     <div class="main-buttons-container">
         <button class="main-btn" onclick="showPage('registration-page')"><i class="fas fa-user-plus"></i> التسجيل في المراسلة</button>
@@ -309,7 +319,8 @@
         <button class="main-btn" onclick="showPage('e-homework-page')"><i class="fas fa-laptop-code"></i> الفرض الإلكتروني</button>
         <button class="main-btn" onclick="showPage('exam-registration-page')"><i class="fas fa-certificate"></i> التسجيل في الشهادة</button>
         <button class="main-btn" onclick="showPage('exam-info-page')"><i class="fas fa-bullhorn"></i> معلومات الامتحانات</button>
-        <button class="main-btn" onclick="showPage('university-registration-page')" style="border-color:var(--success);"><i class="fas fa-university" style="color:var(--success);"></i> التسجيلات الجامعية القدامى</button>
+        <button class="main-btn" onclick="showPage('university-registration-page')" style="border-color:var(--success);"><i class="fas fa-university" style="color:var(--success);"></i> التسجيلات الجامعية</button>
+        <button class="main-btn" onclick="showPage('anem-page')" style="border-color:var(--anem-color);"><i class="fas fa-briefcase" style="color:var(--anem-color);"></i> الوكالة الوطنية للتشغيل</button>
     </div>
     <div class="social-media-container">
         <span>📱 تابعنا على:</span>
@@ -335,6 +346,9 @@
     function openExternalLink(url) { window.open(url, '_blank', 'noopener noreferrer'); }
     function shareApp() { if(navigator.share) navigator.share({title:'الدراسة بالمراسلة', text:'دليل شامل لخدمات ONEFD (موقع غير رسمي)', url:window.location.href}); else alert('انسخ الرابط: '+window.location.href); }
     function createLinkButton(text, url) { return `<button class="sub-page-btn" onclick="openExternalLink('${url}')"><i class="fas fa-external-link-alt"></i> ${text}</button>`; }
+    function createAnemButton(text, url, icon = 'fas fa-external-link-alt') {
+        return `<button class="sub-page-btn" onclick="openExternalLink('${url}')" style="border-right-color: var(--anem-color); background: #f0f7ff;"><i class="${icon}"></i> ${text}</button>`;
+    }
     
     // --- الصوت بالذكاء الاصطناعي ---
     function speakIntro() {
@@ -381,6 +395,7 @@
             'check-level-page': buildCheckLevelPage,
             'centers-page': buildCentersPage,
             'university-registration-page': buildUniversityRegistrationPage,
+            'anem-page': buildAnemPage,
             'donation-page': buildDonationPage,
             'privacy-policy-page': buildPrivacyPolicyPage,
             'who-we-are-page': buildWhoWeArePage,
@@ -719,7 +734,7 @@
         </div>`;
     }
     
-    // 7. مقال التسجيلات الجامعية القدامى (جديد)
+    // 7. مقال التسجيلات الجامعية القدامى
     function buildUniversityRegistrationPage() {
         pagesContainer.innerHTML = `
         <div class="sub-page">
@@ -809,18 +824,117 @@
                 ${createLinkButton('دفع حقوق النقل (150 دج)', 'https://progres.mesrs.dz/epaiement/epaiementT.xhtml')}
             </div>
             
-            <h3>📌 نصائح هامة للطلبة القدامى</h3>
+            <div class="highlight-box" style="border-right-color: var(--danger);">
+                <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
+                <strong>تنبيه هام:</strong> هذا الموقع غير رسمي ولا يتبع وزارة التعليم العالي. الروابط أعلاه تؤدي إلى المواقع الرسمية للدفع الإلكتروني. تأكد من صحة الروابط قبل إتمام عملية الدفع.
+            </div>
+        </div>`;
+    }
+    
+    // ====== 8. مقال الوكالة الوطنية للتشغيل (ANEM) - جديد ======
+    function buildAnemPage() {
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-briefcase"></i> دليل التسجيل في الوكالة الوطنية للتشغيل (ANEM)</h2>
+            <div class="article-meta">📅 آخر تحديث: 20 يوليو 2026 | ⏱️ 7 دقائق للقراءة</div>
+            
+            <div class="highlight-box" style="border-right-color: var(--anem-color); background: #e8f0fe;">
+                <i class="fas fa-info-circle" style="color: var(--anem-color);"></i>
+                <strong>الوكالة الوطنية للتشغيل (ANEM)</strong> هي المؤسسة العمومية الجزائرية المكلفة بمساعدة الباحثين عن العمل وتوفير فرص التشغيل في القطاعين العام والخاص.
+            </div>
+            
+            <p>تعد <strong>الوكالة الوطنية للتشغيل (ANEM)</strong> بوابة الباحثين عن عمل في الجزائر. توفر المنصة الإلكترونية "وسيط" (Wassit) خدمات متكاملة للتسجيل، تمديد طلبات العمل، وتحديث المعلومات الشخصية. هذا الدليل الشامل يشرح لك خطوات التسجيل والاستفادة من خدمات ANEM.</p>
+            
+            <h3>📌 ما هي منصة "وسيط" (Wassit)؟</h3>
+            <p>"وسيط" هي المنصة الرقمية للوكالة الوطنية للتشغيل التي تتيح للباحثين عن العمل:</p>
             <ul>
-                <li><strong>التسجيل المبكر:</strong> قم بإنجاز التسجيل في بداية الفترة لتجنب الازدحام والمشاكل التقنية.</li>
-                <li><strong>الاحتفاظ بالإيصالات:</strong> احتفظ بجميع إيصالات الدفع لاستخدامها عند الحاجة.</li>
-                <li><strong>التأكد من البيانات:</strong> تحقق من صحة جميع البيانات المدخلة قبل تأكيد التسجيل.</li>
-                <li><strong>المتابعة:</strong> تابع بريدك الإلكتروني للاطلاع على أي إشعارات أو تحديثات من الجامعة.</li>
-                <li><strong>التواصل مع الجامعة:</strong> في حال واجهت أي مشكلة، تواصل مع مصلحة التسجيل في جامعتك.</li>
+                <li><strong>التسجيل:</strong> إنشاء حساب جديد كباحث عن عمل.</li>
+                <li><strong>تقديم طلبات العمل:</strong> التقدم للوظائف المتاحة عبر المنصة.</li>
+                <li><strong>تمديد طلب العمل:</strong> تجديد طلب العمل الحالي.</li>
+                <li><strong>تحديث المعلومات:</strong> تغيير رقم الهاتف أو البيانات الشخصية.</li>
+                <li><strong>متابعة حالة الطلبات:</strong> معرفة وضعية طلبات العمل المقدمة.</li>
+            </ul>
+            
+            <h3>📋 المستندات المطلوبة للتسجيل في ANEM</h3>
+            <ul>
+                <li>رقم التعريف الوطني (18 رقماً).</li>
+                <li>بطاقة التعريف الوطنية (نسخة).</li>
+                <li>الشهادة الدراسية الأخيرة.</li>
+                <li>السيرة الذاتية (CV) محدثة.</li>
+                <li>رقم الهاتف الشخصي.</li>
+                <li>البريد الإلكتروني (إن وجد).</li>
+            </ul>
+            
+            <h3>🚀 خطوات التسجيل في منصة وسيط</h3>
+            <ol>
+                <li><span class="step-number">1</span> الدخول إلى رابط التسجيل في منصة وسيط.</li>
+                <li><span class="step-number">2</span> إدخال رقم التعريف الوطني المكون من 18 رقماً.</li>
+                <li><span class="step-number">3</span> إدخال رقم بطاقة طالب العمل.</li>
+                <li><span class="step-number">4</span> إدخال رقم الهاتف الشخصي.</li>
+                <li><span class="step-number">5</span> إنشاء كلمة مرور قوية.</li>
+                <li><span class="step-number">6</span> تأكيد التسجيل عبر رمز التحقق المرسل إلى الهاتف.</li>
+                <li><span class="step-number">7</span> إكمال البيانات الشخصية والمهنية.</li>
+                <li><span class="step-number">8</span> رفع السيرة الذاتية (CV).</li>
+                <li><span class="step-number">9</span> البدء في البحث عن عروض العمل المناسبة.</li>
+            </ol>
+            
+            <h3>🔄 تمديد طلب العمل</h3>
+            <div class="info-note">
+                <i class="fas fa-clock"></i>
+                <strong>ملاحظة هامة:</strong> يجب تمديد طلب العمل بشكل دوري للحفاظ على نشاط حسابك. يتم التمديد عبر الرابط المخصص بإدخال رقم التعريف الوطني ورقم بطاقة طالب العمل.
+            </div>
+            <p>لتمديد طلب العمل، اتبع الخطوات التالية:</p>
+            <ul>
+                <li>الدخول إلى رابط تمديد طلب العمل.</li>
+                <li>إدخال رقم التعريف الوطني المكون من 18 رقماً.</li>
+                <li>إدخال رقم بطاقة طالب العمل.</li>
+                <li>تأكيد التمديد.</li>
+            </ul>
+            
+            <h3>📱 تغيير رقم الهاتف المرتبط ببطاقة طالب العمل</h3>
+            <div class="info-note" style="border-right-color: var(--info); background: #e3f2fd;">
+                <i class="fas fa-mobile-alt" style="color: var(--info);"></i>
+                <strong>تحديث رقم الهاتف:</strong> لتغيير رقم الهاتف المرتبط بحسابك، قم بزيارة الرابط المخصص وأدخل البيانات المطلوبة.
+            </div>
+            <p>لتغيير رقم الهاتف، اتبع الخطوات التالية:</p>
+            <ul>
+                <li>الدخول إلى رابط تغيير رقم الهاتف.</li>
+                <li>إدخال رقم التعريف الوطني المكون من 18 رقماً.</li>
+                <li>إدخال رقم بطاقة طالب العمل.</li>
+                <li>إدخال رقم الهاتف الجديد الذي ترغب في ربطه.</li>
+                <li>تأكيد التغيير عبر رمز التحقق المرسل إلى الهاتف الجديد.</li>
+            </ul>
+            
+            <h3>🔗 روابط منصة وسيط (Wassit)</h3>
+            <div class="btn-group">
+                ${createAnemButton('التسجيل في وسيط (باحث عن عمل)', 'https://wassitonline.anem.dz/Account/RegisterApplicant', 'fas fa-user-plus')}
+                ${createAnemButton('تمديد طلب العمل', 'https://wassitonline.anem.dz/postulation/prolongationDemande', 'fas fa-clock')}
+                ${createAnemButton('تغيير رقم الهاتف', 'https://wassitonline.anem.dz/postulation/ChangementMobile', 'fas fa-mobile-alt')}
+            </div>
+            
+            <div class="anem-card">
+                <h4><i class="fas fa-info-circle"></i> معلومات إضافية</h4>
+                <ul>
+                    <li><strong>رقم التعريف الوطني:</strong> يجب أن يكون مكوناً من 18 رقماً.</li>
+                    <li><strong>بطاقة طالب العمل:</strong> الوثيقة الرسمية التي تثبت تسجيلك في ANEM.</li>
+                    <li><strong>التمديد الدوري:</strong> يوصى بتمديد طلب العمل كل 3 أشهر للحفاظ على نشاط الحساب.</li>
+                    <li><strong>تحديث البيانات:</strong> تأكد من تحديث رقم الهاتف والبريد الإلكتروني بشكل مستمر.</li>
+                </ul>
+            </div>
+            
+            <h3>📌 نصائح هامة للباحثين عن العمل</h3>
+            <ul>
+                <li><strong>السيرة الذاتية:</strong> حضر سيرة ذاتية احترافية ومحدثة.</li>
+                <li><strong>المؤهلات:</strong> أضف جميع الشهادات والخبرات العملية.</li>
+                <li><strong>البحث المستمر:</strong> تابع عروض العمل بشكل يومي.</li>
+                <li><strong>التواصل:</strong> استخدم قنوات التواصل المختلفة للبحث عن فرص عمل.</li>
+                <li><strong>التدريب:</strong> استفد من برامج التكوين والتأهيل المهني التي تقدمها ANEM.</li>
             </ul>
             
             <div class="highlight-box" style="border-right-color: var(--danger);">
                 <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
-                <strong>تنبيه هام:</strong> هذا الموقع غير رسمي ولا يتبع وزارة التعليم العالي. الروابط أعلاه تؤدي إلى المواقع الرسمية للدفع الإلكتروني. تأكد من صحة الروابط قبل إتمام عملية الدفع.
+                <strong>تنبيه هام:</strong> هذا الموقع غير رسمي ولا يتبع الوكالة الوطنية للتشغيل (ANEM). الروابط أعلاه تؤدي إلى المواقع الرسمية للوكالة. تأكد من صحة الروابط قبل إدخال أي بيانات شخصية.
             </div>
         </div>`;
     }
@@ -976,9 +1090,9 @@
             <h3>ملفات تعريف الارتباط (Cookies)</h3>
             <p>يستخدم هذا الموقع Google AdSense الذي قد يستخدم ملفات تعريف الارتباط (Cookies) لعرض إعلانات مخصصة بناءً على زياراتك السابقة. يمكنك إدارة ذلك من إعدادات متصفحك أو عبر <a href="https://adssettings.google.com" target="_blank">إعدادات الإعلانات من Google</a>.</p>
             <h3>الروابط الخارجية</h3>
-            <p>يحتوي الموقع على روابط تؤدي إلى مواقع رسمية حكومية (ONEFD، ONEC، وغيرها). لا نتحمل مسؤولية سياسات الخصوصية لتلك المواقع.</p>
+            <p>يحتوي الموقع على روابط تؤدي إلى مواقع رسمية حكومية (ONEFD، ONEC، ANEM، وغيرها). لا نتحمل مسؤولية سياسات الخصوصية لتلك المواقع.</p>
             <div class="highlight-box" style="border-right-color: var(--danger);">
-                <strong>ملاحظة هامة:</strong> هذا الموقع غير رسمي ولا تابع للديوان الوطني للتعليم والتكوين عن بعد (ONEFD). جميع الروابط تؤدي إلى مواقع رسمية حكومية.
+                <strong>ملاحظة هامة:</strong> هذا الموقع غير رسمي ولا تابع للديوان الوطني للتعليم والتكوين عن بعد (ONEFD) أو الوكالة الوطنية للتشغيل (ANEM). جميع الروابط تؤدي إلى مواقع رسمية حكومية.
             </div>
         </div>`;
     }
@@ -990,7 +1104,7 @@
             <h2><i class="fas fa-users"></i> من نحن</h2>
             <p>أنا <strong>يوسف</strong>، مطور هذا الموقع بهدف مساعدة طلاب المراسلة في الجزائر. الموقع <strong>تطوعي وغير رسمي</strong>، ويجمع جميع خدمات ONEFD في مكان واحد لتسهيل الوصول.</p>
             <h3>رؤيتنا</h3>
-            <p>نسعى لتوفير منصة شاملة وموثوقة تمكن طلاب الدراسة بالمراسلة من الوصول السريع إلى جميع الخدمات والمعلومات التي يحتاجونها في مسيرتهم التعليمية.</p>
+            <p>نسعى لتوفير منصة شاملة وموثوقة تمكن طلاب الدراسة بالمراسلة من الوصول السريع إلى جميع الخدمات والمعلومات التي يحتاجونها في مسيرتهم التعليمية، بالإضافة إلى خدمات التوظيف والتسجيلات الجامعية.</p>
             <h3>تواصل معنا</h3>
             <p>يمكنك التواصل معي عبر وسائل التواصل الاجتماعي المذكورة في الموقع، أو عبر البريد الإلكتروني: <a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></p>
             <div class="social-media-container" style="justify-content:flex-start; margin-top:15px;">
