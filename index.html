@@ -186,6 +186,20 @@
         #sidebar a { display: block; padding: 12px 20px; color: var(--dark); text-decoration: none; border-bottom: 1px solid #eee; transition: 0.2s; }
         #sidebar a:hover { background: var(--primary); color: white; }
         #sidebar a i { margin-left: 10px; width: 25px; }
+        /* فاصل القائمة */
+        .sidebar-divider {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 10px 15px;
+        }
+        .sidebar-section-title {
+            padding: 8px 20px 5px 20px;
+            font-size: 0.75rem;
+            color: #888;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
         /* المحتوى الرئيسي */
         #main-content { padding: 20px; max-width: 1200px; margin: 0 auto; animation: fadeIn 0.5s ease; }
         .welcome-section { background: white; border-radius: 20px; padding: 30px 20px; text-align: center; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
@@ -253,6 +267,72 @@
         .step-number { display: inline-block; background: var(--primary); color: white; width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 30px; font-weight: bold; margin-left: 10px; }
         .info-note { background: #fff3cd; border-right: 4px solid var(--warning); padding: 15px; border-radius: 8px; margin: 15px 0; }
         .info-note i { color: var(--warning); margin-left: 10px; }
+        /* تنسيقات القائمة السفلية */
+        .sidebar-footer-section {
+            margin-top: 10px;
+            border-top: 2px solid #e8e8e8;
+            padding-top: 8px;
+        }
+        .sidebar-footer-section .sidebar-section-title {
+            color: #888;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+        .sidebar-footer-section a {
+            border-bottom-color: #f0f0f0 !important;
+        }
+        .sidebar-footer-section a:hover {
+            background: var(--primary) !important;
+            color: white !important;
+        }
+        .sidebar-footer-section a:last-child {
+            border-bottom: none !important;
+        }
+        .sidebar-contact-item {
+            background: #f8f9fa !important;
+            border-right: 3px solid var(--primary) !important;
+        }
+        .sidebar-contact-item:hover {
+            background: var(--primary) !important;
+            color: white !important;
+            border-right-color: white !important;
+        }
+        .sidebar-contact-item i {
+            color: var(--primary) !important;
+        }
+        .sidebar-contact-item:hover i {
+            color: white !important;
+        }
+        .sidebar-about-item {
+            background: #f0f7ff !important;
+            border-right: 3px solid var(--secondary) !important;
+        }
+        .sidebar-about-item:hover {
+            background: var(--secondary) !important;
+            color: white !important;
+            border-right-color: white !important;
+        }
+        .sidebar-about-item i {
+            color: var(--secondary) !important;
+        }
+        .sidebar-about-item:hover i {
+            color: white !important;
+        }
+        .sidebar-privacy-item {
+            background: #f5f5f5 !important;
+            border-right: 3px solid #888 !important;
+        }
+        .sidebar-privacy-item:hover {
+            background: var(--dark) !important;
+            color: white !important;
+            border-right-color: white !important;
+        }
+        .sidebar-privacy-item i {
+            color: #888 !important;
+        }
+        .sidebar-privacy-item:hover i {
+            color: white !important;
+        }
     </style>
 </head>
 <body>
@@ -279,9 +359,12 @@
     </div>
 </div>
 
+<!-- ====== القائمة الجانبية الرئيسية ====== -->
 <div id="sidebar">
     <button class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
     <div class="sidebar-header"><i class="fas fa-graduation-cap fa-2x"></i><h3>القائمة الرئيسية</h3></div>
+    
+    <!-- الأقسام الرئيسية -->
     <a href="#" onclick="showPage('about-page'); return false;"><i class="fas fa-info-circle"></i> ما هي الدراسة بالمراسلة؟</a>
     <a href="#" onclick="showPage('deadlines-page'); return false;"><i class="fas fa-calendar-alt"></i> 📅 مواعيد الفروض والامتحانات</a>
     <a href="#" onclick="showPage('check-level-page'); return false;"><i class="fas fa-chart-line"></i> التحقق من القبول بالمستوى الأعلى</a>
@@ -289,9 +372,20 @@
     <a href="#" onclick="showPage('university-registration-page'); return false;"><i class="fas fa-university"></i> 🎓 التسجيلات الجامعية القدامى</a>
     <a href="#" onclick="showPage('anem-page'); return false;"><i class="fas fa-briefcase"></i> 🏢 الوكالة الوطنية للتشغيل</a>
     <a href="#" onclick="showPage('donation-page'); return false;"><i class="fas fa-heart"></i> دعم الموقع (تبرع)</a>
-    <a href="#" onclick="showPage('contact-page'); return false;"><i class="fas fa-envelope"></i> اتصل بنا</a>
-    <a href="#" onclick="showPage('privacy-policy-page'); return false;"><i class="fas fa-shield-alt"></i> سياسة الخصوصية</a>
-    <a href="#" onclick="showPage('who-we-are-page'); return false;"><i class="fas fa-users"></i> من نحن</a>
+    
+    <!-- فاصل -->
+    <hr class="sidebar-divider">
+    <div class="sidebar-section-title">📌 معلومات الموقع</div>
+    
+    <!-- الأقسام السفلية (اتصل بنا، سياسة الخصوصية، من نحن) -->
+    <a href="#" onclick="showPage('contact-page'); return false;" class="sidebar-contact-item"><i class="fas fa-envelope"></i> 📧 اتصل بنا</a>
+    <a href="#" onclick="showPage('privacy-policy-page'); return false;" class="sidebar-privacy-item"><i class="fas fa-shield-alt"></i> 🔒 سياسة الخصوصية</a>
+    <a href="#" onclick="showPage('who-we-are-page'); return false;" class="sidebar-about-item"><i class="fas fa-users"></i> 👤 من نحن</a>
+    
+    <!-- فاصل قبل الخيارات الإضافية -->
+    <hr class="sidebar-divider">
+    
+    <!-- خيارات إضافية -->
     <a href="#" onclick="shareApp(); return false;"><i class="fas fa-share-alt"></i> مشاركة الموقع</a>
     <a href="mailto:paserayoucef@gmail.com?subject=مشكلة في الموقع" style="background:#dc3545; color:white;"><i class="fas fa-exclamation-triangle"></i> الإبلاغ عن مشكلة</a>
 </div>
@@ -831,7 +925,7 @@
         </div>`;
     }
     
-    // ====== 8. مقال الوكالة الوطنية للتشغيل (ANEM) - جديد ======
+    // ====== 8. مقال الوكالة الوطنية للتشغيل (ANEM) ======
     function buildAnemPage() {
         pagesContainer.innerHTML = `
         <div class="sub-page">
@@ -1079,43 +1173,151 @@
         });
     };
     
+    // صفحة سياسة الخصوصية (محسنة واحترافية)
     function buildPrivacyPolicyPage() {
         pagesContainer.innerHTML = `
         <div class="sub-page">
             <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
             <h2><i class="fas fa-shield-alt"></i> سياسة الخصوصية</h2>
-            <p>نحن في موقع الدراسة بالمراسلة نلتزم بحماية خصوصية زوارنا. إليك سياسة الخصوصية الخاصة بنا:</p>
-            <h3>جمع المعلومات</h3>
-            <p>نحن لا نقوم بجمع أي بيانات شخصية للمستخدمين. الموقع لا يحتوي على نماذج لتسجيل البيانات الشخصية.</p>
-            <h3>ملفات تعريف الارتباط (Cookies)</h3>
-            <p>يستخدم هذا الموقع Google AdSense الذي قد يستخدم ملفات تعريف الارتباط (Cookies) لعرض إعلانات مخصصة بناءً على زياراتك السابقة. يمكنك إدارة ذلك من إعدادات متصفحك أو عبر <a href="https://adssettings.google.com" target="_blank">إعدادات الإعلانات من Google</a>.</p>
-            <h3>الروابط الخارجية</h3>
-            <p>يحتوي الموقع على روابط تؤدي إلى مواقع رسمية حكومية (ONEFD، ONEC، ANEM، وغيرها). لا نتحمل مسؤولية سياسات الخصوصية لتلك المواقع.</p>
+            <div class="article-meta">📅 آخر تحديث: 20 يوليو 2026 | ⏱️ 3 دقائق للقراءة</div>
+            
+            <p>نحن في موقع <strong>الدراسة بالمراسلة</strong> نلتزم بحماية خصوصية زوارنا ومستخدمينا. هذه الصفحة توضح كيفية تعاملنا مع المعلومات التي قد تُجمع عند استخدامك لموقعنا.</p>
+            
+            <h3>📌 جمع المعلومات</h3>
+            <p>نحن <strong>لا نقوم</strong> بجمع أي بيانات شخصية للمستخدمين مثل الاسم، البريد الإلكتروني، رقم الهاتف، أو العنوان. الموقع لا يحتوي على نماذج لتسجيل البيانات الشخصية ولا يطلب منك إدخال أي معلومات خاصة.</p>
+            
+            <h3>🍪 ملفات تعريف الارتباط (Cookies)</h3>
+            <p>يستخدم هذا الموقع خدمات <strong>Google AdSense</strong> التي قد تستخدم ملفات تعريف الارتباط (Cookies) لعرض إعلانات مخصصة بناءً على زياراتك السابقة لمواقع أخرى. هذه الملفات تساعد في تحسين تجربة المستخدم وتقديم محتوى إعلاني ملائم.</p>
+            <p>يمكنك إدارة تفضيلات الإعلانات المخصصة من خلال:</p>
+            <ul>
+                <li><a href="https://adssettings.google.com" target="_blank">إعدادات الإعلانات من Google</a></li>
+                <li>إعدادات متصفحك (حذف أو تعطيل ملفات تعريف الارتباط).</li>
+            </ul>
+            
+            <h3>🔗 الروابط الخارجية</h3>
+            <p>يحتوي موقعنا على روابط تؤدي إلى مواقع رسمية حكومية تابعة لـ:</p>
+            <ul>
+                <li>الديوان الوطني للتعليم والتكوين عن بعد (ONEFD)</li>
+                <li>الديوان الوطني للامتحانات والمسابقات (ONEC)</li>
+                <li>وزارة التعليم العالي والبحث العلمي</li>
+                <li>الوكالة الوطنية للتشغيل (ANEM)</li>
+            </ul>
+            <p>نحن <strong>لا نتحمل</strong> مسؤولية سياسات الخصوصية أو محتوى هذه المواقع الخارجية. ننصحك بقراءة سياسات الخصوصية الخاصة بكل موقع عند زيارته.</p>
+            
+            <h3>🛡️ حماية المعلومات</h3>
+            <p>نحن نتخذ إجراءات أمنية معقولة لحماية موقعنا من الاختراقات، ولكن بما أننا لا نجمع بيانات شخصية، فإن خطر تسرب المعلومات الشخصية يكون منعدماً.</p>
+            
+            <h3>📧 التواصل معنا</h3>
+            <p>إذا كان لديك أي استفسار حول سياسة الخصوصية، يمكنك التواصل معنا عبر:</p>
+            <ul>
+                <li><strong>البريد الإلكتروني:</strong> <a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></li>
+                <li><strong>تيليغرام:</strong> <a href="https://t.me/youcef_info_2" target="_blank">@youcef_info_2</a></li>
+            </ul>
+            
             <div class="highlight-box" style="border-right-color: var(--danger);">
-                <strong>ملاحظة هامة:</strong> هذا الموقع غير رسمي ولا تابع للديوان الوطني للتعليم والتكوين عن بعد (ONEFD) أو الوكالة الوطنية للتشغيل (ANEM). جميع الروابط تؤدي إلى مواقع رسمية حكومية.
+                <i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i>
+                <strong>ملاحظة هامة:</strong> هذا الموقع <strong>غير رسمي</strong> ولا تابع للديوان الوطني للتعليم والتكوين عن بعد (ONEFD) أو الوكالة الوطنية للتشغيل (ANEM). جميع الروابط تؤدي إلى مواقع رسمية حكومية.
             </div>
+            
+            <p style="margin-top: 20px; text-align: center; color: #888;">آخر تحديث: 20 يوليو 2026</p>
         </div>`;
     }
     
+    // صفحة من نحن (محسنة واحترافية)
     function buildWhoWeArePage() {
         pagesContainer.innerHTML = `
         <div class="sub-page">
             <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
             <h2><i class="fas fa-users"></i> من نحن</h2>
-            <p>أنا <strong>يوسف</strong>، مطور هذا الموقع بهدف مساعدة طلاب المراسلة في الجزائر. الموقع <strong>تطوعي وغير رسمي</strong>، ويجمع جميع خدمات ONEFD في مكان واحد لتسهيل الوصول.</p>
-            <h3>رؤيتنا</h3>
-            <p>نسعى لتوفير منصة شاملة وموثوقة تمكن طلاب الدراسة بالمراسلة من الوصول السريع إلى جميع الخدمات والمعلومات التي يحتاجونها في مسيرتهم التعليمية، بالإضافة إلى خدمات التوظيف والتسجيلات الجامعية.</p>
-            <h3>تواصل معنا</h3>
-            <p>يمكنك التواصل معي عبر وسائل التواصل الاجتماعي المذكورة في الموقع، أو عبر البريد الإلكتروني: <a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></p>
-            <div class="social-media-container" style="justify-content:flex-start; margin-top:15px;">
+            <div class="article-meta">📅 آخر تحديث: 20 يوليو 2026 | ⏱️ 3 دقائق للقراءة</div>
+            
+            <div class="highlight-box" style="border-right-color: var(--primary); background: #f0f7ff;">
+                <i class="fas fa-handshake" style="color: var(--primary);"></i>
+                <strong>مرحباً بك في موقع الدراسة بالمراسلة</strong> — منصة تطوعية تهدف إلى تسهيل الوصول إلى خدمات التعليم عن بعد في الجزائر.
+            </div>
+            
+            <h3>👤 من أنا؟</h3>
+            <p>أنا <strong>يوسف</strong>، مطور ومصمم هذا الموقع. أنا شاب جزائري مهتم بمجال التكنولوجيا والتعليم، وأسعى إلى تقديم قيمة مضافة للمجتمع من خلال تبسيط الوصول إلى الخدمات الرسمية.</p>
+            
+            <h3>💡 رؤيتنا</h3>
+            <p>نسعى إلى توفير <strong>منصة شاملة وموثوقة</strong> تمكن طلاب الدراسة بالمراسلة من الوصول السريع إلى جميع الخدمات والمعلومات التي يحتاجونها في مسيرتهم التعليمية، بالإضافة إلى:</p>
+            <ul>
+                <li>خدمات التسجيلات الجامعية للطلبة القدامى.</li>
+                <li>خدمات الوكالة الوطنية للتشغيل (ANEM) للباحثين عن عمل.</li>
+                <li>أدوات تفاعلية مساعدة مثل التحقق من القبول بالمستوى الأعلى.</li>
+            </ul>
+            
+            <h3>🎯 مهمتنا</h3>
+            <ul>
+                <li><strong>تسهيل الوصول:</strong> جمع جميع الروابط والخدمات الرسمية في مكان واحد.</li>
+                <li><strong>التوعية:</strong> تقديم معلومات واضحة ومفيدة حول الإجراءات والمواعيد.</li>
+                <li><strong>الدعم:</strong> مساعدة الطلاب والباحثين عن عمل في التغلب على الصعوبات الإدارية.</li>
+            </ul>
+            
+            <h3>⚠️ إخلاء المسؤولية</h3>
+            <div class="info-note" style="border-right-color: var(--danger); background: #fce4ec;">
+                <i class="fas fa-exclamation-circle" style="color: var(--danger);"></i>
+                <strong>تنبيه هام:</strong> هذا الموقع <strong>ليس رسمياً</strong> ولا يتبع أي جهة حكومية. هو مبادرة شخصية تطوعية تهدف إلى تسهيل الوصول إلى الخدمات الرسمية. جميع الروابط تؤدي إلى مواقع حكومية رسمية.
+            </div>
+            
+            <h3>📱 تواصل معنا</h3>
+            <p>يمكنك التواصل معي عبر القنوات التالية:</p>
+            <div class="social-media-container" style="justify-content:flex-start; margin-top:15px; background: transparent; padding: 0;">
                 <a href="https://t.me/youcef_info_2" target="_blank" class="social-icon telegram"><i class="fab fa-telegram-plane"></i></a>
                 <a href="https://wa.me/213665074666" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
                 <a href="https://www.instagram.com/youcef.info2" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.facebook.com/share/g/1BfUsNqXFf/" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://youtube.com/channel/UCWorEGsMcnwrSPYEFXhnfkw" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
             </div>
+            <p style="margin-top: 10px;">أو عبر البريد الإلكتروني: <a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></p>
+            
+            <p style="margin-top: 20px; text-align: center; color: #888;">شكراً لزيارتك، ونتمنى لك التوفيق في مسيرتك التعليمية والمهنية 🌟</p>
         </div>`;
     }
     
+    // صفحة اتصل بنا (محسنة واحترافية)
+    function buildContactPage() {
+        pagesContainer.innerHTML = `
+        <div class="sub-page">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
+            <h2><i class="fas fa-envelope"></i> اتصل بنا</h2>
+            <div class="article-meta">📅 آخر تحديث: 20 يوليو 2026 | ⏱️ 2 دقائق للقراءة</div>
+            
+            <p>نحن هنا لمساعدتك! إذا كان لديك أي <strong>استفسار</strong>، <strong>ملاحظة</strong>، أو ترغب في <strong>الإبلاغ عن مشكلة</strong> في الموقع، يمكنك التواصل معنا عبر القنوات التالية:</p>
+            
+            <div style="background: #f8f9fa; border-radius: 12px; padding: 20px; margin: 20px 0; border-right: 4px solid var(--primary);">
+                <h3><i class="fas fa-envelope" style="color: var(--primary);"></i> البريد الإلكتروني</h3>
+                <p style="font-size: 1.1rem;"><a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></p>
+                <p>للأسئلة العامة، الاستفسارات، أو اقتراحات تحسين الموقع.</p>
+            </div>
+            
+            <div style="background: #e8f0fe; border-radius: 12px; padding: 20px; margin: 20px 0; border-right: 4px solid var(--info);">
+                <h3><i class="fab fa-telegram-plane" style="color: #0088cc;"></i> تيليغرام</h3>
+                <p style="font-size: 1.1rem;"><a href="https://t.me/youcef_info_2" target="_blank">@youcef_info_2</a></p>
+                <p>للتواصل السريع والرد الفوري على الاستفسارات.</p>
+            </div>
+            
+            <div style="background: #e8f5e9; border-radius: 12px; padding: 20px; margin: 20px 0; border-right: 4px solid #25d366;">
+                <h3><i class="fab fa-whatsapp" style="color: #25d366;"></i> واتساب</h3>
+                <p style="font-size: 1.1rem;"><a href="https://wa.me/213665074666" target="_blank">+213 665 074 666</a></p>
+                <p>للتواصل عبر تطبيق واتساب للاستفسارات السريعة.</p>
+            </div>
+            
+            <div style="background: #fce4ec; border-radius: 12px; padding: 20px; margin: 20px 0; border-right: 4px solid var(--danger);">
+                <h3><i class="fas fa-exclamation-triangle" style="color: var(--danger);"></i> الإبلاغ عن مشكلة</h3>
+                <p>إذا وجدت أي <strong>خطأ</strong> في الموقع، أو <strong>رابط لا يعمل</strong>، أو أي <strong>مشكلة تقنية</strong>، يرجى التواصل معنا فوراً عبر أحد القنوات أعلاه.</p>
+            </div>
+            
+            <div class="highlight-box" style="border-right-color: var(--warning); background: #fff8e1;">
+                <i class="fas fa-clock" style="color: var(--warning);"></i>
+                <strong>أوقات الرد:</strong> نحن نرد على جميع الاستفسارات في أقرب وقت ممكن، عادةً خلال <strong>24 ساعة</strong> من استلامها.
+            </div>
+            
+            <p style="text-align: center; margin-top: 20px; color: #888;">شكراً لزيارتك! نتمنى لك يوماً موفقاً 🙏</p>
+        </div>`;
+    }
+    
+    // صفحة المواعيد
     function buildDeadlinesPage() {
         pagesContainer.innerHTML = `
         <div class="sub-page">
@@ -1153,21 +1355,6 @@
                 if(card.classList.contains('future') && span) span.innerText = `${days} يوم متبقي`;
             }
         });
-    }
-    
-    function buildContactPage() {
-        pagesContainer.innerHTML = `
-        <div class="sub-page">
-            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> رجوع</button>
-            <h2><i class="fas fa-envelope"></i> اتصل بنا</h2>
-            <p>نحن هنا لمساعدتك! إذا كان لديك أي استفسار أو ملاحظة أو ترغب في الإبلاغ عن مشكلة، يمكنك التواصل معنا عبر:</p>
-            <ul>
-                <li><strong>البريد الإلكتروني:</strong> <a href="mailto:paserayoucef@gmail.com">paserayoucef@gmail.com</a></li>
-                <li><strong>تيليغرام:</strong> <a href="https://t.me/youcef_info_2" target="_blank">@youcef_info_2</a></li>
-                <li><strong>واتساب:</strong> <a href="https://wa.me/213665074666" target="_blank">+213 665 074 666</a></li>
-            </ul>
-            <p>نرد على جميع الاستفسارات في أقرب وقت ممكن. شكراً لزيارتك! 🙏</p>
-        </div>`;
     }
     
     // الساعة والأحداث القادمة
